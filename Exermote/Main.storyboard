@@ -4,15 +4,21 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-Regular.ttf">
+            <string>NotoSans</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="iE2-2Z-U0z">
             <objects>
                 <navigationController id="PLK-4q-Ant" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TSU-lv-d1h">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TSU-lv-d1h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.29181043363508363" green="0.77262824415726827" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -28,7 +34,7 @@
         <!--MeasurementVC-->
         <scene sceneID="s8c-mq-07b">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jhz-2t-Rna" customClass="MeasurementVC" customModule="CoreBluetooth_test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jhz-2t-Rna" customClass="MeasurementVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MW5-XV-Pf0"/>
                         <viewControllerLayoutGuide type="bottom" id="9ib-I2-yV2"/>
@@ -41,19 +47,130 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="measurementCell" rowHeight="120" id="P4s-Cf-6m3">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="measurementCell" rowHeight="100" id="P4s-Cf-6m3" customClass="MeasurementCell" customModule="Exermote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P4s-Cf-6m3" id="Hs1-NH-sv4">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6o2-Je-Zv3">
-                                                    <rect key="frame" x="8" y="8" width="359" height="104"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6o2-Je-Zv3" customClass="MaterialView" customModule="Exermote" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="359" height="84"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="gN8-Ng-YwR">
+                                                            <rect key="frame" x="4" y="4" width="351" height="76"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="fEV-32-3Ug">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="25.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beacon ID: xxxxxxxxxxxxxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuM-LL-TBw">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="218" height="25.5"/>
+                                                                            <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company ID: xxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnA-dR-SZz">
+                                                                            <rect key="frame" x="218" y="0.0" width="133" height="25.5"/>
+                                                                            <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="g3b-Ym-oK7">
+                                                                    <rect key="frame" x="0.0" y="25.5" width="351" height="25"/>
+                                                                    <subviews>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dvO-Ud-OIA">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="267" height="25"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="35" text="Acceleration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-gY-nuh">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="91.5" height="25"/>
+                                                                                    <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x: x.xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLb-IX-4kU">
+                                                                                    <rect key="frame" x="91.5" y="0.0" width="59.5" height="25"/>
+                                                                                    <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="y: x.xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r6-1M-g2i">
+                                                                                    <rect key="frame" x="151" y="0.0" width="58.5" height="25"/>
+                                                                                    <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="z: x.xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcf-vl-oeJ">
+                                                                                    <rect key="frame" x="209.5" y="0.0" width="57.5" height="25"/>
+                                                                                    <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xjl-ud-yyb">
+                                                                            <rect key="frame" x="267" y="0.0" width="84" height="25"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSSI: xxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwc-fe-Jzq">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="25"/>
+                                                                                    <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="xjl-ud-yyb" secondAttribute="trailing" id="HHl-Tg-DbB"/>
+                                                                        <constraint firstItem="xjl-ud-yyb" firstAttribute="leading" secondItem="dvO-Ud-OIA" secondAttribute="trailing" id="XVT-ZS-6R5"/>
+                                                                    </constraints>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="RMf-L5-Ybl">
+                                                                    <rect key="frame" x="0.0" y="50.5" width="351" height="25.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHg-a0-EII">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="72" height="25.5"/>
+                                                                            <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current State: xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdT-x4-Tmb">
+                                                                            <rect key="frame" x="72" y="0.0" width="136" height="25.5"/>
+                                                                            <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previous State: xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doG-hi-y4l">
+                                                                            <rect key="frame" x="208" y="0.0" width="143" height="25.5"/>
+                                                                            <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="11"/>
+                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="RMf-L5-Ybl" secondAttribute="trailing" id="EK1-5e-n6c"/>
+                                                                <constraint firstAttribute="trailing" secondItem="fEV-32-3Ug" secondAttribute="trailing" id="KyM-06-1Jk"/>
+                                                                <constraint firstItem="fEV-32-3Ug" firstAttribute="leading" secondItem="gN8-Ng-YwR" secondAttribute="leading" id="Oze-Dp-M6w"/>
+                                                                <constraint firstItem="RMf-L5-Ybl" firstAttribute="leading" secondItem="gN8-Ng-YwR" secondAttribute="leading" id="PgK-ey-d1l"/>
+                                                                <constraint firstItem="g3b-Ym-oK7" firstAttribute="height" secondItem="fEV-32-3Ug" secondAttribute="height" id="UxD-UK-ikQ"/>
+                                                                <constraint firstItem="RMf-L5-Ybl" firstAttribute="height" secondItem="fEV-32-3Ug" secondAttribute="height" id="cim-ev-leU"/>
+                                                                <constraint firstAttribute="trailing" secondItem="g3b-Ym-oK7" secondAttribute="trailing" id="t2s-4W-8wr"/>
+                                                                <constraint firstItem="g3b-Ym-oK7" firstAttribute="leading" secondItem="gN8-Ng-YwR" secondAttribute="leading" id="woV-BH-7E4"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="gN8-Ng-YwR" secondAttribute="trailing" constant="4" id="8n7-4Y-W9U"/>
+                                                        <constraint firstItem="gN8-Ng-YwR" firstAttribute="top" secondItem="6o2-Je-Zv3" secondAttribute="top" constant="4" id="khS-SU-kye"/>
+                                                        <constraint firstItem="gN8-Ng-YwR" firstAttribute="leading" secondItem="6o2-Je-Zv3" secondAttribute="leading" constant="4" id="pTO-gX-h1r"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gN8-Ng-YwR" secondAttribute="bottom" constant="4" id="yYA-4p-DS6"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.29181043359999997" green="0.77262824419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="6o2-Je-Zv3" secondAttribute="trailing" constant="8" id="9cP-uC-4iX"/>
                                                 <constraint firstItem="6o2-Je-Zv3" firstAttribute="leading" secondItem="Hs1-NH-sv4" secondAttribute="leading" constant="8" id="Ky0-gw-hoO"/>
@@ -61,6 +178,16 @@
                                                 <constraint firstItem="6o2-Je-Zv3" firstAttribute="top" secondItem="Hs1-NH-sv4" secondAttribute="top" constant="8" id="su2-is-ng3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="beaconIdentifierLbl" destination="JuM-LL-TBw" id="ncf-ef-X3v"/>
+                                            <outlet property="companyIdentifierLbl" destination="xnA-dR-SZz" id="AvU-Gx-yH1"/>
+                                            <outlet property="durationCurrentStateLbl" destination="IdT-x4-Tmb" id="jvz-af-bzZ"/>
+                                            <outlet property="durationPreviousStateLbl" destination="doG-hi-y4l" id="yHf-t7-ZJR"/>
+                                            <outlet property="rssiLbl" destination="Nwc-fe-Jzq" id="mfN-EM-2cF"/>
+                                            <outlet property="xAccelerationLbl" destination="lLb-IX-4kU" id="8SR-80-cVY"/>
+                                            <outlet property="yAccelerationLbl" destination="9r6-1M-g2i" id="9at-Eb-mB6"/>
+                                            <outlet property="zAccelerationLbl" destination="bcf-vl-oeJ" id="j23-WD-5w1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

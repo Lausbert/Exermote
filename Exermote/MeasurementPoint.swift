@@ -1,6 +1,6 @@
 //
 //  MeasurmentPoint.swift
-//  Excermote
+//  Exermote
 //
 //  Created by Stephan Lerner on 30.10.16.
 //  Copyright © 2016 Stephan. All rights reserved.
@@ -88,5 +88,16 @@ class MeasurementPoint {
             
             print("Company Identifier: \(self.companyIdentifier) Beacon Identifier: \(self.beaconIdentifier) x Acceleration: \(self.xAcceleration) y Acceleration: \(self.yAcceleration) z Acceleration: \(self.zAcceleration) Duration Current State: \(self.durationCurrentState) Duration Previous State: \(self.durationPreviousState) Unknown Bytes: \(self.unknownBytes) RSSI: \(self.rssi)")
         }
+    }
+    
+    func hexToAcc(hexData: String) -> Double {
+        var accDec = Double(Int8(bitPattern: UInt8(strtoul(hexData, nil, 16))))/Double(CALIBRATION_ACCELERATION)
+        accDec = round(accDec*100)/100
+        return Double(accDec)
+    }
+    
+    func hexToDur(hexData: String) -> Int {
+        let durDec = Int(UInt8(hexData, radix: 16)!)
+        return durDec
     }
 }

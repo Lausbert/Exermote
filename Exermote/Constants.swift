@@ -1,12 +1,15 @@
 //
 //  Constants.swift
-//  Excermote
+//  Exermote
 //
 //  Created by Stephan Lerner on 30.10.16.
 //  Copyright © 2016 Stephan. All rights reserved.
 //
 
 import Foundation
+import UIKit
+
+// MARK: Estimote Beacon Constants
 
 let COMPANY_IDENTIFIER_ESTIMOTE_RANGE:Range<Int> = 0..<2
 let BEACON_IDENTIFIER_RANGE:Range<Int> = 3..<11
@@ -21,13 +24,6 @@ let CALIBRATION_ACCELERATION = 6.524
 
 let COMPANY_IDENTIFIER_ESTIMOTE = "5d01"
 
-func hexToAcc(hexData: String) -> Double {
-    var accDec = Double(Int8(bitPattern: UInt8(strtoul(hexData, nil, 16))))/Double(CALIBRATION_ACCELERATION)
-    accDec = round(accDec*100)/100
-    return Double(accDec)
-}
+// MARK: Color Constants
 
-func hexToDur(hexData: String) -> Int {
-    let durDec = Int(UInt8(hexData, radix: 16)!)
-    return durDec
-}
+let SHADOW_COLOR: CGFloat = 157.0 / 255.0

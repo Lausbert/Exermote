@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Excermote
+//  Exermote
 //
 //  Created by Stephan Lerner on 30.10.16.
 //  Copyright © 2016 Stephan. All rights reserved.
@@ -24,12 +24,13 @@ class MeasurementVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "measurementCell")! as UITableViewCell
-        
         let measurementPoint = BLEManager.instance.measurementPoints[indexPath.row]
-        cell.textLabel?.text = ("\(measurementPoint.beaconIdentifier), x'': \(measurementPoint.xAcceleration), y'':  \(measurementPoint.yAcceleration), z'': \(measurementPoint.zAcceleration)")
-        
-        return cell
+        if let cell = self.tableView.dequeueReusableCell(withIdentifier: "measurementCell") as? MeasurementCell {
+            cell.configureCell(measurementPoint: measurementPoint)
+            return cell
+        } else {
+            return MeasurementCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
