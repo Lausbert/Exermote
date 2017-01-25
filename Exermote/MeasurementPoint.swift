@@ -20,6 +20,7 @@ class MeasurementPoint {
     private var _durationCurrentState = 0
     private var _durationPreviousSate = 0
     private var _rssi = 0
+    private var _timeStamp: Date!
     
     var companyIdentifier: String {
         if _companyIdentifier == nil {
@@ -62,6 +63,10 @@ class MeasurementPoint {
     var rssi: Int {
         return _rssi
     }
+    
+    var timeStamp: Date {
+        return _timeStamp
+    }
 
     init(peripheral: CBPeripheral, advertisementData: [String : Any], RSSI: NSNumber) {
         
@@ -86,7 +91,9 @@ class MeasurementPoint {
             
             self._rssi = Int(RSSI)
             
-            print("Company Identifier: \(self.companyIdentifier) Beacon Identifier: \(self.beaconIdentifier) x Acceleration: \(self.xAcceleration) y Acceleration: \(self.yAcceleration) z Acceleration: \(self.zAcceleration) Duration Current State: \(self.durationCurrentState) Duration Previous State: \(self.durationPreviousState) Unknown Bytes: \(self.unknownBytes) RSSI: \(self.rssi)")
+            self._timeStamp = Date()
+            
+//            print("Company ID: \(self.companyIdentifier) Beacon ID: \(self.beaconIdentifier) x Acc: \(self.xAcceleration) y Acc: \(self.yAcceleration) z Accn: \(self.zAcceleration) Duration Cur State: \(self.durationCurrentState) Duration Prev State: \(self.durationPreviousState) Unknown Bytes: \(self.unknownBytes) RSSI: \(self.rssi)")
         }
     }
     

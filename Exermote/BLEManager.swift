@@ -22,7 +22,6 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
     }
     
-    //CoreBluetooth methods
     func centralManagerDidUpdateState(_ central: CBCentralManager)
     {
         if (central.state == CBManagerState.poweredOn)
@@ -32,7 +31,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         }
         else
         {
-            // do something like alert the user that ble is not on
+            print("Not scanning...")
         }
     }
     
@@ -41,12 +40,16 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         let measurementPoint = MeasurementPoint(peripheral: peripheral, advertisementData: advertisementData, RSSI: RSSI)
         
         if measurementPoint.companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
+            
             if let index = measurementPoints.index(where: {$0.beaconIdentifier == measurementPoint.beaconIdentifier}) {
                 measurementPoints[index] = measurementPoint
             } else {
                 measurementPoints.append(measurementPoint)
                 measurementPoints.sort(by: {$0.beaconIdentifier < $1.beaconIdentifier})
             }
+            
+            measurementPoints = measurementPoints.filter{Date().timeIntervalSince($0.timeStamp) < MAXIMUM_TIME_SINCE_UPDATE}
+            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newPeripherals"), object: nil)
         }
     }

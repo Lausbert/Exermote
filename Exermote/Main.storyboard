@@ -18,7 +18,7 @@
         <scene sceneID="iE2-2Z-U0z">
             <objects>
                 <navigationController id="PLK-4q-Ant" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TSU-lv-d1h">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TSU-lv-d1h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.29181043363508363" green="0.77262824415726827" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -31,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="241" y="211"/>
         </scene>
-        <!--MeasurementVC-->
+        <!--Scanning-->
         <scene sceneID="s8c-mq-07b">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jhz-2t-Rna" customClass="MeasurementVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
@@ -200,7 +200,7 @@
                             <constraint firstAttribute="trailing" secondItem="70R-0Z-irr" secondAttribute="trailing" id="fkD-Hc-Plv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="db6-MN-91G"/>
+                    <navigationItem key="navigationItem" title="Scanning" id="db6-MN-91G"/>
                     <connections>
                         <outlet property="tableView" destination="70R-0Z-irr" id="kag-7d-zxc"/>
                     </connections>

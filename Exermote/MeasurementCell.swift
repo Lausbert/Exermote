@@ -22,9 +22,9 @@ class MeasurementCell: UITableViewCell {
     func configureCell(measurementPoint: MeasurementPoint) {
         beaconIdentifierLbl.text = "Beacond ID: \(measurementPoint.beaconIdentifier)"
         companyIdentifierLbl.text = "Company ID: \(measurementPoint.companyIdentifier)"
-        xAccelerationLbl.text = "x: \(measurementPoint.xAcceleration)"
-        yAccelerationLbl.text = "y: \(measurementPoint.yAcceleration)"
-        zAccelerationLbl.text = "z: \(measurementPoint.zAcceleration)"
+        xAccelerationLbl.text = String(format: "x: %.2f", measurementPoint.xAcceleration)
+        yAccelerationLbl.text = String(format: "y: %.2f", measurementPoint.yAcceleration)
+        zAccelerationLbl.text = String(format: "z: %.2f", measurementPoint.zAcceleration)
         durationCurrentStateLbl.text = "Current State: \(measurementPoint.durationCurrentState)"
         durationPreviousStateLbl.text = "Previous State: \(measurementPoint.durationPreviousState)"
         rssiLbl.text = "RSSI: \(measurementPoint.rssi)"
