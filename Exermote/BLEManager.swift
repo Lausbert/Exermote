@@ -42,13 +42,14 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         if measurementPoint.companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
             
             if let index = measurementPoints.index(where: {$0.beaconIdentifier == measurementPoint.beaconIdentifier}) {
+                measurementPoint.wasUpdated(previousMeasurementPoint: measurementPoints[index])
                 measurementPoints[index] = measurementPoint
             } else {
                 measurementPoints.append(measurementPoint)
                 measurementPoints.sort(by: {$0.beaconIdentifier < $1.beaconIdentifier})
             }
             
-            measurementPoints = measurementPoints.filter{Date().timeIntervalSince($0.timeStamp) < MAXIMUM_TIME_SINCE_UPDATE}
+            measurementPoints = measurementPoints.filter{Date().timeIntervalSince($0.timeStamp) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newPeripherals"), object: nil)
         }

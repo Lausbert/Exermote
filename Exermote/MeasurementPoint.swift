@@ -21,6 +21,9 @@ class MeasurementPoint {
     private var _durationPreviousSate = 0
     private var _rssi = 0
     private var _timeStamp: Date!
+    private var _count = 0
+    private var _period = 0.0
+    private var _isSelected = false
     
     var companyIdentifier: String {
         if _companyIdentifier == nil {
@@ -67,7 +70,19 @@ class MeasurementPoint {
     var timeStamp: Date {
         return _timeStamp
     }
-
+    
+    var count: Int {
+        return _count
+    }
+    
+    var period: Double {
+        return _period
+    }
+    
+    var isSelected: Bool {
+        return _isSelected
+    }
+    
     init(peripheral: CBPeripheral, advertisementData: [String : Any], RSSI: NSNumber) {
         
         let data = advertisementData["kCBAdvDataManufacturerData"] as? Data
@@ -92,18 +107,37 @@ class MeasurementPoint {
             self._rssi = Int(RSSI)
             
             self._timeStamp = Date()
-            
-//            print("Company ID: \(self.companyIdentifier) Beacon ID: \(self.beaconIdentifier) x Acc: \(self.xAcceleration) y Acc: \(self.yAcceleration) z Accn: \(self.zAcceleration) Duration Cur State: \(self.durationCurrentState) Duration Prev State: \(self.durationPreviousState) Unknown Bytes: \(self.unknownBytes) RSSI: \(self.rssi)")
         }
     }
     
-    func hexToAcc(hexData: String) -> Double {
+    func wasUpdated(previousMeasurementPoint: MeasurementPoint) {
+        self._count = previousMeasurementPoint.count + 1
+        
+        let lastPeriod = self.timeStamp.timeIntervalSince(previousMeasurementPoint.timeStamp)
+        
+        if self._count < 10 {
+            self._period = ((Double(previousMeasurementPoint.count)*previousMeasurementPoint.period)+lastPeriod)/Double(self._count)
+        } else {
+            self._period = ((9.0*previousMeasurementPoint.period)+lastPeriod)/10.0
+        }
+        self._isSelected = previousMeasurementPoint.isSelected
+    }
+    
+    func wasSelected() {
+        if self._isSelected {
+            self._isSelected = false
+        } else {
+            self._isSelected = true
+        }
+    }
+    
+    private func hexToAcc(hexData: String) -> Double {
         var accDec = Double(Int8(bitPattern: UInt8(strtoul(hexData, nil, 16))))/Double(CALIBRATION_ACCELERATION)
         accDec = round(accDec*100)/100
         return Double(accDec)
     }
     
-    func hexToDur(hexData: String) -> Int {
+    private func hexToDur(hexData: String) -> Int {
         let durDec = Int(UInt8(hexData, radix: 16)!)
         return durDec
     }
