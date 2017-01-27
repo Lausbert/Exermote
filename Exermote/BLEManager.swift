@@ -19,7 +19,8 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     
     override init() {
         super.init()
-        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
+        let centralManagerQueue = DispatchQueue.global(qos: .background)
+        centralManager = CBCentralManager(delegate: self, queue: centralManagerQueue)
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager)
@@ -51,7 +52,9 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
             
             measurementPoints = measurementPoints.filter{Date().timeIntervalSince($0.timeStamp) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
             
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newPeripherals"), object: nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newPeripherals"), object: nil)
+            }
         }
     }
 
