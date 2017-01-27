@@ -22,6 +22,10 @@ class MeasurementVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         NotificationCenter.default.addObserver(self, selector: #selector(shouldReload), name: NSNotification.Name(rawValue: "newPeripherals"), object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return BLEManager.instance.measurementPoints.count
@@ -41,7 +45,7 @@ class MeasurementVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let measurementPoint = BLEManager.instance.measurementPoints[indexPath.row]
         measurementPoint.wasSelected()
-        tableView.cellForRow(at: indexPath)?.isSelected = measurementPoint.isSelected
+        tableView.cellForRow(at: indexPath)?.setSelected(measurementPoint.isSelected, animated: false)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

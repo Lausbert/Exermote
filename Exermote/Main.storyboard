@@ -31,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="241" y="211"/>
         </scene>
-        <!--Scanning-->
+        <!--Select Nearable(s)-->
         <scene sceneID="s8c-mq-07b">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jhz-2t-Rna" customClass="MeasurementVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,7 +43,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="160" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="70R-0Z-irr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="160" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="70R-0Z-irr">
                                 <rect key="frame" x="0.0" y="68" width="375" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -242,6 +242,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="ContainerView" destination="6o2-Je-Zv3" id="hpa-BQ-Kd0"/>
                                             <outlet property="beaconIdentifierLbl" destination="ADa-nT-VJ9" id="91Z-Hr-ZWa"/>
                                             <outlet property="periodLbl" destination="BCr-Mm-KaZ" id="CvM-Cg-iM0"/>
                                             <outlet property="rssiLbl" destination="Tz4-aH-GzN" id="ksl-2c-c67"/>
@@ -261,7 +262,7 @@
                             <constraint firstAttribute="trailing" secondItem="70R-0Z-irr" secondAttribute="trailing" id="fkD-Hc-Plv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Scanning" id="db6-MN-91G"/>
+                    <navigationItem key="navigationItem" title="Select Nearable(s)" id="db6-MN-91G"/>
                     <connections>
                         <outlet property="tableView" destination="70R-0Z-irr" id="kag-7d-zxc"/>
                         <segue destination="2Ns-5O-3OH" kind="show" id="bJe-uF-VBd"/>

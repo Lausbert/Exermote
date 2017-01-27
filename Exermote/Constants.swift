@@ -27,4 +27,7 @@ let COMPANY_IDENTIFIER_ESTIMOTE = "5d01"
 
 // MARK: Color Constants
 
-let SHADOW_COLOR: CGFloat = 157.0 / 255.0
+let SHADOW_COLOR: CGFloat = 157.0/255.0
+
+let MEASUREMENT_CELL_DESELECTED_COLOR = UIColor(colorLiteralRed: 178.0/255.0, green: 198.0/255.0, blue: 193.0/255.0, alpha: 1)
+let MEASUREMENT_CELL_SELECTED_COLOR = UIColor(colorLiteralRed: 175.0/255.0, green: 163.0/255.0, blue: 118.0/255.0, alpha: 1)

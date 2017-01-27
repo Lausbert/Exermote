@@ -17,6 +17,8 @@ class MeasurementCell: UITableViewCell {
     @IBOutlet weak var rssiLbl: UILabel!
     @IBOutlet weak var periodLbl: UILabel!
     
+    @IBOutlet weak var ContainerView: MaterialView!
+    
     func configureCell(measurementPoint: MeasurementPoint) {
         beaconIdentifierLbl.text = "\(measurementPoint.beaconIdentifier)"
         xAccelerationLbl.text = String(format: "%.2f", measurementPoint.xAcceleration)
@@ -26,4 +28,15 @@ class MeasurementCell: UITableViewCell {
         periodLbl.text = String(format: "%.2f", measurementPoint.period)
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        if selected {
+            ContainerView.backgroundColor = MEASUREMENT_CELL_SELECTED_COLOR
+        } else {
+            ContainerView.backgroundColor = MEASUREMENT_CELL_DESELECTED_COLOR
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        self.backgroundColor = UIColor.clear
+    }
 }
