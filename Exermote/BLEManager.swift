@@ -19,7 +19,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     
     override init() {
         super.init()
-        let centralManagerQueue = DispatchQueue.global(qos: .background)
+        let centralManagerQueue = DispatchQueue.global(qos: .userInteractive)
         centralManager = CBCentralManager(delegate: self, queue: centralManagerQueue)
     }
     
