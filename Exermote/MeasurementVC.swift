@@ -41,6 +41,7 @@ class MeasurementVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let measurementPoint = BLEManager.instance.measurementPoints[indexPath.row]
         measurementPoint.wasSelected()
+        tableView.cellForRow(at: indexPath)?.isSelected = measurementPoint.isSelected
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
