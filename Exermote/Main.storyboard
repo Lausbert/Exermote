@@ -262,7 +262,9 @@
                             <constraint firstAttribute="trailing" secondItem="70R-0Z-irr" secondAttribute="trailing" id="fkD-Hc-Plv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Nearable(s)" id="db6-MN-91G"/>
+                    <navigationItem key="navigationItem" title="Select Nearable(s)" id="db6-MN-91G">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="h5p-c7-Oiz"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="70R-0Z-irr" id="kag-7d-zxc"/>
                         <segue destination="2Ns-5O-3OH" kind="show" id="bJe-uF-VBd"/>
@@ -272,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="1036" y="210.94452773613196"/>
         </scene>
-        <!--Selecting-->
+        <!--Set Settings-->
         <scene sceneID="mqi-7l-KBk">
             <objects>
                 <viewController id="2Ns-5O-3OH" sceneMemberID="viewController">
@@ -285,7 +287,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Selecting" id="pN5-eG-iAS"/>
+                    <navigationItem key="navigationItem" title="Set Settings" id="pN5-eG-iAS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krV-UO-Zdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

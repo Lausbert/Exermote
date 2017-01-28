@@ -15,11 +15,12 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     var centralManager : CBCentralManager!
     
     var measurementPoints: [MeasurementPoint] = []
+    var uiUpdateNeeded = true
     
+    let centralManagerQueue = DispatchQueue(label: "com.exermote.centralManagerQueue", qos: .userInteractive, attributes: .concurrent)
     
     override init() {
         super.init()
-        let centralManagerQueue = DispatchQueue.global(qos: .userInteractive)
         centralManager = CBCentralManager(delegate: self, queue: centralManagerQueue)
     }
     
@@ -50,10 +51,23 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
                 measurementPoints.sort(by: {$0.beaconIdentifier < $1.beaconIdentifier})
             }
             
-            measurementPoints = measurementPoints.filter{Date().timeIntervalSince($0.timeStamp) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
+            let measurementPointsUpdated = measurementPoints.filter{Date().timeIntervalSince($0.timeStamp) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
             
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newPeripherals"), object: nil)
+            uiUpdateNeeded = measurementPointsUpdated.count != measurementPoints.count ? true : uiUpdateNeeded
+            
+            measurementPoints = measurementPointsUpdated
+            
+            if uiUpdateNeeded {
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newPeripherals"), object: nil)
+                }
+                
+                uiUpdateNeeded = false
+                
+                let delay = DispatchTime.now() + 1/MAXIMUM_UI_UPDATE_FREQUENCY
+                DispatchQueue.main.asyncAfter(deadline: delay) {
+                    self.uiUpdateNeeded = true
+                }
             }
         }
     }

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D3852CD1E3CCF8C003B2738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */; };
 		8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */; };
-		8DCF1E591E2A48C600AEAAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E581E2A48C600AEAAE7 /* Assets.xcassets */; };
 		8DCF1E5C1E2A48C600AEAAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E5A1E2A48C600AEAAE7 /* LaunchScreen.storyboard */; };
 		8DCF1E671E2A48C600AEAAE7 /* ExermoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E661E2A48C600AEAAE7 /* ExermoteTests.swift */; };
 		8DCF1E721E2A48C600AEAAE7 /* ExermoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E711E2A48C600AEAAE7 /* ExermoteUITests.swift */; };
@@ -44,9 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DCF1E4E1E2A48C600AEAAE7 /* Exermote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exermote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8DCF1E581E2A48C600AEAAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DCF1E5B1E2A48C600AEAAE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DCF1E5D1E2A48C600AEAAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DCF1E621E2A48C600AEAAE7 /* ExermoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExermoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,9 +124,9 @@
 				8DCF1E821E2A492D00AEAAE7 /* View */,
 				8DCF1E831E2A493200AEAAE7 /* Controller */,
 				8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */,
-				8DCF1E581E2A48C600AEAAE7 /* Assets.xcassets */,
 				8DCF1E8E1E2A499000AEAAE7 /* Main.storyboard */,
 				8DCF1E5A1E2A48C600AEAAE7 /* LaunchScreen.storyboard */,
+				8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */,
 				8DCF1E5D1E2A48C600AEAAE7 /* Info.plist */,
 			);
 			path = Exermote;
@@ -317,8 +317,8 @@
 				8DCF1E8F1E2A499000AEAAE7 /* Main.storyboard in Resources */,
 				8DCF1E981E2A529500AEAAE7 /* NotoSans-BoldItalic.ttf in Resources */,
 				8DCF1E991E2A529500AEAAE7 /* NotoSans-Italic.ttf in Resources */,
+				8D3852CD1E3CCF8C003B2738 /* Assets.xcassets in Resources */,
 				8DCF1E5C1E2A48C600AEAAE7 /* LaunchScreen.storyboard in Resources */,
-				8DCF1E591E2A48C600AEAAE7 /* Assets.xcassets in Resources */,
 				8DCF1E9A1E2A529500AEAAE7 /* NotoSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
