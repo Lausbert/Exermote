@@ -16,6 +16,9 @@ class MeasurementVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "forward"), target: self, action: #selector(rightBarButtonItemPressed))
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -55,5 +58,9 @@ class MeasurementVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func shouldReload() {
         self.tableView.reloadData()
+    }
+    
+    func rightBarButtonItemPressed() {
+        print("rightBarButtonItemPressed")
     }
 }
