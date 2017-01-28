@@ -87,7 +87,7 @@ class MeasurementPoint {
         
         let data = advertisementData["kCBAdvDataManufacturerData"] as? Data
         
-        self._companyIdentifier = data?.subdata(in: COMPANY_IDENTIFIER_ESTIMOTE_RANGE).hexEncodedString()
+        self._companyIdentifier = data?.subdata(in: COMPANY_IDENTIFIER_RANGE).hexEncodedString()
         
         if self._companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
         
@@ -115,10 +115,10 @@ class MeasurementPoint {
         
         let lastPeriod = self.timeStamp.timeIntervalSince(previousMeasurementPoint.timeStamp)
         
-        if self._count < 10 {
+        if self._count < MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_PERIOD {
             self._period = ((Double(previousMeasurementPoint.count)*previousMeasurementPoint.period)+lastPeriod)/Double(self._count)
         } else {
-            self._period = ((9.0*previousMeasurementPoint.period)+lastPeriod)/10.0
+            self._period = (((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_PERIOD)-1)*previousMeasurementPoint.period)+lastPeriod)/Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_PERIOD)
         }
         self._isSelected = previousMeasurementPoint.isSelected
     }

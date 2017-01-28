@@ -16,7 +16,7 @@
 		8DCF1E871E2A495E00AEAAE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E861E2A495E00AEAAE7 /* Constants.swift */; };
 		8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E881E2A496400AEAAE7 /* BLEManager.swift */; };
 		8DCF1E8B1E2A496900AEAAE7 /* MeasurementPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E8A1E2A496900AEAAE7 /* MeasurementPoint.swift */; };
-		8DCF1E8D1E2A497100AEAAE7 /* MeasurementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E8C1E2A497100AEAAE7 /* MeasurementVC.swift */; };
+		8DCF1E8D1E2A497100AEAAE7 /* SelectNearablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E8C1E2A497100AEAAE7 /* SelectNearablesVC.swift */; };
 		8DCF1E8F1E2A499000AEAAE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E8E1E2A499000AEAAE7 /* Main.storyboard */; };
 		8DCF1E911E2A511800AEAAE7 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E901E2A511800AEAAE7 /* MaterialView.swift */; };
 		8DCF1E971E2A529500AEAAE7 /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E931E2A529500AEAAE7 /* NotoSans-Bold.ttf */; };
@@ -24,6 +24,7 @@
 		8DCF1E991E2A529500AEAAE7 /* NotoSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E951E2A529500AEAAE7 /* NotoSans-Italic.ttf */; };
 		8DCF1E9A1E2A529500AEAAE7 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E961E2A529500AEAAE7 /* NotoSans-Regular.ttf */; };
 		8DCF1E9C1E2A59DE00AEAAE7 /* MeasurementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */; };
+		8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +60,7 @@
 		8DCF1E861E2A495E00AEAAE7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8DCF1E881E2A496400AEAAE7 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		8DCF1E8A1E2A496900AEAAE7 /* MeasurementPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementPoint.swift; sourceTree = "<group>"; };
-		8DCF1E8C1E2A497100AEAAE7 /* MeasurementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementVC.swift; sourceTree = "<group>"; };
+		8DCF1E8C1E2A497100AEAAE7 /* SelectNearablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectNearablesVC.swift; sourceTree = "<group>"; };
 		8DCF1E8E1E2A499000AEAAE7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8DCF1E901E2A511800AEAAE7 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		8DCF1E931E2A529500AEAAE7 /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		8DCF1E951E2A529500AEAAE7 /* NotoSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Italic.ttf"; sourceTree = "<group>"; };
 		8DCF1E961E2A529500AEAAE7 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
 		8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementCell.swift; sourceTree = "<group>"; };
+		8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +189,8 @@
 		8DCF1E831E2A493200AEAAE7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8DCF1E8C1E2A497100AEAAE7 /* MeasurementVC.swift */,
+				8DCF1E8C1E2A497100AEAAE7 /* SelectNearablesVC.swift */,
+				8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -346,11 +349,12 @@
 			files = (
 				8DCF1E8B1E2A496900AEAAE7 /* MeasurementPoint.swift in Sources */,
 				8DCF1E851E2A495800AEAAE7 /* Extensions.swift in Sources */,
-				8DCF1E8D1E2A497100AEAAE7 /* MeasurementVC.swift in Sources */,
+				8DCF1E8D1E2A497100AEAAE7 /* SelectNearablesVC.swift in Sources */,
 				8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */,
 				8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */,
 				8DCF1E911E2A511800AEAAE7 /* MaterialView.swift in Sources */,
 				8DCF1E9C1E2A59DE00AEAAE7 /* MeasurementCell.swift in Sources */,
+				8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */,
 				8DCF1E871E2A495E00AEAAE7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

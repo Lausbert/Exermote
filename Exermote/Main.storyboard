@@ -24,7 +24,7 @@
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Jhz-2t-Rna" kind="relationship" relationship="rootViewController" id="Nhr-kL-idM"/>
+                        <segue destination="Jhz-2t-Rna" kind="relationship" relationship="rootViewController" id="Jpv-Du-k0Y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8oe-QH-LHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -34,7 +34,7 @@
         <!--Select Nearable(s)-->
         <scene sceneID="s8c-mq-07b">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jhz-2t-Rna" customClass="MeasurementVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jhz-2t-Rna" customClass="SelectNearablesVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MW5-XV-Pf0"/>
                         <viewControllerLayoutGuide type="bottom" id="9ib-I2-yV2"/>
@@ -73,7 +73,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-nT-VJ9">
-                                                                                    <rect key="frame" x="8" y="34.5" width="103.5" height="8.5"/>
+                                                                                    <rect key="frame" x="8" y="34" width="103.5" height="8.5"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="xxxxxxxxxxxxxxxx">
                                                                                             <attributes>
@@ -263,11 +263,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Nearable(s)" id="db6-MN-91G">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="h5p-c7-Oiz"/>
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Mxb-Dd-foE"/>
+                        <barButtonItem key="rightBarButtonItem" title="&gt;" id="w1M-Wi-kBH"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="70R-0Z-irr" id="kag-7d-zxc"/>
-                        <segue destination="2Ns-5O-3OH" kind="show" id="bJe-uF-VBd"/>
+                        <segue destination="2Ns-5O-3OH" kind="show" identifier="SetSettings" id="DhZ-hb-An0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6io-FN-V6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -277,7 +278,7 @@
         <!--Set Settings-->
         <scene sceneID="mqi-7l-KBk">
             <objects>
-                <viewController id="2Ns-5O-3OH" sceneMemberID="viewController">
+                <viewController id="2Ns-5O-3OH" customClass="SetSettingsVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XKN-VY-eXL"/>
                         <viewControllerLayoutGuide type="bottom" id="xxa-Wk-QtF"/>
@@ -287,7 +288,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Set Settings" id="pN5-eG-iAS"/>
+                    <navigationItem key="navigationItem" title="Set Settings" id="pN5-eG-iAS">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="TEs-3N-668"/>
+                        <barButtonItem key="rightBarButtonItem" title="&gt;" id="8eF-B5-QTC"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krV-UO-Zdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

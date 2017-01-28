@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MeasurementVC: UIViewController, UITableViewDelegate, UITableViewDataSource
+class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +17,7 @@ class MeasurementVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     {
         super.viewDidLoad()
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "backward"), target: self, action: #selector(leftBarButtonItemPressed))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "forward"), target: self, action: #selector(rightBarButtonItemPressed))
         
         tableView.delegate = self
@@ -60,7 +61,11 @@ class MeasurementVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.tableView.reloadData()
     }
     
+    func leftBarButtonItemPressed() {
+        print("leftBarButtonItemPressed")
+    }
+    
     func rightBarButtonItemPressed() {
-        print("rightBarButtonItemPressed")
+        performSegue(withIdentifier: SET_SETTINGS_SEGUE_IDENTIFIER, sender: nil)
     }
 }
