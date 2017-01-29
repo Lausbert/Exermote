@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Eureka.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Exermote.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ExermoteTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ExermoteUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>276608A027DEBFD7520F15EC2A06AC58</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3314015141F59E7E4BE9D4C9FE6F2040</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5D53684BDC5246AEC3195EE2A02008A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE774F234E810C0DD8263855D7A1A166</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
