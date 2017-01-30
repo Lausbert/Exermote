@@ -10,6 +10,7 @@
 		53B970FD509D377F359F3770 /* Pods_ExermoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75513CC36D974CC7A85B794A /* Pods_ExermoteTests.framework */; };
 		602302F98BA46D6F97EDFEDD /* Pods_ExermoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA7585951A667D34D6598F2 /* Pods_ExermoteUITests.framework */; };
 		8D3852CD1E3CCF8C003B2738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */; };
+		8DB8F9071E3FC00D004720C9 /* CustomSliderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */; };
 		8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */; };
 		8DCF1E5C1E2A48C600AEAAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E5A1E2A48C600AEAAE7 /* LaunchScreen.storyboard */; };
 		8DCF1E671E2A48C600AEAAE7 /* ExermoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E661E2A48C600AEAAE7 /* ExermoteTests.swift */; };
@@ -52,6 +53,7 @@
 		3B08DF01FA28C168D23CA723 /* Pods_Exermote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exermote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75513CC36D974CC7A85B794A /* Pods_ExermoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderRow.swift; sourceTree = "<group>"; };
 		8DCF1E4E1E2A48C600AEAAE7 /* Exermote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exermote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DCF1E5B1E2A48C600AEAAE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				8DCF1E901E2A511800AEAAE7 /* MaterialView.swift */,
 				8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */,
+				8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */,
 				8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */,
 				8DCF1E911E2A511800AEAAE7 /* MaterialView.swift in Sources */,
+				8DB8F9071E3FC00D004720C9 /* CustomSliderRow.swift in Sources */,
 				8DCF1E9C1E2A59DE00AEAAE7 /* MeasurementCell.swift in Sources */,
 				8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */,
 				8DCF1E871E2A495E00AEAAE7 /* Constants.swift in Sources */,

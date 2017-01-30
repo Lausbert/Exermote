@@ -34,8 +34,8 @@ let TIME_OF_SCANNING_PAUSE_FOR_BLE_MANAGER = 0.1
 
 let SHADOW_COLOR: CGFloat = 157.0/255.0
 
-let MEASUREMENT_CELL_DESELECTED_COLOR = UIColor(colorLiteralRed: 178.0/255.0, green: 198.0/255.0, blue: 193.0/255.0, alpha: 1)
-let MEASUREMENT_CELL_SELECTED_COLOR = UIColor(colorLiteralRed: 175.0/255.0, green: 163.0/255.0, blue: 118.0/255.0, alpha: 1)
+let COLOR_NOT_HIGHLIGHTED = UIColor(colorLiteralRed: 178.0/255.0, green: 198.0/255.0, blue: 193.0/255.0, alpha: 1)
+let COLOR_HIGHLIGHTED = UIColor(colorLiteralRed: 175.0/255.0, green: 163.0/255.0, blue: 118.0/255.0, alpha: 1)
 
 // MARK: UI Constants
 

@@ -17,19 +17,21 @@ class SetSettingsVC: FormViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "backward"), target: self, action: #selector(leftBarButtonItemPressed))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "forward"), target: self, action: #selector(rightBarButtonItemPressed))
         
-        form = Section("Section1")
-            <<< TextRow(){ row in
-                row.title = "Text Row"
-                row.placeholder = "Enter text here"
+        form = Section("Recording Duration and Frequency")
+            <<< CustomSliderRow(){
+                $0.title = "Frequency [Hz]"
+                $0.minimumValue = 0.2
+                $0.maximumValue = 10.0
+                $0.steps = 98
+                $0.minimumTrackTintColor = COLOR_HIGHLIGHTED
+                
             }
-            <<< PhoneRow(){
-                $0.title = "Phone Row"
-                $0.placeholder = "And numbers here"
+            <<< StepperRow(){
+                $0.title = "Duration [min]"
             }
-            +++ Section("Section2")
-            <<< DateRow(){
-                $0.title = "Date Row"
-                $0.value = Date(timeIntervalSinceReferenceDate: 0)
+            +++ Section("Recorded Data")
+            <<< TextRow(){
+                $0.title = "bla"
         }
     }
     

@@ -30,9 +30,9 @@ class MeasurementCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
-            ContainerView.backgroundColor = MEASUREMENT_CELL_SELECTED_COLOR
+            ContainerView.backgroundColor = COLOR_HIGHLIGHTED
         } else {
-            ContainerView.backgroundColor = MEASUREMENT_CELL_DESELECTED_COLOR
+            ContainerView.backgroundColor = COLOR_NOT_HIGHLIGHTED
         }
     }
     
