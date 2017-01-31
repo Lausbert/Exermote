@@ -73,7 +73,7 @@ open class CustomSliderCell: Cell<Float>, CellType {
         selectionStyle = .none
         slider.minimumValue = sliderRow.minimumValue
         slider.maximumValue = sliderRow.maximumValue
-        slider.minimumTrackTintColor = sliderRow.minimumTrackTintColor
+        slider.minimumTrackTintColor = COLOR_HIGHLIGHTED
         slider.addTarget(self, action: #selector(CustomSliderCell.valueChanged), for: .valueChanged)
         
         if shouldShowTitle() {
@@ -136,7 +136,6 @@ open class CustomSliderCell: Cell<Float>, CellType {
 /// A row that displays a UISlider. If there is a title set then the title and value will appear above the UISlider.
 public final class CustomSliderRow: Row<CustomSliderCell>, RowType {
     
-    public var minimumTrackTintColor: UIColor?
     public var minimumValue: Float = 0.0
     public var maximumValue: Float = 10.0
     public var steps: UInt = 20

@@ -12,7 +12,7 @@ import CoreBluetooth
 class MeasurementPoint {
     
     private var _companyIdentifier: String?
-    private var _beaconIdentifier: String?
+    private var _nearableIdentifier: String?
     private var _unknownBytes = [String]()
     private var _xAcceleration = 0.0
     private var _yAcceleration = 0.0
@@ -32,11 +32,11 @@ class MeasurementPoint {
         return _companyIdentifier!
     }
     
-    var beaconIdentifier: String {
-        if _beaconIdentifier == nil {
-            _beaconIdentifier = "NA"
+    var nearableIdentifier: String {
+        if _nearableIdentifier == nil {
+            _nearableIdentifier = "NA"
         }
-        return _beaconIdentifier!
+        return _nearableIdentifier!
     }
     
     var unknownBytes: [String] {
@@ -91,7 +91,7 @@ class MeasurementPoint {
         
         if self._companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
         
-            self._beaconIdentifier = data?.subdata(in: BEACON_IDENTIFIER_RANGE).hexEncodedString()
+            self._nearableIdentifier = data?.subdata(in: BEACON_IDENTIFIER_RANGE).hexEncodedString()
             
             self._xAcceleration = hexToAcc(hexData: (data?.subdata(in: X_ACCELERATION_RANGE).hexEncodedString())!)
             self._yAcceleration = hexToAcc(hexData: (data?.subdata(in: Y_ACCELERATION_RANGE).hexEncodedString())!)

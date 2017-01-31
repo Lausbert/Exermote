@@ -19,20 +19,47 @@ class SetSettingsVC: FormViewController {
         
         form = Section("Recording Duration and Frequency")
             <<< CustomSliderRow(){
+                $0.title = "Duration [min]"
+                $0.minimumValue = 1.0
+                $0.maximumValue = 5.0
+                $0.steps = 4
+                $0.value = 4.0
+            }
+            <<< CustomSliderRow(){
                 $0.title = "Frequency [Hz]"
                 $0.minimumValue = 0.2
                 $0.maximumValue = 10.0
                 $0.steps = 98
-                $0.minimumTrackTintColor = COLOR_HIGHLIGHTED
-                
-            }
-            <<< StepperRow(){
-                $0.title = "Duration [min]"
             }
             +++ Section("Recorded Data")
-            <<< TextRow(){
-                $0.title = "bla"
-        }
+            <<< CustomCheckRow(){
+                $0.title = "Nearable ID"
+                $0.value = true
+            }
+            <<< CustomCheckRow(){
+                $0.title = "Frequency"
+            }
+            <<< CustomCheckRow(){
+                $0.title = "RSSI"
+            }
+            <<< CustomCheckRow(){
+                $0.title = "X Acceleration"
+            }
+            <<< CustomCheckRow(){
+                $0.title = "Y Acceleration"
+            }
+            <<< CustomCheckRow(){
+                $0.title = "Z Acceleration"
+            }
+            <<< CustomCheckRow(){
+                $0.title = "Current State Duration"
+            }
+            <<< CustomCheckRow(){
+                $0.title = "Previous State Duration"
+            }
+            <<< CustomCheckRow(){
+                $0.title = "Time"
+            }
     }
     
     func leftBarButtonItemPressed() {

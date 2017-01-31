@@ -73,7 +73,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-nT-VJ9">
-                                                                                    <rect key="frame" x="8" y="34" width="103.5" height="8.5"/>
+                                                                                    <rect key="frame" x="8" y="34.5" width="103.5" height="8.5"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="xxxxxxxxxxxxxxxx">
                                                                                             <attributes>
@@ -122,8 +122,8 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yv0-VI-IuU">
                                                                             <rect key="frame" x="239.5" y="0.0" width="119.5" height="76"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zud-6z-WdE">
-                                                                                    <rect key="frame" x="48" y="4" width="23" height="18"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSSI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zud-6z-WdE">
+                                                                                    <rect key="frame" x="43.5" y="4" width="32" height="18"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <nil key="highlightedColor"/>
@@ -243,8 +243,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="ContainerView" destination="6o2-Je-Zv3" id="hpa-BQ-Kd0"/>
-                                            <outlet property="beaconIdentifierLbl" destination="ADa-nT-VJ9" id="91Z-Hr-ZWa"/>
                                             <outlet property="frequencyLbl" destination="BCr-Mm-KaZ" id="XBf-wF-2lx"/>
+                                            <outlet property="nearableIdentifierLbl" destination="ADa-nT-VJ9" id="w4x-88-5Xd"/>
                                             <outlet property="rssiLbl" destination="Tz4-aH-GzN" id="ksl-2c-c67"/>
                                             <outlet property="xAccelerationLbl" destination="rrF-07-Edw" id="28P-uZ-XWr"/>
                                             <outlet property="yAccelerationLbl" destination="AfH-Nn-R22" id="Fpd-fr-djZ"/>

@@ -51,12 +51,12 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         
         if measurementPoint.companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
             
-            if let index = measurementPoints.index(where: {$0.beaconIdentifier == measurementPoint.beaconIdentifier}) {
+            if let index = measurementPoints.index(where: {$0.nearableIdentifier == measurementPoint.nearableIdentifier}) {
                 measurementPoint.wasUpdated(previousMeasurementPoint: measurementPoints[index])
                 measurementPoints[index] = measurementPoint
             } else {
                 measurementPoints.append(measurementPoint)
-                measurementPoints.sort(by: {$0.beaconIdentifier < $1.beaconIdentifier})
+                measurementPoints.sort(by: {$0.nearableIdentifier < $1.nearableIdentifier})
             }
             
             let measurementPointsUpdated = measurementPoints.filter{Date().timeIntervalSince($0.timeStamp) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}

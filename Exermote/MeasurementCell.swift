@@ -10,7 +10,7 @@ import UIKit
 
 class MeasurementCell: UITableViewCell {
 
-    @IBOutlet weak var beaconIdentifierLbl: UILabel!
+    @IBOutlet weak var nearableIdentifierLbl: UILabel!
     @IBOutlet weak var xAccelerationLbl: UILabel!
     @IBOutlet weak var yAccelerationLbl: UILabel!
     @IBOutlet weak var zAccelerationLbl: UILabel!
@@ -20,7 +20,7 @@ class MeasurementCell: UITableViewCell {
     @IBOutlet weak var ContainerView: MaterialView!
     
     func configureCell(measurementPoint: MeasurementPoint) {
-        beaconIdentifierLbl.text = "\(measurementPoint.beaconIdentifier)"
+        nearableIdentifierLbl.text = "\(measurementPoint.nearableIdentifier)"
         xAccelerationLbl.text = String(format: "%.2f", measurementPoint.xAcceleration)
         yAccelerationLbl.text = String(format: "%.2f", measurementPoint.yAcceleration)
         zAccelerationLbl.text = String(format: "%.2f", measurementPoint.zAcceleration)
