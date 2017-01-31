@@ -1,12 +1,15 @@
 PODS:
   - Eureka (2.0.0-beta.1)
+  - SwiftSpinner (1.1.0)
 
 DEPENDENCIES:
   - Eureka (~> 2.0.0-beta.1)
+  - SwiftSpinner
 
 SPEC CHECKSUMS:
   Eureka: d014adf16406745e1a78d5790ea37ed130a0a8e5
+  SwiftSpinner: c03815614599b91eea46594bd52ba742849d0414
 
-PODFILE CHECKSUM: 1bcc1b87200dbdd3814a56a555cc011e7c5340e6
+PODFILE CHECKSUM: ca9a4fc56040564ef71682e35cd2ce8ae2a851b7
 
 COCOAPODS: 1.1.1
