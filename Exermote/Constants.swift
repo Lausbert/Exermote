@@ -44,6 +44,7 @@ let MAXIMUM_UI_UPDATE_FREQUENCY = 5.0
 // MARK: Segue Identifier Constants
 
 let SEGUE_SET_SETTINGS = "SetSettings"
+let SEGUE_RECORD_DATA = "RecordData"
 
 // MARK: User Defaults
 

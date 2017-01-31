@@ -14,8 +14,8 @@ class SetSettingsVC: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "backward"), target: self, action: #selector(leftBarButtonItemPressed))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "forward"), target: self, action: #selector(rightBarButtonItemPressed))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "back"), target: self, action: #selector(leftBarButtonItemPressed))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "record"), target: self, action: #selector(rightBarButtonItemPressed), tintColor: UIColor.red.withAlphaComponent(0.5))
         
         form = Section("Recording Duration and Frequency")
             <<< CustomSliderRow(){
@@ -135,9 +135,6 @@ class SetSettingsVC: FormViewController {
                 }.onChange {
                     UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_TIME)
             }
-        
-        let valuesDictionary = form.values()
-        print(valuesDictionary)
     }
     
     func leftBarButtonItemPressed() {
@@ -145,7 +142,7 @@ class SetSettingsVC: FormViewController {
     }
     
     func rightBarButtonItemPressed() {
-        print("rightBarButtonItemPressed")
+        performSegue(withIdentifier: SEGUE_RECORD_DATA, sender: nil)
     }
     
     func frequencyAlert() {
