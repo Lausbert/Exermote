@@ -66,6 +66,6 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func rightBarButtonItemPressed() {
-        performSegue(withIdentifier: SET_SETTINGS_SEGUE_IDENTIFIER, sender: nil)
+        performSegue(withIdentifier: SEGUE_SET_SETTINGS, sender: nil)
     }
 }
