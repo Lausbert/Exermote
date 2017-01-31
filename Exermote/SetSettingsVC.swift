@@ -37,6 +37,10 @@ class SetSettingsVC: FormViewController {
                     $0.value = value
                 }
                 }.onChange {
+                    let showFrequecnyAlert = UserDefaults.standard.value(forKey: USER_DEFAULTS_SHOW_FREQUENCY_ALERT) as? Bool ?? true
+                    if showFrequecnyAlert {
+                      self.frequencyAlert()
+                    }
                     UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
                 $0.steps = 98
             }
@@ -142,5 +146,13 @@ class SetSettingsVC: FormViewController {
     
     func rightBarButtonItemPressed() {
         print("rightBarButtonItemPressed")
+    }
+    
+    func frequencyAlert() {
+        let alert = UIAlertController(title: "Notification", message: "Please be aware, that the mentioned recording frequency is not necessarily equal to sending frequeny of the nearables. The latter could be changed in the official ESTIMOTE Application.", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
+            UserDefaults.standard.set(false, forKey: USER_DEFAULTS_SHOW_FREQUENCY_ALERT)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
