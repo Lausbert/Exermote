@@ -98,8 +98,8 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAK-mz-CPZ">
                                                                             <rect key="frame" x="119.5" y="0.0" width="120" height="76"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0R-HP-EBt">
-                                                                                    <rect key="frame" x="55.5" y="4" width="9.5" height="18"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="f" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0R-HP-EBt">
+                                                                                    <rect key="frame" x="57.5" y="4" width="5.5" height="18"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <nil key="highlightedColor"/>
@@ -244,7 +244,7 @@
                                         <connections>
                                             <outlet property="ContainerView" destination="6o2-Je-Zv3" id="hpa-BQ-Kd0"/>
                                             <outlet property="beaconIdentifierLbl" destination="ADa-nT-VJ9" id="91Z-Hr-ZWa"/>
-                                            <outlet property="periodLbl" destination="BCr-Mm-KaZ" id="CvM-Cg-iM0"/>
+                                            <outlet property="frequencyLbl" destination="BCr-Mm-KaZ" id="XBf-wF-2lx"/>
                                             <outlet property="rssiLbl" destination="Tz4-aH-GzN" id="ksl-2c-c67"/>
                                             <outlet property="xAccelerationLbl" destination="rrF-07-Edw" id="28P-uZ-XWr"/>
                                             <outlet property="yAccelerationLbl" destination="AfH-Nn-R22" id="Fpd-fr-djZ"/>

@@ -22,7 +22,7 @@ class MeasurementPoint {
     private var _rssi = 0
     private var _timeStamp: Date!
     private var _count = 0
-    private var _period = 0.0
+    private var _frequency = 0.0
     private var _isSelected = false
     
     var companyIdentifier: String {
@@ -75,8 +75,8 @@ class MeasurementPoint {
         return _count
     }
     
-    var period: Double {
-        return _period
+    var frequency: Double {
+        return _frequency
     }
     
     var isSelected: Bool {
@@ -113,12 +113,12 @@ class MeasurementPoint {
     func wasUpdated(previousMeasurementPoint: MeasurementPoint) {
         self._count = previousMeasurementPoint.count + 1
         
-        let lastPeriod = self.timeStamp.timeIntervalSince(previousMeasurementPoint.timeStamp)
+        let lastfrequency = 1/self.timeStamp.timeIntervalSince(previousMeasurementPoint.timeStamp)
         
-        if self._count < MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_PERIOD {
-            self._period = ((Double(previousMeasurementPoint.count)*previousMeasurementPoint.period)+lastPeriod)/Double(self._count)
+        if self._count < MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY {
+            self._frequency = ((Double(previousMeasurementPoint.count)*previousMeasurementPoint.frequency)+lastfrequency)/Double(self._count)
         } else {
-            self._period = (((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_PERIOD)-1)*previousMeasurementPoint.period)+lastPeriod)/Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_PERIOD)
+            self._frequency = (((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)-1)*previousMeasurementPoint.frequency)+lastfrequency)/Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)
         }
         self._isSelected = previousMeasurementPoint.isSelected
     }

@@ -15,7 +15,7 @@ class MeasurementCell: UITableViewCell {
     @IBOutlet weak var yAccelerationLbl: UILabel!
     @IBOutlet weak var zAccelerationLbl: UILabel!
     @IBOutlet weak var rssiLbl: UILabel!
-    @IBOutlet weak var periodLbl: UILabel!
+    @IBOutlet weak var frequencyLbl: UILabel!
     
     @IBOutlet weak var ContainerView: MaterialView!
     
@@ -25,7 +25,7 @@ class MeasurementCell: UITableViewCell {
         yAccelerationLbl.text = String(format: "%.2f", measurementPoint.yAcceleration)
         zAccelerationLbl.text = String(format: "%.2f", measurementPoint.zAcceleration)
         rssiLbl.text = "\(measurementPoint.rssi)"
-        periodLbl.text = String(format: "%.2f", measurementPoint.period)
+        frequencyLbl.text = String(format: "%.2f", measurementPoint.frequency)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
