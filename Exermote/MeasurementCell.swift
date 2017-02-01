@@ -21,11 +21,11 @@ class MeasurementCell: UITableViewCell {
     
     func configureCell(measurementPoint: MeasurementPoint) {
         nearableIdentifierLbl.text = "\(measurementPoint.nearableIdentifier)"
-        xAccelerationLbl.text = String(format: "%.2f", measurementPoint.xAcceleration)
-        yAccelerationLbl.text = String(format: "%.2f", measurementPoint.yAcceleration)
-        zAccelerationLbl.text = String(format: "%.2f", measurementPoint.zAcceleration)
+        xAccelerationLbl.text = String(format: "%.2f", measurementPoint.xAcceleration!)
+        yAccelerationLbl.text = String(format: "%.2f", measurementPoint.yAcceleration!)
+        zAccelerationLbl.text = String(format: "%.2f", measurementPoint.zAcceleration!)
         rssiLbl.text = "\(measurementPoint.rssi)"
-        frequencyLbl.text = String(format: "%.2f", measurementPoint.frequency)
+        frequencyLbl.text = String(format: "%.2f", measurementPoint.frequency!)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

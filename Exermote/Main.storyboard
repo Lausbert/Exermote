@@ -29,7 +29,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8oe-QH-LHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="241" y="211"/>
+            <point key="canvasLocation" x="1545" y="269"/>
         </scene>
         <!--Select Nearable(s)-->
         <scene sceneID="s8c-mq-07b">
@@ -262,10 +262,7 @@
                             <constraint firstAttribute="trailing" secondItem="70R-0Z-irr" secondAttribute="trailing" id="fkD-Hc-Plv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Nearable(s)" id="db6-MN-91G">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="Mxb-Dd-foE"/>
-                        <barButtonItem key="rightBarButtonItem" title="&gt;" id="w1M-Wi-kBH"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Select Nearable(s)" id="db6-MN-91G"/>
                     <connections>
                         <outlet property="tableView" destination="70R-0Z-irr" id="kag-7d-zxc"/>
                         <segue destination="2Ns-5O-3OH" kind="show" identifier="SetSettings" id="DhZ-hb-An0"/>
@@ -273,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6io-FN-V6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="210.94452773613196"/>
+            <point key="canvasLocation" x="2316" y="269"/>
         </scene>
         <!--Set Settings-->
         <scene sceneID="mqi-7l-KBk">
@@ -288,35 +285,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Set Settings" id="pN5-eG-iAS">
-                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="TEs-3N-668"/>
-                        <barButtonItem key="rightBarButtonItem" title="&gt;" id="8eF-B5-QTC"/>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="zGL-kG-nO4" kind="show" identifier="RecordData" id="c6g-G0-Ndn"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Set Settings" id="pN5-eG-iAS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krV-UO-Zdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824.8" y="210.94452773613196"/>
-        </scene>
-        <!--Recording DataVC-->
-        <scene sceneID="weF-Ic-qwx">
-            <objects>
-                <viewController id="zGL-kG-nO4" customClass="RecordingDataVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VhD-Xk-SSH"/>
-                        <viewControllerLayoutGuide type="bottom" id="z8z-Tu-CIg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="thN-2V-67K">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S78-Xf-DSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2609" y="211"/>
+            <point key="canvasLocation" x="2316" y="-474"/>
         </scene>
     </scenes>
 </document>

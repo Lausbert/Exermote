@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -17,8 +18,8 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "back"), target: self, action: #selector(leftBarButtonItemPressed))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "forward"), target: self, action: #selector(rightBarButtonItemPressed))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "record"), target: self, action: #selector(leftBarButtonItemPressed), tintColor: UIColor.red.withAlphaComponent(0.5))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "settings"), target: self, action: #selector(rightBarButtonItemPressed))
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -62,9 +63,27 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func leftBarButtonItemPressed() {
-        print("leftBarButtonItemPressed")
+        SwiftSpinner.setTitleFont(UIFont(name: "NotoSans", size: 22.0))
+        SwiftSpinner.show("Recording").addTapHandler({
+            SwiftSpinner.hide()
+            self.cancelAlert()
+        })
     }
     
+    func cancelAlert() {
+        let alert = UIAlertController(title: "Warning", message: "Are you sure you want to stop recording? All unsaved data will be lost.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
+            SwiftSpinner.show("Recording").addTapHandler({
+                SwiftSpinner.hide()
+                self.cancelAlert()
+            })
+        }))
+        alert.addAction(UIAlertAction(title: "Stop", style: .destructive, handler: { (action) in
+            //stop recording
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
     func rightBarButtonItemPressed() {
         performSegue(withIdentifier: SEGUE_SET_SETTINGS, sender: nil)
     }
