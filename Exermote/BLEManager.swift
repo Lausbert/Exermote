@@ -12,10 +12,10 @@ import CoreBluetooth
 class BLEManager: NSObject, CBCentralManagerDelegate {
     
     static let instance = BLEManager()
-    var centralManager : CBCentralManager!
-    
     var measurementPoints: [MeasurementPoint] = []
-    var uiUpdateNeeded = true
+    
+    private var centralManager : CBCentralManager!
+    private var uiUpdateNeeded = true
     
     let centralManagerQueue = DispatchQueue(label: "com.exermote.centralManagerQueue", qos: .userInteractive, attributes: .concurrent)
     

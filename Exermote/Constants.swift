@@ -61,3 +61,9 @@ let USER_DEFAULTS_RECORDED_DATA_PREVIOUS_STATE_DURATION = "recordedDataPreviousS
 let USER_DEFAULTS_RECORDED_DATA_TIME = "recordedDataTime"
 
 let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
+
+// MARK: Error Values
+
+let ERROR_VALUE_STRING = "Not available"
+let ERROR_VALUE_INT = -999
+let ERROR_VALUE_DOUBLE = -999.0

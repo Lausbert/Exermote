@@ -14,27 +14,27 @@ class MeasurementPoint {
     private var _companyIdentifier: String?
     private var _nearableIdentifier: String?
     private var _unknownBytes = [String]()
-    private var _xAcceleration = 0.0
-    private var _yAcceleration = 0.0
-    private var _zAcceleration = 0.0
-    private var _durationCurrentState = 0
-    private var _durationPreviousSate = 0
-    private var _rssi = 0
+    private var _xAcceleration: Double?
+    private var _yAcceleration: Double?
+    private var _zAcceleration: Double?
+    private var _durationCurrentState: Int?
+    private var _durationPreviousSate: Int?
+    private var _rssi: Int?
     private var _timeStamp: Date!
     private var _count = 0
-    private var _frequency = 0.0
+    private var _frequency: Double?
     private var _isSelected = false
     
     var companyIdentifier: String {
         if _companyIdentifier == nil {
-            _companyIdentifier = "NA"
+            return ERROR_VALUE_STRING
         }
         return _companyIdentifier!
     }
     
     var nearableIdentifier: String {
         if _nearableIdentifier == nil {
-            _nearableIdentifier = "NA"
+            return ERROR_VALUE_STRING
         }
         return _nearableIdentifier!
     }
@@ -43,27 +43,45 @@ class MeasurementPoint {
         return _unknownBytes
     }
     
-    var xAcceleration: Double {
+    var xAcceleration: Double? {
+        if _xAcceleration == nil {
+            return ERROR_VALUE_DOUBLE
+        }
         return _xAcceleration
     }
     
-    var yAcceleration: Double {
+    var yAcceleration: Double? {
+        if _yAcceleration == nil {
+            return ERROR_VALUE_DOUBLE
+        }
         return _yAcceleration
     }
     
-    var zAcceleration: Double {
+    var zAcceleration: Double? {
+        if _zAcceleration == nil {
+            return ERROR_VALUE_DOUBLE
+        }
         return _zAcceleration
     }
     
-    var durationCurrentState: Int {
+    var durationCurrentState: Int? {
+        if _durationCurrentState == nil {
+            return ERROR_VALUE_INT
+        }
         return _durationCurrentState
     }
     
-    var durationPreviousState: Int {
+    var durationPreviousState: Int? {
+        if _durationPreviousSate == nil {
+            return ERROR_VALUE_INT
+        }
         return _durationPreviousSate
     }
     
-    var rssi: Int {
+    var rssi: Int? {
+        if _rssi == nil {
+            return ERROR_VALUE_INT
+        }
         return _rssi
     }
     
@@ -75,7 +93,10 @@ class MeasurementPoint {
         return _count
     }
     
-    var frequency: Double {
+    var frequency: Double? {
+        if _frequency == nil {
+            return ERROR_VALUE_DOUBLE
+        }
         return _frequency
     }
     
@@ -105,9 +126,9 @@ class MeasurementPoint {
             }
             
             self._rssi = Int(RSSI)
-            
-            self._timeStamp = Date()
         }
+        
+        self._timeStamp = Date()
     }
     
     func wasUpdated(previousMeasurementPoint: MeasurementPoint) {
@@ -116,9 +137,9 @@ class MeasurementPoint {
         let lastfrequency = 1/self.timeStamp.timeIntervalSince(previousMeasurementPoint.timeStamp)
         
         if self._count < MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY {
-            self._frequency = ((Double(previousMeasurementPoint.count)*previousMeasurementPoint.frequency)+lastfrequency)/Double(self._count)
+            self._frequency = ((Double(previousMeasurementPoint.count)*previousMeasurementPoint.frequency!)+lastfrequency)/Double(self._count)
         } else {
-            self._frequency = (((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)-1)*previousMeasurementPoint.frequency)+lastfrequency)/Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)
+            self._frequency = (((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)-1)*previousMeasurementPoint.frequency!)+lastfrequency)/Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)
         }
         self._isSelected = previousMeasurementPoint.isSelected
     }
