@@ -52,7 +52,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         if measurementPoint.companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
             
             if let index = measurementPoints.index(where: {$0.nearableIdentifier == measurementPoint.nearableIdentifier}) {
-                measurementPoint.wasUpdated(previousMeasurementPoint: measurementPoints[index])
+                measurementPoint.update(previousMeasurementPoint: measurementPoints[index])
                 measurementPoints[index] = measurementPoint
             } else {
                 measurementPoints.append(measurementPoint)

@@ -131,7 +131,7 @@ class MeasurementPoint {
         self._timeStamp = Date()
     }
     
-    func wasUpdated(previousMeasurementPoint: MeasurementPoint) {
+    func update(previousMeasurementPoint: MeasurementPoint) {
         self._count = previousMeasurementPoint.count + 1
         
         let lastfrequency = 1/self.timeStamp.timeIntervalSince(previousMeasurementPoint.timeStamp)
