@@ -15,6 +15,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if !launchedBefore  {
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
+            UserDefaults.standard.set(RECORDING_DURATION_MAXIMUM, forKey: USER_DEFAULTS_RECORDING_DURATION)
+            UserDefaults.standard.set(RECORDING_FREQUENCY_MAXIMUM, forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
+            
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_NEARABLE_ID)
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_FREQUENCY)
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_RSSI)
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_X_ACCELERATION)
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_Y_ACCELERATION)
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_Z_ACCELERATION)
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_CURRENT_STATE_DURATION)
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_PREVIOUS_STATE_DURATION)
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_TIME)
+        }
+        
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont(name: "NotoSans", size: 20)!]
         return true
     }

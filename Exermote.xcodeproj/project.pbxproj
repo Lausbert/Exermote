@@ -28,6 +28,7 @@
 		8DCF1E991E2A529500AEAAE7 /* NotoSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E951E2A529500AEAAE7 /* NotoSans-Italic.ttf */; };
 		8DCF1E9A1E2A529500AEAAE7 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E961E2A529500AEAAE7 /* NotoSans-Regular.ttf */; };
 		8DCF1E9C1E2A59DE00AEAAE7 /* MeasurementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */; };
+		8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDB58841E428E6000ECB970 /* RecordingManager.swift */; };
 		8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */; };
 		F540B28759D9673FD5FF2360 /* Pods_Exermote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B08DF01FA28C168D23CA723 /* Pods_Exermote.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		8DCF1E951E2A529500AEAAE7 /* NotoSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Italic.ttf"; sourceTree = "<group>"; };
 		8DCF1E961E2A529500AEAAE7 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
 		8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementCell.swift; sourceTree = "<group>"; };
+		8DDB58841E428E6000ECB970 /* RecordingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
 		8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSettingsVC.swift; sourceTree = "<group>"; };
 		A773DCEB468BDC4FE4FEAF09 /* Pods-ExermoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteTests/Pods-ExermoteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9CEA1C94B03B805D7385371 /* Pods-ExermoteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteUITests/Pods-ExermoteUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				8DCF1E881E2A496400AEAAE7 /* BLEManager.swift */,
+				8DDB58841E428E6000ECB970 /* RecordingManager.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DCF1E8B1E2A496900AEAAE7 /* MeasurementPoint.swift in Sources */,
+				8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */,
 				8DCF1E851E2A495800AEAAE7 /* Extensions.swift in Sources */,
 				8DCF1E8D1E2A497100AEAAE7 /* SelectNearablesVC.swift in Sources */,
 				8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */,

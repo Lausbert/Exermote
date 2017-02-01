@@ -24,8 +24,12 @@ class MeasurementCell: UITableViewCell {
         xAccelerationLbl.text = String(format: "%.2f", measurementPoint.xAcceleration!)
         yAccelerationLbl.text = String(format: "%.2f", measurementPoint.yAcceleration!)
         zAccelerationLbl.text = String(format: "%.2f", measurementPoint.zAcceleration!)
-        rssiLbl.text = "\(measurementPoint.rssi)"
-        frequencyLbl.text = String(format: "%.2f", measurementPoint.frequency!)
+        rssiLbl.text = "\(measurementPoint.rssi!)"
+        if measurementPoint.frequency == ERROR_VALUE_DOUBLE {
+            frequencyLbl.text = ERROR_VALUE_STRING
+        } else {
+            frequencyLbl.text = String(format: "%.2f", measurementPoint.frequency!)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
