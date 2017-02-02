@@ -23,17 +23,15 @@ class SetSettingsVC: FormViewController {
                 $0.title = "Duration [min]"
                 $0.minimumValue = Float(RECORDING_DURATION_MINIMUM)
                 $0.maximumValue = Float(RECORDING_DURATION_MAXIMUM)
-                $0.steps = UInt(RECORDING_DURATION_STEPS)
+                $0.steps = UInt($0.maximumValue-$0.minimumValue)
                 $0.value = UserDefaults.standard.float(forKey: USER_DEFAULTS_RECORDING_DURATION)
             }.onChange {
                     UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDING_DURATION)
             }
-            <<< CustomSliderRow(){
+            <<< CustomSegmentedRow<Int>(){
                 $0.title = "Frequency [Hz]"
-                $0.minimumValue = Float(RECORDING_FREQUENCY_MINIMUM)
-                $0.maximumValue = Float(RECORDING_FREQUENCY_MAXIMUM)
-                $0.steps = UInt(RECORDING_FREQUENCY_STEPS)
-                $0.value = UserDefaults.standard.float(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
+                $0.options = RECORDING_FREQUENCY_OPTIONS
+                $0.value = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
             }.onChange {
                     if UserDefaults.standard.bool(forKey: USER_DEFAULTS_SHOW_FREQUENCY_ALERT) {
                       self.frequencyAlert()

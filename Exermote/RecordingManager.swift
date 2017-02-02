@@ -13,23 +13,54 @@ class RecordingManager {
     static let instance = RecordingManager()
     
     var remainingRecordingDurationInMinutes: String {
-        let minutes = String(remainingRecordingDurationInSeconds!/60)
-        let seconds = String(remainingRecordingDurationInSeconds!%60)
-        return minutes + ":" + seconds
+        let remainingRecordingDurationInSeconds = Int(Double(remainingRecordingDurationInTicks)/Double(recordingFrequency))
+        let minutes = String(format:"%02i", remainingRecordingDurationInSeconds/60)
+        let seconds = String(format:"%02i", remainingRecordingDurationInSeconds%60)
+        let result = minutes + ":" + seconds
+        return result
     }
     
-    private var totalRecordingDurationInSeconds:Int?
-    private var remainingRecordingDurationInSeconds: Int?
-    private var recordingFrequency:Double?
+    private var timer:Timer? = nil {
+        willSet {
+            timer?.invalidate()
+        }
+    }
+
+    private var remainingRecordingDurationInTicks:Int = 600
+    private var recordedMeasurementPoints: [MeasurementPoint] = []
+    private var recordingFrequency: Int = 10
+    private var ticksSinceUIUpdate: Int = 10
     
     func attemptRecording(completion: @escaping (Bool)->()) {
         
-        let totalRecordingDurationInMinutes = UserDefaults.standard.double(forKey: USER_DEFAULTS_RECORDING_DURATION)
-        totalRecordingDurationInSeconds = Int(totalRecordingDurationInMinutes*60.0)
-        remainingRecordingDurationInSeconds = totalRecordingDurationInSeconds
+        recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
+        ticksSinceUIUpdate = recordingFrequency
+        let totalRemainingDurationInMinutes = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_DURATION)
         
-        recordingFrequency = UserDefaults.standard.double(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
+        remainingRecordingDurationInTicks = recordingFrequency*totalRemainingDurationInMinutes*60
         
+        let recordingInterval = 1.0/Double(recordingFrequency)
+        timer = Timer.scheduledTimer(timeInterval: recordingInterval, target: self, selector: #selector(recordData), userInfo: nil, repeats: true)
+        completion(true)
+    }
+    
+    @objc func recordData(){
+        if ticksSinceUIUpdate == recordingFrequency {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
+            ticksSinceUIUpdate = 0
+        }
+        
+        recordedMeasurementPoints.append(contentsOf: BLEManager.instance.measurementPoints)
+        
+        ticksSinceUIUpdate += 1
+        remainingRecordingDurationInTicks -= 1
+        if remainingRecordingDurationInTicks == 0 {stopRecording()}
+    }
+    
+    func stopRecording() {
+        print(recordedMeasurementPoints.count)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
+        timer = nil
     }
     
 }

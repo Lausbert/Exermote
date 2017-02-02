@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             
             UserDefaults.standard.set(RECORDING_DURATION_MAXIMUM, forKey: USER_DEFAULTS_RECORDING_DURATION)
-            UserDefaults.standard.set(RECORDING_FREQUENCY_MAXIMUM, forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
+            UserDefaults.standard.set(RECORDING_FREQUENCY_INITIAL, forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
             
             UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_NEARABLE_ID)
             UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_FREQUENCY)

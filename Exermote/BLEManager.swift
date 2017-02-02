@@ -67,7 +67,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
             
             if uiUpdateNeeded {
                 DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newPeripherals"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_BLE_MANAGER_NEW_PERIPHERALS), object: nil)
                 }
                 
                 uiUpdateNeeded = false

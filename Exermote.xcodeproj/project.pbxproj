@@ -11,6 +11,7 @@
 		602302F98BA46D6F97EDFEDD /* Pods_ExermoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA7585951A667D34D6598F2 /* Pods_ExermoteUITests.framework */; };
 		8D3852CD1E3CCF8C003B2738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */; };
 		8D69FD731E40D4840091A651 /* CustomCheckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FD721E40D4840091A651 /* CustomCheckRow.swift */; };
+		8DA8AC661E43A17300B56586 /* CustomSegmentedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */; };
 		8DB8F9071E3FC00D004720C9 /* CustomSliderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */; };
 		8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */; };
 		8DCF1E5C1E2A48C600AEAAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E5A1E2A48C600AEAAE7 /* LaunchScreen.storyboard */; };
@@ -56,6 +57,7 @@
 		75513CC36D974CC7A85B794A /* Pods_ExermoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D69FD721E40D4840091A651 /* CustomCheckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCheckRow.swift; sourceTree = "<group>"; };
+		8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedRow.swift; sourceTree = "<group>"; };
 		8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderRow.swift; sourceTree = "<group>"; };
 		8DCF1E4E1E2A48C600AEAAE7 /* Exermote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exermote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */,
 				8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */,
 				8D69FD721E40D4840091A651 /* CustomCheckRow.swift */,
+				8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				8DCF1E8B1E2A496900AEAAE7 /* MeasurementPoint.swift in Sources */,
 				8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */,
 				8DCF1E851E2A495800AEAAE7 /* Extensions.swift in Sources */,
+				8DA8AC661E43A17300B56586 /* CustomSegmentedRow.swift in Sources */,
 				8DCF1E8D1E2A497100AEAAE7 /* SelectNearablesVC.swift in Sources */,
 				8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */,
 				8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */,

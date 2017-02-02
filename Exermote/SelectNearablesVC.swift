@@ -24,7 +24,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.delegate = self
         tableView.dataSource = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(shouldReload), name: NSNotification.Name(rawValue: "newPeripherals"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(shouldReload), name: NSNotification.Name(rawValue: NOTIFICATION_BLE_MANAGER_NEW_PERIPHERALS), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,28 +63,43 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func leftBarButtonItemPressed() {
-        SwiftSpinner.setTitleFont(UIFont(name: "NotoSans", size: 22.0))
-        SwiftSpinner.show("Recording").addTapHandler({
-            SwiftSpinner.hide()
-            self.cancelAlert()
-        })
+        RecordingManager.instance.attemptRecording() {success in
+            if success {
+                NotificationCenter.default.addObserver(self, selector: #selector(self.updateSwiftSpinner), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(self.recordingStopped), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
+                self.showSwiftSpinner()
+            }
+        }
+    }
+    
+    func rightBarButtonItemPressed() {
+        performSegue(withIdentifier: SEGUE_SET_SETTINGS, sender: nil)
+    }
+    
+    func updateSwiftSpinner() {
+        SwiftSpinner.sharedInstance.titleLabel.text = RecordingManager.instance.remainingRecordingDurationInMinutes
+    }
+    
+    func recordingStopped() {
+        SwiftSpinner.hide()
     }
     
     func cancelAlert() {
         let alert = UIAlertController(title: "Warning", message: "Are you sure you want to stop recording? All unsaved data will be lost.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
-            SwiftSpinner.show("Recording").addTapHandler({
-                SwiftSpinner.hide()
-                self.cancelAlert()
-            })
+            self.showSwiftSpinner()
         }))
         alert.addAction(UIAlertAction(title: "Stop", style: .destructive, handler: { (action) in
-            //stop recording
+            RecordingManager.instance.stopRecording()
         }))
         self.present(alert, animated: true, completion: nil)
     }
-
-    func rightBarButtonItemPressed() {
-        performSegue(withIdentifier: SEGUE_SET_SETTINGS, sender: nil)
+    
+    func showSwiftSpinner(){
+        SwiftSpinner.setTitleFont(UIFont(name: "NotoSans", size: 22.0))
+        SwiftSpinner.show("").addTapHandler({
+            SwiftSpinner.hide()
+            self.cancelAlert()
+        }, subtitle: "Tap to cancel recording")
     }
 }
