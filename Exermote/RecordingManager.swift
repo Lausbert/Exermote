@@ -45,6 +45,8 @@ class RecordingManager {
     }
     
     @objc func recordData(){
+        remainingRecordingDurationInTicks -= 1
+        
         if ticksSinceUIUpdate == recordingFrequency {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
             ticksSinceUIUpdate = 0
@@ -53,14 +55,17 @@ class RecordingManager {
         recordedMeasurementPoints.append(contentsOf: BLEManager.instance.measurementPoints)
         
         ticksSinceUIUpdate += 1
-        remainingRecordingDurationInTicks -= 1
-        if remainingRecordingDurationInTicks == 0 {stopRecording()}
+        if remainingRecordingDurationInTicks == 0 {stopRecording(success: true)}
     }
     
-    func stopRecording() {
-        print(recordedMeasurementPoints.count)
+    func stopRecording(success: Bool) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
         timer = nil
+        
+        if success {
+            
+        } else {
+            recordedMeasurementPoints = []
+        }
     }
-    
 }

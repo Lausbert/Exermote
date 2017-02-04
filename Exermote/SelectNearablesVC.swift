@@ -82,6 +82,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func recordingStopped() {
         SwiftSpinner.hide()
+        self.dismiss(animated: true, completion: nil)
     }
     
     func cancelAlert() {
@@ -90,14 +91,15 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
             self.showSwiftSpinner()
         }))
         alert.addAction(UIAlertAction(title: "Stop", style: .destructive, handler: { (action) in
-            RecordingManager.instance.stopRecording()
+            RecordingManager.instance.stopRecording(success: false)
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
     func showSwiftSpinner(){
         SwiftSpinner.setTitleFont(UIFont(name: "NotoSans", size: 22.0))
-        SwiftSpinner.show("").addTapHandler({
+        let title = RecordingManager.instance.remainingRecordingDurationInMinutes
+        SwiftSpinner.show(title).addTapHandler({
             SwiftSpinner.hide()
             self.cancelAlert()
         }, subtitle: "Tap to cancel recording")
