@@ -20,12 +20,12 @@ class MeasurementCell: UITableViewCell {
     @IBOutlet weak var ContainerView: MaterialView!
     
     func configureCell(measurementPoint: MeasurementPoint) {
-        nearableIdentifierLbl.text = "\(measurementPoint.nearableIdentifier)"
-        xAccelerationLbl.text = measurementPoint.xAcceleration == ERROR_VALUE_DOUBLE ? ERROR_VALUE_STRING : String(format: "%.2f", measurementPoint.xAcceleration)
-        yAccelerationLbl.text = measurementPoint.yAcceleration == ERROR_VALUE_DOUBLE ? ERROR_VALUE_STRING : String(format: "%.2f", measurementPoint.yAcceleration)
-        zAccelerationLbl.text = measurementPoint.zAcceleration == ERROR_VALUE_DOUBLE ? ERROR_VALUE_STRING : String(format: "%.2f", measurementPoint.zAcceleration)
-        rssiLbl.text = measurementPoint.rssi == ERROR_VALUE_INT ? ERROR_VALUE_STRING : String(measurementPoint.rssi)
-        frequencyLbl.text = measurementPoint.frequency == ERROR_VALUE_DOUBLE ? ERROR_VALUE_STRING : String(format: "%.2f", measurementPoint.frequency)
+        nearableIdentifierLbl.text = measurementPoint.nearableIdentifier
+        frequencyLbl.text = measurementPoint.frequency
+        rssiLbl.text = measurementPoint.rssi
+        xAccelerationLbl.text = measurementPoint.xAcceleration
+        yAccelerationLbl.text = measurementPoint.yAcceleration
+        zAccelerationLbl.text = measurementPoint.zAcceleration
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

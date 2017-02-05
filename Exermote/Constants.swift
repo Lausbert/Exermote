@@ -70,8 +70,6 @@ let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
 // MARK: Error Values
 
 let ERROR_VALUE_STRING = "NA"
-let ERROR_VALUE_INT = -999
-let ERROR_VALUE_DOUBLE = -999.0
 
 // MARK: Notification Constants
 
