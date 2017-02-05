@@ -54,6 +54,8 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
             if let index = measurementPoints.index(where: {$0.nearableIdentifier == measurementPoint.nearableIdentifier}) {
                 measurementPoint.update(previousMeasurementPoint: measurementPoints[index])
                 measurementPoints[index] = measurementPoint
+                
+                print(measurementPoint.toStringDictionary)
             } else {
                 measurementPoints.append(measurementPoint)
                 measurementPoints.sort(by: {$0.nearableIdentifier < $1.nearableIdentifier})

@@ -36,15 +36,15 @@ class RecordingManager {
         recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
         ticksSinceUIUpdate = recordingFrequency
         let totalRemainingDurationInMinutes = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_DURATION)
-        
         remainingRecordingDurationInTicks = recordingFrequency*totalRemainingDurationInMinutes*60
-        
         let recordingInterval = 1.0/Double(recordingFrequency)
+        
         timer = Timer.scheduledTimer(timeInterval: recordingInterval, target: self, selector: #selector(recordData), userInfo: nil, repeats: true)
         completion(true)
     }
     
     @objc func recordData(){
+        
         remainingRecordingDurationInTicks -= 1
         
         if ticksSinceUIUpdate == recordingFrequency {
@@ -52,20 +52,26 @@ class RecordingManager {
             ticksSinceUIUpdate = 0
         }
         
-        recordedMeasurementPoints.append(contentsOf: BLEManager.instance.measurementPoints)
+        let measurementPointsToBeRecorded = BLEManager.instance.measurementPoints.filter{$0.isSelected}
+        recordedMeasurementPoints.append(contentsOf: measurementPointsToBeRecorded)
         
         ticksSinceUIUpdate += 1
         if remainingRecordingDurationInTicks == 0 {stopRecording(success: true)}
     }
     
     func stopRecording(success: Bool) {
+        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
         timer = nil
         
         if success {
-            
+            writeDataToFile()
         } else {
             recordedMeasurementPoints = []
         }
+    }
+    
+    func writeDataToFile() {
+        
     }
 }

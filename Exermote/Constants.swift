@@ -55,15 +55,15 @@ let SEGUE_SET_SETTINGS = "SetSettings"
 
 let USER_DEFAULTS_RECORDING_DURATION = "recordingDuration"
 let USER_DEFAULTS_RECORDING_FREQUENCY = "recordingFrequency"
-let USER_DEFAULTS_RECORDED_DATA_NEARABLE_ID = "recordedDataNearableID"
-let USER_DEFAULTS_RECORDED_DATA_FREQUENCY = "recordedDataFrequency"
-let USER_DEFAULTS_RECORDED_DATA_RSSI = "recordedDataRssi"
-let USER_DEFAULTS_RECORDED_DATA_X_ACCELERATION = "recordedDataXAcceleration"
-let USER_DEFAULTS_RECORDED_DATA_Y_ACCELERATION = "recordedDataYAcceleration"
-let USER_DEFAULTS_RECORDED_DATA_Z_ACCELERATION = "recordedDataZAcceleration"
-let USER_DEFAULTS_RECORDED_DATA_CURRENT_STATE_DURATION = "recordedDataCurrentStateDuration"
-let USER_DEFAULTS_RECORDED_DATA_PREVIOUS_STATE_DURATION = "recordedDataPreviousStateDuration"
-let USER_DEFAULTS_RECORDED_DATA_TIME = "recordedDataTime"
+let USER_DEFAULTS_RECORDED_DATA = ["NearableID",
+                                   "Frequency",
+                                   "Rssi",
+                                   "XAcceleration",
+                                   "YAcceleration",
+                                   "ZAcceleration",
+                                   "CurrentStateDuration",
+                                   "PreviousStateDuration",
+                                   "Time"]
 
 let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
 

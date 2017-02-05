@@ -23,15 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(RECORDING_DURATION_MAXIMUM, forKey: USER_DEFAULTS_RECORDING_DURATION)
             UserDefaults.standard.set(RECORDING_FREQUENCY_INITIAL, forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
             
-            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_NEARABLE_ID)
-            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_FREQUENCY)
-            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_RSSI)
-            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_X_ACCELERATION)
-            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_Y_ACCELERATION)
-            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_Z_ACCELERATION)
-            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_CURRENT_STATE_DURATION)
-            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_PREVIOUS_STATE_DURATION)
-            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_RECORDED_DATA_TIME)
+            for key in USER_DEFAULTS_RECORDED_DATA {
+                UserDefaults.standard.set(true, forKey: key)
+            }
         }
         
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont(name: "NotoSans", size: 20)!]

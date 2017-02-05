@@ -41,62 +41,66 @@ class SetSettingsVC: FormViewController {
             +++ Section("Recorded Data")
             <<< CustomCheckRow(){
                 $0.title = "Nearable ID"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA_NEARABLE_ID)
+                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[0])
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_NEARABLE_ID)
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[0])
             }
             <<< CustomCheckRow(){
                 $0.title = "Frequency"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA_FREQUENCY)
+                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[1])
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_FREQUENCY)
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[1])
             }
             <<< CustomCheckRow(){
                 $0.title = "RSSI"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA_RSSI)
+                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[2])
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_RSSI)
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[2])
             }
             <<< CustomCheckRow(){
                 $0.title = "X Acceleration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA_X_ACCELERATION)
+                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[3])
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_X_ACCELERATION)
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[3])
             }
             <<< CustomCheckRow(){
                 $0.title = "Y Acceleration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA_Y_ACCELERATION)
+                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[4])
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_Y_ACCELERATION)
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[4])
             }
             <<< CustomCheckRow(){
                 $0.title = "Z Acceleration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA_Z_ACCELERATION)
+                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[5])
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_Z_ACCELERATION)
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[5])
             }
             <<< CustomCheckRow(){
                 $0.title = "Current State Duration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA_CURRENT_STATE_DURATION)
+                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[6])
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_CURRENT_STATE_DURATION)
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[6])
             }
             <<< CustomCheckRow(){
                 $0.title = "Previous State Duration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA_PREVIOUS_STATE_DURATION)
+                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[7])
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_PREVIOUS_STATE_DURATION)
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[7])
             }
             <<< CustomCheckRow(){
                 $0.title = "Time"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA_TIME)
+                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[8])
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA_TIME)
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[8])
             }
     }
     
     func leftBarButtonItemPressed() {
-        _ = navigationController?.popViewController(animated: true)
+        if isAnyDataSelected() {
+            _ = navigationController?.popViewController(animated: true)
+        } else {
+            selectionAlert()
+        }
     }
     
     func frequencyAlert() {
@@ -105,5 +109,18 @@ class SetSettingsVC: FormViewController {
             UserDefaults.standard.set(false, forKey: USER_DEFAULTS_SHOW_FREQUENCY_ALERT)
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func selectionAlert() {
+        let alert = UIAlertController(title: "Warning", message: "Select at least one data property to be recorded.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func isAnyDataSelected() -> Bool {
+        for key in USER_DEFAULTS_RECORDED_DATA {
+            if UserDefaults.standard.bool(forKey: key) {return true}
+        }
+        return false
     }
 }

@@ -12,18 +12,19 @@ import CoreBluetooth
 class MeasurementPoint {
     
     private var _companyIdentifier: String?
-    private var _nearableIdentifier: String?
     private var _unknownBytes = [String]()
+    private var _count = 0
+    private var _isSelected = false
+    
+    private var _nearableIdentifier: String?
+    private var _frequency: Double?
+    private var _rssi: Int?
     private var _xAcceleration: Double?
     private var _yAcceleration: Double?
     private var _zAcceleration: Double?
     private var _durationCurrentState: Int?
     private var _durationPreviousSate: Int?
-    private var _rssi: Int?
     private var _timeStamp: Date!
-    private var _count = 0
-    private var _frequency: Double?
-    private var _isSelected = false
     
     var companyIdentifier: String {
         if _companyIdentifier == nil {
@@ -43,46 +44,46 @@ class MeasurementPoint {
         return _unknownBytes
     }
     
-    var xAcceleration: Double? {
+    var xAcceleration: Double {
         if _xAcceleration == nil {
             return ERROR_VALUE_DOUBLE
         }
-        return _xAcceleration
+        return _xAcceleration!
     }
     
-    var yAcceleration: Double? {
+    var yAcceleration: Double {
         if _yAcceleration == nil {
             return ERROR_VALUE_DOUBLE
         }
-        return _yAcceleration
+        return _yAcceleration!
     }
     
-    var zAcceleration: Double? {
+    var zAcceleration: Double {
         if _zAcceleration == nil {
             return ERROR_VALUE_DOUBLE
         }
-        return _zAcceleration
+        return _zAcceleration!
     }
     
-    var durationCurrentState: Int? {
+    var durationCurrentState: Int {
         if _durationCurrentState == nil {
             return ERROR_VALUE_INT
         }
-        return _durationCurrentState
+        return _durationCurrentState!
     }
     
-    var durationPreviousState: Int? {
+    var durationPreviousState: Int {
         if _durationPreviousSate == nil {
             return ERROR_VALUE_INT
         }
-        return _durationPreviousSate
+        return _durationPreviousSate!
     }
     
-    var rssi: Int? {
+    var rssi: Int {
         if _rssi == nil {
             return ERROR_VALUE_INT
         }
-        return _rssi
+        return _rssi!
     }
     
     var timeStamp: Date {
@@ -93,15 +94,35 @@ class MeasurementPoint {
         return _count
     }
     
-    var frequency: Double? {
+    var frequency: Double {
         if _frequency == nil {
             return ERROR_VALUE_DOUBLE
         }
-        return _frequency
+        return _frequency!
     }
     
     var isSelected: Bool {
         return _isSelected
+    }
+    
+    var toStringDictionary: Dictionary<String, String> {
+        
+        var dict = [String : String]()
+        
+        dict[USER_DEFAULTS_RECORDED_DATA[0]] = nearableIdentifier
+        dict[USER_DEFAULTS_RECORDED_DATA[1]] = frequency == ERROR_VALUE_DOUBLE ? ERROR_VALUE_STRING : String(format: "%.2f", frequency)
+        dict[USER_DEFAULTS_RECORDED_DATA[2]] = rssi == ERROR_VALUE_INT ? ERROR_VALUE_STRING : String(rssi)
+        dict[USER_DEFAULTS_RECORDED_DATA[3]] = xAcceleration == ERROR_VALUE_DOUBLE ? ERROR_VALUE_STRING : String(format: "%.2f", xAcceleration)
+        dict[USER_DEFAULTS_RECORDED_DATA[4]] = yAcceleration == ERROR_VALUE_DOUBLE ? ERROR_VALUE_STRING : String(format: "%.2f", yAcceleration)
+        dict[USER_DEFAULTS_RECORDED_DATA[5]] = zAcceleration == ERROR_VALUE_DOUBLE ? ERROR_VALUE_STRING : String(format: "%.2f", zAcceleration)
+        dict[USER_DEFAULTS_RECORDED_DATA[6]] = durationCurrentState == ERROR_VALUE_INT ? ERROR_VALUE_STRING : String(durationCurrentState)
+        dict[USER_DEFAULTS_RECORDED_DATA[7]] = durationPreviousState == ERROR_VALUE_INT ? ERROR_VALUE_STRING : String(durationPreviousState)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "y-MM-dd H:m:ss:SSS"
+        dict[USER_DEFAULTS_RECORDED_DATA[8]] = dateFormatter.string(from: timeStamp)
+        
+        return dict
     }
     
     init(peripheral: CBPeripheral, advertisementData: [String : Any], RSSI: NSNumber) {
@@ -137,9 +158,9 @@ class MeasurementPoint {
         let lastfrequency = 1/self.timeStamp.timeIntervalSince(previousMeasurementPoint.timeStamp)
         
         if self._count < MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY {
-            self._frequency = ((Double(previousMeasurementPoint.count)*previousMeasurementPoint.frequency!)+lastfrequency)/Double(self._count)
+            self._frequency = ((Double(previousMeasurementPoint.count)*previousMeasurementPoint.frequency)+lastfrequency)/Double(self._count)
         } else {
-            self._frequency = (((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)-1)*previousMeasurementPoint.frequency!)+lastfrequency)/Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)
+            self._frequency = (((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)-1)*previousMeasurementPoint.frequency)+lastfrequency)/Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)
         }
         self._isSelected = previousMeasurementPoint.isSelected
     }
@@ -153,7 +174,8 @@ class MeasurementPoint {
     }
     
     private func hexToAcc(hexData: String) -> Double {
-        var accDec = Double(Int8(bitPattern: UInt8(strtoul(hexData, nil, 16))))/Double(CALIBRATION_ACCELERATION)
+        let randomNumber = drand48()/10
+        var accDec = Double(Int8(bitPattern: UInt8(strtoul(hexData, nil, 16))))/Double(CALIBRATION_ACCELERATION) + randomNumber
         accDec = round(accDec*100)/100
         return Double(accDec)
     }

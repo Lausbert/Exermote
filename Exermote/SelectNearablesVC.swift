@@ -63,12 +63,16 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func leftBarButtonItemPressed() {
-        RecordingManager.instance.attemptRecording() {success in
-            if success {
-                NotificationCenter.default.addObserver(self, selector: #selector(self.updateSwiftSpinner), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(self.recordingStopped), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
-                self.showSwiftSpinner()
+        if isAnyNearableSelected() {
+            RecordingManager.instance.attemptRecording() {success in
+                if success {
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.updateSwiftSpinner), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.recordingStopped), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
+                    self.showSwiftSpinner()
+                }
             }
+        } else {
+            selectionAlert()
         }
     }
     
@@ -103,5 +107,16 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
             SwiftSpinner.hide()
             self.cancelAlert()
         }, subtitle: "Tap to cancel recording")
+    }
+    
+    func selectionAlert() {
+        let alert = UIAlertController(title: "Warning", message: "Select at least one nearable to be recorded.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func isAnyNearableSelected() -> Bool {
+        let selectedMeasurementPoints = BLEManager.instance.measurementPoints.filter{$0.isSelected}
+        return !selectedMeasurementPoints.isEmpty
     }
 }
