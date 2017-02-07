@@ -66,6 +66,7 @@ let USER_DEFAULTS_RECORDED_DATA = ["NearableID",
                                    "Time"]
 
 let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
+let USER_DEFAULTS_SHOW_ICLOUD_ALERT = "iCloudAlertWasShown"
 
 // MARK: Error Values
 
@@ -76,3 +77,8 @@ let ERROR_VALUE_STRING = "NA"
 let NOTIFICATION_BLE_MANAGER_NEW_PERIPHERALS = "newPeripherals"
 let NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED = "recordingStopped"
 let NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED = "swiftSpinnerUpdateNeeded"
+
+// MARK: CSV Constants
+
+let CSV_DELIMETER = ","
+let CSV_LINE_BREAK = "\n"

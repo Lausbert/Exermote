@@ -24,29 +24,32 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         centralManager = CBCentralManager(delegate: self, queue: centralManagerQueue)
     }
     
-    func centralManagerDidUpdateState(_ central: CBCentralManager)
-    {
-        if (central.state == CBManagerState.poweredOn)
-        {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        
+        if (central.state == CBManagerState.poweredOn) {
+            
             self.centralManager?.scanForPeripherals(withServices: nil, options: nil)
+            
             print("Scanning...")
+            
             let delay = DispatchTime.now() + TIME_UNTIL_BLE_MANAGER_PAUSES_WITH_SCANNING
             centralManagerQueue.asyncAfter(deadline: delay) {
+                
                 central.stopScan()
+                
                 let pause = DispatchTime.now() + TIME_OF_SCANNING_PAUSE_FOR_BLE_MANAGER
                 self.centralManagerQueue.asyncAfter(deadline: pause) {
                     self.centralManagerDidUpdateState(central)
                 }
             }
         }
-        else
-        {
+        else {
             print("Not scanning...")
         }
     }
     
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,                                                   advertisementData: [String : Any], rssi RSSI: NSNumber)
-    {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        
         let measurementPoint = MeasurementPoint(peripheral: peripheral, advertisementData: advertisementData, RSSI: RSSI)
         
         if measurementPoint.companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
@@ -54,8 +57,6 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
             if let index = measurementPoints.index(where: {$0.nearableIdentifier == measurementPoint.nearableIdentifier}) {
                 measurementPoint.update(previousMeasurementPoint: measurementPoints[index])
                 measurementPoints[index] = measurementPoint
-                
-                print(measurementPoint.toStringDictionary)
             } else {
                 measurementPoints.append(measurementPoint)
                 measurementPoints.sort(by: {$0.nearableIdentifier < $1.nearableIdentifier})
@@ -68,6 +69,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
             measurementPoints = measurementPointsUpdated
             
             if uiUpdateNeeded {
+                
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_BLE_MANAGER_NEW_PERIPHERALS), object: nil)
                 }

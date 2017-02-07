@@ -57,6 +57,7 @@
 		75513CC36D974CC7A85B794A /* Pods_ExermoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D69FD721E40D4840091A651 /* CustomCheckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCheckRow.swift; sourceTree = "<group>"; };
+		8D79BA461E479D7600EBEE7C /* Exermote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exermote.entitlements; sourceTree = "<group>"; };
 		8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedRow.swift; sourceTree = "<group>"; };
 		8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderRow.swift; sourceTree = "<group>"; };
 		8DCF1E4E1E2A48C600AEAAE7 /* Exermote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exermote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +168,7 @@
 		8DCF1E501E2A48C600AEAAE7 /* Exermote */ = {
 			isa = PBXGroup;
 			children = (
+				8D79BA461E479D7600EBEE7C /* Exermote.entitlements */,
 				8DCF1E921E2A524B00AEAAE7 /* Ressources */,
 				8DCF1E7F1E2A490800AEAAE7 /* Utilities */,
 				8DCF1E801E2A491000AEAAE7 /* Services */,
@@ -335,8 +337,16 @@
 				TargetAttributes = {
 					8DCF1E4D1E2A48C600AEAAE7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2PCRQN2RNW;
+						DevelopmentTeam = UD2UEZDYQ6;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					8DCF1E611E2A48C600AEAAE7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -704,10 +714,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2PCRQN2RNW;
+				CODE_SIGN_ENTITLEMENTS = Exermote/Exermote.entitlements;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
 				INFOPLIST_FILE = Exermote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lausbert.Exermote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lausbert.Testmote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -719,10 +731,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2PCRQN2RNW;
+				CODE_SIGN_ENTITLEMENTS = Exermote/Exermote.entitlements;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
 				INFOPLIST_FILE = Exermote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lausbert.Exermote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lausbert.Testmote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

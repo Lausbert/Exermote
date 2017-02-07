@@ -14,8 +14,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "record"), target: self, action: #selector(leftBarButtonItemPressed), tintColor: UIColor.red.withAlphaComponent(0.5))
@@ -31,13 +30,11 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return BLEManager.instance.measurementPoints.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let measurementPoint = BLEManager.instance.measurementPoints[indexPath.row]
         if let cell = self.tableView.dequeueReusableCell(withIdentifier: "measurementCell") as? MeasurementCell {
             cell.configureCell(measurementPoint: measurementPoint)
@@ -87,6 +84,9 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     func recordingStopped() {
         SwiftSpinner.hide()
         self.dismiss(animated: true, completion: nil)
+        if UserDefaults.standard.bool(forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT) {
+            self.iCloudAlert()
+        }
     }
     
     func cancelAlert() {
@@ -118,5 +118,13 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     func isAnyNearableSelected() -> Bool {
         let selectedMeasurementPoints = BLEManager.instance.measurementPoints.filter{$0.isSelected}
         return !selectedMeasurementPoints.isEmpty
+    }
+    
+    func iCloudAlert() {
+        let alert = UIAlertController(title: "Notification", message: "The recorded data will now be uploaded to your iCLoud drive. Please check it on your MacBook or on iCloud.com.", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
+            UserDefaults.standard.set(false, forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }

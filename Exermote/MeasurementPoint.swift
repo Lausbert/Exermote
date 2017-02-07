@@ -101,7 +101,7 @@ class MeasurementPoint {
         dict[USER_DEFAULTS_RECORDED_DATA[7]] = durationPreviousState
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "y-MM-dd H:m:ss:SSS"
+        dateFormatter.dateFormat = "y-MM-dd HH:mm:ss:SSS"
         dict[USER_DEFAULTS_RECORDED_DATA[8]] = dateFormatter.string(from: timeStamp)
         
         return dict

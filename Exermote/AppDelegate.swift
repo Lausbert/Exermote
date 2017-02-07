@@ -12,8 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
@@ -26,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for key in USER_DEFAULTS_RECORDED_DATA {
                 UserDefaults.standard.set(true, forKey: key)
             }
+            
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_SHOW_FREQUENCY_ALERT)
+            UserDefaults.standard.set(true, forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT)
         }
         
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont(name: "NotoSans", size: 20)!]

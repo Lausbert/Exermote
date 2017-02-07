@@ -104,7 +104,7 @@ class SetSettingsVC: FormViewController {
     }
     
     func frequencyAlert() {
-        let alert = UIAlertController(title: "Notification", message: "Please be aware, that the mentioned recording frequency is not necessarily equal to sending frequeny of the nearables. The latter could be changed in the official ESTIMOTE Application.", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Notification", message: "Please be aware, that mentioned recording frequency is not necessarily equal to sending frequeny of your nearables. The latter could be changed in the official ESTIMOTE Application.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
             UserDefaults.standard.set(false, forKey: USER_DEFAULTS_SHOW_FREQUENCY_ALERT)
         }))
