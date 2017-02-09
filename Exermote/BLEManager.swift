@@ -50,9 +50,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
-        let measurementPoint = MeasurementPoint(peripheral: peripheral, advertisementData: advertisementData, RSSI: RSSI)
-        
-        if measurementPoint.companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
+        if let measurementPoint = MeasurementPoint(peripheral: peripheral, advertisementData: advertisementData, RSSI: RSSI) {
             
             if let index = measurementPoints.index(where: {$0.nearableIdentifier == measurementPoint.nearableIdentifier}) {
                 measurementPoint.update(previousMeasurementPoint: measurementPoints[index])

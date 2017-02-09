@@ -103,29 +103,29 @@ class MeasurementPoint {
         return dict
     }
     
-    init(peripheral: CBPeripheral, advertisementData: [String : Any], RSSI: NSNumber) {
+    init?(peripheral: CBPeripheral, advertisementData: [String : Any], RSSI: NSNumber) {
         
         let data = advertisementData["kCBAdvDataManufacturerData"] as? Data
         
         self._companyIdentifier = data?.subdata(in: COMPANY_IDENTIFIER_RANGE).hexEncodedString()
 
-        if self._companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
+        guard self._companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE else {return nil}
             
-            self._nearableIdentifier = data?.subdata(in: BEACON_IDENTIFIER_RANGE).hexEncodedString()
+        self._nearableIdentifier = data?.subdata(in: BEACON_IDENTIFIER_RANGE).hexEncodedString()
+    
+        self._xAcceleration = hexToAcc(hexData: (data?.subdata(in: X_ACCELERATION_RANGE).hexEncodedString())!)
+        self._yAcceleration = hexToAcc(hexData: (data?.subdata(in: Y_ACCELERATION_RANGE).hexEncodedString())!)
+        self._zAcceleration = hexToAcc(hexData: (data?.subdata(in: Z_ACCELERATION_RANGE).hexEncodedString())!)
         
-            self._xAcceleration = hexToAcc(hexData: (data?.subdata(in: X_ACCELERATION_RANGE).hexEncodedString())!)
-            self._yAcceleration = hexToAcc(hexData: (data?.subdata(in: Y_ACCELERATION_RANGE).hexEncodedString())!)
-            self._zAcceleration = hexToAcc(hexData: (data?.subdata(in: Z_ACCELERATION_RANGE).hexEncodedString())!)
-            
-            self._durationCurrentState = hexToDur(hexData: (data?.subdata(in: DURATION_CURRENT_STATE_RANGE).hexEncodedString())!)
-            self._durationPreviousSate = hexToDur(hexData: (data?.subdata(in: DURATION_PREVIOUS_STATE_RANGE).hexEncodedString())!)
-            
-            for unknByte in UNKNOWN_BYTES_ARRAY {
-                self._unknownBytes.append((data?.subdata(in: unknByte..<unknByte+1).hexEncodedString())!)
-            }
-            
-            self._rssi = Int(RSSI)
+        self._durationCurrentState = hexToDur(hexData: (data?.subdata(in: DURATION_CURRENT_STATE_RANGE).hexEncodedString())!)
+        self._durationPreviousSate = hexToDur(hexData: (data?.subdata(in: DURATION_PREVIOUS_STATE_RANGE).hexEncodedString())!)
+        
+        for unknByte in UNKNOWN_BYTES_ARRAY {
+            self._unknownBytes.append((data?.subdata(in: unknByte..<unknByte+1).hexEncodedString())!)
         }
+        
+        self._rssi = Int(RSSI)
+        
         
         self._timeStamp = Date()
     }
