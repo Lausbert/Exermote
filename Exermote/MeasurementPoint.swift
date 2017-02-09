@@ -31,10 +31,6 @@ class MeasurementPoint {
         return _companyIdentifier!
     }
     
-    var unknownBytes: [String] {
-        return _unknownBytes
-    }
-    
     var count: Int {
         return _count
     }
@@ -112,11 +108,11 @@ class MeasurementPoint {
         let data = advertisementData["kCBAdvDataManufacturerData"] as? Data
         
         self._companyIdentifier = data?.subdata(in: COMPANY_IDENTIFIER_RANGE).hexEncodedString()
-        
+
         if self._companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE {
-        
-            self._nearableIdentifier = data?.subdata(in: BEACON_IDENTIFIER_RANGE).hexEncodedString()
             
+            self._nearableIdentifier = data?.subdata(in: BEACON_IDENTIFIER_RANGE).hexEncodedString()
+        
             self._xAcceleration = hexToAcc(hexData: (data?.subdata(in: X_ACCELERATION_RANGE).hexEncodedString())!)
             self._yAcceleration = hexToAcc(hexData: (data?.subdata(in: Y_ACCELERATION_RANGE).hexEncodedString())!)
             self._zAcceleration = hexToAcc(hexData: (data?.subdata(in: Z_ACCELERATION_RANGE).hexEncodedString())!)
