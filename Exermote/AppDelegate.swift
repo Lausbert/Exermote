@@ -18,7 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let arguments = ProcessInfo.processInfo.arguments
         let UITest = arguments.contains("UITest")
         if UITest {
-            print("UITest")
+            
+            let dummyDataString = ["5d010199 d4b0e43c 5cec1f04 018871ad 21183200 0c73",
+                                   "5d010123 6085e8b1 f26b2a04 858de134 d6e12200 0c53",
+                                   "5d0101a5 2f372de9 5bcf9e04 01b941ac 07c8e300 0e53"]
+            
+            let dummyData = [[["kCBAdvDataManufacturerData": dummyDataString[0].dataFromHexadecimalString()],-57],
+                             [["kCBAdvDataManufacturerData": dummyDataString[1].dataFromHexadecimalString()],-42],
+                             [["kCBAdvDataManufacturerData": dummyDataString[2].dataFromHexadecimalString()],-61]]
+            
+            for data in dummyData {
+                BLEManager.instance.updateMeasurementPoints(advertisementData: data[0] as! [String : Any], rssi: data[1] as! NSNumber)
+            }
+            
+            let delay = DispatchTime.now() + 1/UI_MAXIMUM_UPDATE_FREQUENCY
+            DispatchQueue.main.asyncAfter(deadline: delay) {
+                for data in dummyData {
+                    BLEManager.instance.updateMeasurementPoints(advertisementData: data[0] as! [String : Any], rssi: data[1] as! NSNumber)
+                }
+            }
         }
         
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")

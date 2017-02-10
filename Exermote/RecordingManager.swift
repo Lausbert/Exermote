@@ -63,7 +63,7 @@ class RecordingManager {
         
         defer {recordedMeasurementPoints = []}
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil, userInfo: ["success":success])
         timer = nil
         
         if success {

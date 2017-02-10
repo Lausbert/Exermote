@@ -13,8 +13,8 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     
     static let instance = BLEManager()
     var measurementPoints: [MeasurementPoint] = []
+    var centralManager : CBCentralManager!
     
-    private var centralManager : CBCentralManager!
     private var uiUpdateNeeded = true
     
     let centralManagerQueue = DispatchQueue(label: "com.exermote.centralManagerQueue", qos: .userInteractive, attributes: .concurrent)
@@ -50,7 +50,12 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
-        if let measurementPoint = MeasurementPoint(peripheral: peripheral, advertisementData: advertisementData, RSSI: RSSI) {
+        updateMeasurementPoints(advertisementData: advertisementData, rssi: RSSI)
+    }
+    
+    func updateMeasurementPoints (advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        
+        if let measurementPoint = MeasurementPoint(advertisementData: advertisementData, RSSI: RSSI) {
             
             if let index = measurementPoints.index(where: {$0.nearableIdentifier == measurementPoint.nearableIdentifier}) {
                 

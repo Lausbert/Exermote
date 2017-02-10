@@ -103,12 +103,12 @@ class MeasurementPoint {
         return dict
     }
     
-    init?(peripheral: CBPeripheral, advertisementData: [String : Any], RSSI: NSNumber) {
+    init?(advertisementData: [String : Any], RSSI: NSNumber) {
         
         let data = advertisementData["kCBAdvDataManufacturerData"] as? Data
         
         self._companyIdentifier = data?.subdata(in: COMPANY_IDENTIFIER_RANGE).hexEncodedString()
-
+        
         guard self._companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE else {return nil}
             
         self._nearableIdentifier = data?.subdata(in: BEACON_IDENTIFIER_RANGE).hexEncodedString()

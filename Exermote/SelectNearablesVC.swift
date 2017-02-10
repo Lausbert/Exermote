@@ -70,7 +70,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
             RecordingManager.instance.attemptRecording() {success in
                 if success {
                     NotificationCenter.default.addObserver(self, selector: #selector(self.updateSwiftSpinner), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.hideSwiftSpinner), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.hideSwiftSpinner(_:)), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
                     self.showSwiftSpinner()
                 }
             }
@@ -103,10 +103,12 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         SwiftSpinner.sharedInstance.titleLabel.text = RecordingManager.instance.remainingRecordingDurationInMinutes
     }
     
-    func hideSwiftSpinner() {
+    func hideSwiftSpinner(_ notification: NSNotification) {
         SwiftSpinner.hide()
-        self.dismiss(animated: true, completion: nil)
-        if UserDefaults.standard.bool(forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT) {
+        self.dismiss(animated: false, completion: nil)
+        
+        let success = notification.userInfo?["success"] as! Bool
+        if success && UserDefaults.standard.bool(forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT) {
             self.iCloudAlert()
         }
     }
