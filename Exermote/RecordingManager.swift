@@ -138,7 +138,6 @@ class RecordingManager {
                 }
             }
         } else {
-            print("iCloud is NOT working!")
             return
         }
         

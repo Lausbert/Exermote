@@ -39,15 +39,15 @@ let RECORDING_FREQUENCY_OPTIONS = [1,5,10]
 
 // MARK: Color Constants
 
-let SHADOW_COLOR: CGFloat = 157.0/255.0
+let COLOR_SHADOW = UIColor(colorLiteralRed: 157.0/255.0, green: 157.0/255.0, blue: 157.0/255.0, alpha: 0.5).cgColor
 let COLOR_NOT_HIGHLIGHTED = UIColor(colorLiteralRed: 178.0/255.0, green: 198.0/255.0, blue: 193.0/255.0, alpha: 1)
 let COLOR_HIGHLIGHTED = UIColor(colorLiteralRed: 175.0/255.0, green: 163.0/255.0, blue: 118.0/255.0, alpha: 1)
 
 // MARK: UI Constants
 
-let MAXIMUM_UI_UPDATE_FREQUENCY = 5.0
+let UI_MAXIMUM_UPDATE_FREQUENCY = 5.0
 
-// MARK: Segue Identifier Constants
+// MARK: Segue Constants
 
 let SEGUE_SET_SETTINGS = "SetSettings"
 
@@ -68,7 +68,7 @@ let USER_DEFAULTS_RECORDED_DATA = ["NearableID",
 let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
 let USER_DEFAULTS_SHOW_ICLOUD_ALERT = "iCloudAlertWasShown"
 
-// MARK: Error Values
+// MARK: Error Value Constants
 
 let ERROR_VALUE_STRING = "NA"
 

@@ -15,6 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        let arguments = ProcessInfo.processInfo.arguments
+        let UITest = arguments.contains("UITest")
+        if UITest {
+            print("UITest")
+        }
+        
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if !launchedBefore  {
             UserDefaults.standard.set(true, forKey: "launchedBefore")

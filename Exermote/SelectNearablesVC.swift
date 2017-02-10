@@ -14,6 +14,8 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: viewDidLoad() & viewWillAppear
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,8 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
+    // MARK: tableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return BLEManager.instance.measurementPoints.count
@@ -59,12 +63,14 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         self.tableView.reloadData()
     }
     
+    // MARK: Navigation
+    
     func leftBarButtonItemPressed() {
         if isAnyNearableSelected() {
             RecordingManager.instance.attemptRecording() {success in
                 if success {
                     NotificationCenter.default.addObserver(self, selector: #selector(self.updateSwiftSpinner), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.recordingStopped), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.hideSwiftSpinner), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
                     self.showSwiftSpinner()
                 }
             }
@@ -73,21 +79,39 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
+    func isAnyNearableSelected() -> Bool {
+        let selectedMeasurementPoints = BLEManager.instance.measurementPoints.filter{$0.isSelected}
+        return !selectedMeasurementPoints.isEmpty
+    }
+    
     func rightBarButtonItemPressed() {
         performSegue(withIdentifier: SEGUE_SET_SETTINGS, sender: nil)
+    }
+    
+    // MARK: SwiftSpinner
+    
+    func showSwiftSpinner(){
+        SwiftSpinner.setTitleFont(UIFont(name: "NotoSans", size: 22.0))
+        let title = RecordingManager.instance.remainingRecordingDurationInMinutes
+        SwiftSpinner.show(title).addTapHandler({
+            SwiftSpinner.hide()
+            self.cancelAlert()
+        }, subtitle: "Tap to cancel recording")
     }
     
     func updateSwiftSpinner() {
         SwiftSpinner.sharedInstance.titleLabel.text = RecordingManager.instance.remainingRecordingDurationInMinutes
     }
     
-    func recordingStopped() {
+    func hideSwiftSpinner() {
         SwiftSpinner.hide()
         self.dismiss(animated: true, completion: nil)
         if UserDefaults.standard.bool(forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT) {
             self.iCloudAlert()
         }
     }
+    
+    // MARK: Alerts
     
     func cancelAlert() {
         let alert = UIAlertController(title: "Warning", message: "Are you sure you want to stop recording? All unsaved data will be lost.", preferredStyle: .alert)
@@ -100,24 +124,10 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showSwiftSpinner(){
-        SwiftSpinner.setTitleFont(UIFont(name: "NotoSans", size: 22.0))
-        let title = RecordingManager.instance.remainingRecordingDurationInMinutes
-        SwiftSpinner.show(title).addTapHandler({
-            SwiftSpinner.hide()
-            self.cancelAlert()
-        }, subtitle: "Tap to cancel recording")
-    }
-    
     func selectionAlert() {
         let alert = UIAlertController(title: "Warning", message: "Select at least one nearable to be recorded.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func isAnyNearableSelected() -> Bool {
-        let selectedMeasurementPoints = BLEManager.instance.measurementPoints.filter{$0.isSelected}
-        return !selectedMeasurementPoints.isEmpty
     }
     
     func iCloudAlert() {

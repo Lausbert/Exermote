@@ -53,9 +53,11 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         if let measurementPoint = MeasurementPoint(peripheral: peripheral, advertisementData: advertisementData, RSSI: RSSI) {
             
             if let index = measurementPoints.index(where: {$0.nearableIdentifier == measurementPoint.nearableIdentifier}) {
+                
                 measurementPoint.update(previousMeasurementPoint: measurementPoints[index])
                 measurementPoints[index] = measurementPoint
             } else {
+                
                 measurementPoints.append(measurementPoint)
                 measurementPoints.sort(by: {$0.nearableIdentifier < $1.nearableIdentifier})
             }
@@ -74,7 +76,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
                 
                 uiUpdateNeeded = false
                 
-                let delay = DispatchTime.now() + 1/MAXIMUM_UI_UPDATE_FREQUENCY
+                let delay = DispatchTime.now() + 1/UI_MAXIMUM_UPDATE_FREQUENCY
                 centralManagerQueue.asyncAfter(deadline: delay) {
                     self.uiUpdateNeeded = true
                 }

@@ -18,6 +18,8 @@ class SetSettingsVC: FormViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "back"), target: self, action: #selector(leftBarButtonItemPressed))
         
+        // MARK: tableView
+        
         form = Section("Recording Duration and Frequency")
             <<< CustomSliderRow(){
                 $0.title = "Duration [min]"
@@ -95,6 +97,8 @@ class SetSettingsVC: FormViewController {
             }
     }
     
+    // MARK: Navigation
+    
     func leftBarButtonItemPressed() {
         if isAnyDataSelected() {
             _ = navigationController?.popViewController(animated: true)
@@ -102,6 +106,15 @@ class SetSettingsVC: FormViewController {
             selectionAlert()
         }
     }
+    
+    func isAnyDataSelected() -> Bool {
+        for key in USER_DEFAULTS_RECORDED_DATA {
+            if UserDefaults.standard.bool(forKey: key) {return true}
+        }
+        return false
+    }
+    
+    // MARK: Alerts
     
     func frequencyAlert() {
         let alert = UIAlertController(title: "Notification", message: "Please be aware, that mentioned recording frequency is not necessarily equal to sending frequeny of your nearables. The latter could be changed in the official ESTIMOTE Application.", preferredStyle: .actionSheet)
@@ -115,12 +128,5 @@ class SetSettingsVC: FormViewController {
         let alert = UIAlertController(title: "Warning", message: "Select at least one data property to be recorded.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func isAnyDataSelected() -> Bool {
-        for key in USER_DEFAULTS_RECORDED_DATA {
-            if UserDefaults.standard.bool(forKey: key) {return true}
-        }
-        return false
     }
 }
