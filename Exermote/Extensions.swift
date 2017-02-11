@@ -44,3 +44,9 @@ extension UIBarButtonItem { //credits to Jovan Stankovic and Mihriban Minaz
         return barButtonItem
     }
 }
+
+extension Collection where Indices.Iterator.Element == Index { //credits to nkukushkin http://stackoverflow.com/questions/25329186/safe-bounds-checked-array-lookup-in-swift-through-optional-bindings
+    subscript (safe index: Index) -> Generator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}

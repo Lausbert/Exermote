@@ -39,7 +39,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let measurementPoint = BLEManager.instance.measurementPoints[indexPath.row]
+        guard let measurementPoint = BLEManager.instance.measurementPoints[safe: indexPath.row] else {return MeasurementCell()}
         if let cell = self.tableView.dequeueReusableCell(withIdentifier: "measurementCell") as? MeasurementCell {
             cell.configureCell(measurementPoint: measurementPoint)
             return cell
@@ -49,13 +49,13 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let measurementPoint = BLEManager.instance.measurementPoints[indexPath.row]
+        guard let measurementPoint = BLEManager.instance.measurementPoints[safe: indexPath.row] else {return}
         measurementPoint.wasSelected()
         tableView.cellForRow(at: indexPath)?.setSelected(measurementPoint.isSelected, animated: false)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let measurementPoint = BLEManager.instance.measurementPoints[indexPath.row]
+        guard let measurementPoint = BLEManager.instance.measurementPoints[safe: indexPath.row] else {return}
         cell.setSelected(measurementPoint.isSelected, animated: false)
     }
     
