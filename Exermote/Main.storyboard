@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PLK-4q-Ant">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PLK-4q-Ant">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +29,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8oe-QH-LHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="269"/>
+            <point key="canvasLocation" x="2316" y="-483"/>
         </scene>
         <!--Select Nearable(s)-->
         <scene sceneID="s8c-mq-07b">
@@ -73,7 +73,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-nT-VJ9">
-                                                                                    <rect key="frame" x="8" y="34.5" width="103.5" height="8.5"/>
+                                                                                    <rect key="frame" x="8" y="34" width="103.5" height="8.5"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="xxxxxxxxxxxxxxxx">
                                                                                             <attributes>
@@ -266,11 +266,68 @@
                     <connections>
                         <outlet property="tableView" destination="70R-0Z-irr" id="kag-7d-zxc"/>
                         <segue destination="2Ns-5O-3OH" kind="show" identifier="SetSettings" id="DhZ-hb-An0"/>
+                        <segue destination="S1T-rg-2R3" kind="show" identifier="RecordingWorkout" id="SYV-2Z-IRa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6io-FN-V6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2316" y="269"/>
+        </scene>
+        <!--Recording Workout-->
+        <scene sceneID="cVD-YU-LFF">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="S1T-rg-2R3" customClass="RecordingWorkoutVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WHk-mn-maV"/>
+                        <viewControllerLayoutGuide type="bottom" id="SE5-kd-8X2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HCC-FN-W6v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fpv-5t-1Pi">
+                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="measurementCell" rowHeight="160" id="jb8-mH-zm2">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jb8-mH-zm2" id="Pib-r3-NWa">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWu-8g-20a" customClass="MaterialView" customModule="Exermote" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="4" width="359" height="152"/>
+                                                    <color key="backgroundColor" red="0.69646865130000002" green="0.77690011260000003" blue="0.75862854719999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="aWu-8g-20a" secondAttribute="trailing" constant="8" id="73p-LD-WJ2"/>
+                                                <constraint firstItem="aWu-8g-20a" firstAttribute="leading" secondItem="Pib-r3-NWa" secondAttribute="leading" constant="8" id="bsS-Ww-Dqf"/>
+                                                <constraint firstItem="aWu-8g-20a" firstAttribute="top" secondItem="Pib-r3-NWa" secondAttribute="top" constant="4" id="fcA-XY-7vv"/>
+                                                <constraint firstAttribute="bottom" secondItem="aWu-8g-20a" secondAttribute="bottom" constant="4" id="iMm-1y-YRj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ContainerView" destination="aWu-8g-20a" id="8Rs-za-vea"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fpv-5t-1Pi" firstAttribute="top" secondItem="WHk-mn-maV" secondAttribute="bottom" constant="4" id="B2U-dl-E4K"/>
+                            <constraint firstAttribute="trailing" secondItem="fpv-5t-1Pi" secondAttribute="trailing" id="bmg-8C-rXr"/>
+                            <constraint firstItem="SE5-kd-8X2" firstAttribute="top" secondItem="fpv-5t-1Pi" secondAttribute="bottom" id="iWv-gc-XK9"/>
+                            <constraint firstItem="fpv-5t-1Pi" firstAttribute="leading" secondItem="HCC-FN-W6v" secondAttribute="leading" id="m1Q-jq-FQ9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Recording Workout" id="yjZ-kr-laX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eA5-YP-QIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1524" y="268.51574212893553"/>
         </scene>
         <!--Set Settings-->
         <scene sceneID="mqi-7l-KBk">
@@ -289,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krV-UO-Zdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="-474"/>
+            <point key="canvasLocation" x="3102" y="269"/>
         </scene>
     </scenes>
 </document>

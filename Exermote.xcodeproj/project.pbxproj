@@ -31,6 +31,7 @@
 		8DCF1E9C1E2A59DE00AEAAE7 /* MeasurementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */; };
 		8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDB58841E428E6000ECB970 /* RecordingManager.swift */; };
 		8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */; };
+		8DFA7C461E56144D004C99BC /* RecordingWorkoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA7C451E56144D004C99BC /* RecordingWorkoutVC.swift */; };
 		F540B28759D9673FD5FF2360 /* Pods_Exermote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B08DF01FA28C168D23CA723 /* Pods_Exermote.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementCell.swift; sourceTree = "<group>"; };
 		8DDB58841E428E6000ECB970 /* RecordingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
 		8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSettingsVC.swift; sourceTree = "<group>"; };
+		8DFA7C451E56144D004C99BC /* RecordingWorkoutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingWorkoutVC.swift; sourceTree = "<group>"; };
 		A773DCEB468BDC4FE4FEAF09 /* Pods-ExermoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteTests/Pods-ExermoteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9CEA1C94B03B805D7385371 /* Pods-ExermoteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteUITests/Pods-ExermoteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D672B5240C2C0AE085B81565 /* Pods-Exermote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exermote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Exermote/Pods-Exermote.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				8DCF1E8C1E2A497100AEAAE7 /* SelectNearablesVC.swift */,
 				8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */,
+				8DFA7C451E56144D004C99BC /* RecordingWorkoutVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DFA7C461E56144D004C99BC /* RecordingWorkoutVC.swift in Sources */,
 				8DCF1E8B1E2A496900AEAAE7 /* MeasurementPoint.swift in Sources */,
 				8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */,
 				8DCF1E851E2A495800AEAAE7 /* Extensions.swift in Sources */,
@@ -719,7 +723,7 @@
 				INFOPLIST_FILE = Exermote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lausbert.Testmote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lausbert.Exermote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -737,7 +741,7 @@
 				INFOPLIST_FILE = Exermote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lausbert.Testmote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lausbert.Exermote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

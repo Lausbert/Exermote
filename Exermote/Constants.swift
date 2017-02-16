@@ -50,6 +50,7 @@ let UI_MAXIMUM_UPDATE_FREQUENCY = 5.0
 // MARK: Segue Constants
 
 let SEGUE_SET_SETTINGS = "SetSettings"
+let SEGUE_RECORDING_WORKOUT = "RecordingWorkout"
 
 // MARK: User Defaults
 

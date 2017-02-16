@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftSpinner
 
 class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -67,13 +66,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func leftBarButtonItemPressed() {
         if isAnyNearableSelected() {
-            RecordingManager.instance.attemptRecording() {success in
-                if success {
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.updateSwiftSpinner), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.hideSwiftSpinner(_:)), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
-                    self.showSwiftSpinner()
-                }
-            }
+            performSegue(withIdentifier: SEGUE_RECORDING_WORKOUT, sender: nil)
         } else {
             selectionAlert()
         }
@@ -88,55 +81,12 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         performSegue(withIdentifier: SEGUE_SET_SETTINGS, sender: nil)
     }
     
-    // MARK: SwiftSpinner
-    
-    func showSwiftSpinner(){
-        SwiftSpinner.setTitleFont(UIFont(name: "NotoSans", size: 22.0))
-        let title = RecordingManager.instance.remainingRecordingDurationInMinutes
-        SwiftSpinner.show(title).addTapHandler({
-            SwiftSpinner.hide()
-            self.cancelAlert()
-        }, subtitle: "Tap to cancel recording")
-    }
-    
-    func updateSwiftSpinner() {
-        SwiftSpinner.sharedInstance.titleLabel.text = RecordingManager.instance.remainingRecordingDurationInMinutes
-    }
-    
-    func hideSwiftSpinner(_ notification: NSNotification) {
-        SwiftSpinner.hide()
-        self.dismiss(animated: false, completion: nil)
         
-        let success = notification.userInfo?["success"] as! Bool
-        if success && UserDefaults.standard.bool(forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT) {
-            self.iCloudAlert()
-        }
-    }
-    
     // MARK: Alerts
-    
-    func cancelAlert() {
-        let alert = UIAlertController(title: "Warning", message: "Are you sure you want to stop recording? All unsaved data will be lost.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
-            self.showSwiftSpinner()
-        }))
-        alert.addAction(UIAlertAction(title: "Stop", style: .destructive, handler: { (action) in
-            RecordingManager.instance.stopRecording(success: false)
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
     
     func selectionAlert() {
         let alert = UIAlertController(title: "Warning", message: "Select at least one nearable to be recorded.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func iCloudAlert() {
-        let alert = UIAlertController(title: "Notification", message: "The recorded data will now be uploaded to your iCLoud drive. Please check it on your MacBook or on iCloud.com.", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
-            UserDefaults.standard.set(false, forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT)
-        }))
         self.present(alert, animated: true, completion: nil)
     }
 }
