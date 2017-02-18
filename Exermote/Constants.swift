@@ -47,10 +47,13 @@ let COLOR_HIGHLIGHTED = UIColor(colorLiteralRed: 175.0/255.0, green: 163.0/255.0
 
 let UI_MAXIMUM_UPDATE_FREQUENCY = 5.0
 
-// MARK: Segue Constants
+// MARK: Storyboard and Transition Constants
 
-let SEGUE_SET_SETTINGS = "SetSettings"
-let SEGUE_RECORDING_WORKOUT = "RecordingWorkout"
+let STORYBOARD_ID_RECORDING_WORKOUT_VC = "recordingWorkoutVC"
+let STORYBOARD_ID_SET_SETTINGS_VC = "setSettingsVC"
+let STORYBAORD_ID_SELECT_NEARABLES_VC = "selectNearablesVC"
+let TRANSITION_TYPE = kCATransitionMoveIn
+let TRANSITION_DURATION = 0.5
 
 // MARK: User Defaults
 

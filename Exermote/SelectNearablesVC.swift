@@ -66,7 +66,8 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func leftBarButtonItemPressed() {
         if isAnyNearableSelected() {
-            performSegue(withIdentifier: SEGUE_RECORDING_WORKOUT, sender: nil)
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_RECORDING_WORKOUT_VC) as UIViewController
+            self.navigationController?.push(viewController: viewController, transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromLeft, duration: TRANSITION_DURATION)
         } else {
             selectionAlert()
         }
@@ -78,7 +79,8 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func rightBarButtonItemPressed() {
-        performSegue(withIdentifier: SEGUE_SET_SETTINGS, sender: nil)
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_SET_SETTINGS_VC) as UIViewController
+        self.navigationController?.push(viewController: viewController, transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromRight, duration: TRANSITION_DURATION)
     }
     
         

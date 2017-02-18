@@ -101,7 +101,7 @@ class SetSettingsVC: FormViewController {
     
     func leftBarButtonItemPressed() {
         if isAnyDataSelected() {
-            _ = navigationController?.popViewController(animated: true)
+            self.navigationController?.pop(transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromLeft, duration: TRANSITION_DURATION)
         } else {
             selectionAlert()
         }

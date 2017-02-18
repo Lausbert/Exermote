@@ -50,3 +50,25 @@ extension Collection where Indices.Iterator.Element == Index { //credits to nkuk
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+extension UINavigationController { //credits to Luca Davanzo http://stackoverflow.com/a/36428937/5722895
+    
+    func pop(transitionType type: String = kCATransitionPush, transitionSubType subType: String = kCATransitionFromRight, duration: CFTimeInterval = 0.3) {
+        self.addTransition(transitionType: type, transitionSubType: subType, duration: duration)
+        self.popViewController(animated: false)
+    }
+    
+    func push(viewController vc: UIViewController, transitionType type: String = kCATransitionPush, transitionSubType subType: String = kCATransitionFromRight, duration: CFTimeInterval = 0.3) {
+        self.addTransition(transitionType: type, transitionSubType: subType, duration: duration)
+        self.pushViewController(vc, animated: false)
+    }
+    
+    private func addTransition(transitionType type: String = kCATransitionPush, transitionSubType subType: String = kCATransitionFromRight, duration: CFTimeInterval = 0.3) {
+        let transition = CATransition()
+        transition.duration = duration
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = type
+        transition.subtype = subType
+        self.view.layer.add(transition, forKey: nil)
+    }
+}

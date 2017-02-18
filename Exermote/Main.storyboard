@@ -34,7 +34,7 @@
         <!--Select Nearable(s)-->
         <scene sceneID="s8c-mq-07b">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Jhz-2t-Rna" customClass="SelectNearablesVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectNearablesVC" automaticallyAdjustsScrollViewInsets="NO" id="Jhz-2t-Rna" customClass="SelectNearablesVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MW5-XV-Pf0"/>
                         <viewControllerLayoutGuide type="bottom" id="9ib-I2-yV2"/>
@@ -73,7 +73,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-nT-VJ9">
-                                                                                    <rect key="frame" x="8" y="34" width="103.5" height="8.5"/>
+                                                                                    <rect key="frame" x="8" y="34.5" width="103.5" height="8.5"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="xxxxxxxxxxxxxxxx">
                                                                                             <attributes>
@@ -265,8 +265,8 @@
                     <navigationItem key="navigationItem" title="Select Nearable(s)" id="db6-MN-91G"/>
                     <connections>
                         <outlet property="tableView" destination="70R-0Z-irr" id="kag-7d-zxc"/>
-                        <segue destination="2Ns-5O-3OH" kind="show" identifier="SetSettings" id="DhZ-hb-An0"/>
-                        <segue destination="S1T-rg-2R3" kind="show" identifier="RecordingWorkout" id="SYV-2Z-IRa"/>
+                        <segue destination="2Ns-5O-3OH" kind="show" identifier="" id="DhZ-hb-An0"/>
+                        <segue destination="S1T-rg-2R3" kind="show" identifier="" id="SYV-2Z-IRa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6io-FN-V6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -276,7 +276,7 @@
         <!--Recording Workout-->
         <scene sceneID="cVD-YU-LFF">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="S1T-rg-2R3" customClass="RecordingWorkoutVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recordingWorkoutVC" automaticallyAdjustsScrollViewInsets="NO" id="S1T-rg-2R3" customClass="RecordingWorkoutVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WHk-mn-maV"/>
                         <viewControllerLayoutGuide type="bottom" id="SE5-kd-8X2"/>
@@ -286,7 +286,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fpv-5t-1Pi">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="68" width="375" height="511"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="measurementCell" rowHeight="160" id="jb8-mH-zm2">
@@ -314,16 +314,39 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElU-hf-2bI" customClass="MaterialView" customModule="Exermote" customModuleProvider="target">
+                                <rect key="frame" x="8" y="583" width="359" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="WTm-gh-zOG">
+                                        <rect key="frame" x="154" y="22" width="50" height="35"/>
+                                        <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.69857221841812134" green="0.77479654550552368" blue="0.75648146867752075" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="WTm-gh-zOG" firstAttribute="centerY" secondItem="ElU-hf-2bI" secondAttribute="centerY" id="GB0-9l-BGL"/>
+                                    <constraint firstAttribute="height" constant="80" id="dm6-OM-4CU"/>
+                                    <constraint firstItem="WTm-gh-zOG" firstAttribute="centerX" secondItem="ElU-hf-2bI" secondAttribute="centerX" id="fgp-eM-NmR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fpv-5t-1Pi" firstAttribute="top" secondItem="WHk-mn-maV" secondAttribute="bottom" constant="4" id="B2U-dl-E4K"/>
+                            <constraint firstItem="SE5-kd-8X2" firstAttribute="top" secondItem="ElU-hf-2bI" secondAttribute="bottom" constant="4" id="FP5-XB-9xs"/>
+                            <constraint firstItem="ElU-hf-2bI" firstAttribute="leading" secondItem="HCC-FN-W6v" secondAttribute="leading" constant="8" id="GbE-hF-Yyw"/>
+                            <constraint firstAttribute="trailing" secondItem="ElU-hf-2bI" secondAttribute="trailing" constant="8" id="Vmj-as-kSE"/>
                             <constraint firstAttribute="trailing" secondItem="fpv-5t-1Pi" secondAttribute="trailing" id="bmg-8C-rXr"/>
-                            <constraint firstItem="SE5-kd-8X2" firstAttribute="top" secondItem="fpv-5t-1Pi" secondAttribute="bottom" id="iWv-gc-XK9"/>
+                            <constraint firstItem="ElU-hf-2bI" firstAttribute="top" secondItem="fpv-5t-1Pi" secondAttribute="bottom" constant="4" id="bvE-ym-rZW"/>
                             <constraint firstItem="fpv-5t-1Pi" firstAttribute="leading" secondItem="HCC-FN-W6v" secondAttribute="leading" id="m1Q-jq-FQ9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recording Workout" id="yjZ-kr-laX"/>
+                    <connections>
+                        <outlet property="remaingRecordingDurationLbl" destination="WTm-gh-zOG" id="f1H-mp-0ae"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eA5-YP-QIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -332,7 +355,7 @@
         <!--Set Settings-->
         <scene sceneID="mqi-7l-KBk">
             <objects>
-                <viewController id="2Ns-5O-3OH" customClass="SetSettingsVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setSettingsVC" id="2Ns-5O-3OH" customClass="SetSettingsVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XKN-VY-eXL"/>
                         <viewControllerLayoutGuide type="bottom" id="xxa-Wk-QtF"/>
