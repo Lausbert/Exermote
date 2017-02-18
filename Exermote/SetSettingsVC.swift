@@ -41,59 +41,26 @@ class SetSettingsVC: FormViewController {
                     UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
             }
             +++ Section("Recorded Data")
-            <<< CustomCheckRow(){
-                $0.title = "Nearable ID"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[0])
+            <<< CustomMultipleSelectorRow<String>(){
+                let title = "Nearable Data"
+                $0.title = title
+                $0.selectorTitle = title
+                $0.options = USER_DEFAULTS_RECORDED_DATA
+                var values: [String] = []
+                for key in USER_DEFAULTS_RECORDED_DATA {
+                    if UserDefaults.standard.bool(forKey: key) {
+                        values.append(key)
+                    }
+                }
+                $0.value = Set(values)
                 }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[0])
-            }
-            <<< CustomCheckRow(){
-                $0.title = "Frequency"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[1])
-                }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[1])
-            }
-            <<< CustomCheckRow(){
-                $0.title = "RSSI"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[2])
-                }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[2])
-            }
-            <<< CustomCheckRow(){
-                $0.title = "X Acceleration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[3])
-                }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[3])
-            }
-            <<< CustomCheckRow(){
-                $0.title = "Y Acceleration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[4])
-                }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[4])
-            }
-            <<< CustomCheckRow(){
-                $0.title = "Z Acceleration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[5])
-                }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[5])
-            }
-            <<< CustomCheckRow(){
-                $0.title = "Current State Duration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[6])
-                }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[6])
-            }
-            <<< CustomCheckRow(){
-                $0.title = "Previous State Duration"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[7])
-                }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[7])
-            }
-            <<< CustomCheckRow(){
-                $0.title = "Time"
-                $0.value = UserDefaults.standard.bool(forKey: USER_DEFAULTS_RECORDED_DATA[8])
-                }.onChange {
-                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDED_DATA[8])
+                    for key in USER_DEFAULTS_RECORDED_DATA {
+                        if ($0.value?.contains(key))! {
+                            UserDefaults.standard.set(true, forKey: key)
+                        } else {
+                            UserDefaults.standard.set(false, forKey: key)
+                        }
+                    }
             }
     }
     

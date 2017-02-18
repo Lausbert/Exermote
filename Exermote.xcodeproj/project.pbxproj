@@ -11,6 +11,9 @@
 		602302F98BA46D6F97EDFEDD /* Pods_ExermoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA7585951A667D34D6598F2 /* Pods_ExermoteUITests.framework */; };
 		8D3852CD1E3CCF8C003B2738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */; };
 		8D69FD731E40D4840091A651 /* CustomCheckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FD721E40D4840091A651 /* CustomCheckRow.swift */; };
+		8D7B94C31E58D68C000E6C7E /* CustomMultipleSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C21E58D68C000E6C7E /* CustomMultipleSelectorRow.swift */; };
+		8D7B94C61E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C51E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift */; };
+		8D7B94C81E58DB1B000E6C7E /* CustomListCheckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C71E58DB1B000E6C7E /* CustomListCheckRow.swift */; };
 		8DA8AC661E43A17300B56586 /* CustomSegmentedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */; };
 		8DB8F9071E3FC00D004720C9 /* CustomSliderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */; };
 		8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */; };
@@ -59,6 +62,9 @@
 		8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D69FD721E40D4840091A651 /* CustomCheckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCheckRow.swift; sourceTree = "<group>"; };
 		8D79BA461E479D7600EBEE7C /* Exermote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exermote.entitlements; sourceTree = "<group>"; };
+		8D7B94C21E58D68C000E6C7E /* CustomMultipleSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMultipleSelectorRow.swift; sourceTree = "<group>"; };
+		8D7B94C51E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMultipleSelectorRowViewController.swift; sourceTree = "<group>"; };
+		8D7B94C71E58DB1B000E6C7E /* CustomListCheckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomListCheckRow.swift; sourceTree = "<group>"; };
 		8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedRow.swift; sourceTree = "<group>"; };
 		8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderRow.swift; sourceTree = "<group>"; };
 		8DCF1E4E1E2A48C600AEAAE7 /* Exermote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exermote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +151,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8D714C5C1E58E40900F8AC53 /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				8D69FD721E40D4840091A651 /* CustomCheckRow.swift */,
+			);
+			name = Unused;
+			sourceTree = "<group>";
+		};
 		8DCF1E451E2A48C600AEAAE7 = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +184,7 @@
 		8DCF1E501E2A48C600AEAAE7 /* Exermote */ = {
 			isa = PBXGroup;
 			children = (
+				8D714C5C1E58E40900F8AC53 /* Unused */,
 				8D79BA461E479D7600EBEE7C /* Exermote.entitlements */,
 				8DCF1E921E2A524B00AEAAE7 /* Ressources */,
 				8DCF1E7F1E2A490800AEAAE7 /* Utilities */,
@@ -236,8 +251,10 @@
 				8DCF1E901E2A511800AEAAE7 /* MaterialView.swift */,
 				8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */,
 				8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */,
-				8D69FD721E40D4840091A651 /* CustomCheckRow.swift */,
 				8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */,
+				8D7B94C21E58D68C000E6C7E /* CustomMultipleSelectorRow.swift */,
+				8D7B94C51E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift */,
+				8D7B94C71E58DB1B000E6C7E /* CustomListCheckRow.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -566,12 +583,15 @@
 				8DA8AC661E43A17300B56586 /* CustomSegmentedRow.swift in Sources */,
 				8DCF1E8D1E2A497100AEAAE7 /* SelectNearablesVC.swift in Sources */,
 				8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */,
+				8D7B94C61E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift in Sources */,
 				8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */,
 				8DCF1E911E2A511800AEAAE7 /* MaterialView.swift in Sources */,
 				8DB8F9071E3FC00D004720C9 /* CustomSliderRow.swift in Sources */,
+				8D7B94C81E58DB1B000E6C7E /* CustomListCheckRow.swift in Sources */,
 				8DCF1E9C1E2A59DE00AEAAE7 /* MeasurementCell.swift in Sources */,
 				8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */,
 				8D69FD731E40D4840091A651 /* CustomCheckRow.swift in Sources */,
+				8D7B94C31E58D68C000E6C7E /* CustomMultipleSelectorRow.swift in Sources */,
 				8DCF1E871E2A495E00AEAAE7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

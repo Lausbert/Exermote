@@ -73,7 +73,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-nT-VJ9">
-                                                                                    <rect key="frame" x="8" y="34.5" width="103.5" height="8.5"/>
+                                                                                    <rect key="frame" x="8" y="34" width="103.5" height="8.5"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="xxxxxxxxxxxxxxxx">
                                                                                             <attributes>
@@ -265,8 +265,8 @@
                     <navigationItem key="navigationItem" title="Select Nearable(s)" id="db6-MN-91G"/>
                     <connections>
                         <outlet property="tableView" destination="70R-0Z-irr" id="kag-7d-zxc"/>
-                        <segue destination="2Ns-5O-3OH" kind="show" identifier="" id="DhZ-hb-An0"/>
-                        <segue destination="S1T-rg-2R3" kind="show" identifier="" id="SYV-2Z-IRa"/>
+                        <segue destination="2Ns-5O-3OH" kind="show" identifier="setSettings" id="DhZ-hb-An0"/>
+                        <segue destination="S1T-rg-2R3" kind="show" identifier="recordingWorkout" id="SYV-2Z-IRa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6io-FN-V6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -318,7 +318,7 @@
                                 <rect key="frame" x="8" y="583" width="359" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="WTm-gh-zOG">
-                                        <rect key="frame" x="154" y="22" width="50" height="35"/>
+                                        <rect key="frame" x="154" y="22.5" width="50" height="34.5"/>
                                         <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
