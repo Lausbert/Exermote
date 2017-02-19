@@ -47,11 +47,17 @@ let COLOR_HIGHLIGHTED = UIColor(colorLiteralRed: 175.0/255.0, green: 163.0/255.0
 
 let UI_MAXIMUM_UPDATE_FREQUENCY = 5.0
 
-// MARK: Storyboard and Transition Constants
+// MARK: Segues, Storyboard and Transition Constants
 
+let SEGUE_SET_SETTINGS = "setSettings"
+let SEGUE_RECORDING_WORKOUT = "recordingWorkout"
+let SEGUE_SELECT_EXERCISE = "selectExercise"
+let SEGUE_MANAGE_EXERCISE = "manageExercise"
 let STORYBOARD_ID_RECORDING_WORKOUT_VC = "recordingWorkoutVC"
 let STORYBOARD_ID_SET_SETTINGS_VC = "setSettingsVC"
 let STORYBAORD_ID_SELECT_NEARABLES_VC = "selectNearablesVC"
+let STORYBOARD_ID_SELECT_EXERCISE_VC = "selectExerciseVC"
+let STORYBOARD_ID_MANAGE_EXERCISE_VC = "manageExerciseVC"
 let TRANSITION_TYPE = kCATransitionMoveIn
 let TRANSITION_DURATION = 0.5
 

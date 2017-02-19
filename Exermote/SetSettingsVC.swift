@@ -20,7 +20,12 @@ class SetSettingsVC: FormViewController {
         
         // MARK: tableView
         
-        form = Section("Recording Duration and Frequency")
+        form = Section("Exercises")
+            <<< ButtonRow() {
+                $0.title = "Manage Exercises"
+                $0.presentationMode = .segueName(segueName: SEGUE_SELECT_EXERCISE, onDismiss: nil)
+            }
+            +++ Section("Recording Duration and Frequency")
             <<< CustomSliderRow(){
                 $0.title = "Duration [min]"
                 $0.minimumValue = Float(RECORDING_DURATION_MINIMUM)

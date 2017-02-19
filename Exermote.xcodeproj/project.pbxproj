@@ -10,6 +10,7 @@
 		53B970FD509D377F359F3770 /* Pods_ExermoteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75513CC36D974CC7A85B794A /* Pods_ExermoteTests.framework */; };
 		602302F98BA46D6F97EDFEDD /* Pods_ExermoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA7585951A667D34D6598F2 /* Pods_ExermoteUITests.framework */; };
 		8D3852CD1E3CCF8C003B2738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */; };
+		8D5659EA1E591357003078FE /* ExerciseVCs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5659E91E591357003078FE /* ExerciseVCs.swift */; };
 		8D69FD731E40D4840091A651 /* CustomCheckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69FD721E40D4840091A651 /* CustomCheckRow.swift */; };
 		8D7B94C31E58D68C000E6C7E /* CustomMultipleSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C21E58D68C000E6C7E /* CustomMultipleSelectorRow.swift */; };
 		8D7B94C61E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C51E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift */; };
@@ -60,6 +61,7 @@
 		3B08DF01FA28C168D23CA723 /* Pods_Exermote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exermote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75513CC36D974CC7A85B794A /* Pods_ExermoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D5659E91E591357003078FE /* ExerciseVCs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseVCs.swift; sourceTree = "<group>"; };
 		8D69FD721E40D4840091A651 /* CustomCheckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCheckRow.swift; sourceTree = "<group>"; };
 		8D79BA461E479D7600EBEE7C /* Exermote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exermote.entitlements; sourceTree = "<group>"; };
 		8D7B94C21E58D68C000E6C7E /* CustomMultipleSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMultipleSelectorRow.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				8DCF1E8C1E2A497100AEAAE7 /* SelectNearablesVC.swift */,
 				8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */,
 				8DFA7C451E56144D004C99BC /* RecordingWorkoutVC.swift */,
+				8D5659E91E591357003078FE /* ExerciseVCs.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				8DCF1E8B1E2A496900AEAAE7 /* MeasurementPoint.swift in Sources */,
 				8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */,
 				8DCF1E851E2A495800AEAAE7 /* Extensions.swift in Sources */,
+				8D5659EA1E591357003078FE /* ExerciseVCs.swift in Sources */,
 				8DA8AC661E43A17300B56586 /* CustomSegmentedRow.swift in Sources */,
 				8DCF1E8D1E2A497100AEAAE7 /* SelectNearablesVC.swift in Sources */,
 				8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */,
