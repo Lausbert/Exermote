@@ -26,7 +26,7 @@ class SetSettingsVC: FormViewController {
                 $0.presentationMode = .segueName(segueName: SEGUE_SELECT_EXERCISE, onDismiss: nil)
             }
             +++ Section("Recording Duration and Frequency")
-            <<< CustomSliderRow(){
+            <<< SliderRow(){
                 $0.title = "Duration [min]"
                 $0.minimumValue = Float(RECORDING_DURATION_MINIMUM)
                 $0.maximumValue = Float(RECORDING_DURATION_MAXIMUM)
@@ -35,7 +35,7 @@ class SetSettingsVC: FormViewController {
             }.onChange {
                     UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDING_DURATION)
             }
-            <<< CustomSegmentedRow<Int>(){
+            <<< SegmentedRow<Int>(){
                 $0.title = "Frequency [Hz]"
                 $0.options = RECORDING_FREQUENCY_OPTIONS
                 $0.value = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)

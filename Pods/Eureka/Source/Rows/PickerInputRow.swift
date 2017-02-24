@@ -1,4 +1,4 @@
-//  PickerRow.swift
+//  PickerInputRow.swift
 //  Eureka ( https://github.com/xmartlabs/Eureka )
 //
 //  Copyright (c) 2016 Xmartlabs SRL ( http://xmartlabs.com )
@@ -24,23 +24,19 @@
 
 import Foundation
 
-//MARK: PickerCell
+//MARK: PickerInputCell
 
-open class PickerCell<T> : Cell<T>, CellType, UIPickerViewDataSource, UIPickerViewDelegate where T: Equatable{
+open class PickerInputCell<T: Equatable> : Cell<T>, CellType, UIPickerViewDataSource, UIPickerViewDelegate where T: Equatable, T: InputTypeInitiable {
     
     public var picker: UIPickerView
     
-    private var pickerRow : _PickerRow<T>? { return row as? _PickerRow<T> }
+    private var pickerInputRow : _PickerInputRow<T>? { return row as? _PickerInputRow<T> }
     
     public required init(style: UITableViewCellStyle, reuseIdentifier: String?){
         self.picker = UIPickerView()
         self.picker.translatesAutoresizingMaskIntoConstraints = false
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        self.contentView.addSubview(self.picker)
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[picker]-0-|", options: [], metrics: nil, views: ["picker": self.picker]))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[picker]-0-|", options: [], metrics: nil, views: ["picker": self.picker]))
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -62,12 +58,43 @@ open class PickerCell<T> : Cell<T>, CellType, UIPickerViewDataSource, UIPickerVi
     
     open override func update(){
         super.update()
-        textLabel?.text = nil
-        detailTextLabel?.text = nil
+        selectionStyle = row.isDisabled ? .none : .default
+        
+        if row.title?.isEmpty == false {
+            detailTextLabel?.text = row.displayValueFor?(row.value) ?? (row as? NoValueDisplayTextConformance)?.noValueDisplayText
+        }
+        else {
+            textLabel?.text = row.displayValueFor?(row.value) ?? (row as? NoValueDisplayTextConformance)?.noValueDisplayText
+            detailTextLabel?.text = nil
+        }
+        
+        textLabel?.textColor = row.isDisabled ? .gray : .black
+        if row.isHighlighted {
+            textLabel?.textColor = tintColor
+        }
+        
         picker.reloadAllComponents()
-        if let selectedValue = pickerRow?.value, let index = pickerRow?.options.index(of: selectedValue){
+        if let selectedValue = pickerInputRow?.value, let index = pickerInputRow?.options.index(of: selectedValue){
             picker.selectRow(index, inComponent: 0, animated: true)
         }
+        
+    }
+    
+    open override func didSelect() {
+        super.didSelect()
+        row.deselect()
+    }
+    
+    open override var inputView: UIView? {
+        return picker
+    }
+    
+    open override func cellCanBecomeFirstResponder() -> Bool {
+        return canBecomeFirstResponder
+    }
+    
+    override open var canBecomeFirstResponder: Bool {
+        return !row.isDisabled
     }
     
     open func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -75,34 +102,37 @@ open class PickerCell<T> : Cell<T>, CellType, UIPickerViewDataSource, UIPickerVi
     }
     
     open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerRow?.options.count ?? 0
+        return pickerInputRow?.options.count ?? 0
     }
     
     open func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerRow?.displayValueFor?(pickerRow?.options[row])
+        return pickerInputRow?.displayValueFor?(pickerInputRow?.options[row])
     }
     
-    open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if let picker = pickerRow, !picker.options.isEmpty {
-            picker.value = picker.options[row]
+    open func pickerView(_ pickerView: UIPickerView, didSelectRow rowNumber: Int, inComponent component: Int) {
+        if let picker = pickerInputRow, picker.options.count > rowNumber {
+            picker.value = picker.options[rowNumber]
+            update()
         }
     }
     
 }
 
-//MARK: PickerRow
+//MARK: PickerInputRow
 
-open class _PickerRow<T> : Row<PickerCell<T>> where T: Equatable{
+open class _PickerInputRow<T> : Row<PickerInputCell<T>>, NoValueDisplayTextConformance where T: Equatable, T: InputTypeInitiable {
+    open var noValueDisplayText: String? = nil
     
     open var options = [T]()
     
     required public init(tag: String?) {
         super.init(tag: tag)
+        
     }
 }
 
-/// A generic row where the user can pick an option from a picker view
-public final class PickerRow<T>: _PickerRow<T>, RowType where T: Equatable {
+/// A generic row where the user can pick an option from a picker view displayed in the keyboard area
+public final class PickerInputRow<T>: _PickerInputRow<T>, RowType where T: Equatable, T: InputTypeInitiable {
     
     required public init(tag: String?) {
         super.init(tag: tag)

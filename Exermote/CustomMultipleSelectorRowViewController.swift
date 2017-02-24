@@ -94,5 +94,5 @@ open class _CustomMultipleSelectorViewController<T:Hashable, Row: SelectableRowT
 }
 
 
-open class CustomMultipleSelectorViewController<T:Hashable> : _CustomMultipleSelectorViewController<T, CustomListCheckRow<T>> {
+open class CustomMultipleSelectorViewController<T:Hashable> : _CustomMultipleSelectorViewController<T, ListCheckRow<T>> {
 }
