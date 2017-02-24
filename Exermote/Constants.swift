@@ -61,22 +61,24 @@ let STORYBOARD_ID_MANAGE_EXERCISE_VC = "manageExerciseVC"
 let TRANSITION_TYPE = kCATransitionMoveIn
 let TRANSITION_DURATION = 0.5
 
-// MARK: User Defaults
+// MARK: User Defaults Constants
 
 let USER_DEFAULTS_RECORDING_DURATION = "recordingDuration"
 let USER_DEFAULTS_RECORDING_FREQUENCY = "recordingFrequency"
-let USER_DEFAULTS_RECORDED_DATA = ["NearableID",
-                                   "Frequency",
-                                   "Rssi",
-                                   "XAcceleration",
-                                   "YAcceleration",
-                                   "ZAcceleration",
-                                   "CurrentStateDuration",
-                                   "PreviousStateDuration",
-                                   "Time"]
+let USER_DEFAULTS_RECORDED_DATA = ["nearableID",
+                                   "frequency",
+                                   "rssi",
+                                   "xAcceleration",
+                                   "yAcceleration",
+                                   "zAcceleration",
+                                   "currentStateDuration",
+                                   "previousStateDuration",
+                                   "time"]
 
 let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
 let USER_DEFAULTS_SHOW_ICLOUD_ALERT = "iCloudAlertWasShown"
+
+let USER_DEFAULTS_EXERCISES = "exercises"
 
 // MARK: Error Value Constants
 
@@ -92,3 +94,13 @@ let NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED = "swiftSpinnerUp
 
 let CSV_DELIMETER = ","
 let CSV_LINE_BREAK = "\n"
+
+// MARK: Exercise Constants
+
+let EXERCISE_ATTRIBUTES = ["name",
+                           "maximumDuration",
+                           "minimumDuration",
+                           "firstHalfSecondHalfRatio",
+                           "repetitionBreakDuration",
+                           "setBreakDuration",
+                           "exerciseBreakDuration"]
