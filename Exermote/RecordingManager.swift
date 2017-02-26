@@ -43,7 +43,7 @@ class RecordingManager {
         completion(true)
     }
     
-    @objc func recordData(){
+    @objc private func recordData(){
         
         remainingRecordingDurationInTicks -= 1
         
@@ -79,7 +79,7 @@ class RecordingManager {
         }
     }
     
-    func writeDataToString() -> String {
+    private func writeDataToString() -> String {
         
         let delimeterData = "sep=" + CSV_DELIMETER + CSV_LINE_BREAK
         
@@ -112,7 +112,7 @@ class RecordingManager {
         return delimeterData + headerDataString + recordedDataString
     }
     
-    func saveFileToiCloud(data: String, fileName: String) {
+    private func saveFileToiCloud(data: String, fileName: String) {
         
         let localDocumentsUrl = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: .userDomainMask).last!
         let localFileUrl = localDocumentsUrl.appendingPathComponent(fileName)

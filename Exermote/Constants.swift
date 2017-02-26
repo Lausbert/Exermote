@@ -98,6 +98,7 @@ let CSV_LINE_BREAK = "\n"
 // MARK: Exercise Constants
 
 let EXERCISE_ATTRIBUTES = ["name",
+                           "includedInWorkout",
                            "maximumDuration",
                            "minimumDuration",
                            "firstHalfSecondHalfRatio",

@@ -9,7 +9,9 @@
 import UIKit
 import Eureka
 
-class SelectExerciseVC: FormViewController {
+class SelectExerciseVC: UIViewController {
+    
+    var exercises: [Exercise] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,20 +22,30 @@ class SelectExerciseVC: FormViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "create"), target: self, action: #selector(rightBarButtonItemPressed))
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let data = UserDefaults.standard.data(forKey: USER_DEFAULTS_EXERCISES) {
+            exercises =  NSKeyedUnarchiver.unarchiveObject(with: data) as! [Exercise]
+            }
+        
+    }
+    
     func leftBarButtonItemPressed() {
         self.navigationController?.pop(transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromLeft, duration: TRANSITION_DURATION)
     }
     
     func rightBarButtonItemPressed() {
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_MANAGE_EXERCISE_VC) as UIViewController
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_MANAGE_EXERCISE_VC) as! ManageExerciseVC
         viewController.navigationItem.title = "Create Exercise"
+        viewController.exercises = exercises
         self.navigationController?.push(viewController: viewController, transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromRight, duration: TRANSITION_DURATION)
     }
 }
 
 class ManageExerciseVC: FormViewController {
     
-    var exercises: [Exercise] = []
+    var exercises: [Exercise]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,16 +61,20 @@ class ManageExerciseVC: FormViewController {
                 $0.placeholder = "Exercise Name"
                 $0.tag = EXERCISE_ATTRIBUTES[0]
             }
+            <<< CheckRow(){
+                $0.title = "Included in Workout"
+                $0.tag = EXERCISE_ATTRIBUTES[1]
+            }
             +++ Section("Repetition Durations")
             <<< DecimalRow(){
                 $0.title = "Maximum"
                 $0.placeholder = "Duration"
-                $0.tag = EXERCISE_ATTRIBUTES[1]
+                $0.tag = EXERCISE_ATTRIBUTES[2]
             }
             <<< DecimalRow(){
                 $0.title = "Minimum"
                 $0.placeholder = "Duration"
-                $0.tag = EXERCISE_ATTRIBUTES[2]
+                $0.tag = EXERCISE_ATTRIBUTES[3]
             }
             <<< SliderRow(){
                 $0.title = "First Half / Second Half"
@@ -66,23 +82,23 @@ class ManageExerciseVC: FormViewController {
                 $0.maximumValue = 1.0
                 $0.steps = 10
                 $0.value = 0.5
-                $0.tag = EXERCISE_ATTRIBUTES[3]
+                $0.tag = EXERCISE_ATTRIBUTES[4]
             }
             +++ Section("Break Durations")
             <<< DecimalRow(){
                 $0.title = "Repetition"
                 $0.placeholder = "Duration"
-                $0.tag = EXERCISE_ATTRIBUTES[4]
+                $0.tag = EXERCISE_ATTRIBUTES[5]
             }
             <<< DecimalRow(){
                 $0.title = "Set"
                 $0.placeholder = "Duration"
-                $0.tag = EXERCISE_ATTRIBUTES[5]
+                $0.tag = EXERCISE_ATTRIBUTES[6]
             }
             <<< DecimalRow(){
                 $0.title = "Exercise"
                 $0.placeholder = "Duration"
-                $0.tag = EXERCISE_ATTRIBUTES[6]
+                $0.tag = EXERCISE_ATTRIBUTES[7]
             }
         }
         
