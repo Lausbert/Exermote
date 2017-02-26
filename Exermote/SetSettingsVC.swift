@@ -23,7 +23,7 @@ class SetSettingsVC: FormViewController {
         form = Section("Exercises")
             <<< ButtonRow() {
                 $0.title = "Manage Exercises"
-                $0.presentationMode = .segueName(segueName: SEGUE_SELECT_EXERCISE, onDismiss: nil)
+                $0.presentationMode = .segueName(segueName: SEGUE_MANAGE_EXERCISE, onDismiss: nil)
             }
             +++ Section("Recording Duration and Frequency")
             <<< SliderRow(){

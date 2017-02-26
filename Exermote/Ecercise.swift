@@ -19,6 +19,54 @@ class Exercise: NSObject, NSCoding {
     private var _setBreakDuration: Double
     private var _exerciseBreakDuration: Double
     
+    var name: String {
+        return _name
+    }
+    
+    var includedInWorkout: Bool {
+        return _includedInWorkout
+    }
+    
+    var maximumDuration: Double {
+        return _maximumDuration
+    }
+    
+    var minimumDuration: Double {
+        return _minimumDuration
+    }
+    
+    var firstHalfSecondHalratio: Double {
+        return _firstHalfSecondHalfRatio
+    }
+    
+    var repetitionBreakDuration: Double {
+        return _repetitionBreakDuration
+    }
+    
+    var setBreakDuration: Double {
+        return _setBreakDuration
+    }
+    
+    var exerciseBreakDuration: Double {
+        return _exerciseBreakDuration
+    }
+    
+    var dictionary: Dictionary<String, Any> {
+        
+        var dict = [String : Any]()
+        
+        dict[EXERCISE_ATTRIBUTES[0]] = _name
+        dict[EXERCISE_ATTRIBUTES[1]] = _includedInWorkout
+        dict[EXERCISE_ATTRIBUTES[2]] = _maximumDuration
+        dict[EXERCISE_ATTRIBUTES[3]] = _minimumDuration
+        dict[EXERCISE_ATTRIBUTES[4]] = Float(_firstHalfSecondHalfRatio)
+        dict[EXERCISE_ATTRIBUTES[5]] = _repetitionBreakDuration
+        dict[EXERCISE_ATTRIBUTES[6]] = _setBreakDuration
+        dict[EXERCISE_ATTRIBUTES[7]] = _exerciseBreakDuration
+        
+        return dict
+    }
+    
     init(exerciseDict: Dictionary<String, Any>) {
         _name = exerciseDict[EXERCISE_ATTRIBUTES[0]] as! String
         _includedInWorkout = exerciseDict[EXERCISE_ATTRIBUTES[1]] as! Bool

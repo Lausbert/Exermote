@@ -73,7 +73,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-nT-VJ9">
-                                                                                    <rect key="frame" x="8" y="34.5" width="103.5" height="8.5"/>
+                                                                                    <rect key="frame" x="8" y="34" width="103.5" height="8.5"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="xxxxxxxxxxxxxxxx">
                                                                                             <attributes>
@@ -367,17 +367,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="Set Settings" id="pN5-eG-iAS"/>
                     <connections>
-                        <segue destination="SYB-mQ-oKo" kind="show" identifier="selectExercise" id="XI7-74-CvB"/>
+                        <segue destination="SYB-mQ-oKo" kind="show" identifier="manageExercise" id="XI7-74-CvB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="krV-UO-Zdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3102" y="269"/>
         </scene>
-        <!--Select Exercise-->
+        <!--Manage Exercise-->
         <scene sceneID="Wxo-B1-dVD">
             <objects>
-                <viewController storyboardIdentifier="selectExerciseVC" id="SYB-mQ-oKo" customClass="SelectExerciseVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="manageExerciseVC" automaticallyAdjustsScrollViewInsets="NO" id="SYB-mQ-oKo" customClass="ManageExerciseVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x14-VQ-j83"/>
                         <viewControllerLayoutGuide type="bottom" id="plq-xC-mfl"/>
@@ -385,21 +385,34 @@
                     <view key="view" contentMode="scaleToFill" id="bjO-XG-en3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DTy-lR-8vJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DTy-lR-8vJ" secondAttribute="trailing" id="QXd-a0-W6G"/>
+                            <constraint firstItem="DTy-lR-8vJ" firstAttribute="top" secondItem="x14-VQ-j83" secondAttribute="bottom" id="ujs-Ol-PPT"/>
+                            <constraint firstItem="DTy-lR-8vJ" firstAttribute="leading" secondItem="bjO-XG-en3" secondAttribute="leading" id="wbS-XH-jyU"/>
+                            <constraint firstItem="plq-xC-mfl" firstAttribute="top" secondItem="DTy-lR-8vJ" secondAttribute="bottom" id="ydx-QG-doQ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Exercise" id="SwE-Yk-F5i"/>
+                    <navigationItem key="navigationItem" title="Manage Exercise" id="SwE-Yk-F5i"/>
                     <connections>
-                        <segue destination="w3m-VQ-m2M" kind="show" identifier="manageExercise" id="H3y-Nh-oTE"/>
+                        <outlet property="tableView" destination="DTy-lR-8vJ" id="GkH-cf-9Lf"/>
+                        <segue destination="w3m-VQ-m2M" kind="show" identifier="editExercise" id="H3y-Nh-oTE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdx-jX-ueq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3887" y="269"/>
+            <point key="canvasLocation" x="3885.5999999999999" y="268.51574212893553"/>
         </scene>
-        <!--Manage Exercise-->
+        <!--Edit Exercise-->
         <scene sceneID="So5-o7-3Ys">
             <objects>
-                <viewController storyboardIdentifier="manageExerciseVC" id="w3m-VQ-m2M" customClass="ManageExerciseVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editExerciseVC" id="w3m-VQ-m2M" customClass="EditExerciseVC" customModule="Exermote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pmL-iR-cPT"/>
                         <viewControllerLayoutGuide type="bottom" id="G3J-CK-e9o"/>
@@ -409,7 +422,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Manage Exercise" id="AJ0-k5-sNX"/>
+                    <navigationItem key="navigationItem" title="Edit Exercise" id="AJ0-k5-sNX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4at-6G-rUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

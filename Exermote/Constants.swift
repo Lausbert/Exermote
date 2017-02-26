@@ -51,13 +51,13 @@ let UI_MAXIMUM_UPDATE_FREQUENCY = 5.0
 
 let SEGUE_SET_SETTINGS = "setSettings"
 let SEGUE_RECORDING_WORKOUT = "recordingWorkout"
-let SEGUE_SELECT_EXERCISE = "selectExercise"
 let SEGUE_MANAGE_EXERCISE = "manageExercise"
+let SEGUE_EDIT_EXERCISE = "editExercise"
 let STORYBOARD_ID_RECORDING_WORKOUT_VC = "recordingWorkoutVC"
 let STORYBOARD_ID_SET_SETTINGS_VC = "setSettingsVC"
 let STORYBAORD_ID_SELECT_NEARABLES_VC = "selectNearablesVC"
-let STORYBOARD_ID_SELECT_EXERCISE_VC = "selectExerciseVC"
 let STORYBOARD_ID_MANAGE_EXERCISE_VC = "manageExerciseVC"
+let STORYBOARD_ID_EDIT_EXERCISE_VC = "editExerciseVC"
 let TRANSITION_TYPE = kCATransitionMoveIn
 let TRANSITION_DURATION = 0.5
 

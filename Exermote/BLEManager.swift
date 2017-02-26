@@ -27,7 +27,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         centralManager = CBCentralManager(delegate: self, queue: centralManagerQueue)
     }
     
-    internal func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
         
         if (central.state == CBManagerState.poweredOn) {
             
@@ -51,7 +51,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    internal func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
         updateMeasurementPoints(advertisementData: advertisementData, rssi: RSSI)
     }

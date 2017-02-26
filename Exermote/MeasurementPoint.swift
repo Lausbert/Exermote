@@ -83,7 +83,7 @@ class MeasurementPoint {
         return _timeStamp
     }
     
-    var toStringDictionary: Dictionary<String, String> {
+    var stringDictionary: Dictionary<String, String> {
         
         var dict = [String : String]()
         

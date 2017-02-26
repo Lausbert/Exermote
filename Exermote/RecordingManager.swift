@@ -97,7 +97,7 @@ class RecordingManager {
         
         for measurementPoint in recordedMeasurementPoints {
             
-            let measurementPointDictionary = measurementPoint.toStringDictionary
+            let measurementPointDictionary = measurementPoint.stringDictionary
             var recordedData:[String] = []
             
             for key in USER_DEFAULTS_RECORDED_DATA {
