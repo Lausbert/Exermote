@@ -70,7 +70,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
                 _measurementPoints.sort(by: {$0.nearableIdentifier < $1.nearableIdentifier})
             }
             
-            let measurementPointsUpdated = _measurementPoints.filter{Date().timeIntervalSince($0.timeStamp) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
+            let measurementPointsUpdated = _measurementPoints.filter{Date().timeIntervalSince($0.timeStampRecordedAsDate) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
             
             uiUpdateNeeded = measurementPointsUpdated.count != _measurementPoints.count ? true : uiUpdateNeeded
             

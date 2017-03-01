@@ -24,7 +24,7 @@ class MeasurementPoint {
     private var _zAcceleration: Double?
     private var _durationCurrentState: Int?
     private var _durationPreviousSate: Int?
-    private var _timeStamp: Date!
+    private var _timeStampRecorded: Date!
     
     var companyIdentifier: String {
         guard _companyIdentifier != nil else {return ERROR_VALUE_STRING}
@@ -40,47 +40,53 @@ class MeasurementPoint {
     }
     
     var nearableIdentifier: String {
-        guard _nearableIdentifier != nil else {return ERROR_VALUE_STRING}
-        return _nearableIdentifier!
+        guard let result = _nearableIdentifier else {return ERROR_VALUE_STRING}
+        return result
     }
     
     var frequency: String {
-        guard _frequency != nil else {return ERROR_VALUE_STRING}
-        return String(format: "%.2f", _frequency!)
+        guard let result = _frequency else {return ERROR_VALUE_STRING}
+        return String(format: "%.2f", result)
     }
     
     var rssi: String {
-        guard _rssi != nil else {return ERROR_VALUE_STRING}
-        return String(_rssi!)
+        guard let result = _rssi else {return ERROR_VALUE_STRING}
+        return String(result)
     }
     
     var xAcceleration: String {
-        guard _xAcceleration != nil else {return ERROR_VALUE_STRING}
-        return String(format: "%.2f", _xAcceleration!)
+        guard let result = _xAcceleration else {return ERROR_VALUE_STRING}
+        return String(format: "%.2f", result)
     }
     
     var yAcceleration: String {
-        guard _yAcceleration != nil else {return ERROR_VALUE_STRING}
-        return String(format: "%.2f", _yAcceleration!)
+        guard let result = _yAcceleration else {return ERROR_VALUE_STRING}
+        return String(format: "%.2f", result)
     }
     
     var zAcceleration: String {
-        guard _zAcceleration != nil else {return ERROR_VALUE_STRING}
-        return String(format: "%.2f", _zAcceleration!)
+        guard let result = _zAcceleration else {return ERROR_VALUE_STRING}
+        return String(format: "%.2f", result)
     }
     
     var durationCurrentState: String {
-        guard _durationCurrentState != nil else {return ERROR_VALUE_STRING}
-        return String(_durationCurrentState!)
+        guard  let result = _durationCurrentState else {return ERROR_VALUE_STRING}
+        return String(result)
     }
     
     var durationPreviousState: String {
-        guard _durationPreviousSate != nil else {return ERROR_VALUE_STRING}
-        return String(_durationPreviousSate!)
+        guard let result = _durationPreviousSate else {return ERROR_VALUE_STRING}
+        return String(result)
     }
     
-    var timeStamp: Date {
-        return _timeStamp
+    var timeStampRecorded: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "y-MM-dd HH:mm:ss:SSS"
+        return dateFormatter.string(from: _timeStampRecorded)
+    }
+    
+    var timeStampRecordedAsDate: Date {
+        return _timeStampRecorded
     }
     
     var stringDictionary: Dictionary<String, String> {
@@ -95,10 +101,7 @@ class MeasurementPoint {
         dict[USER_DEFAULTS_RECORDED_DATA[5]] = zAcceleration
         dict[USER_DEFAULTS_RECORDED_DATA[6]] = durationCurrentState
         dict[USER_DEFAULTS_RECORDED_DATA[7]] = durationPreviousState
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "y-MM-dd HH:mm:ss:SSS"
-        dict[USER_DEFAULTS_RECORDED_DATA[8]] = dateFormatter.string(from: timeStamp)
+        dict[USER_DEFAULTS_RECORDED_DATA[8]] = timeStampRecorded
         
         return dict
     }
@@ -127,7 +130,7 @@ class MeasurementPoint {
         self._rssi = Int(RSSI)
         
         
-        self._timeStamp = Date()
+        self._timeStampRecorded = Date()
     }
     
     func update(previousMeasurementPoint: MeasurementPoint) {
@@ -135,7 +138,7 @@ class MeasurementPoint {
         self._count = previousMeasurementPoint.count + 1
         
         let previousFrequency = previousMeasurementPoint.frequency == ERROR_VALUE_STRING ? 0 : Double(previousMeasurementPoint.frequency)
-        let lastfrequency = 1/self.timeStamp.timeIntervalSince(previousMeasurementPoint.timeStamp)
+        let lastfrequency = 1/self._timeStampRecorded.timeIntervalSince(previousMeasurementPoint.timeStampRecordedAsDate)
         
         if self._count < MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY {
             self._frequency = (((Double(previousMeasurementPoint._count)-1)*previousFrequency!)+lastfrequency)/Double(self._count)

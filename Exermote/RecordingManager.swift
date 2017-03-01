@@ -10,8 +10,6 @@ import Foundation
 
 class RecordingManager {
     
-    static let instance = RecordingManager()
-    
     var remainingRecordingDurationInMinutes: String {
         let remainingRecordingDurationInSeconds = Int(Double(remainingRecordingDurationInTicks)/Double(recordingFrequency))
         let minutes = String(format:"%02i", remainingRecordingDurationInSeconds/60)
@@ -34,11 +32,11 @@ class RecordingManager {
     func attemptRecording(completion: @escaping (Bool)->()) {
         
         recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
-        ticksSinceUIUpdate = recordingFrequency
-        let totalRemainingDurationInMinutes = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_DURATION)
-        remainingRecordingDurationInTicks = recordingFrequency*totalRemainingDurationInMinutes*60
-        let recordingInterval = 1.0/Double(recordingFrequency)
+        let totalDurationInMinutes = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_DURATION)
+        remainingRecordingDurationInTicks = recordingFrequency*totalDurationInMinutes*60
         
+        ticksSinceUIUpdate = recordingFrequency
+        let recordingInterval = 1.0/Double(recordingFrequency)
         timer = Timer.scheduledTimer(timeInterval: recordingInterval, target: self, selector: #selector(recordData), userInfo: nil, repeats: true)
         completion(true)
     }

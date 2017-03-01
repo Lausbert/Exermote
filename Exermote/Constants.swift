@@ -73,7 +73,7 @@ let USER_DEFAULTS_RECORDED_DATA = ["nearableID",
                                    "zAcceleration",
                                    "currentStateDuration",
                                    "previousStateDuration",
-                                   "time"]
+                                   "timeStampRecorded"]
 
 let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
 let USER_DEFAULTS_SHOW_ICLOUD_ALERT = "iCloudAlertWasShown"

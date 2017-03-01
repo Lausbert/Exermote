@@ -11,6 +11,7 @@ import UIKit
 class RecordingWorkoutVC: UIViewController {
 
     @IBOutlet weak var remaingRecordingDurationLbl: UILabel!
+    var recordingManager: RecordingManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +19,14 @@ class RecordingWorkoutVC: UIViewController {
         self.navigationItem.hidesBackButton = true
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "forward"), target: self, action: #selector(rightBarButtonItemPressed))
+        
+        recordingManager = RecordingManager()
 
-        RecordingManager.instance.attemptRecording() {success in
+        recordingManager.attemptRecording() {success in
             if success {
                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateRemainingDuration), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(self.stopRecording(_:)), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
-                self.remaingRecordingDurationLbl.text = RecordingManager.instance.remainingRecordingDurationInMinutes
+                self.remaingRecordingDurationLbl.text = self.recordingManager.remainingRecordingDurationInMinutes
             } else {
                 _ = self.navigationController?.popViewController(animated: true)
             }
@@ -39,7 +42,7 @@ class RecordingWorkoutVC: UIViewController {
     // MARK: Recording
     
     func updateRemainingDuration() {
-        remaingRecordingDurationLbl.text = RecordingManager.instance.remainingRecordingDurationInMinutes
+        remaingRecordingDurationLbl.text = recordingManager.remainingRecordingDurationInMinutes
     }
     
     func stopRecording(_ notification: NSNotification) {
@@ -60,7 +63,7 @@ class RecordingWorkoutVC: UIViewController {
         let alert = UIAlertController(title: "Warning", message: "Are you sure you want to stop recording? All unsaved data will be lost.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Continue", style: .default))
         alert.addAction(UIAlertAction(title: "Stop", style: .destructive, handler: { (action) in
-            RecordingManager.instance.stopRecording(success: false)
+            self.recordingManager.stopRecording(success: false)
         }))
         self.present(alert, animated: true, completion: nil)
     }
