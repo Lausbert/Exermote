@@ -19,13 +19,13 @@ class MeasurementCell: UITableViewCell {
     
     @IBOutlet weak var ContainerView: MaterialView!
     
-    func configureCell(measurementPoint: MeasurementPoint) {
-        nearableIdentifierLbl.text = measurementPoint.nearableIdentifier
-        frequencyLbl.text = measurementPoint.frequency
-        rssiLbl.text = measurementPoint.rssi
-        xAccelerationLbl.text = measurementPoint.xAcceleration
-        yAccelerationLbl.text = measurementPoint.yAcceleration
-        zAccelerationLbl.text = measurementPoint.zAcceleration
+    func configureCell(iBeaconState: IBeaconState) {
+        nearableIdentifierLbl.text = iBeaconState.nearableIdentifier
+        frequencyLbl.text = iBeaconState.frequency
+        rssiLbl.text = iBeaconState.rssi
+        xAccelerationLbl.text = iBeaconState.xAcceleration
+        yAccelerationLbl.text = iBeaconState.yAcceleration
+        zAccelerationLbl.text = iBeaconState.zAcceleration
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

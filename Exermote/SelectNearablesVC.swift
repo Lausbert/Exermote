@@ -34,13 +34,13 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     // MARK: tableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BLEManager.instance.measurementPoints.count
+        return BLEManager.instance.iBeaconStates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let measurementPoint = BLEManager.instance.measurementPoints[safe: indexPath.row] else {return MeasurementCell()}
+        guard let iBeaconState = BLEManager.instance.iBeaconStates[safe: indexPath.row] else {return MeasurementCell()}
         if let cell = self.tableView.dequeueReusableCell(withIdentifier: "measurementCell") as? MeasurementCell {
-            cell.configureCell(measurementPoint: measurementPoint)
+            cell.configureCell(iBeaconState: iBeaconState)
             return cell
         } else {
             return MeasurementCell()
@@ -48,14 +48,14 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let measurementPoint = BLEManager.instance.measurementPoints[safe: indexPath.row] else {return}
-        measurementPoint.wasSelected()
-        tableView.cellForRow(at: indexPath)?.setSelected(measurementPoint.isSelected, animated: false)
+        guard let iBeaconState = BLEManager.instance.iBeaconStates[safe: indexPath.row] else {return}
+        iBeaconState.wasSelected()
+        tableView.cellForRow(at: indexPath)?.setSelected(iBeaconState.isSelected, animated: false)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let measurementPoint = BLEManager.instance.measurementPoints[safe: indexPath.row] else {return}
-        cell.setSelected(measurementPoint.isSelected, animated: false)
+        guard let iBeaconState = BLEManager.instance.iBeaconStates[safe: indexPath.row] else {return}
+        cell.setSelected(iBeaconState.isSelected, animated: false)
     }
     
     func shouldReload() {
@@ -74,8 +74,8 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func isAnyNearableSelected() -> Bool {
-        let selectedMeasurementPoints = BLEManager.instance.measurementPoints.filter{$0.isSelected}
-        return !selectedMeasurementPoints.isEmpty
+        let selectedIBeaconStates = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
+        return !selectedIBeaconStates.isEmpty
     }
     
     func rightBarButtonItemPressed() {

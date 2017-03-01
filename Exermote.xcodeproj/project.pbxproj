@@ -25,7 +25,7 @@
 		8DCF1E851E2A495800AEAAE7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E841E2A495800AEAAE7 /* Extensions.swift */; };
 		8DCF1E871E2A495E00AEAAE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E861E2A495E00AEAAE7 /* Constants.swift */; };
 		8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E881E2A496400AEAAE7 /* BLEManager.swift */; };
-		8DCF1E8B1E2A496900AEAAE7 /* MeasurementPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E8A1E2A496900AEAAE7 /* MeasurementPoint.swift */; };
+		8DCF1E8B1E2A496900AEAAE7 /* IBeaconState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E8A1E2A496900AEAAE7 /* IBeaconState.swift */; };
 		8DCF1E8D1E2A497100AEAAE7 /* SelectNearablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E8C1E2A497100AEAAE7 /* SelectNearablesVC.swift */; };
 		8DCF1E8F1E2A499000AEAAE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E8E1E2A499000AEAAE7 /* Main.storyboard */; };
 		8DCF1E911E2A511800AEAAE7 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E901E2A511800AEAAE7 /* MaterialView.swift */; };
@@ -84,7 +84,7 @@
 		8DCF1E841E2A495800AEAAE7 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8DCF1E861E2A495E00AEAAE7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8DCF1E881E2A496400AEAAE7 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
-		8DCF1E8A1E2A496900AEAAE7 /* MeasurementPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementPoint.swift; sourceTree = "<group>"; };
+		8DCF1E8A1E2A496900AEAAE7 /* IBeaconState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBeaconState.swift; sourceTree = "<group>"; };
 		8DCF1E8C1E2A497100AEAAE7 /* SelectNearablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectNearablesVC.swift; sourceTree = "<group>"; };
 		8DCF1E8E1E2A499000AEAAE7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8DCF1E901E2A511800AEAAE7 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 		8DCF1E811E2A492600AEAAE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8DCF1E8A1E2A496900AEAAE7 /* MeasurementPoint.swift */,
+				8DCF1E8A1E2A496900AEAAE7 /* IBeaconState.swift */,
 				8D64C1811E6088E4009FCC92 /* Ecercise.swift */,
 			);
 			name = Model;
@@ -583,7 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DFA7C461E56144D004C99BC /* RecordingWorkoutVC.swift in Sources */,
-				8DCF1E8B1E2A496900AEAAE7 /* MeasurementPoint.swift in Sources */,
+				8DCF1E8B1E2A496900AEAAE7 /* IBeaconState.swift in Sources */,
 				8D64C1821E6088E4009FCC92 /* Ecercise.swift in Sources */,
 				8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */,
 				8DCF1E851E2A495800AEAAE7 /* Extensions.swift in Sources */,

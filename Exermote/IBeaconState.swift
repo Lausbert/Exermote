@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-class MeasurementPoint {
+class IBeaconState {
     
     private var _companyIdentifier: String?
     private var _unknownBytes = [String]()
@@ -47,6 +47,11 @@ class MeasurementPoint {
     var frequency: String {
         guard let result = _frequency else {return ERROR_VALUE_STRING}
         return String(format: "%.2f", result)
+    }
+    
+    var frequencyAsDouble: Double? {
+        guard let result = _frequency else {return 0.0}
+        return result
     }
     
     var rssi: String {
@@ -133,19 +138,19 @@ class MeasurementPoint {
         self._timeStampRecorded = Date()
     }
     
-    func update(previousMeasurementPoint: MeasurementPoint) {
+    func update(previousIBeaconState: IBeaconState) {
         
-        self._count = previousMeasurementPoint.count + 1
+        self._count = previousIBeaconState.count + 1
         
-        let previousFrequency = previousMeasurementPoint.frequency == ERROR_VALUE_STRING ? 0 : Double(previousMeasurementPoint.frequency)
-        let lastfrequency = 1/self._timeStampRecorded.timeIntervalSince(previousMeasurementPoint.timeStampRecordedAsDate)
+        let previousFrequency = previousIBeaconState.frequencyAsDouble
+        let lastfrequency = 1/self._timeStampRecorded.timeIntervalSince(previousIBeaconState.timeStampRecordedAsDate)
         
         if self._count < MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY {
-            self._frequency = (((Double(previousMeasurementPoint._count)-1)*previousFrequency!)+lastfrequency)/Double(self._count)
+            self._frequency = (((Double(previousIBeaconState._count)-1)*previousFrequency!)+lastfrequency)/Double(self._count)
         } else {
             self._frequency = (((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)-1)*previousFrequency!)+lastfrequency)/Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)
         }
-        self._isSelected = previousMeasurementPoint.isSelected
+        self._isSelected = previousIBeaconState.isSelected
     }
     
     func wasSelected() {

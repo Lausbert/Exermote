@@ -13,13 +13,13 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     
     static let instance = BLEManager()
     
-    private var _measurementPoints: [MeasurementPoint] = []
+    private var _iBeaconStates: [IBeaconState] = []
     private var centralManager : CBCentralManager!
     private let centralManagerQueue = DispatchQueue(label: "com.exermote.centralManagerQueue", qos: .userInteractive, attributes: .concurrent)
     private var uiUpdateNeeded = true
     
-    var measurementPoints: [MeasurementPoint] {
-        return _measurementPoints
+    var iBeaconStates: [IBeaconState] {
+        return _iBeaconStates
     }
     
     override init() {
@@ -53,28 +53,28 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
-        updateMeasurementPoints(advertisementData: advertisementData, rssi: RSSI)
+        updateIBeaconStates(advertisementData: advertisementData, rssi: RSSI)
     }
     
-    private func updateMeasurementPoints (advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    private func updateIBeaconStates (advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
-        if let measurementPoint = MeasurementPoint(advertisementData: advertisementData, RSSI: RSSI) {
+        if let iBeaconState = IBeaconState(advertisementData: advertisementData, RSSI: RSSI) {
             
-            if let index = _measurementPoints.index(where: {$0.nearableIdentifier == measurementPoint.nearableIdentifier}) {
+            if let index = _iBeaconStates.index(where: {$0.nearableIdentifier == iBeaconState.nearableIdentifier}) {
                 
-                measurementPoint.update(previousMeasurementPoint: _measurementPoints[index])
-                _measurementPoints[index] = measurementPoint
+                iBeaconState.update(previousIBeaconState: _iBeaconStates[index])
+                _iBeaconStates[index] = iBeaconState
             } else {
                 
-                _measurementPoints.append(measurementPoint)
-                _measurementPoints.sort(by: {$0.nearableIdentifier < $1.nearableIdentifier})
+                _iBeaconStates.append(iBeaconState)
+                _iBeaconStates.sort(by: {$0.nearableIdentifier < $1.nearableIdentifier})
             }
             
-            let measurementPointsUpdated = _measurementPoints.filter{Date().timeIntervalSince($0.timeStampRecordedAsDate) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
+            let iBeaconStatesUpdated = _iBeaconStates.filter{Date().timeIntervalSince($0.timeStampRecordedAsDate) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
             
-            uiUpdateNeeded = measurementPointsUpdated.count != _measurementPoints.count ? true : uiUpdateNeeded
+            uiUpdateNeeded = iBeaconStatesUpdated.count != _iBeaconStates.count ? true : uiUpdateNeeded
             
-            _measurementPoints = measurementPointsUpdated
+            _iBeaconStates = iBeaconStatesUpdated
             
             if uiUpdateNeeded {
                 

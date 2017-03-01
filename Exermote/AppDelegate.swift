@@ -28,13 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                             [["kCBAdvDataManufacturerData": dummyDataString[2].dataFromHexadecimalString()],-61]]
 //            
 //            for data in dummyData {
-//                BLEManager.instance.updateMeasurementPoints(advertisementData: data[0] as! [String : Any], rssi: data[1] as! NSNumber)
+//                BLEManager.instance.updateIBeaconStates(advertisementData: data[0] as! [String : Any], rssi: data[1] as! NSNumber)
 //            }
 //            
 //            let delay = DispatchTime.now() + 1/UI_MAXIMUM_UPDATE_FREQUENCY
 //            DispatchQueue.main.asyncAfter(deadline: delay) {
 //                for data in dummyData {
-//                    BLEManager.instance.updateMeasurementPoints(advertisementData: data[0] as! [String : Any], rssi: data[1] as! NSNumber)
+//                    BLEManager.instance.updateIBeaconStates(advertisementData: data[0] as! [String : Any], rssi: data[1] as! NSNumber)
 //                }
 //            }
 //        }

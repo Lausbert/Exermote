@@ -25,7 +25,7 @@ class RecordingManager {
     }
 
     private var remainingRecordingDurationInTicks:Int = 600
-    private var recordedMeasurementPoints: [MeasurementPoint] = []
+    private var recordedIBeaconStates: [IBeaconState] = []
     private var recordingFrequency: Int = 10
     private var ticksSinceUIUpdate: Int = 10
     
@@ -50,8 +50,8 @@ class RecordingManager {
             ticksSinceUIUpdate = 0
         }
         
-        let measurementPointsToBeRecorded = BLEManager.instance.measurementPoints.filter{$0.isSelected}
-        recordedMeasurementPoints.append(contentsOf: measurementPointsToBeRecorded)
+        let iBeaconStatesToBeRecorded = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
+        recordedIBeaconStates.append(contentsOf: iBeaconStatesToBeRecorded)
         
         ticksSinceUIUpdate += 1
         if remainingRecordingDurationInTicks == 0 {stopRecording(success: true)}
@@ -59,7 +59,7 @@ class RecordingManager {
     
     func stopRecording(success: Bool) {
         
-        defer {recordedMeasurementPoints = []}
+        defer {recordedIBeaconStates = []}
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil, userInfo: ["success":success])
         timer = nil
@@ -93,14 +93,14 @@ class RecordingManager {
         
         var recordedDataString = ""
         
-        for measurementPoint in recordedMeasurementPoints {
+        for iBeaconState in recordedIBeaconStates {
             
-            let measurementPointDictionary = measurementPoint.stringDictionary
+            let iBeaconStateDictionary = iBeaconState.stringDictionary
             var recordedData:[String] = []
             
             for key in USER_DEFAULTS_RECORDED_DATA {
                 if UserDefaults.standard.bool(forKey: key) {
-                    recordedData.append(measurementPointDictionary[key]!)
+                    recordedData.append(iBeaconStateDictionary[key]!)
                 }
             }
             
