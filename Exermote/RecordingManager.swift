@@ -39,6 +39,8 @@ class RecordingManager {
         let recordingInterval = 1.0/Double(recordingFrequency)
         timer = Timer.scheduledTimer(timeInterval: recordingInterval, target: self, selector: #selector(recordData), userInfo: nil, repeats: true)
         completion(true)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_DURATION), object: nil)
     }
     
     @objc private func recordData(){
@@ -46,11 +48,12 @@ class RecordingManager {
         remainingRecordingDurationInTicks -= 1
         
         if ticksSinceUIUpdate == recordingFrequency {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_DURATION), object: nil)
             ticksSinceUIUpdate = 0
         }
         
         let iBeaconStatesToBeRecorded = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
+        
         recordedIBeaconStates.append(contentsOf: iBeaconStatesToBeRecorded)
         
         ticksSinceUIUpdate += 1

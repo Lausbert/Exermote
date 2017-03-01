@@ -24,9 +24,8 @@ class RecordingWorkoutVC: UIViewController {
 
         recordingManager.attemptRecording() {success in
             if success {
-                NotificationCenter.default.addObserver(self, selector: #selector(self.updateRemainingDuration), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_SWIFT_SPINNER_UPDATE_NEEDED), object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(self.updateRemainingDuration), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_DURATION), object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(self.stopRecording(_:)), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
-                self.remaingRecordingDurationLbl.text = self.recordingManager.remainingRecordingDurationInMinutes
             } else {
                 _ = self.navigationController?.popViewController(animated: true)
             }
