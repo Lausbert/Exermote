@@ -25,11 +25,14 @@ class RecordingWorkoutManager {
     }
 
     private var remainingRecordingDurationInTicks:Int = 600
-    private var recordedIBeaconStates: [IBeaconState] = []
+    private var recordedMeasurementPoints: [MeasurementPoint] = []
+    private var workOut: [MetaData] = []
     private var recordingFrequency: Int = 10
     private var ticksSinceUIUpdate: Int = 10
     
     func attemptRecording(completion: @escaping (Bool)->()) {
+        
+        workOut = MetaData.generateMetaDataForWorkout()
         
         recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
         let totalDurationInMinutes = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_DURATION)
@@ -52,9 +55,11 @@ class RecordingWorkoutManager {
             ticksSinceUIUpdate = 0
         }
         
-        let iBeaconStatesToBeRecorded = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
+        let iBeaconStates = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
+        let metaData = workOut[remainingRecordingDurationInTicks]
+        let measurementPoint = MeasurementPoint(iBeaconStates: iBeaconStates, metaData: metaData)
         
-        recordedIBeaconStates.append(contentsOf: iBeaconStatesToBeRecorded)
+        recordedMeasurementPoints.append(measurementPoint)
         
         ticksSinceUIUpdate += 1
         if remainingRecordingDurationInTicks == 0 {stopRecording(success: true)}
@@ -62,7 +67,7 @@ class RecordingWorkoutManager {
     
     func stopRecording(success: Bool) {
         
-        defer {recordedIBeaconStates = []}
+        defer {recordedMeasurementPoints = []}
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil, userInfo: ["success":success])
         timer = nil
@@ -83,34 +88,14 @@ class RecordingWorkoutManager {
     private func writeDataToString() -> String {
         
         let delimeterData = "sep=" + CSV_DELIMETER + CSV_LINE_BREAK
+        let headerData = MeasurementPoint.CSVHeaderString()
+        var data: String = ""
         
-        var headerData:[String] = []
-        
-        for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
-            if UserDefaults.standard.bool(forKey: key) {
-                headerData.append(key)
-            }
+        for measurementPoint in recordedMeasurementPoints {
+            data = data + measurementPoint.CSVDataString()
         }
         
-        let headerDataString = headerData.joined(separator: CSV_DELIMETER) + CSV_LINE_BREAK
-        
-        var recordedDataString = ""
-        
-        for iBeaconState in recordedIBeaconStates {
-            
-            let iBeaconStateDictionary = iBeaconState.stringDictionary
-            var recordedData:[String] = []
-            
-            for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
-                if UserDefaults.standard.bool(forKey: key) {
-                    recordedData.append(iBeaconStateDictionary[key]!)
-                }
-            }
-            
-            recordedDataString = recordedDataString + recordedData.joined(separator: CSV_DELIMETER) + CSV_LINE_BREAK
-        }
-        
-        return delimeterData + headerDataString + recordedDataString
+        return delimeterData + headerData + data
     }
     
     private func saveFileToiCloud(data: String, fileName: String) {

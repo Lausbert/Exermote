@@ -38,69 +38,68 @@ class MetaData {
         return dict
     }
     
-}
-
-func generateMetaDataForWorkout() -> [MetaData] {
-    
-    var metaDataArray: [MetaData] = []
-    
-    var exercises: [Exercise] = []
-    
-    if let data = UserDefaults.standard.data(forKey: USER_DEFAULTS_EXERCISES) {
-        exercises =  NSKeyedUnarchiver.unarchiveObject(with: data) as! [Exercise]
-    }
-    
-    let recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
-    let totalDurationInMinutes = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_DURATION)
-    var remainingRecordingDurationInTicks = recordingFrequency*totalDurationInMinutes*60
-    
-    workoutLoop: while remainingRecordingDurationInTicks > 0 {
+    class func generateMetaDataForWorkout() -> [MetaData] {
         
-        if exercises.isEmpty {break workoutLoop}
+        var metaDataArray: [MetaData] = []
         
-        let exercise = exercises.randomItem()
-        let exerciseType = exercise.name
-        let repetitions = [Int](1...10).randomItem()
-        let firstHalfDurationInTicks = Int(exercise.firstHalfDuration * Double(recordingFrequency))
-        let secondHalfDurationInTicks = Int(exercise.secondHalfDuration * Double(recordingFrequency))
-        let repetitionBreakDurationInTicks = Int(exercise.repetitionBreakDuration * Double(recordingFrequency))
-        let setBreakDurationInTicks = Int(exercise.setBreakDuration * Double(recordingFrequency))
-        let repetitionDurationInTicks = firstHalfDurationInTicks + secondHalfDurationInTicks + repetitionBreakDurationInTicks
+        var exercises: [Exercise] = []
         
-        for _ in 1...repetitions {
+        if let data = UserDefaults.standard.data(forKey: USER_DEFAULTS_EXERCISES) {
+            exercises =  NSKeyedUnarchiver.unarchiveObject(with: data) as! [Exercise]
+        }
+        
+        let recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
+        let totalDurationInMinutes = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_DURATION)
+        var remainingRecordingDurationInTicks = recordingFrequency*totalDurationInMinutes*60
+        
+        workoutLoop: while remainingRecordingDurationInTicks > 0 {
             
-            if remainingRecordingDurationInTicks < repetitionDurationInTicks {break workoutLoop}
+            if exercises.isEmpty {break workoutLoop}
             
-            for _ in 1...repetitionBreakDurationInTicks {
+            let exercise = exercises.randomItem()
+            let exerciseType = exercise.name
+            let repetitions = [Int](1...10).randomItem()
+            let firstHalfDurationInTicks = Int(exercise.firstHalfDuration * Double(recordingFrequency))
+            let secondHalfDurationInTicks = Int(exercise.secondHalfDuration * Double(recordingFrequency))
+            let repetitionBreakDurationInTicks = Int(exercise.repetitionBreakDuration * Double(recordingFrequency))
+            let setBreakDurationInTicks = Int(exercise.setBreakDuration * Double(recordingFrequency))
+            let repetitionDurationInTicks = firstHalfDurationInTicks + secondHalfDurationInTicks + repetitionBreakDurationInTicks
+            
+            for _ in 1...repetitions {
+                
+                if remainingRecordingDurationInTicks < repetitionDurationInTicks {break workoutLoop}
+                
+                for _ in 1...repetitionBreakDurationInTicks {
+                    metaDataArray.append(MetaData(exerciseType: nil, exerciseSubType: nil))
+                    remainingRecordingDurationInTicks -= 1
+                }
+                
+                for _ in 1...firstHalfDurationInTicks {
+                    metaDataArray.append(MetaData(exerciseType: exerciseType, exerciseSubType: "firstHalf"))
+                    remainingRecordingDurationInTicks -= 1
+                }
+                
+                for _ in 1...secondHalfDurationInTicks {
+                    metaDataArray.append(MetaData(exerciseType: exerciseType, exerciseSubType: "secondHalf"))
+                    remainingRecordingDurationInTicks -= 1
+                }
+                
+            }
+            
+            if remainingRecordingDurationInTicks < setBreakDurationInTicks {break workoutLoop}
+            
+            for _ in 1...setBreakDurationInTicks {
                 metaDataArray.append(MetaData(exerciseType: nil, exerciseSubType: nil))
                 remainingRecordingDurationInTicks -= 1
             }
             
-            for _ in 1...firstHalfDurationInTicks {
-                metaDataArray.append(MetaData(exerciseType: exerciseType, exerciseSubType: "firstHalf"))
-                remainingRecordingDurationInTicks -= 1
-            }
-            
-            for _ in 1...secondHalfDurationInTicks {
-                metaDataArray.append(MetaData(exerciseType: exerciseType, exerciseSubType: "secondHalf"))
-                remainingRecordingDurationInTicks -= 1
-            }
-            
         }
         
-        if remainingRecordingDurationInTicks < setBreakDurationInTicks {break workoutLoop}
-        
-        for _ in 1...setBreakDurationInTicks {
+        while remainingRecordingDurationInTicks > 0 {
             metaDataArray.append(MetaData(exerciseType: nil, exerciseSubType: nil))
             remainingRecordingDurationInTicks -= 1
         }
         
+        return metaDataArray.reversed()
     }
-    
-    while remainingRecordingDurationInTicks > 0 {
-        metaDataArray.append(MetaData(exerciseType: nil, exerciseSubType: nil))
-        remainingRecordingDurationInTicks -= 1
-    }
-    
-    return metaDataArray.reversed()
 }

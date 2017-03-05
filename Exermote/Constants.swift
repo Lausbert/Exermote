@@ -75,7 +75,7 @@ let USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE = ["nearableID",
                                    "previousStateDuration",
                                    "timeStampRecorded"]
 let USER_DEFAULTS_RECORDED_DATA_META_DATA = ["exerciseType",
-                                                           "exerciseSubType"]
+                                             "exerciseSubType"]
 
 let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
 let USER_DEFAULTS_SHOW_ICLOUD_ALERT = "iCloudAlertWasShown"

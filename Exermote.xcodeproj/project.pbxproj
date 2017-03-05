@@ -17,6 +17,7 @@
 		8D7B94C61E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C51E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift */; };
 		8D7B94C81E58DB1B000E6C7E /* CustomListCheckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C71E58DB1B000E6C7E /* CustomListCheckRow.swift */; };
 		8DA8AC661E43A17300B56586 /* CustomSegmentedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */; };
+		8DA9B0641E6CA9C800415CAB /* MeasurementPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9B0631E6CA9C800415CAB /* MeasurementPoint.swift */; };
 		8DB8F9071E3FC00D004720C9 /* CustomSliderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */; };
 		8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */; };
 		8DCF1E5C1E2A48C600AEAAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E5A1E2A48C600AEAAE7 /* LaunchScreen.storyboard */; };
@@ -71,6 +72,7 @@
 		8D7B94C51E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMultipleSelectorRowViewController.swift; sourceTree = "<group>"; };
 		8D7B94C71E58DB1B000E6C7E /* CustomListCheckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomListCheckRow.swift; sourceTree = "<group>"; };
 		8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedRow.swift; sourceTree = "<group>"; };
+		8DA9B0631E6CA9C800415CAB /* MeasurementPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementPoint.swift; sourceTree = "<group>"; };
 		8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderRow.swift; sourceTree = "<group>"; };
 		8DCF1E4E1E2A48C600AEAAE7 /* Exermote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exermote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				8DCF1E8A1E2A496900AEAAE7 /* IBeaconState.swift */,
 				8D64C1811E6088E4009FCC92 /* Ecercise.swift */,
 				8DED46451E6C434400BB844C /* MetaData.swift */,
+				8DA9B0631E6CA9C800415CAB /* MeasurementPoint.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				8D7B94C81E58DB1B000E6C7E /* CustomListCheckRow.swift in Sources */,
 				8DED46461E6C434400BB844C /* MetaData.swift in Sources */,
 				8DCF1E9C1E2A59DE00AEAAE7 /* MeasurementCell.swift in Sources */,
+				8DA9B0641E6CA9C800415CAB /* MeasurementPoint.swift in Sources */,
 				8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */,
 				8D69FD731E40D4840091A651 /* CustomCheckRow.swift in Sources */,
 				8D7B94C31E58D68C000E6C7E /* CustomMultipleSelectorRow.swift in Sources */,
