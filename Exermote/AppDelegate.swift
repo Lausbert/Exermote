@@ -56,9 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             UserDefaults.standard.set(true, forKey: USER_DEFAULTS_SHOW_FREQUENCY_ALERT)
             UserDefaults.standard.set(true, forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT)
+            
+            let exercises: [Exercise] = []
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: exercises)
+            UserDefaults.standard.set(encodedData, forKey: USER_DEFAULTS_EXERCISES)
         }
         
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont(name: "NotoSans", size: 20)!]
+        
         return true
     }
 

@@ -105,5 +105,4 @@ let EXERCISE_ATTRIBUTES = ["name",
                            "minimumDuration",
                            "firstHalfSecondHalfRatio",
                            "repetitionBreakDuration",
-                           "setBreakDuration",
-                           "exerciseBreakDuration"]
+                           "setBreakDuration"]

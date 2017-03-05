@@ -131,11 +131,6 @@ class EditExerciseVC: FormViewController {
                 $0.placeholder = "Duration"
                 $0.tag = EXERCISE_ATTRIBUTES[6]
             }
-            <<< DecimalRow(){
-                $0.title = "Exercise"
-                $0.placeholder = "Duration"
-                $0.tag = EXERCISE_ATTRIBUTES[7]
-            }
         
         if let index = selectedExerciseIndex {
             form.setValues(exercises[index].dictionary)

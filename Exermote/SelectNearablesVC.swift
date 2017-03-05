@@ -65,17 +65,28 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     // MARK: Navigation
     
     func leftBarButtonItemPressed() {
-        if isAnyNearableSelected() {
+        if doesNoExerciseExist() {
+            exerciseAlert()
+        }
+        else if isNoNearableSelected() {
+            selectionAlert()
+        } else {
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_RECORDING_WORKOUT_VC) as UIViewController
             self.navigationController?.push(viewController: viewController, transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromLeft, duration: TRANSITION_DURATION)
-        } else {
-            selectionAlert()
         }
     }
     
-    func isAnyNearableSelected() -> Bool {
+    func isNoNearableSelected() -> Bool {
         let selectedIBeaconStates = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
-        return !selectedIBeaconStates.isEmpty
+        return selectedIBeaconStates.isEmpty
+    }
+    
+    func doesNoExerciseExist() -> Bool {
+        var exercises: [Exercise] = []
+        if let data = UserDefaults.standard.data(forKey: USER_DEFAULTS_EXERCISES) {
+            exercises =  NSKeyedUnarchiver.unarchiveObject(with: data) as! [Exercise]
+        }
+        return exercises.isEmpty
     }
     
     func rightBarButtonItemPressed() {
@@ -88,6 +99,12 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func selectionAlert() {
         let alert = UIAlertController(title: "Warning", message: "Select at least one nearable to be recorded.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func exerciseAlert() {
+        let alert = UIAlertController(title: "Warning", message: "Create at least one exercise to be recorded.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

@@ -17,7 +17,6 @@ class Exercise: NSObject, NSCoding {
     private var _firstHalfSecondHalfRatio: Double
     private var _repetitionBreakDuration: Double
     private var _setBreakDuration: Double
-    private var _exerciseBreakDuration: Double
     
     var name: String {
         return _name
@@ -47,10 +46,6 @@ class Exercise: NSObject, NSCoding {
         return _setBreakDuration
     }
     
-    var exerciseBreakDuration: Double {
-        return _exerciseBreakDuration
-    }
-    
     var dictionary: Dictionary<String, Any> {
         
         var dict = [String : Any]()
@@ -62,9 +57,34 @@ class Exercise: NSObject, NSCoding {
         dict[EXERCISE_ATTRIBUTES[4]] = Float(_firstHalfSecondHalfRatio)
         dict[EXERCISE_ATTRIBUTES[5]] = _repetitionBreakDuration
         dict[EXERCISE_ATTRIBUTES[6]] = _setBreakDuration
-        dict[EXERCISE_ATTRIBUTES[7]] = _exerciseBreakDuration
         
         return dict
+    }
+    
+    var maximumFirstHalfDuration: Double {
+        return _firstHalfSecondHalfRatio * _maximumDuration
+    }
+    
+    var maximumSecondHalfDuration: Double {
+        return (1 - _firstHalfSecondHalfRatio) * _maximumDuration
+    }
+    
+    var minimumFirstHalfDuration: Double {
+        return _firstHalfSecondHalfRatio * _minimumDuration
+    }
+    
+    var minimumSecondHalfDuration: Double {
+        return (1 - _firstHalfSecondHalfRatio) * _minimumDuration
+    }
+    
+    var firstHalfDuration: Double {
+        let x = Double.random0to1()
+        return minimumFirstHalfDuration + (maximumFirstHalfDuration - minimumFirstHalfDuration) * x
+    }
+    
+    var secondHalfDuration: Double {
+        let x = Double.random0to1()
+        return minimumSecondHalfDuration + (maximumSecondHalfDuration - minimumSecondHalfDuration) * x
     }
     
     init(exerciseDict: Dictionary<String, Any>) {
@@ -75,7 +95,6 @@ class Exercise: NSObject, NSCoding {
         _firstHalfSecondHalfRatio = Double(exerciseDict[EXERCISE_ATTRIBUTES[4]] as! Float)
         _repetitionBreakDuration = exerciseDict[EXERCISE_ATTRIBUTES[5]] as! Double
         _setBreakDuration = exerciseDict[EXERCISE_ATTRIBUTES[6]] as! Double
-        _exerciseBreakDuration = exerciseDict[EXERCISE_ATTRIBUTES[7]] as! Double
     }
     
     required init(coder decoder: NSCoder) {
@@ -86,7 +105,6 @@ class Exercise: NSObject, NSCoding {
         _firstHalfSecondHalfRatio = decoder.decodeDouble(forKey: EXERCISE_ATTRIBUTES[4])
         _repetitionBreakDuration = decoder.decodeDouble(forKey: EXERCISE_ATTRIBUTES[5])
         _setBreakDuration = decoder.decodeDouble(forKey: EXERCISE_ATTRIBUTES[6])
-        _exerciseBreakDuration = decoder.decodeDouble(forKey: EXERCISE_ATTRIBUTES[7])
     }
     
     func encode(with coder: NSCoder) {
@@ -97,6 +115,5 @@ class Exercise: NSObject, NSCoding {
         coder.encode(_firstHalfSecondHalfRatio, forKey: EXERCISE_ATTRIBUTES[4])
         coder.encode(_repetitionBreakDuration, forKey: EXERCISE_ATTRIBUTES[5])
         coder.encode(_setBreakDuration, forKey: EXERCISE_ATTRIBUTES[6])
-        coder.encode(_exerciseBreakDuration, forKey: EXERCISE_ATTRIBUTES[7])
     }
 }

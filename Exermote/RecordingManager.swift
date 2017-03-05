@@ -1,5 +1,5 @@
 //
-//  RecordingManager.swift
+//  RecordingWorkoutManager.swift
 //  Exermote
 //
 //  Created by Stephan Lerner on 01.02.17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RecordingManager {
+class RecordingWorkoutManager {
     
     var remainingRecordingDurationInMinutes: String {
         let remainingRecordingDurationInSeconds = Int(Double(remainingRecordingDurationInTicks)/Double(recordingFrequency))

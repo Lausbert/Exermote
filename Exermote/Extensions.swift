@@ -72,3 +72,18 @@ extension UINavigationController { //credits to Luca Davanzo http://stackoverflo
         self.view.layer.add(transition, forKey: nil)
     }
 }
+
+extension Array { // credits to Phae Deepsky http://stackoverflow.com/a/24101606/5722895
+    func randomItem() -> Element {
+        let index = Int(arc4random_uniform(UInt32(self.count)))
+        return self[index]
+    }
+}
+
+extension Double { // http://stackoverflow.com/a/39172194/5722895
+    private static let arc4randomMax = Double(UInt32.max)
+    
+    static func random0to1() -> Double {
+        return Double(arc4random()) / arc4randomMax
+    }
+}
