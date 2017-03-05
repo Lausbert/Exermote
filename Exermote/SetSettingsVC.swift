@@ -50,16 +50,16 @@ class SetSettingsVC: FormViewController {
                 let title = "Nearable Data"
                 $0.title = title
                 $0.selectorTitle = title
-                $0.options = USER_DEFAULTS_RECORDED_DATA
+                $0.options = USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE
                 var values: [String] = []
-                for key in USER_DEFAULTS_RECORDED_DATA {
+                for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
                     if UserDefaults.standard.bool(forKey: key) {
                         values.append(key)
                     }
                 }
                 $0.value = Set(values)
                 }.onChange {
-                    for key in USER_DEFAULTS_RECORDED_DATA {
+                    for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
                         if ($0.value?.contains(key))! {
                             UserDefaults.standard.set(true, forKey: key)
                         } else {
@@ -67,6 +67,28 @@ class SetSettingsVC: FormViewController {
                         }
                     }
             }
+            <<< CustomMultipleSelectorRow<String>(){
+                let title = "Meta Data"
+                $0.title = title
+                $0.selectorTitle = title
+                $0.options = USER_DEFAULTS_RECORDED_DATA_META_DATA
+                var values: [String] = []
+                for key in USER_DEFAULTS_RECORDED_DATA_META_DATA {
+                    if UserDefaults.standard.bool(forKey: key) {
+                        values.append(key)
+                    }
+                }
+                $0.value = Set(values)
+                }.onChange {
+                    for key in USER_DEFAULTS_RECORDED_DATA_META_DATA {
+                        if ($0.value?.contains(key))! {
+                            UserDefaults.standard.set(true, forKey: key)
+                        } else {
+                            UserDefaults.standard.set(false, forKey: key)
+                        }
+                    }
+        }
+
     }
     
     // MARK: Navigation
@@ -80,7 +102,7 @@ class SetSettingsVC: FormViewController {
     }
     
     func isAnyDataSelected() -> Bool {
-        for key in USER_DEFAULTS_RECORDED_DATA {
+        for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
             if UserDefaults.standard.bool(forKey: key) {return true}
         }
         return false

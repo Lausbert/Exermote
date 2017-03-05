@@ -86,7 +86,7 @@ class RecordingManager {
         
         var headerData:[String] = []
         
-        for key in USER_DEFAULTS_RECORDED_DATA {
+        for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
             if UserDefaults.standard.bool(forKey: key) {
                 headerData.append(key)
             }
@@ -101,7 +101,7 @@ class RecordingManager {
             let iBeaconStateDictionary = iBeaconState.stringDictionary
             var recordedData:[String] = []
             
-            for key in USER_DEFAULTS_RECORDED_DATA {
+            for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
                 if UserDefaults.standard.bool(forKey: key) {
                     recordedData.append(iBeaconStateDictionary[key]!)
                 }

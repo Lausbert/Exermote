@@ -65,7 +65,7 @@ let TRANSITION_DURATION = 0.5
 
 let USER_DEFAULTS_RECORDING_DURATION = "recordingDuration"
 let USER_DEFAULTS_RECORDING_FREQUENCY = "recordingFrequency"
-let USER_DEFAULTS_RECORDED_DATA = ["nearableID",
+let USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE = ["nearableID",
                                    "frequency",
                                    "rssi",
                                    "xAcceleration",
@@ -74,6 +74,8 @@ let USER_DEFAULTS_RECORDED_DATA = ["nearableID",
                                    "currentStateDuration",
                                    "previousStateDuration",
                                    "timeStampRecorded"]
+let USER_DEFAULTS_RECORDED_DATA_META_DATA = ["exerciseType",
+                                                           "exerciseSubType"]
 
 let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
 let USER_DEFAULTS_SHOW_ICLOUD_ALERT = "iCloudAlertWasShown"

@@ -35,6 +35,7 @@
 		8DCF1E9A1E2A529500AEAAE7 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E961E2A529500AEAAE7 /* NotoSans-Regular.ttf */; };
 		8DCF1E9C1E2A59DE00AEAAE7 /* MeasurementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */; };
 		8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDB58841E428E6000ECB970 /* RecordingManager.swift */; };
+		8DED46461E6C434400BB844C /* MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DED46451E6C434400BB844C /* MetaData.swift */; };
 		8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */; };
 		8DFA7C461E56144D004C99BC /* RecordingWorkoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA7C451E56144D004C99BC /* RecordingWorkoutVC.swift */; };
 		F540B28759D9673FD5FF2360 /* Pods_Exermote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B08DF01FA28C168D23CA723 /* Pods_Exermote.framework */; };
@@ -94,6 +95,7 @@
 		8DCF1E961E2A529500AEAAE7 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
 		8DCF1E9B1E2A59DE00AEAAE7 /* MeasurementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementCell.swift; sourceTree = "<group>"; };
 		8DDB58841E428E6000ECB970 /* RecordingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
+		8DED46451E6C434400BB844C /* MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaData.swift; sourceTree = "<group>"; };
 		8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSettingsVC.swift; sourceTree = "<group>"; };
 		8DFA7C451E56144D004C99BC /* RecordingWorkoutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingWorkoutVC.swift; sourceTree = "<group>"; };
 		A773DCEB468BDC4FE4FEAF09 /* Pods-ExermoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteTests/Pods-ExermoteTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				8DCF1E8A1E2A496900AEAAE7 /* IBeaconState.swift */,
 				8D64C1811E6088E4009FCC92 /* Ecercise.swift */,
+				8DED46451E6C434400BB844C /* MetaData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				8DCF1E911E2A511800AEAAE7 /* MaterialView.swift in Sources */,
 				8DB8F9071E3FC00D004720C9 /* CustomSliderRow.swift in Sources */,
 				8D7B94C81E58DB1B000E6C7E /* CustomListCheckRow.swift in Sources */,
+				8DED46461E6C434400BB844C /* MetaData.swift in Sources */,
 				8DCF1E9C1E2A59DE00AEAAE7 /* MeasurementCell.swift in Sources */,
 				8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */,
 				8D69FD731E40D4840091A651 /* CustomCheckRow.swift in Sources */,

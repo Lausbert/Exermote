@@ -98,15 +98,15 @@ class IBeaconState {
         
         var dict = [String : String]()
         
-        dict[USER_DEFAULTS_RECORDED_DATA[0]] = nearableIdentifier
-        dict[USER_DEFAULTS_RECORDED_DATA[1]] = frequency
-        dict[USER_DEFAULTS_RECORDED_DATA[2]] = rssi
-        dict[USER_DEFAULTS_RECORDED_DATA[3]] = xAcceleration
-        dict[USER_DEFAULTS_RECORDED_DATA[4]] = yAcceleration
-        dict[USER_DEFAULTS_RECORDED_DATA[5]] = zAcceleration
-        dict[USER_DEFAULTS_RECORDED_DATA[6]] = durationCurrentState
-        dict[USER_DEFAULTS_RECORDED_DATA[7]] = durationPreviousState
-        dict[USER_DEFAULTS_RECORDED_DATA[8]] = timeStampRecorded
+        dict[USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE[0]] = nearableIdentifier
+        dict[USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE[1]] = frequency
+        dict[USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE[2]] = rssi
+        dict[USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE[3]] = xAcceleration
+        dict[USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE[4]] = yAcceleration
+        dict[USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE[5]] = zAcceleration
+        dict[USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE[6]] = durationCurrentState
+        dict[USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE[7]] = durationPreviousState
+        dict[USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE[8]] = timeStampRecorded
         
         return dict
     }

@@ -46,10 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(RECORDING_DURATION_MAXIMUM, forKey: USER_DEFAULTS_RECORDING_DURATION)
             UserDefaults.standard.set(RECORDING_FREQUENCY_INITIAL, forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
             
-            for key in USER_DEFAULTS_RECORDED_DATA {
+            for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
                 UserDefaults.standard.set(true, forKey: key)
             }
             
+            for key in USER_DEFAULTS_RECORDED_DATA_META_DATA {
+                UserDefaults.standard.set(true, forKey: key)
+            }
+
             UserDefaults.standard.set(true, forKey: USER_DEFAULTS_SHOW_FREQUENCY_ALERT)
             UserDefaults.standard.set(true, forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT)
         }
