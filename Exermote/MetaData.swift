@@ -19,12 +19,12 @@ class MetaData: Equatable {
     }
     
     var exerciseType: String {
-        guard let result = _exerciseType else {return "Break"}
+        guard let result = _exerciseType else {return "NA"}
         return result
     }
     
     var exerciseSubType: String {
-        guard let result = _exerciseSubType else {return "Break"}
+        guard let result = _exerciseSubType else {return "NA"}
         return result
     }
     
@@ -69,12 +69,19 @@ class MetaData: Equatable {
             let setBreakDurationInTicks = Int(exercise.setBreakDuration * Double(recordingFrequency))
             let repetitionDurationInTicks = firstHalfDurationInTicks + secondHalfDurationInTicks + repetitionBreakDurationInTicks
             
+            if remainingRecordingDurationInTicks < setBreakDurationInTicks {break workoutLoop}
+            
+            for _ in 1...setBreakDurationInTicks {
+                metaDataArray.append(MetaData(exerciseType: "SetBreak", exerciseSubType: "SetBreak"))
+                remainingRecordingDurationInTicks -= 1
+            }
+            
             for _ in 1...repetitions {
                 
                 if remainingRecordingDurationInTicks < repetitionDurationInTicks {break workoutLoop}
                 
                 for _ in 1...repetitionBreakDurationInTicks {
-                    metaDataArray.append(MetaData(exerciseType: nil, exerciseSubType: nil))
+                    metaDataArray.append(MetaData(exerciseType: "Break", exerciseSubType: "Break"))
                     remainingRecordingDurationInTicks -= 1
                 }
                 
@@ -89,18 +96,10 @@ class MetaData: Equatable {
                 }
                 
             }
-            
-            if remainingRecordingDurationInTicks < setBreakDurationInTicks {break workoutLoop}
-            
-            for _ in 1...setBreakDurationInTicks {
-                metaDataArray.append(MetaData(exerciseType: nil, exerciseSubType: nil))
-                remainingRecordingDurationInTicks -= 1
-            }
-            
         }
         
         while remainingRecordingDurationInTicks > 0 {
-            metaDataArray.append(MetaData(exerciseType: nil, exerciseSubType: nil))
+            metaDataArray.append(MetaData(exerciseType: "Break", exerciseSubType: "Break"))
             remainingRecordingDurationInTicks -= 1
         }
         

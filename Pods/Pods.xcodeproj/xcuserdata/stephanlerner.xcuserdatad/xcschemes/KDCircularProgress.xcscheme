@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4E6E8D09903E47E25FE242D9CB129658"
-               BuildableName = "Pods_Exermote.framework"
-               BlueprintName = "Pods-Exermote"
+               BlueprintIdentifier = "322428ECC8C5EC71F14C92233787C7AC"
+               BuildableName = "KDCircularProgress.framework"
+               BlueprintName = "KDCircularProgress"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4E6E8D09903E47E25FE242D9CB129658"
-            BuildableName = "Pods_Exermote.framework"
-            BlueprintName = "Pods-Exermote"
+            BlueprintIdentifier = "322428ECC8C5EC71F14C92233787C7AC"
+            BuildableName = "KDCircularProgress.framework"
+            BlueprintName = "KDCircularProgress"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -30,6 +30,24 @@ class RecordingWorkoutManager {
         return result
     }
     
+    var progressAngle: Double {
+        
+        let currentExercise = self.currentExercise
+        var i = 0, j = 0
+        
+        while true {
+            if currentExercise != _workOut[safe: _remainingRecordingDurationInTicks - i - 1] {break}
+            i += 1
+        }
+        
+        while true {
+            if currentExercise != _workOut[safe: _remainingRecordingDurationInTicks + j + 1] {break}
+            j += 1
+        }
+        
+        return 360.0*Double(j)/Double(i+j)
+    }
+    
     var currentExercise: MetaData {
         return _workOut[_remainingRecordingDurationInTicks]
     }
@@ -68,6 +86,8 @@ class RecordingWorkoutManager {
     @objc private func recordData(){
         
         _remainingRecordingDurationInTicks -= 1
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_PROGRESS_ANGLE), object: nil)
         
         if _ticksSinceUIUpdate == _recordingFrequency {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_DURATION), object: nil)

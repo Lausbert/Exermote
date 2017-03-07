@@ -6,6 +6,7 @@ target 'Exermote' do
   use_frameworks!
 
   pod 'Eureka'
+  pod 'KDCircularProgress'
 
   target 'ExermoteTests' do
     inherit! :search_paths

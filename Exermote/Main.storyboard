@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -309,7 +310,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="152"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UwI-PF-gIw">
-                                                <rect key="frame" x="120" y="35" width="120" height="82.5"/>
+                                                <rect key="frame" x="119.5" y="35" width="120" height="82.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Burpee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="1bw-xf-Itt">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="48"/>
@@ -325,11 +326,49 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-aT-U4I" customClass="KDCircularProgress" customModule="KDCircularProgress">
+                                                <rect key="frame" x="291" y="46" width="60" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="WXj-SF-lpE"/>
+                                                    <constraint firstAttribute="width" secondItem="HmC-aT-U4I" secondAttribute="height" multiplier="1:1" id="gi3-Rb-sgx"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                        <real key="value" value="160"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                        <real key="value" value="-90"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                                        <real key="value" value="0.29999999999999999"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                                        <color key="value" red="0.68627450980000004" green="0.63921568630000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientRotateSpeed">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="lerpColorMode" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.69646865130000002" green="0.77690011260000003" blue="0.75862854719999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="HmC-aT-U4I" firstAttribute="centerY" secondItem="U7T-f4-QIv" secondAttribute="centerY" id="J6G-In-meD"/>
                                             <constraint firstAttribute="height" constant="152" id="PWx-ax-Kwb"/>
                                             <constraint firstItem="UwI-PF-gIw" firstAttribute="centerX" secondItem="U7T-f4-QIv" secondAttribute="centerX" id="ikE-Qd-gdc"/>
+                                            <constraint firstAttribute="trailing" secondItem="HmC-aT-U4I" secondAttribute="trailing" constant="8" id="pUM-cd-tPO"/>
                                             <constraint firstItem="UwI-PF-gIw" firstAttribute="centerY" secondItem="U7T-f4-QIv" secondAttribute="centerY" id="t8x-bL-n6x"/>
                                         </constraints>
                                     </view>
@@ -337,7 +376,7 @@
                                         <rect key="frame" x="0.0" y="160" width="359" height="152"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gjo-bL-vxU">
-                                                <rect key="frame" x="119.5" y="34.5" width="120" height="82.5"/>
+                                                <rect key="frame" x="120" y="34.5" width="120" height="82.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Burpee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Mq4-Wv-TI3">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="48"/>
@@ -376,6 +415,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Recording Workout" id="yjZ-kr-laX"/>
                     <connections>
+                        <outlet property="circularProgress" destination="HmC-aT-U4I" id="LXi-KJ-VO7"/>
                         <outlet property="currentExerciseSubTypeLbl" destination="a5T-Pw-DrQ" id="0h4-Zc-wWK"/>
                         <outlet property="currentExerciseTypeLbl" destination="1bw-xf-Itt" id="gq3-2H-UxZ"/>
                         <outlet property="nextExerciseSubTypeLbl" destination="blt-nj-q2e" id="LhI-Tu-qa9"/>

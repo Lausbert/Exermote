@@ -1,12 +1,15 @@
 PODS:
   - Eureka (2.0.1)
+  - KDCircularProgress (1.5.2)
 
 DEPENDENCIES:
   - Eureka
+  - KDCircularProgress
 
 SPEC CHECKSUMS:
   Eureka: ae837bb1dfae0c07bc1bda7aeef87876eeb537c2
+  KDCircularProgress: 12f677b2deb02409ab48c6cae1898d146b8ad549
 
-PODFILE CHECKSUM: 188eb7b7b16ce9ac07d8751ca22e288a7701727e
+PODFILE CHECKSUM: 45e22b3d2dd706976f556bafa3824cea0d5196f0
 
 COCOAPODS: 1.1.1

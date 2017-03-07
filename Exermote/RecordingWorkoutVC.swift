@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KDCircularProgress
 
 class RecordingWorkoutVC: UIViewController {
 
@@ -15,6 +16,7 @@ class RecordingWorkoutVC: UIViewController {
     @IBOutlet weak var currentExerciseSubTypeLbl: UILabel!
     @IBOutlet weak var nextExerciseTypeLbl: UILabel!
     @IBOutlet weak var nextExerciseSubTypeLbl: UILabel!
+    @IBOutlet weak var circularProgress: KDCircularProgress!
     
     var recordingWorkoutManager: RecordingWorkoutManager!
     
@@ -25,12 +27,15 @@ class RecordingWorkoutVC: UIViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "forward"), target: self, action: #selector(rightBarButtonItemPressed))
         
+        self.circularProgress.progressColors = [COLOR_HIGHLIGHTED]
+        
         recordingWorkoutManager = RecordingWorkoutManager()
 
         recordingWorkoutManager.attemptRecording() {success in
             if success {
                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateRemainingDuration), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_DURATION), object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateMetaData), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_META_DATA), object: nil)
+                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateCircularProgress), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_PROGRESS_ANGLE), object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(self.stopRecording(_:)), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
             } else {
                 _ = self.navigationController?.popViewController(animated: true)
@@ -55,6 +60,10 @@ class RecordingWorkoutVC: UIViewController {
         currentExerciseSubTypeLbl.text = recordingWorkoutManager.currentExercise.exerciseSubType
         nextExerciseTypeLbl.text = recordingWorkoutManager.nextExercise.exerciseType
         nextExerciseSubTypeLbl.text = recordingWorkoutManager.nextExercise.exerciseSubType
+    }
+    
+    func updateCircularProgress() {
+        circularProgress.angle = recordingWorkoutManager.progressAngle
     }
     
     func stopRecording(_ notification: NSNotification) {
