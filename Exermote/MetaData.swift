@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MetaData {
+class MetaData: Equatable {
     
     private var _exerciseType: String?
     private var _exerciseSubType: String?
@@ -36,6 +36,10 @@ class MetaData {
         dict[USER_DEFAULTS_RECORDED_DATA_META_DATA[1]] = exerciseSubType
         
         return dict
+    }
+    
+    static func ==(first: MetaData, second: MetaData) -> Bool {
+        return first._exerciseType == second._exerciseType && first._exerciseSubType == second._exerciseSubType
     }
     
     class func generateMetaDataForWorkout() -> [MetaData] {

@@ -73,7 +73,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-nT-VJ9">
-                                                                                    <rect key="frame" x="8" y="34" width="103.5" height="8.5"/>
+                                                                                    <rect key="frame" x="8" y="34.5" width="103.5" height="8.5"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="xxxxxxxxxxxxxxxx">
                                                                                             <attributes>
@@ -285,40 +285,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fpv-5t-1Pi">
-                                <rect key="frame" x="0.0" y="68" width="375" height="511"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="measurementCell" rowHeight="160" id="jb8-mH-zm2">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="160"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jb8-mH-zm2" id="Pib-r3-NWa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWu-8g-20a" customClass="MaterialView" customModule="Exermote" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="4" width="359" height="152"/>
-                                                    <color key="backgroundColor" red="0.69646865130000002" green="0.77690011260000003" blue="0.75862854719999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="aWu-8g-20a" secondAttribute="trailing" constant="8" id="73p-LD-WJ2"/>
-                                                <constraint firstItem="aWu-8g-20a" firstAttribute="leading" secondItem="Pib-r3-NWa" secondAttribute="leading" constant="8" id="bsS-Ww-Dqf"/>
-                                                <constraint firstItem="aWu-8g-20a" firstAttribute="top" secondItem="Pib-r3-NWa" secondAttribute="top" constant="4" id="fcA-XY-7vv"/>
-                                                <constraint firstAttribute="bottom" secondItem="aWu-8g-20a" secondAttribute="bottom" constant="4" id="iMm-1y-YRj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="ContainerView" destination="aWu-8g-20a" id="8Rs-za-vea"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ElU-hf-2bI" customClass="MaterialView" customModule="Exermote" customModuleProvider="target">
                                 <rect key="frame" x="8" y="583" width="359" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="WTm-gh-zOG">
-                                        <rect key="frame" x="154" y="22.5" width="50" height="34.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="WTm-gh-zOG">
+                                        <rect key="frame" x="147" y="22.5" width="64" height="34.5"/>
                                         <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -331,20 +302,84 @@
                                     <constraint firstItem="WTm-gh-zOG" firstAttribute="centerX" secondItem="ElU-hf-2bI" secondAttribute="centerX" id="fgp-eM-NmR"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9NI-Xw-B8c">
+                                <rect key="frame" x="8" y="177.5" width="359" height="312"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U7T-f4-QIv" customClass="MaterialView" customModule="Exermote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="152"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UwI-PF-gIw">
+                                                <rect key="frame" x="120" y="35" width="120" height="82.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Burpee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="1bw-xf-Itt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="48"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="35"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="firstHalf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="a5T-Pw-DrQ">
+                                                        <rect key="frame" x="0.0" y="48" width="120" height="34.5"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="25"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.69646865130000002" green="0.77690011260000003" blue="0.75862854719999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="152" id="PWx-ax-Kwb"/>
+                                            <constraint firstItem="UwI-PF-gIw" firstAttribute="centerX" secondItem="U7T-f4-QIv" secondAttribute="centerX" id="ikE-Qd-gdc"/>
+                                            <constraint firstItem="UwI-PF-gIw" firstAttribute="centerY" secondItem="U7T-f4-QIv" secondAttribute="centerY" id="t8x-bL-n6x"/>
+                                        </constraints>
+                                    </view>
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXq-mq-pcb" customClass="MaterialView" customModule="Exermote" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="160" width="359" height="152"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gjo-bL-vxU">
+                                                <rect key="frame" x="119.5" y="34.5" width="120" height="82.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Burpee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Mq4-Wv-TI3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="48"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="35"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="firstHalf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="blt-nj-q2e">
+                                                        <rect key="frame" x="0.0" y="48" width="120" height="34.5"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans" family="Noto Sans" pointSize="25"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.69646865130000002" green="0.77690011260000003" blue="0.75862854719999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Gjo-bL-vxU" firstAttribute="centerX" secondItem="rXq-mq-pcb" secondAttribute="centerX" id="KtY-Hr-X5M"/>
+                                            <constraint firstItem="Gjo-bL-vxU" firstAttribute="centerY" secondItem="rXq-mq-pcb" secondAttribute="centerY" id="abs-FB-cgF"/>
+                                            <constraint firstAttribute="height" constant="152" id="eJy-S1-KCb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fpv-5t-1Pi" firstAttribute="top" secondItem="WHk-mn-maV" secondAttribute="bottom" constant="4" id="B2U-dl-E4K"/>
+                            <constraint firstItem="9NI-Xw-B8c" firstAttribute="centerY" secondItem="HCC-FN-W6v" secondAttribute="centerY" id="7nL-kA-v7q"/>
                             <constraint firstItem="SE5-kd-8X2" firstAttribute="top" secondItem="ElU-hf-2bI" secondAttribute="bottom" constant="4" id="FP5-XB-9xs"/>
+                            <constraint firstItem="9NI-Xw-B8c" firstAttribute="leading" secondItem="HCC-FN-W6v" secondAttribute="leading" constant="8" id="FTO-22-TAC"/>
                             <constraint firstItem="ElU-hf-2bI" firstAttribute="leading" secondItem="HCC-FN-W6v" secondAttribute="leading" constant="8" id="GbE-hF-Yyw"/>
                             <constraint firstAttribute="trailing" secondItem="ElU-hf-2bI" secondAttribute="trailing" constant="8" id="Vmj-as-kSE"/>
-                            <constraint firstAttribute="trailing" secondItem="fpv-5t-1Pi" secondAttribute="trailing" id="bmg-8C-rXr"/>
-                            <constraint firstItem="ElU-hf-2bI" firstAttribute="top" secondItem="fpv-5t-1Pi" secondAttribute="bottom" constant="4" id="bvE-ym-rZW"/>
-                            <constraint firstItem="fpv-5t-1Pi" firstAttribute="leading" secondItem="HCC-FN-W6v" secondAttribute="leading" id="m1Q-jq-FQ9"/>
+                            <constraint firstAttribute="trailing" secondItem="9NI-Xw-B8c" secondAttribute="trailing" constant="8" id="p4z-IT-RB8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Recording Workout" id="yjZ-kr-laX"/>
                     <connections>
+                        <outlet property="currentExerciseSubTypeLbl" destination="a5T-Pw-DrQ" id="0h4-Zc-wWK"/>
+                        <outlet property="currentExerciseTypeLbl" destination="1bw-xf-Itt" id="gq3-2H-UxZ"/>
+                        <outlet property="nextExerciseSubTypeLbl" destination="blt-nj-q2e" id="LhI-Tu-qa9"/>
+                        <outlet property="nextExerciseTypeLbl" destination="Mq4-Wv-TI3" id="mHE-Zl-JYw"/>
                         <outlet property="remaingRecordingDurationLbl" destination="WTm-gh-zOG" id="f1H-mp-0ae"/>
                     </connections>
                 </viewController>

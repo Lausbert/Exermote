@@ -11,6 +11,11 @@ import UIKit
 class RecordingWorkoutVC: UIViewController {
 
     @IBOutlet weak var remaingRecordingDurationLbl: UILabel!
+    @IBOutlet weak var currentExerciseTypeLbl: UILabel!
+    @IBOutlet weak var currentExerciseSubTypeLbl: UILabel!
+    @IBOutlet weak var nextExerciseTypeLbl: UILabel!
+    @IBOutlet weak var nextExerciseSubTypeLbl: UILabel!
+    
     var recordingWorkoutManager: RecordingWorkoutManager!
     
     override func viewDidLoad() {
@@ -25,6 +30,7 @@ class RecordingWorkoutVC: UIViewController {
         recordingWorkoutManager.attemptRecording() {success in
             if success {
                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateRemainingDuration), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_DURATION), object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(self.updateMetaData), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_META_DATA), object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(self.stopRecording(_:)), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil)
             } else {
                 _ = self.navigationController?.popViewController(animated: true)
@@ -42,6 +48,13 @@ class RecordingWorkoutVC: UIViewController {
     
     func updateRemainingDuration() {
         remaingRecordingDurationLbl.text = recordingWorkoutManager.remainingRecordingDurationInMinutes
+    }
+    
+    func updateMetaData() {
+        currentExerciseTypeLbl.text = recordingWorkoutManager.currentExercise.exerciseType
+        currentExerciseSubTypeLbl.text = recordingWorkoutManager.currentExercise.exerciseSubType
+        nextExerciseTypeLbl.text = recordingWorkoutManager.nextExercise.exerciseType
+        nextExerciseSubTypeLbl.text = recordingWorkoutManager.nextExercise.exerciseSubType
     }
     
     func stopRecording(_ notification: NSNotification) {

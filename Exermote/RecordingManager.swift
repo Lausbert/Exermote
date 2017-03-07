@@ -9,38 +9,57 @@
 import Foundation
 
 class RecordingWorkoutManager {
+
+    private var _remainingRecordingDurationInTicks:Int = 600
+    private var _recordedMeasurementPoints: [MeasurementPoint] = []
+    private var _workOut: [MetaData] = []
+    private var _recordingFrequency: Int = 10
+    private var _ticksSinceUIUpdate: Int = 10
+    
+    private var _timer:Timer? = nil {
+        willSet {
+            _timer?.invalidate()
+        }
+    }
     
     var remainingRecordingDurationInMinutes: String {
-        let remainingRecordingDurationInSeconds = Int(Double(remainingRecordingDurationInTicks)/Double(recordingFrequency))
+        let remainingRecordingDurationInSeconds = Int(Double(_remainingRecordingDurationInTicks)/Double(_recordingFrequency))
         let minutes = String(format:"%02i", remainingRecordingDurationInSeconds/60)
         let seconds = String(format:"%02i", remainingRecordingDurationInSeconds%60)
         let result = minutes + ":" + seconds
         return result
     }
     
-    private var timer:Timer? = nil {
-        willSet {
-            timer?.invalidate()
-        }
+    var currentExercise: MetaData {
+        return _workOut[_remainingRecordingDurationInTicks]
     }
-
-    private var remainingRecordingDurationInTicks:Int = 600
-    private var recordedMeasurementPoints: [MeasurementPoint] = []
-    private var workOut: [MetaData] = []
-    private var recordingFrequency: Int = 10
-    private var ticksSinceUIUpdate: Int = 10
+    
+    var nextExercise: MetaData {
+        
+        let currentExercise = self.currentExercise
+        var result: MetaData? = currentExercise
+        var i = 1
+        
+        while result == currentExercise {
+            result = _workOut[safe: _remainingRecordingDurationInTicks - i]
+            if result == nil {return MetaData(exerciseType: nil, exerciseSubType: nil)}
+            i += 1
+        }
+        
+        return result!
+    }
     
     func attemptRecording(completion: @escaping (Bool)->()) {
         
-        workOut = MetaData.generateMetaDataForWorkout()
+        _workOut = MetaData.generateMetaDataForWorkout()
         
-        recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
+        _recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
         let totalDurationInMinutes = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_DURATION)
-        remainingRecordingDurationInTicks = recordingFrequency*totalDurationInMinutes*60
+        _remainingRecordingDurationInTicks = _recordingFrequency*totalDurationInMinutes*60
         
-        ticksSinceUIUpdate = recordingFrequency
-        let recordingInterval = 1.0/Double(recordingFrequency)
-        timer = Timer.scheduledTimer(timeInterval: recordingInterval, target: self, selector: #selector(recordData), userInfo: nil, repeats: true)
+        _ticksSinceUIUpdate = _recordingFrequency
+        let recordingInterval = 1.0/Double(_recordingFrequency)
+        _timer = Timer.scheduledTimer(timeInterval: recordingInterval, target: self, selector: #selector(recordData), userInfo: nil, repeats: true)
         completion(true)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_DURATION), object: nil)
@@ -48,29 +67,35 @@ class RecordingWorkoutManager {
     
     @objc private func recordData(){
         
-        remainingRecordingDurationInTicks -= 1
+        _remainingRecordingDurationInTicks -= 1
         
-        if ticksSinceUIUpdate == recordingFrequency {
+        if _ticksSinceUIUpdate == _recordingFrequency {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_DURATION), object: nil)
-            ticksSinceUIUpdate = 0
+            _ticksSinceUIUpdate = 0
+        }
+        
+        let previousMetaData = _workOut[safe: _remainingRecordingDurationInTicks + 1]
+        let metaData = _workOut[_remainingRecordingDurationInTicks]
+        
+        if previousMetaData != metaData {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_META_DATA), object: nil)
         }
         
         let iBeaconStates = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
-        let metaData = workOut[remainingRecordingDurationInTicks]
         let measurementPoint = MeasurementPoint(iBeaconStates: iBeaconStates, metaData: metaData)
         
-        recordedMeasurementPoints.append(measurementPoint)
+        _recordedMeasurementPoints.append(measurementPoint)
         
-        ticksSinceUIUpdate += 1
-        if remainingRecordingDurationInTicks == 0 {stopRecording(success: true)}
+        _ticksSinceUIUpdate += 1
+        if _remainingRecordingDurationInTicks == 0 {stopRecording(success: true)}
     }
     
     func stopRecording(success: Bool) {
         
-        defer {recordedMeasurementPoints = []}
+        defer {_recordedMeasurementPoints = []}
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_RECORDING_STOPPED), object: nil, userInfo: ["success":success])
-        timer = nil
+        _timer = nil
         
         if success {
             
@@ -91,7 +116,7 @@ class RecordingWorkoutManager {
         let headerData = MeasurementPoint.CSVHeaderString()
         var data: String = ""
         
-        for measurementPoint in recordedMeasurementPoints {
+        for measurementPoint in _recordedMeasurementPoints {
             data = data + measurementPoint.CSVDataString()
         }
         
