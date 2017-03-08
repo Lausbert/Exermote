@@ -86,12 +86,12 @@ class MetaData: Equatable {
                 }
                 
                 for _ in 1...firstHalfDurationInTicks {
-                    metaDataArray.append(MetaData(exerciseType: exerciseType, exerciseSubType: "firstHalf"))
+                    metaDataArray.append(MetaData(exerciseType: exerciseType, exerciseSubType: EXERCISE_FIRST_HALF))
                     remainingRecordingDurationInTicks -= 1
                 }
                 
                 for _ in 1...secondHalfDurationInTicks {
-                    metaDataArray.append(MetaData(exerciseType: exerciseType, exerciseSubType: "secondHalf"))
+                    metaDataArray.append(MetaData(exerciseType: exerciseType, exerciseSubType: EXERCISE_SECOND_HALF))
                     remainingRecordingDurationInTicks -= 1
                 }
                 

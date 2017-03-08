@@ -19,6 +19,7 @@
 		8DA8AC661E43A17300B56586 /* CustomSegmentedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */; };
 		8DA9B0641E6CA9C800415CAB /* MeasurementPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9B0631E6CA9C800415CAB /* MeasurementPoint.swift */; };
 		8DB8F9071E3FC00D004720C9 /* CustomSliderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */; };
+		8DBFD31B1E70A99100C5FE48 /* ToneOutputUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBFD31A1E70A99100C5FE48 /* ToneOutputUnit.swift */; };
 		8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */; };
 		8DCF1E5C1E2A48C600AEAAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E5A1E2A48C600AEAAE7 /* LaunchScreen.storyboard */; };
 		8DCF1E671E2A48C600AEAAE7 /* ExermoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E661E2A48C600AEAAE7 /* ExermoteTests.swift */; };
@@ -74,6 +75,7 @@
 		8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedRow.swift; sourceTree = "<group>"; };
 		8DA9B0631E6CA9C800415CAB /* MeasurementPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementPoint.swift; sourceTree = "<group>"; };
 		8DB8F9061E3FC00D004720C9 /* CustomSliderRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSliderRow.swift; sourceTree = "<group>"; };
+		8DBFD31A1E70A99100C5FE48 /* ToneOutputUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToneOutputUnit.swift; path = "../../../../Downloads/630a466cc830e3d129b9-8b8bbbe62af9d970cb78e2374b66edb5e6450a04/ToneOutputUnit.swift"; sourceTree = "<group>"; };
 		8DCF1E4E1E2A48C600AEAAE7 /* Exermote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exermote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCF1E511E2A48C600AEAAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DCF1E5B1E2A48C600AEAAE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				8DCF1E881E2A496400AEAAE7 /* BLEManager.swift */,
 				8DDB58841E428E6000ECB970 /* RecordingManager.swift */,
+				8DBFD31A1E70A99100C5FE48 /* ToneOutputUnit.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */,
 				8DCF1E851E2A495800AEAAE7 /* Extensions.swift in Sources */,
 				8D5659EA1E591357003078FE /* ExerciseVCs.swift in Sources */,
+				8DBFD31B1E70A99100C5FE48 /* ToneOutputUnit.swift in Sources */,
 				8DA8AC661E43A17300B56586 /* CustomSegmentedRow.swift in Sources */,
 				8DCF1E8D1E2A497100AEAAE7 /* SelectNearablesVC.swift in Sources */,
 				8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */,

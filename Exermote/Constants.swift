@@ -110,3 +110,5 @@ let EXERCISE_ATTRIBUTES = ["name",
                            "setBreakDuration"]
 let EXERCISE_BREAK = "Break"
 let EXERCISE_SET_BREAK = "setBreak"
+let EXERCISE_FIRST_HALF = "firstHalf"
+let EXERCISE_SECOND_HALF = "secondHalf"
