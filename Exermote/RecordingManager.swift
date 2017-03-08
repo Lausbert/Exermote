@@ -16,7 +16,6 @@ class RecordingWorkoutManager {
     private let _workOut: [MetaData] = MetaData.generateMetaDataForWorkout()
     private var _recordingFrequency: Int = 10
     private var _ticksSinceUIUpdate: Int = 10
-    private let _speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     
     private var _timer:Timer? = nil {
         willSet {
@@ -25,17 +24,19 @@ class RecordingWorkoutManager {
     }
     
     var remainingRecordingDurationInMinutes: String {
+        
         let remainingRecordingDurationInSeconds = Int(Double(_remainingRecordingDurationInTicks)/Double(_recordingFrequency))
         let minutes = String(format:"%02i", remainingRecordingDurationInSeconds/60)
         let seconds = String(format:"%02i", remainingRecordingDurationInSeconds%60)
         let result = minutes + ":" + seconds
+        
         return result
     }
     
     var progressAngle: Double {
         
         let currentExercise = self.currentExercise
-        var i = 0, j = 0
+        var i = 0, j = 1
         
         while true {
             if currentExercise != _workOut[safe: _remainingRecordingDurationInTicks - i - 1] {break}
@@ -43,7 +44,7 @@ class RecordingWorkoutManager {
         }
         
         while true {
-            if currentExercise != _workOut[safe: _remainingRecordingDurationInTicks + j + 1] {break}
+            if currentExercise != _workOut[safe: _remainingRecordingDurationInTicks + j] {break}
             j += 1
         }
         
@@ -99,11 +100,6 @@ class RecordingWorkoutManager {
         
         if previousMetaData != metaData {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_META_DATA), object: nil)
-            if previousMetaData?.exerciseType == EXERCISE_SET_BREAK {
-                let speechUtterance = AVSpeechUtterance(string: nextExercise.exerciseType)
-                speechUtterance.rate = 0.4
-                _speechSynthesizer.speak(speechUtterance)
-            }
         }
         
         let iBeaconStates = BLEManager.instance.iBeaconStates.filter{$0.isSelected}

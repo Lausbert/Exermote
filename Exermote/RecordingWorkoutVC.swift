@@ -8,6 +8,7 @@
 
 import UIKit
 import KDCircularProgress
+import AVFoundation
 
 class RecordingWorkoutVC: UIViewController {
 
@@ -17,6 +18,8 @@ class RecordingWorkoutVC: UIViewController {
     @IBOutlet weak var nextExerciseTypeLbl: UILabel!
     @IBOutlet weak var nextExerciseSubTypeLbl: UILabel!
     @IBOutlet weak var circularProgress: KDCircularProgress!
+    
+    private let _speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     
     var recordingWorkoutManager: RecordingWorkoutManager!
     
@@ -56,6 +59,11 @@ class RecordingWorkoutVC: UIViewController {
     }
     
     func updateMetaData() {
+        if currentExerciseTypeLbl.text == EXERCISE_SET_BREAK {
+            let speechUtterance = AVSpeechUtterance(string: recordingWorkoutManager.nextExercise.exerciseType)
+            speechUtterance.rate = 0.4
+            _speechSynthesizer.speak(speechUtterance)
+        }
         currentExerciseTypeLbl.text = recordingWorkoutManager.currentExercise.exerciseType
         currentExerciseSubTypeLbl.text = recordingWorkoutManager.currentExercise.exerciseSubType
         nextExerciseTypeLbl.text = recordingWorkoutManager.nextExercise.exerciseType
