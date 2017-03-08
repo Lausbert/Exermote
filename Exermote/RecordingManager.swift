@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import AVFoundation
 
 class RecordingWorkoutManager {
 
-    private var _remainingRecordingDurationInTicks:Int = 600
+    private var _remainingRecordingDurationInTicks: Int = 600
     private var _recordedMeasurementPoints: [MeasurementPoint] = []
-    private var _workOut: [MetaData] = []
+    private let _workOut: [MetaData] = MetaData.generateMetaDataForWorkout()
     private var _recordingFrequency: Int = 10
     private var _ticksSinceUIUpdate: Int = 10
+    private let _speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
     
     private var _timer:Timer? = nil {
         willSet {
@@ -69,8 +71,6 @@ class RecordingWorkoutManager {
     
     func attemptRecording(completion: @escaping (Bool)->()) {
         
-        _workOut = MetaData.generateMetaDataForWorkout()
-        
         _recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
         let totalDurationInMinutes = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_DURATION)
         _remainingRecordingDurationInTicks = _recordingFrequency*totalDurationInMinutes*60
@@ -99,6 +99,11 @@ class RecordingWorkoutManager {
         
         if previousMetaData != metaData {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_META_DATA), object: nil)
+            if previousMetaData?.exerciseType == EXERCISE_SET_BREAK {
+                let speechUtterance = AVSpeechUtterance(string: nextExercise.exerciseType)
+                speechUtterance.rate = 0.4
+                _speechSynthesizer.speak(speechUtterance)
+            }
         }
         
         let iBeaconStates = BLEManager.instance.iBeaconStates.filter{$0.isSelected}

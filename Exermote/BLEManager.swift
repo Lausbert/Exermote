@@ -56,7 +56,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         updateIBeaconStates(advertisementData: advertisementData, rssi: RSSI)
     }
     
-    private func updateIBeaconStates (advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    func updateIBeaconStates (advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
         if let iBeaconState = IBeaconState(advertisementData: advertisementData, RSSI: RSSI) {
             

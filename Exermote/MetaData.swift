@@ -19,12 +19,12 @@ class MetaData: Equatable {
     }
     
     var exerciseType: String {
-        guard let result = _exerciseType else {return "NA"}
+        guard let result = _exerciseType else {return ERROR_VALUE_STRING}
         return result
     }
     
     var exerciseSubType: String {
-        guard let result = _exerciseSubType else {return "NA"}
+        guard let result = _exerciseSubType else {return ERROR_VALUE_STRING}
         return result
     }
     
@@ -72,7 +72,7 @@ class MetaData: Equatable {
             if remainingRecordingDurationInTicks < setBreakDurationInTicks {break workoutLoop}
             
             for _ in 1...setBreakDurationInTicks {
-                metaDataArray.append(MetaData(exerciseType: "SetBreak", exerciseSubType: "SetBreak"))
+                metaDataArray.append(MetaData(exerciseType: EXERCISE_SET_BREAK, exerciseSubType: EXERCISE_SET_BREAK))
                 remainingRecordingDurationInTicks -= 1
             }
             
@@ -81,7 +81,7 @@ class MetaData: Equatable {
                 if remainingRecordingDurationInTicks < repetitionDurationInTicks {break workoutLoop}
                 
                 for _ in 1...repetitionBreakDurationInTicks {
-                    metaDataArray.append(MetaData(exerciseType: "Break", exerciseSubType: "Break"))
+                    metaDataArray.append(MetaData(exerciseType: EXERCISE_BREAK, exerciseSubType: EXERCISE_BREAK))
                     remainingRecordingDurationInTicks -= 1
                 }
                 
@@ -99,7 +99,7 @@ class MetaData: Equatable {
         }
         
         while remainingRecordingDurationInTicks > 0 {
-            metaDataArray.append(MetaData(exerciseType: "Break", exerciseSubType: "Break"))
+            metaDataArray.append(MetaData(exerciseType: EXERCISE_SET_BREAK, exerciseSubType: EXERCISE_SET_BREAK))
             remainingRecordingDurationInTicks -= 1
         }
         
