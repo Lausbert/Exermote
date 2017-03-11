@@ -30,16 +30,19 @@ class MeasurementPoint {
         
         var headerData: [String] = []
         
-        for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
-            if UserDefaults.standard.bool(forKey: key) {
-                headerData.append(key)
-            }
-        }
+        let selectedBeacons = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
         
-        let numberOfSelectedBeacons = BLEManager.instance.iBeaconStates.filter{$0.isSelected}.count
-        if numberOfSelectedBeacons > 1 {
-            for _ in 2...numberOfSelectedBeacons {
-                headerData += headerData
+        for beacon in selectedBeacons {
+            for key in USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE {
+                
+                if UserDefaults.standard.bool(forKey: key) {
+                    var data: String = key
+                    if let text = UserDefaults.standard.string(forKey: beacon.nearableIdentifier) {
+                        data = text + ": " + data
+                    }
+                    headerData.append(data)
+                }
+                
             }
         }
         
