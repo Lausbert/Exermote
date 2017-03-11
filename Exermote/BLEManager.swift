@@ -70,11 +70,15 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
                 _iBeaconStates.sort(by: {$0.nearableIdentifier < $1.nearableIdentifier})
             }
             
-            let iBeaconStatesUpdated = _iBeaconStates.filter{Date().timeIntervalSince($0.timeStampRecordedAsDate) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
+            let selectedIBeaconStates = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
             
-            uiUpdateNeeded = iBeaconStatesUpdated.count != _iBeaconStates.count ? true : uiUpdateNeeded
-            
-            _iBeaconStates = iBeaconStatesUpdated
+            if selectedIBeaconStates.isEmpty {
+                let iBeaconStatesUpdated = _iBeaconStates.filter{Date().timeIntervalSince($0.timeStampRecordedAsDate) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
+                
+                uiUpdateNeeded = iBeaconStatesUpdated.count != _iBeaconStates.count ? true : uiUpdateNeeded
+                
+                _iBeaconStates = iBeaconStatesUpdated
+            }
             
             if uiUpdateNeeded {
                 

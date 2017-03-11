@@ -21,7 +21,7 @@ class IBeaconStateCell: UITableViewCell {
     @IBOutlet weak var ContainerView: MaterialView!
     @IBOutlet weak var editImgView: UIImageView!
     
-    var nearableIdentifier: String!
+    private var nearableIdentifier: String!
     
     func configureCell(iBeaconState: IBeaconState) {
         
@@ -63,20 +63,26 @@ class IBeaconStateCell: UITableViewCell {
     
     func handleTap(_ sender: UIGestureRecognizer) {
     
+        guard let id = nearableIdentifier else {return}
+        
             let alert = UIAlertController(title: "Edit Nearable", message: "Enter a new name.", preferredStyle: .alert)
             alert.addTextField { (textField) in
-                textField.text = self.nearableIdentifierLbl.text
+                if let text = UserDefaults.standard.string(forKey: id) {
+                    textField.text = text
+                } else {
+                    textField.placeholder = "Name"
+                }
             }
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let text = alert!.textFields![0].text!
-                self.nearableIdentifierLbl.text = text
-                if text != self.nearableIdentifier {
-                    UserDefaults.standard.set(text, forKey: self.nearableIdentifier)
+                if text != self.nearableIdentifier && text != "" {
+                    UserDefaults.standard.set(text, forKey: id)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_BLE_MANAGER_NEW_PERIPHERALS), object: nil)
                 }
             }))
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
-                self.nearableIdentifierLbl.text = self.nearableIdentifier
-                UserDefaults.standard.removeObject(forKey: self.nearableIdentifier)
+                UserDefaults.standard.removeObject(forKey: id)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NOTIFICATION_BLE_MANAGER_NEW_PERIPHERALS), object: nil)
             }))
             
             self.parentViewController?.present(alert, animated: true, completion: nil)
