@@ -11,6 +11,7 @@ import Foundation
 class MeasurementPoint {
     
     private var _iBeaconStates: [IBeaconState]
+    private var _deviceState: DeviceState
     private var _metaData: MetaData
     private var _timeStampSaved: Date
     
@@ -20,8 +21,9 @@ class MeasurementPoint {
         return dateFormatter.string(from: _timeStampSaved)
     }
     
-    init(iBeaconStates: [IBeaconState], metaData: MetaData) {
+    init(iBeaconStates: [IBeaconState], deviceState: DeviceState, metaData: MetaData) {
         _iBeaconStates = iBeaconStates
+        _deviceState = deviceState
         _metaData = metaData
         _timeStampSaved = Date()
     }
@@ -43,6 +45,12 @@ class MeasurementPoint {
                     headerData.append(data)
                 }
                 
+            }
+        }
+        
+        for key in USER_DEFAULTS_RECORDED_DATA_DEVICE_STATE {
+            if UserDefaults.standard.bool(forKey: key) {
+                headerData.append(key)
             }
         }
         
@@ -69,6 +77,14 @@ class MeasurementPoint {
                 if UserDefaults.standard.bool(forKey: key) {
                     data.append(iBeaconStateDictionary[key]!)
                 }
+            }
+        }
+        
+        let deviceStateDictionary = _deviceState.stringDictionary
+        
+        for key in USER_DEFAULTS_RECORDED_DATA_DEVICE_STATE {
+            if UserDefaults.standard.bool(forKey: key) {
+                data.append(deviceStateDictionary[key]!)
             }
         }
         

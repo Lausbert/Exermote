@@ -70,7 +70,9 @@ class IBeaconStateCell: UITableViewCell {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let text = alert!.textFields![0].text!
                 self.nearableIdentifierLbl.text = text
-                UserDefaults.standard.set(text, forKey: self.nearableIdentifier)
+                if text != self.nearableIdentifier {
+                    UserDefaults.standard.set(text, forKey: self.nearableIdentifier)
+                }
             }))
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
                 self.nearableIdentifierLbl.text = self.nearableIdentifier

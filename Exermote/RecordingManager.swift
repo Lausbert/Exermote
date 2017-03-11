@@ -17,6 +17,8 @@ class RecordingWorkoutManager {
     private var _recordingFrequency: Int = 10
     private var _ticksSinceUIUpdate: Int = 10
     
+    private let motionManager = MotionManager()
+    
     private var _timer:Timer? = nil {
         willSet {
             _timer?.invalidate()
@@ -103,7 +105,8 @@ class RecordingWorkoutManager {
         }
         
         let iBeaconStates = BLEManager.instance.iBeaconStates.filter{$0.isSelected}
-        let measurementPoint = MeasurementPoint(iBeaconStates: iBeaconStates, metaData: metaData)
+        let deviceState = motionManager.currentDeviceState()
+        let measurementPoint = MeasurementPoint(iBeaconStates: iBeaconStates, deviceState: deviceState, metaData: metaData)
         
         _recordedMeasurementPoints.append(measurementPoint)
         
@@ -125,11 +128,13 @@ class RecordingWorkoutManager {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "y-MM-dd HH-mm-ss"
             
-            var fileName = dateFormatter.string(from: Date()) + ".csv"
+            var fileName = dateFormatter.string(from: Date())
             
             if let name = UserDefaults.standard.string(forKey: USER_DEFAULTS_ATHLETE_NAME) {
                 fileName = fileName + " " + name
             }
+            
+            fileName = fileName + ".csv"
             
             saveFileToiCloud(data: data, fileName: fileName)
         }

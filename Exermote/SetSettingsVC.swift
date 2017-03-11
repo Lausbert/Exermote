@@ -78,6 +78,27 @@ class SetSettingsVC: FormViewController {
                     }
             }
             <<< CustomMultipleSelectorRow<String>(){
+                let title = "Device Data"
+                $0.title = title
+                $0.selectorTitle = title
+                $0.options = USER_DEFAULTS_RECORDED_DATA_DEVICE_STATE
+                var values: [String] = []
+                for key in USER_DEFAULTS_RECORDED_DATA_DEVICE_STATE {
+                    if UserDefaults.standard.bool(forKey: key) {
+                        values.append(key)
+                    }
+                }
+                $0.value = Set(values)
+                }.onChange {
+                    for key in USER_DEFAULTS_RECORDED_DATA_DEVICE_STATE {
+                        if ($0.value?.contains(key))! {
+                            UserDefaults.standard.set(true, forKey: key)
+                        } else {
+                            UserDefaults.standard.set(false, forKey: key)
+                        }
+                    }
+            }
+            <<< CustomMultipleSelectorRow<String>(){
                 let title = "Meta Data"
                 $0.title = title
                 $0.selectorTitle = title
@@ -97,8 +118,7 @@ class SetSettingsVC: FormViewController {
                             UserDefaults.standard.set(false, forKey: key)
                         }
                     }
-        }
-
+            }
     }
     
     // MARK: Navigation

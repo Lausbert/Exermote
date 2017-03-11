@@ -50,6 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UserDefaults.standard.set(true, forKey: key)
             }
             
+            for key in USER_DEFAULTS_RECORDED_DATA_DEVICE_STATE {
+                UserDefaults.standard.set(true, forKey: key)
+            }
+            
             for key in USER_DEFAULTS_RECORDED_DATA_META_DATA {
                 UserDefaults.standard.set(true, forKey: key)
             }

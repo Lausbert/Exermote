@@ -38,6 +38,7 @@
 		8DCF1E9A1E2A529500AEAAE7 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCF1E961E2A529500AEAAE7 /* NotoSans-Regular.ttf */; };
 		8DCF1E9C1E2A59DE00AEAAE7 /* IBeaconStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCF1E9B1E2A59DE00AEAAE7 /* IBeaconStateCell.swift */; };
 		8DDB58851E428E6000ECB970 /* RecordingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDB58841E428E6000ECB970 /* RecordingManager.swift */; };
+		8DE52E251E742FD8004C1617 /* DeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE52E241E742FD8004C1617 /* DeviceState.swift */; };
 		8DED46461E6C434400BB844C /* MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DED46451E6C434400BB844C /* MetaData.swift */; };
 		8DFA27151E3CF5F6009A662B /* SetSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */; };
 		8DFA7C461E56144D004C99BC /* RecordingWorkoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA7C451E56144D004C99BC /* RecordingWorkoutVC.swift */; };
@@ -101,6 +102,7 @@
 		8DCF1E961E2A529500AEAAE7 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
 		8DCF1E9B1E2A59DE00AEAAE7 /* IBeaconStateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBeaconStateCell.swift; sourceTree = "<group>"; };
 		8DDB58841E428E6000ECB970 /* RecordingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingManager.swift; sourceTree = "<group>"; };
+		8DE52E241E742FD8004C1617 /* DeviceState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceState.swift; sourceTree = "<group>"; };
 		8DED46451E6C434400BB844C /* MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaData.swift; sourceTree = "<group>"; };
 		8DFA27141E3CF5F6009A662B /* SetSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetSettingsVC.swift; sourceTree = "<group>"; };
 		8DFA7C451E56144D004C99BC /* RecordingWorkoutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingWorkoutVC.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				8D64C1811E6088E4009FCC92 /* Ecercise.swift */,
 				8DED46451E6C434400BB844C /* MetaData.swift */,
 				8DA9B0631E6CA9C800415CAB /* MeasurementPoint.swift */,
+				8DE52E241E742FD8004C1617 /* DeviceState.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				8DCF1E891E2A496400AEAAE7 /* BLEManager.swift in Sources */,
 				8D7B94C61E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift in Sources */,
 				8DCF1E521E2A48C600AEAAE7 /* AppDelegate.swift in Sources */,
+				8DE52E251E742FD8004C1617 /* DeviceState.swift in Sources */,
 				8DCF1E911E2A511800AEAAE7 /* MaterialView.swift in Sources */,
 				8DB8F9071E3FC00D004720C9 /* CustomSliderRow.swift in Sources */,
 				8D7B94C81E58DB1B000E6C7E /* CustomListCheckRow.swift in Sources */,

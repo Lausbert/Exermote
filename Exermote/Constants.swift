@@ -77,6 +77,18 @@ let USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE = ["nearableID",
                                    "timeStampRecorded"]
 let USER_DEFAULTS_RECORDED_DATA_META_DATA = ["exerciseType",
                                              "exerciseSubType"]
+let USER_DEFAULTS_RECORDED_DATA_DEVICE_STATE = ["Device: xGravity",
+                                                "Device: yGravity",
+                                                "Device: zGravity",
+                                                "Device: xAcceleration",
+                                                "Device: yAcceleration",
+                                                "Device: zAcceleration",
+                                                "Device: pitch",
+                                                "Device: roll",
+                                                "Device: yaw",
+                                                "Device: xRotationRate",
+                                                "Device: yRotationRate",
+                                                "Device: zRotationRate"]
 
 let USER_DEFAULTS_SHOW_FREQUENCY_ALERT = "frequencyAlertWasShown"
 let USER_DEFAULTS_SHOW_ICLOUD_ALERT = "iCloudAlertWasShown"
