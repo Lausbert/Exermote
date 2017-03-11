@@ -65,7 +65,7 @@ class IBeaconStateCell: UITableViewCell {
     
             let alert = UIAlertController(title: "Edit Nearable", message: "Enter a new name.", preferredStyle: .alert)
             alert.addTextField { (textField) in
-                textField.text = ""
+                textField.text = self.nearableIdentifierLbl.text
             }
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                 let text = alert!.textFields![0].text!

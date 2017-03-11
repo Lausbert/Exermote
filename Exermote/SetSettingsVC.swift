@@ -20,7 +20,17 @@ class SetSettingsVC: FormViewController {
         
         // MARK: tableView
         
-        form = Section("Exercises")
+        form = Section("Athlete")
+            <<< TextRow(){
+                $0.title = "Name"
+                $0.placeholder = "Name"
+                if let name = UserDefaults.standard.string(forKey: USER_DEFAULTS_ATHLETE_NAME) {
+                    $0.value = name
+                }
+                }.onChange {
+                    UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_ATHLETE_NAME)
+            }
+            +++ Section("Exercises")
             <<< ButtonRow() {
                 $0.title = "Manage Exercises"
                 $0.presentationMode = .segueName(segueName: SEGUE_MANAGE_EXERCISE, onDismiss: nil)

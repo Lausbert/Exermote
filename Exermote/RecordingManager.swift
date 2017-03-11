@@ -125,7 +125,11 @@ class RecordingWorkoutManager {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "y-MM-dd HH-mm-ss"
             
-            let fileName = dateFormatter.string(from: Date()) + ".csv"
+            var fileName = dateFormatter.string(from: Date()) + ".csv"
+            
+            if let name = UserDefaults.standard.string(forKey: USER_DEFAULTS_ATHLETE_NAME) {
+                fileName = fileName + " " + name
+            }
             
             saveFileToiCloud(data: data, fileName: fileName)
         }

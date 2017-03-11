@@ -19,12 +19,12 @@ class MetaData: Equatable {
     }
     
     var exerciseType: String {
-        guard let result = _exerciseType else {return ERROR_VALUE_STRING}
+        guard let result = _exerciseType else {return "Finish"}
         return result
     }
     
     var exerciseSubType: String {
-        guard let result = _exerciseSubType else {return ERROR_VALUE_STRING}
+        guard let result = _exerciseSubType else {return "Finish"}
         return result
     }
     

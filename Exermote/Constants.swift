@@ -63,6 +63,7 @@ let TRANSITION_DURATION = 0.5
 
 // MARK: User Defaults Constants
 
+let USER_DEFAULTS_ATHLETE_NAME = "athleteName"
 let USER_DEFAULTS_RECORDING_DURATION = "recordingDuration"
 let USER_DEFAULTS_RECORDING_FREQUENCY = "recordingFrequency"
 let USER_DEFAULTS_RECORDED_DATA_I_BEACON_STATE = ["nearableID",
