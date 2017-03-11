@@ -48,7 +48,7 @@
                                 <rect key="frame" x="0.0" y="68" width="375" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="measurementCell" rowHeight="160" id="P4s-Cf-6m3" customClass="MeasurementCell" customModule="Exermote" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="iBeaconStateCell" rowHeight="160" id="P4s-Cf-6m3" customClass="IBeaconStateCell" customModule="Exermote" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P4s-Cf-6m3" id="Hs1-NH-sv4">
@@ -73,26 +73,36 @@
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-nT-VJ9">
-                                                                                    <rect key="frame" x="8" y="34.5" width="103.5" height="8.5"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-nT-VJ9">
+                                                                                    <rect key="frame" x="8" y="30" width="102" height="17.5"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="xxxxxxxxxxxxxxxx">
                                                                                             <attributes>
                                                                                                 <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                                <font key="NSFont" size="12" name="NotoSans"/>
+                                                                                                <font key="NSFont" size="25" name="NotoSans"/>
                                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineHeightMultiple="0.5" tighteningFactorForTruncation="0.0"/>
                                                                                             </attributes>
                                                                                         </fragment>
                                                                                     </attributedString>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="X55-rj-Y4E">
+                                                                                    <rect key="frame" x="70.5" y="5" width="15" height="15"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" constant="15" id="6jA-Ne-4ib"/>
+                                                                                        <constraint firstAttribute="width" secondItem="X55-rj-Y4E" secondAttribute="height" multiplier="1:1" id="k2K-6r-lNv"/>
+                                                                                    </constraints>
+                                                                                </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                            <gestureRecognizers/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="trailing" secondItem="ADa-nT-VJ9" secondAttribute="trailing" constant="8" id="CAI-54-tTY"/>
-                                                                                <constraint firstItem="ADa-nT-VJ9" firstAttribute="leading" secondItem="2yh-DV-ZA4" secondAttribute="leading" constant="8" id="VOI-Z1-2EB"/>
+                                                                                <constraint firstItem="X55-rj-Y4E" firstAttribute="top" secondItem="2yh-DV-ZA4" secondAttribute="top" constant="5" id="0P5-RU-IAg"/>
+                                                                                <constraint firstItem="ADa-nT-VJ9" firstAttribute="centerX" secondItem="2yh-DV-ZA4" secondAttribute="centerX" id="C8B-kT-pz5"/>
+                                                                                <constraint firstItem="ADa-nT-VJ9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2yh-DV-ZA4" secondAttribute="leading" constant="8" id="T0y-R5-NIO"/>
                                                                                 <constraint firstItem="K1n-TO-WKx" firstAttribute="centerX" secondItem="2yh-DV-ZA4" secondAttribute="centerX" id="cc4-yz-sPh"/>
                                                                                 <constraint firstItem="K1n-TO-WKx" firstAttribute="top" secondItem="2yh-DV-ZA4" secondAttribute="top" constant="4" id="j0G-7P-3U8"/>
+                                                                                <constraint firstItem="X55-rj-Y4E" firstAttribute="leading" secondItem="K1n-TO-WKx" secondAttribute="trailing" constant="4" id="jBW-jC-Eu6"/>
                                                                                 <constraint firstItem="ADa-nT-VJ9" firstAttribute="centerY" secondItem="2yh-DV-ZA4" secondAttribute="centerY" id="p6b-zU-JS2"/>
                                                                             </constraints>
                                                                         </view>
@@ -244,7 +254,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="ContainerView" destination="6o2-Je-Zv3" id="hpa-BQ-Kd0"/>
+                                            <outlet property="editImgView" destination="X55-rj-Y4E" id="7eS-di-gH5"/>
                                             <outlet property="frequencyLbl" destination="BCr-Mm-KaZ" id="XBf-wF-2lx"/>
+                                            <outlet property="idView" destination="2yh-DV-ZA4" id="O28-CG-iun"/>
                                             <outlet property="nearableIdentifierLbl" destination="ADa-nT-VJ9" id="w4x-88-5Xd"/>
                                             <outlet property="rssiLbl" destination="Tz4-aH-GzN" id="ksl-2c-c67"/>
                                             <outlet property="xAccelerationLbl" destination="rrF-07-Edw" id="28P-uZ-XWr"/>
@@ -272,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6io-FN-V6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2316" y="269"/>
+            <point key="canvasLocation" x="2316" y="268.51574212893553"/>
         </scene>
         <!--Recording Workout-->
         <scene sceneID="cVD-YU-LFF">
@@ -504,4 +516,7 @@
             <point key="canvasLocation" x="4628" y="269"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="edit" width="24" height="24"/>
+    </resources>
 </document>

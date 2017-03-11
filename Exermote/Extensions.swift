@@ -87,3 +87,16 @@ extension Double { // http://stackoverflow.com/a/39172194/5722895
         return Double(arc4random()) / arc4randomMax
     }
 }
+
+extension UIView { // credits to Leo http://stackoverflow.com/a/30483636
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if parentResponder is UIViewController {
+                return parentResponder as! UIViewController!
+            }
+        }
+        return nil
+    }
+}

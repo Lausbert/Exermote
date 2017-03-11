@@ -62,7 +62,7 @@ class MetaData: Equatable {
             
             let exercise = exercises.randomItem()
             let exerciseType = exercise.name
-            let repetitions = [Int](1...10).randomItem()
+            let repetitions = [Int](EXERCISE_MINIMUM_REPETITIONS...EXERCISE_MAXIMUM_REPETITIONS).randomItem()
             let firstHalfDurationInTicks = Int(exercise.firstHalfDuration * Double(recordingFrequency))
             let secondHalfDurationInTicks = Int(exercise.secondHalfDuration * Double(recordingFrequency))
             let repetitionBreakDurationInTicks = Int(exercise.repetitionBreakDuration * Double(recordingFrequency))
@@ -80,11 +80,6 @@ class MetaData: Equatable {
                 
                 if remainingRecordingDurationInTicks < repetitionDurationInTicks {break workoutLoop}
                 
-                for _ in 1...repetitionBreakDurationInTicks {
-                    metaDataArray.append(MetaData(exerciseType: EXERCISE_BREAK, exerciseSubType: EXERCISE_BREAK))
-                    remainingRecordingDurationInTicks -= 1
-                }
-                
                 for _ in 1...firstHalfDurationInTicks {
                     metaDataArray.append(MetaData(exerciseType: exerciseType, exerciseSubType: EXERCISE_FIRST_HALF))
                     remainingRecordingDurationInTicks -= 1
@@ -95,6 +90,10 @@ class MetaData: Equatable {
                     remainingRecordingDurationInTicks -= 1
                 }
                 
+                for _ in 1...repetitionBreakDurationInTicks {
+                    metaDataArray.append(MetaData(exerciseType: EXERCISE_BREAK, exerciseSubType: EXERCISE_BREAK))
+                    remainingRecordingDurationInTicks -= 1
+                }
             }
         }
         

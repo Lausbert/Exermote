@@ -20,8 +20,8 @@ class RecordingWorkoutVC: UIViewController {
     @IBOutlet weak var circularProgress: KDCircularProgress!
     
     private let _speechSynthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
-    
-    var recordingWorkoutManager: RecordingWorkoutManager!
+    private let _toneOutputUnit: ToneOutputUnit = ToneOutputUnit()
+    private let _recordingWorkoutManager: RecordingWorkoutManager = RecordingWorkoutManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +32,10 @@ class RecordingWorkoutVC: UIViewController {
         
         self.circularProgress.progressColors = [COLOR_HIGHLIGHTED]
         
-        ToneOutputUnit.instance.enableSpeaker()
-        ToneOutputUnit.instance.setToneVolume(vol: 0.3)
-        
-        recordingWorkoutManager = RecordingWorkoutManager()
+        _toneOutputUnit.enableSpeaker()
+        _toneOutputUnit.setToneVolume(vol: 0.3)
 
-        recordingWorkoutManager.attemptRecording() {success in
+        _recordingWorkoutManager.attemptRecording() {success in
             if success {
                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateRemainingDuration), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_DURATION), object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateMetaData), name: NSNotification.Name(rawValue: NOTIFICATION_RECORDING_MANAGER_UPDATE_RECORDING_META_DATA), object: nil)
@@ -58,30 +56,30 @@ class RecordingWorkoutVC: UIViewController {
     // MARK: Recording
     
     func updateRemainingDuration() {
-        remaingRecordingDurationLbl.text = recordingWorkoutManager.remainingRecordingDurationInMinutes
+        remaingRecordingDurationLbl.text = _recordingWorkoutManager.remainingRecordingDurationInMinutes
     }
     
     func updateMetaData() {
         
+        currentExerciseTypeLbl.text = _recordingWorkoutManager.currentExercise.exerciseType
+        currentExerciseSubTypeLbl.text = _recordingWorkoutManager.currentExercise.exerciseSubType
+        nextExerciseTypeLbl.text = _recordingWorkoutManager.nextExercise.exerciseType
+        nextExerciseSubTypeLbl.text = _recordingWorkoutManager.nextExercise.exerciseSubType
+        
         if currentExerciseTypeLbl.text == EXERCISE_SET_BREAK {
-            let speechUtterance = AVSpeechUtterance(string: recordingWorkoutManager.nextExercise.exerciseType)
+            let speechUtterance = AVSpeechUtterance(string: _recordingWorkoutManager.nextExercise.exerciseType)
             speechUtterance.rate = 0.4
             _speechSynthesizer.speak(speechUtterance)
         }
-        
-        currentExerciseTypeLbl.text = recordingWorkoutManager.currentExercise.exerciseType
-        currentExerciseSubTypeLbl.text = recordingWorkoutManager.currentExercise.exerciseSubType
-        nextExerciseTypeLbl.text = recordingWorkoutManager.nextExercise.exerciseType
-        nextExerciseSubTypeLbl.text = recordingWorkoutManager.nextExercise.exerciseSubType
     }
     
     func updateCircularProgressAndPlaySound() {
         
-        let progressAngle = recordingWorkoutManager.progressAngle
+        let progressAngle = _recordingWorkoutManager.progressAngle
         circularProgress.angle = progressAngle
         
-        let currentExerciseType = recordingWorkoutManager.currentExercise.exerciseType
-        let currentExerciseSubType = recordingWorkoutManager.currentExercise.exerciseSubType
+        let currentExerciseType = _recordingWorkoutManager.currentExercise.exerciseType
+        let currentExerciseSubType = _recordingWorkoutManager.currentExercise.exerciseSubType
         
         if currentExerciseType != EXERCISE_SET_BREAK && currentExerciseType != EXERCISE_BREAK && currentExerciseType != ERROR_VALUE_STRING {
             
@@ -93,12 +91,12 @@ class RecordingWorkoutVC: UIViewController {
             default: break
             }
             
-            ToneOutputUnit.instance.setFrequency(freq: frequency)
+            _toneOutputUnit.setFrequency(freq: frequency)
             
             let recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
             let recordingInterval = 1.0/Double(recordingFrequency)
             
-            ToneOutputUnit.instance.setToneTime(t: recordingInterval)
+            _toneOutputUnit.setToneTime(t: recordingInterval)
         }
     }
     
@@ -120,7 +118,7 @@ class RecordingWorkoutVC: UIViewController {
         let alert = UIAlertController(title: "Warning", message: "Are you sure you want to stop recording? All unsaved data will be lost.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Continue", style: .default))
         alert.addAction(UIAlertAction(title: "Stop", style: .destructive, handler: { (action) in
-            self.recordingWorkoutManager.stopRecording(success: false)
+            self._recordingWorkoutManager.stopRecording(success: false)
         }))
         self.present(alert, animated: true, completion: nil)
     }

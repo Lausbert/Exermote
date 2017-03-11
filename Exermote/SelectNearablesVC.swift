@@ -38,12 +38,12 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let iBeaconState = BLEManager.instance.iBeaconStates[safe: indexPath.row] else {return MeasurementCell()}
-        if let cell = self.tableView.dequeueReusableCell(withIdentifier: "measurementCell") as? MeasurementCell {
+        guard let iBeaconState = BLEManager.instance.iBeaconStates[safe: indexPath.row] else {return IBeaconStateCell()}
+        if let cell = self.tableView.dequeueReusableCell(withIdentifier: "iBeaconStateCell") as? IBeaconStateCell {
             cell.configureCell(iBeaconState: iBeaconState)
             return cell
         } else {
-            return MeasurementCell()
+            return IBeaconStateCell()
         }
     }
     
