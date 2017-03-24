@@ -50,7 +50,7 @@ class IBeaconState {
     }
     
     var frequencyAsDouble: Double? {
-        guard let result = _frequency else {return 0.0}
+        guard let result = _frequency else {return 1.0}
         return result
     }
     
@@ -146,9 +146,9 @@ class IBeaconState {
         let lastfrequency = 1/self._timeStampRecorded.timeIntervalSince(previousIBeaconState.timeStampRecordedAsDate)
         
         if self._count < MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY {
-            self._frequency = (((Double(previousIBeaconState._count)-1)*previousFrequency!)+lastfrequency)/Double(self._count)
+            self._frequency = Double(self._count)/((Double(self._count-1)/(previousFrequency!))+(1/lastfrequency))
         } else {
-            self._frequency = (((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)-1)*previousFrequency!)+lastfrequency)/Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)
+            self._frequency = Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY)/((Double(MAXIMUM_NUMBER_FOR_CALCULATING_AVERAGE_OF_FREQUENCY-1)/(previousFrequency!))+(1/lastfrequency))
         }
         self._isSelected = previousIBeaconState.isSelected
     }

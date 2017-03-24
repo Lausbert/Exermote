@@ -35,14 +35,16 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
             
             print("Scanning...")
             
-            let delay = DispatchTime.now() + TIME_UNTIL_BLE_MANAGER_PAUSES_WITH_SCANNING
-            centralManagerQueue.asyncAfter(deadline: delay) {
-                
-                central.stopScan()
-                
-                let pause = DispatchTime.now() + TIME_OF_SCANNING_PAUSE_FOR_BLE_MANAGER
-                self.centralManagerQueue.asyncAfter(deadline: pause) {
-                    self.centralManagerDidUpdateState(central)
+            if TIME_OF_SCANNING_PAUSE_FOR_BLE_MANAGER > 0.0 {
+                let delay = DispatchTime.now() + TIME_UNTIL_BLE_MANAGER_PAUSES_WITH_SCANNING
+                centralManagerQueue.asyncAfter(deadline: delay) {
+                    
+                    central.stopScan()
+                    
+                    let pause = DispatchTime.now() + TIME_OF_SCANNING_PAUSE_FOR_BLE_MANAGER
+                    self.centralManagerQueue.asyncAfter(deadline: pause) {
+                        self.centralManagerDidUpdateState(central)
+                    }
                 }
             }
         }
