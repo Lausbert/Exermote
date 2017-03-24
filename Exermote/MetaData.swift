@@ -50,6 +50,7 @@ class MetaData: Equatable {
         
         if let data = UserDefaults.standard.data(forKey: USER_DEFAULTS_EXERCISES) {
             exercises =  NSKeyedUnarchiver.unarchiveObject(with: data) as! [Exercise]
+            exercises = exercises.filter{$0.includedInWorkout}
         }
         
         let recordingFrequency = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
