@@ -26,6 +26,8 @@ class RecordingWorkoutVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         self.navigationItem.hidesBackButton = true
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.itemWith(colorfulImage: UIImage(named: "forward"), target: self, action: #selector(rightBarButtonItemPressed))
@@ -127,6 +129,7 @@ class RecordingWorkoutVC: UIViewController {
         let alert = UIAlertController(title: "Notification", message: "The recorded data will now be uploaded to your iCLoud drive. Please check it on your MacBook or on iCloud.com.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Got it!", style: .default, handler: { (action) in
             UserDefaults.standard.set(false, forKey: USER_DEFAULTS_SHOW_ICLOUD_ALERT)
+            UIApplication.shared.isIdleTimerDisabled = false
             _ = self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
