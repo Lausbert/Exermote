@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -25,6 +26,24 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.dataSource = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(shouldReload), name: NSNotification.Name(rawValue: NOTIFICATION_BLE_MANAGER_NEW_PERIPHERALS), object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let settingRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
+        
+        settingRef.observe(.value, with: { snapshot in
+            
+            if let settingDict = snapshot.value as? Dictionary<String, AnyObject> {
+                if let recording = settingDict[FIREBASE_SETTINGS_RECORDING] as? Bool {
+                    if recording {
+                        self.leftBarButtonItemPressed()
+                    }
+                }
+            }
+        })
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +90,10 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         else if isNoNearableSelected() {
             selectionAlert()
         } else {
+            let settingRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
+            settingRef.removeAllObservers()
+            let settingDict = [FIREBASE_SETTINGS_RECORDING: true]
+            settingRef.updateChildValues(settingDict)
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: STORYBOARD_ID_RECORDING_WORKOUT_VC) as UIViewController
             self.navigationController?.push(viewController: viewController, transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromLeft, duration: TRANSITION_DURATION)
         }

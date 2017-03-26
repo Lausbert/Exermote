@@ -7,6 +7,8 @@ target 'Exermote' do
 
   pod 'Eureka'
   pod 'KDCircularProgress'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'ExermoteTests' do
     inherit! :search_paths

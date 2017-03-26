@@ -16,6 +16,7 @@
 		8D7B94C31E58D68C000E6C7E /* CustomMultipleSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C21E58D68C000E6C7E /* CustomMultipleSelectorRow.swift */; };
 		8D7B94C61E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C51E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift */; };
 		8D7B94C81E58DB1B000E6C7E /* CustomListCheckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B94C71E58DB1B000E6C7E /* CustomListCheckRow.swift */; };
+		8D941EFB1E87E8C600FB9758 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D941EFA1E87E8C600FB9758 /* GoogleService-Info.plist */; };
 		8DA8AC661E43A17300B56586 /* CustomSegmentedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */; };
 		8DA9B0641E6CA9C800415CAB /* MeasurementPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9B0631E6CA9C800415CAB /* MeasurementPoint.swift */; };
 		8DB6D34B1E8582910029B106 /* ToneOutputUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB6D34A1E8582910029B106 /* ToneOutputUnit.swift */; };
@@ -74,6 +75,7 @@
 		8D7B94C21E58D68C000E6C7E /* CustomMultipleSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMultipleSelectorRow.swift; sourceTree = "<group>"; };
 		8D7B94C51E58D6CB000E6C7E /* CustomMultipleSelectorRowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMultipleSelectorRowViewController.swift; sourceTree = "<group>"; };
 		8D7B94C71E58DB1B000E6C7E /* CustomListCheckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomListCheckRow.swift; sourceTree = "<group>"; };
+		8D941EFA1E87E8C600FB9758 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DA8AC651E43A17300B56586 /* CustomSegmentedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedRow.swift; sourceTree = "<group>"; };
 		8DA9B0631E6CA9C800415CAB /* MeasurementPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasurementPoint.swift; sourceTree = "<group>"; };
 		8DB6D34A1E8582910029B106 /* ToneOutputUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToneOutputUnit.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				8DCF1E5A1E2A48C600AEAAE7 /* LaunchScreen.storyboard */,
 				8D3852CC1E3CCF8C003B2738 /* Assets.xcassets */,
 				8DCF1E5D1E2A48C600AEAAE7 /* Info.plist */,
+				8D941EFA1E87E8C600FB9758 /* GoogleService-Info.plist */,
 			);
 			path = Exermote;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				8DCF1E8F1E2A499000AEAAE7 /* Main.storyboard in Resources */,
 				8DCF1E981E2A529500AEAAE7 /* NotoSans-BoldItalic.ttf in Resources */,
 				8DCF1E991E2A529500AEAAE7 /* NotoSans-Italic.ttf in Resources */,
+				8D941EFB1E87E8C600FB9758 /* GoogleService-Info.plist in Resources */,
 				8D3852CD1E3CCF8C003B2738 /* Assets.xcassets in Resources */,
 				8DCF1E5C1E2A48C600AEAAE7 /* LaunchScreen.storyboard in Resources */,
 				8DCF1E9A1E2A529500AEAAE7 /* NotoSans-Regular.ttf in Resources */,

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreBluetooth
+import UIKit
 
 class BLEManager: NSObject, CBCentralManagerDelegate {
     
@@ -76,10 +77,13 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
             
             if selectedIBeaconStates.isEmpty {
                 let iBeaconStatesUpdated = _iBeaconStates.filter{Date().timeIntervalSince($0.timeStampRecordedAsDate) < MAXIMUM_TIME_SINCE_UPDATE_BEFORE_DISAPPEARING}
+                UIApplication.shared.isIdleTimerDisabled = false
                 
                 uiUpdateNeeded = iBeaconStatesUpdated.count != _iBeaconStates.count ? true : uiUpdateNeeded
                 
                 _iBeaconStates = iBeaconStatesUpdated
+            } else {
+                UIApplication.shared.isIdleTimerDisabled = true
             }
             
             if uiUpdateNeeded {
