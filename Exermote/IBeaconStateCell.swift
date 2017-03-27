@@ -29,7 +29,13 @@ class IBeaconStateCell: UITableViewCell {
         
         if let text = UserDefaults.standard.string(forKey: nearableIdentifier) {
             nearableIdentifierLbl.text = text
+            if !iBeaconState.isSelected {
+                iBeaconState.wasSelected()
+            }
         } else {
+            if iBeaconState.isSelected {
+                iBeaconState.wasSelected()
+            }
             nearableIdentifierLbl.text = iBeaconState.nearableIdentifier
         }
 

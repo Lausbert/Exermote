@@ -32,18 +32,49 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewDidAppear(animated)
         
         let settingRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
-        
         settingRef.observe(.value, with: { snapshot in
             
-            if let settingDict = snapshot.value as? Dictionary<String, AnyObject> {
+            if let settingDict = snapshot.value as? Dictionary<String, Any> {
                 if let recording = settingDict[FIREBASE_SETTINGS_RECORDING] as? Bool {
                     if recording {
                         self.leftBarButtonItemPressed()
                     }
                 }
+                
+                if let athleteName = settingDict[USER_DEFAULTS_ATHLETE_NAME] as? String {
+                    UserDefaults.standard.set(athleteName, forKey: USER_DEFAULTS_ATHLETE_NAME)
+                }
+                
+                if let recordingDuration = settingDict[USER_DEFAULTS_RECORDING_DURATION] as? Float {
+                    UserDefaults.standard.set(recordingDuration, forKey: USER_DEFAULTS_RECORDING_DURATION)
+                }
+                
+                if let recordingFrequency = settingDict[USER_DEFAULTS_RECORDING_FREQUENCY] as? Int {
+                    UserDefaults.standard.set(recordingFrequency, forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
+                }
             }
         })
         
+        let exercisesRef = FIRDatabase.database().reference().child(FIREBASE_EXERCISES)
+        exercisesRef.observe(.value, with: { snapshot in
+            
+            if let exercisesDict = snapshot.value as? Dictionary<String, Any> {
+                
+                var exercises: [Exercise] = []
+                
+                for (key, value) in exercisesDict {
+                    
+                    if let exerciseDict = value as? Dictionary<String, Any> {
+                        let exercise = Exercise(exerciseDict: exerciseDict)
+                        exercises.append(exercise)
+                    }
+                }
+                
+                exercises.sort(by: {$0.name < $1.name})
+                let encodedData = NSKeyedArchiver.archivedData(withRootObject: exercises)
+                UserDefaults.standard.set(encodedData, forKey: USER_DEFAULTS_EXERCISES)
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import Firebase
 
 class ManageExerciseVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -152,6 +153,14 @@ class EditExerciseVC: FormViewController {
             exercises.sort(by: {$0.name < $1.name})
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: exercises)
             UserDefaults.standard.set(encodedData, forKey: USER_DEFAULTS_EXERCISES)
+            
+            
+            var exercisesDict: [String: Any] = [:]
+            for exercise in exercises {
+                exercisesDict[exercise.name] = exercise.dictionary
+            }
+            let exercisesRef = FIRDatabase.database().reference().child(FIREBASE_EXERCISES)
+            exercisesRef.setValue(exercisesDict)
             
             self.navigationController?.pop(transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromLeft, duration: TRANSITION_DURATION)
         } else {

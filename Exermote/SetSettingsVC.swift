@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import Firebase
 
 class SetSettingsVC: FormViewController {
     
@@ -24,6 +25,7 @@ class SetSettingsVC: FormViewController {
             <<< TextRow(){
                 $0.title = "Name"
                 $0.placeholder = "Name"
+                $0.tag = USER_DEFAULTS_ATHLETE_NAME
                 if let name = UserDefaults.standard.string(forKey: USER_DEFAULTS_ATHLETE_NAME) {
                     $0.value = name
                 }
@@ -42,6 +44,7 @@ class SetSettingsVC: FormViewController {
                 $0.maximumValue = Float(RECORDING_DURATION_MAXIMUM)
                 $0.steps = UInt($0.maximumValue-$0.minimumValue)
                 $0.value = UserDefaults.standard.float(forKey: USER_DEFAULTS_RECORDING_DURATION)
+                $0.tag = USER_DEFAULTS_RECORDING_DURATION
             }.onChange {
                     UserDefaults.standard.set($0.value, forKey: USER_DEFAULTS_RECORDING_DURATION)
             }
@@ -49,6 +52,7 @@ class SetSettingsVC: FormViewController {
                 $0.title = "Frequency [Hz]"
                 $0.options = RECORDING_FREQUENCY_OPTIONS
                 $0.value = UserDefaults.standard.integer(forKey: USER_DEFAULTS_RECORDING_FREQUENCY)
+                $0.tag = USER_DEFAULTS_RECORDING_FREQUENCY
             }.onChange {
                     if UserDefaults.standard.bool(forKey: USER_DEFAULTS_SHOW_FREQUENCY_ALERT) {
                       self.frequencyAlert()
@@ -124,6 +128,10 @@ class SetSettingsVC: FormViewController {
     // MARK: Navigation
     
     func leftBarButtonItemPressed() {
+        
+        let settingsRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
+        settingsRef.updateChildValues(form.values())
+        
         if isAnyDataSelected() {
             self.navigationController?.pop(transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromLeft, duration: TRANSITION_DURATION)
         } else {
