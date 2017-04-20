@@ -157,13 +157,13 @@ final class ToneOutputUnit: NSObject {
                 let sz = Int(mBuffers.mDataByteSize)
                 
                 var a  = self.phY        // capture from object for use inside block
-                let d  = 2.0 * M_PI * self.f0 / self.sampleRate     // phase delta
+                let d  = 2.0 * Double.pi * self.f0 / self.sampleRate     // phase delta
                 
                 let bufferPointer = UnsafeMutableRawPointer(mBuffers.mData)
                 if var bptr = bufferPointer {
                     for i in 0..<(count) {
                         let u  = sin(a)             // create a sinewave
-                        a += d ; if (a > 2.0 * M_PI) { a -= 2.0 * M_PI }
+                        a += d ; if (a > 2.0 * Double.pi) { a -= 2.0 * Double.pi }
                         let x = Int16(v * u + 0.5)      // scale & round
                         
                         if (i < (sz / 2)) {
@@ -190,12 +190,12 @@ final class ToneOutputUnit: NSObject {
             audioRunning = false
         }
         if (avActive) {
-            let audioSession = AVAudioSession.sharedInstance()
-            do {
-                // try audioSession.setActive(false)
-            } catch {
-            }
-            // avActive = false
+            _ = AVAudioSession.sharedInstance()
+//            do {
+//                // try audioSession.setActive(false)
+//            } catch {
+//            }
+//            // avActive = false
         }
     }
     

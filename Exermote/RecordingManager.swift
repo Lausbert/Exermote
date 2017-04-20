@@ -142,7 +142,6 @@ class RecordingWorkoutManager {
     
     private func writeDataToString() -> String {
         
-        let delimeterData = "sep=" + CSV_DELIMETER + CSV_LINE_BREAK
         let headerData = MeasurementPoint.CSVHeaderString()
         var data: String = ""
         
@@ -150,7 +149,7 @@ class RecordingWorkoutManager {
             data = data + measurementPoint.CSVDataString()
         }
         
-        return delimeterData + headerData + data
+        return headerData + data
     }
     
     private func saveFileToiCloud(data: String, fileName: String) {

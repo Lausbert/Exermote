@@ -62,7 +62,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
                 
                 var exercises: [Exercise] = []
                 
-                for (key, value) in exercisesDict {
+                for (_, value) in exercisesDict {
                     
                     if let exerciseDict = value as? Dictionary<String, Any> {
                         let exercise = Exercise(exerciseDict: exerciseDict)

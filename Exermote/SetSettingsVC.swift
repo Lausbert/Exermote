@@ -130,7 +130,7 @@ class SetSettingsVC: FormViewController {
     func leftBarButtonItemPressed() {
         
         let settingsRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
-        settingsRef.updateChildValues(form.values())
+        settingsRef.updateChildValues(form.values() as Any as! [AnyHashable : Any])
         
         if isAnyDataSelected() {
             self.navigationController?.pop(transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromLeft, duration: TRANSITION_DURATION)
