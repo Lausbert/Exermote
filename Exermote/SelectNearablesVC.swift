@@ -98,9 +98,9 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let iBeaconState = BLEManager.instance.iBeaconStates[safe: indexPath.row] else {return}
-        iBeaconState.wasSelected()
-        tableView.cellForRow(at: indexPath)?.setSelected(iBeaconState.isSelected, animated: false)
+//        guard let iBeaconState = BLEManager.instance.iBeaconStates[safe: indexPath.row] else {return}
+//        iBeaconState.wasSelected()
+//        tableView.cellForRow(at: indexPath)?.setSelected(iBeaconState.isSelected, animated: false)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

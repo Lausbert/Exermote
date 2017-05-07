@@ -120,6 +120,9 @@ class IBeaconState {
         guard self._companyIdentifier == COMPANY_IDENTIFIER_ESTIMOTE else {return nil}
             
         self._nearableIdentifier = data?.subdata(in: BEACON_IDENTIFIER_RANGE).hexEncodedString()
+        if let _ = UserDefaults.standard.string(forKey: self._nearableIdentifier!) {
+            self._isSelected = true
+        }
     
         self._xAcceleration = hexToAcc(hexData: (data?.subdata(in: X_ACCELERATION_RANGE).hexEncodedString())!)
         self._yAcceleration = hexToAcc(hexData: (data?.subdata(in: Y_ACCELERATION_RANGE).hexEncodedString())!)
@@ -133,7 +136,6 @@ class IBeaconState {
         }
         
         self._rssi = Int(RSSI)
-        
         
         self._timeStampRecorded = Date()
     }
