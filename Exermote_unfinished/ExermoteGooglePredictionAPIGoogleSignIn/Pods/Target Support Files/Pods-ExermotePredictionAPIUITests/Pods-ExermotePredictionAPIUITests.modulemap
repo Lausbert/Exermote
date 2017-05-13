@@ -1,0 +1,6 @@
+framework module Pods_ExermotePredictionAPIUITests {
+  umbrella header "Pods-ExermotePredictionAPIUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

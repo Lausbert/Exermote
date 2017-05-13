@@ -1,0 +1,755 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E4A33EE80D30083D4EACA50 /* Pods_ExermotePredictionAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDE21BD3565FC02615FA987F /* Pods_ExermotePredictionAPITests.framework */; };
+		59BE1822045AAB8F00346FE4 /* Pods_ExermotePredictionAPIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF62A101ED380B21DA0D44A /* Pods_ExermotePredictionAPIUITests.framework */; };
+		8D00D25D1EC7C07300EC7E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D00D25C1EC7C07300EC7E08 /* GoogleService-Info.plist */; };
+		8D00D25E1EC7C08D00EC7E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D00D25C1EC7C07300EC7E08 /* GoogleService-Info.plist */; };
+		8D00D25F1EC7C08E00EC7E08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D00D25C1EC7C07300EC7E08 /* GoogleService-Info.plist */; };
+		8D00D2641EC7C7A300EC7E08 /* PredictionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00D2631EC7C7A300EC7E08 /* PredictionVC.swift */; };
+		8D30279D1EC7BFBF009D9002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D30279C1EC7BFBF009D9002 /* AppDelegate.swift */; };
+		8D30279F1EC7BFBF009D9002 /* GoogleSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D30279E1EC7BFBF009D9002 /* GoogleSignInVC.swift */; };
+		8D3027A21EC7BFBF009D9002 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D3027A01EC7BFBF009D9002 /* Main.storyboard */; };
+		8D3027A41EC7BFBF009D9002 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3027A31EC7BFBF009D9002 /* Assets.xcassets */; };
+		8D3027A71EC7BFBF009D9002 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D3027A51EC7BFBF009D9002 /* LaunchScreen.storyboard */; };
+		8D3027B21EC7BFBF009D9002 /* ExermotePredictionAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3027B11EC7BFBF009D9002 /* ExermotePredictionAPITests.swift */; };
+		8D3027BD1EC7BFBF009D9002 /* ExermotePredictionAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3027BC1EC7BFBF009D9002 /* ExermotePredictionAPIUITests.swift */; };
+		C85CE5DF4CBE1ADB1353C391 /* Pods_ExermotePredictionAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE45110DC43CF88453081570 /* Pods_ExermotePredictionAPI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8D3027AE1EC7BFBF009D9002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D3027911EC7BFBF009D9002 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D3027981EC7BFBF009D9002;
+			remoteInfo = ExermotePredictionAPI;
+		};
+		8D3027B91EC7BFBF009D9002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D3027911EC7BFBF009D9002 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D3027981EC7BFBF009D9002;
+			remoteInfo = ExermotePredictionAPI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E22E1234C562985C6A7C3C4 /* Pods-ExermotePredictionAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermotePredictionAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermotePredictionAPI/Pods-ExermotePredictionAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		8D00D25C1EC7C07300EC7E08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8D00D2601EC7C0D000EC7E08 /* ExermotePredictionAPI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExermotePredictionAPI-Bridging-Header.h"; sourceTree = "<group>"; };
+		8D00D2631EC7C7A300EC7E08 /* PredictionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionVC.swift; sourceTree = "<group>"; };
+		8D3027991EC7BFBF009D9002 /* ExermotePredictionAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExermotePredictionAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D30279C1EC7BFBF009D9002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D30279E1EC7BFBF009D9002 /* GoogleSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInVC.swift; sourceTree = "<group>"; };
+		8D3027A11EC7BFBF009D9002 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8D3027A31EC7BFBF009D9002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D3027A61EC7BFBF009D9002 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8D3027A81EC7BFBF009D9002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D3027AD1EC7BFBF009D9002 /* ExermotePredictionAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExermotePredictionAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D3027B11EC7BFBF009D9002 /* ExermotePredictionAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExermotePredictionAPITests.swift; sourceTree = "<group>"; };
+		8D3027B31EC7BFBF009D9002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D3027B81EC7BFBF009D9002 /* ExermotePredictionAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExermotePredictionAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D3027BC1EC7BFBF009D9002 /* ExermotePredictionAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExermotePredictionAPIUITests.swift; sourceTree = "<group>"; };
+		8D3027BE1EC7BFBF009D9002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B984455ACB3315F0411DA93 /* Pods-ExermotePredictionAPITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermotePredictionAPITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermotePredictionAPITests/Pods-ExermotePredictionAPITests.release.xcconfig"; sourceTree = "<group>"; };
+		AA5EDB4C38035BE98A299841 /* Pods-ExermotePredictionAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermotePredictionAPITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermotePredictionAPITests/Pods-ExermotePredictionAPITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B976FAE0C690D5D10B48DB71 /* Pods-ExermotePredictionAPIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermotePredictionAPIUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermotePredictionAPIUITests/Pods-ExermotePredictionAPIUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CDE21BD3565FC02615FA987F /* Pods_ExermotePredictionAPITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermotePredictionAPITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2BC0FEAEB7387D8967C875D /* Pods-ExermotePredictionAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermotePredictionAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermotePredictionAPI/Pods-ExermotePredictionAPI.release.xcconfig"; sourceTree = "<group>"; };
+		DAF62A101ED380B21DA0D44A /* Pods_ExermotePredictionAPIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermotePredictionAPIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDFB6AEA8B9C10DD9AB313EA /* Pods-ExermotePredictionAPIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermotePredictionAPIUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermotePredictionAPIUITests/Pods-ExermotePredictionAPIUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FE45110DC43CF88453081570 /* Pods_ExermotePredictionAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermotePredictionAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D3027961EC7BFBF009D9002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C85CE5DF4CBE1ADB1353C391 /* Pods_ExermotePredictionAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D3027AA1EC7BFBF009D9002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E4A33EE80D30083D4EACA50 /* Pods_ExermotePredictionAPITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D3027B51EC7BFBF009D9002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59BE1822045AAB8F00346FE4 /* Pods_ExermotePredictionAPIUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A5D24AB21E7BACA499331AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E22E1234C562985C6A7C3C4 /* Pods-ExermotePredictionAPI.debug.xcconfig */,
+				D2BC0FEAEB7387D8967C875D /* Pods-ExermotePredictionAPI.release.xcconfig */,
+				AA5EDB4C38035BE98A299841 /* Pods-ExermotePredictionAPITests.debug.xcconfig */,
+				9B984455ACB3315F0411DA93 /* Pods-ExermotePredictionAPITests.release.xcconfig */,
+				FDFB6AEA8B9C10DD9AB313EA /* Pods-ExermotePredictionAPIUITests.debug.xcconfig */,
+				B976FAE0C690D5D10B48DB71 /* Pods-ExermotePredictionAPIUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8D3027901EC7BFBF009D9002 = {
+			isa = PBXGroup;
+			children = (
+				8D30279B1EC7BFBF009D9002 /* ExermotePredictionAPI */,
+				8D3027B01EC7BFBF009D9002 /* ExermotePredictionAPITests */,
+				8D3027BB1EC7BFBF009D9002 /* ExermotePredictionAPIUITests */,
+				8D30279A1EC7BFBF009D9002 /* Products */,
+				5A5D24AB21E7BACA499331AD /* Pods */,
+				D720C3F2A8119E4563328B8A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8D30279A1EC7BFBF009D9002 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D3027991EC7BFBF009D9002 /* ExermotePredictionAPI.app */,
+				8D3027AD1EC7BFBF009D9002 /* ExermotePredictionAPITests.xctest */,
+				8D3027B81EC7BFBF009D9002 /* ExermotePredictionAPIUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8D30279B1EC7BFBF009D9002 /* ExermotePredictionAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8D00D25C1EC7C07300EC7E08 /* GoogleService-Info.plist */,
+				8D30279C1EC7BFBF009D9002 /* AppDelegate.swift */,
+				8D30279E1EC7BFBF009D9002 /* GoogleSignInVC.swift */,
+				8D3027A01EC7BFBF009D9002 /* Main.storyboard */,
+				8D3027A31EC7BFBF009D9002 /* Assets.xcassets */,
+				8D3027A51EC7BFBF009D9002 /* LaunchScreen.storyboard */,
+				8D3027A81EC7BFBF009D9002 /* Info.plist */,
+				8D00D2601EC7C0D000EC7E08 /* ExermotePredictionAPI-Bridging-Header.h */,
+				8D00D2631EC7C7A300EC7E08 /* PredictionVC.swift */,
+			);
+			path = ExermotePredictionAPI;
+			sourceTree = "<group>";
+		};
+		8D3027B01EC7BFBF009D9002 /* ExermotePredictionAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				8D3027B11EC7BFBF009D9002 /* ExermotePredictionAPITests.swift */,
+				8D3027B31EC7BFBF009D9002 /* Info.plist */,
+			);
+			path = ExermotePredictionAPITests;
+			sourceTree = "<group>";
+		};
+		8D3027BB1EC7BFBF009D9002 /* ExermotePredictionAPIUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8D3027BC1EC7BFBF009D9002 /* ExermotePredictionAPIUITests.swift */,
+				8D3027BE1EC7BFBF009D9002 /* Info.plist */,
+			);
+			path = ExermotePredictionAPIUITests;
+			sourceTree = "<group>";
+		};
+		D720C3F2A8119E4563328B8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE45110DC43CF88453081570 /* Pods_ExermotePredictionAPI.framework */,
+				CDE21BD3565FC02615FA987F /* Pods_ExermotePredictionAPITests.framework */,
+				DAF62A101ED380B21DA0D44A /* Pods_ExermotePredictionAPIUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D3027981EC7BFBF009D9002 /* ExermotePredictionAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D3027C11EC7BFBF009D9002 /* Build configuration list for PBXNativeTarget "ExermotePredictionAPI" */;
+			buildPhases = (
+				4BF5DBFC9C51D231DC5C74C0 /* [CP] Check Pods Manifest.lock */,
+				8D3027951EC7BFBF009D9002 /* Sources */,
+				8D3027961EC7BFBF009D9002 /* Frameworks */,
+				8D3027971EC7BFBF009D9002 /* Resources */,
+				19AEDE9ABFD514941E70BCB0 /* [CP] Embed Pods Frameworks */,
+				78A42171BA8FAA42E9DBE582 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExermotePredictionAPI;
+			productName = ExermotePredictionAPI;
+			productReference = 8D3027991EC7BFBF009D9002 /* ExermotePredictionAPI.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8D3027AC1EC7BFBF009D9002 /* ExermotePredictionAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D3027C41EC7BFBF009D9002 /* Build configuration list for PBXNativeTarget "ExermotePredictionAPITests" */;
+			buildPhases = (
+				BC912AE35600D442ED262CA0 /* [CP] Check Pods Manifest.lock */,
+				8D3027A91EC7BFBF009D9002 /* Sources */,
+				8D3027AA1EC7BFBF009D9002 /* Frameworks */,
+				8D3027AB1EC7BFBF009D9002 /* Resources */,
+				292A1B42D1B6796A14426066 /* [CP] Embed Pods Frameworks */,
+				EE8F71CE80C477C24EA2D219 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D3027AF1EC7BFBF009D9002 /* PBXTargetDependency */,
+			);
+			name = ExermotePredictionAPITests;
+			productName = ExermotePredictionAPITests;
+			productReference = 8D3027AD1EC7BFBF009D9002 /* ExermotePredictionAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8D3027B71EC7BFBF009D9002 /* ExermotePredictionAPIUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D3027C71EC7BFBF009D9002 /* Build configuration list for PBXNativeTarget "ExermotePredictionAPIUITests" */;
+			buildPhases = (
+				6004AADAE3CDBD82BB517A63 /* [CP] Check Pods Manifest.lock */,
+				8D3027B41EC7BFBF009D9002 /* Sources */,
+				8D3027B51EC7BFBF009D9002 /* Frameworks */,
+				8D3027B61EC7BFBF009D9002 /* Resources */,
+				6AA261390940531231079896 /* [CP] Embed Pods Frameworks */,
+				93724C8F7E254CC82999AA5C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D3027BA1EC7BFBF009D9002 /* PBXTargetDependency */,
+			);
+			name = ExermotePredictionAPIUITests;
+			productName = ExermotePredictionAPIUITests;
+			productReference = 8D3027B81EC7BFBF009D9002 /* ExermotePredictionAPIUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8D3027911EC7BFBF009D9002 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Stephan Lerner";
+				TargetAttributes = {
+					8D3027981EC7BFBF009D9002 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = UD2UEZDYQ6;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+					8D3027AC1EC7BFBF009D9002 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = UD2UEZDYQ6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8D3027981EC7BFBF009D9002;
+					};
+					8D3027B71EC7BFBF009D9002 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = UD2UEZDYQ6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8D3027981EC7BFBF009D9002;
+					};
+				};
+			};
+			buildConfigurationList = 8D3027941EC7BFBF009D9002 /* Build configuration list for PBXProject "ExermotePredictionAPI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8D3027901EC7BFBF009D9002;
+			productRefGroup = 8D30279A1EC7BFBF009D9002 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D3027981EC7BFBF009D9002 /* ExermotePredictionAPI */,
+				8D3027AC1EC7BFBF009D9002 /* ExermotePredictionAPITests */,
+				8D3027B71EC7BFBF009D9002 /* ExermotePredictionAPIUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D3027971EC7BFBF009D9002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D3027A71EC7BFBF009D9002 /* LaunchScreen.storyboard in Resources */,
+				8D00D25D1EC7C07300EC7E08 /* GoogleService-Info.plist in Resources */,
+				8D3027A41EC7BFBF009D9002 /* Assets.xcassets in Resources */,
+				8D3027A21EC7BFBF009D9002 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D3027AB1EC7BFBF009D9002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D00D25E1EC7C08D00EC7E08 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D3027B61EC7BFBF009D9002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D00D25F1EC7C08E00EC7E08 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19AEDE9ABFD514941E70BCB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermotePredictionAPI/Pods-ExermotePredictionAPI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		292A1B42D1B6796A14426066 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermotePredictionAPITests/Pods-ExermotePredictionAPITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BF5DBFC9C51D231DC5C74C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6004AADAE3CDBD82BB517A63 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6AA261390940531231079896 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermotePredictionAPIUITests/Pods-ExermotePredictionAPIUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78A42171BA8FAA42E9DBE582 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermotePredictionAPI/Pods-ExermotePredictionAPI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93724C8F7E254CC82999AA5C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermotePredictionAPIUITests/Pods-ExermotePredictionAPIUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC912AE35600D442ED262CA0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EE8F71CE80C477C24EA2D219 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermotePredictionAPITests/Pods-ExermotePredictionAPITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D3027951EC7BFBF009D9002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D00D2641EC7C7A300EC7E08 /* PredictionVC.swift in Sources */,
+				8D30279F1EC7BFBF009D9002 /* GoogleSignInVC.swift in Sources */,
+				8D30279D1EC7BFBF009D9002 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D3027A91EC7BFBF009D9002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D3027B21EC7BFBF009D9002 /* ExermotePredictionAPITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D3027B41EC7BFBF009D9002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D3027BD1EC7BFBF009D9002 /* ExermotePredictionAPIUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8D3027AF1EC7BFBF009D9002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D3027981EC7BFBF009D9002 /* ExermotePredictionAPI */;
+			targetProxy = 8D3027AE1EC7BFBF009D9002 /* PBXContainerItemProxy */;
+		};
+		8D3027BA1EC7BFBF009D9002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D3027981EC7BFBF009D9002 /* ExermotePredictionAPI */;
+			targetProxy = 8D3027B91EC7BFBF009D9002 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8D3027A01EC7BFBF009D9002 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D3027A11EC7BFBF009D9002 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8D3027A51EC7BFBF009D9002 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D3027A61EC7BFBF009D9002 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8D3027BF1EC7BFBF009D9002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8D3027C01EC7BFBF009D9002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8D3027C21EC7BFBF009D9002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E22E1234C562985C6A7C3C4 /* Pods-ExermotePredictionAPI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermotePredictionAPI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermotePredictionAPI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExermotePredictionAPI/ExermotePredictionAPI-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		8D3027C31EC7BFBF009D9002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2BC0FEAEB7387D8967C875D /* Pods-ExermotePredictionAPI.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermotePredictionAPI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermotePredictionAPI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExermotePredictionAPI/ExermotePredictionAPI-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		8D3027C51EC7BFBF009D9002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA5EDB4C38035BE98A299841 /* Pods-ExermotePredictionAPITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermotePredictionAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermotePredictionAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExermotePredictionAPI.app/ExermotePredictionAPI";
+			};
+			name = Debug;
+		};
+		8D3027C61EC7BFBF009D9002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B984455ACB3315F0411DA93 /* Pods-ExermotePredictionAPITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermotePredictionAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermotePredictionAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExermotePredictionAPI.app/ExermotePredictionAPI";
+			};
+			name = Release;
+		};
+		8D3027C81EC7BFBF009D9002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDFB6AEA8B9C10DD9AB313EA /* Pods-ExermotePredictionAPIUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermotePredictionAPIUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermotePredictionAPIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ExermotePredictionAPI;
+			};
+			name = Debug;
+		};
+		8D3027C91EC7BFBF009D9002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B976FAE0C690D5D10B48DB71 /* Pods-ExermotePredictionAPIUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermotePredictionAPIUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermotePredictionAPIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ExermotePredictionAPI;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8D3027941EC7BFBF009D9002 /* Build configuration list for PBXProject "ExermotePredictionAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D3027BF1EC7BFBF009D9002 /* Debug */,
+				8D3027C01EC7BFBF009D9002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D3027C11EC7BFBF009D9002 /* Build configuration list for PBXNativeTarget "ExermotePredictionAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D3027C21EC7BFBF009D9002 /* Debug */,
+				8D3027C31EC7BFBF009D9002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D3027C41EC7BFBF009D9002 /* Build configuration list for PBXNativeTarget "ExermotePredictionAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D3027C51EC7BFBF009D9002 /* Debug */,
+				8D3027C61EC7BFBF009D9002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D3027C71EC7BFBF009D9002 /* Build configuration list for PBXNativeTarget "ExermotePredictionAPIUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D3027C81EC7BFBF009D9002 /* Debug */,
+				8D3027C91EC7BFBF009D9002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8D3027911EC7BFBF009D9002 /* Project object */;
+}
