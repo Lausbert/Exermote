@@ -1,6 +1,0 @@
-framework module KDCircularProgress {
-  umbrella header "KDCircularProgress-umbrella.h"
-
-  export *
-  module * { export * }
-}
