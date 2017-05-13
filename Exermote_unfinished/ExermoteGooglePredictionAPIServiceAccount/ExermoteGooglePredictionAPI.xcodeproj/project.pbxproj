@@ -1,0 +1,751 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32E371A26D4772B68B67F0E9 /* Pods_ExermoteGooglePredictionAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 630327CD4F891E6F7FB7AE99 /* Pods_ExermoteGooglePredictionAPI.framework */; };
+		35E093E602AB2FD46DE2FE07 /* Pods_ExermoteGooglePredictionAPIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E72E49AD76A84670CB316AA /* Pods_ExermoteGooglePredictionAPIUITests.framework */; };
+		534578D186D398C5F48F2AF6 /* Pods_ExermoteGooglePredictionAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC6F952668E0E748B4714CE /* Pods_ExermoteGooglePredictionAPITests.framework */; };
+		8D6DD6981EC0C395006A484A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6DD6971EC0C395006A484A /* Extensions.swift */; };
+		8DB006811EC0925F00623BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB006801EC0925F00623BE5 /* AppDelegate.swift */; };
+		8DB006831EC0925F00623BE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB006821EC0925F00623BE5 /* ViewController.swift */; };
+		8DB006861EC0925F00623BE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB006841EC0925F00623BE5 /* Main.storyboard */; };
+		8DB006881EC0925F00623BE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB006871EC0925F00623BE5 /* Assets.xcassets */; };
+		8DB0068B1EC0925F00623BE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB006891EC0925F00623BE5 /* LaunchScreen.storyboard */; };
+		8DB006961EC0926000623BE5 /* ExermoteGooglePredictionAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB006951EC0926000623BE5 /* ExermoteGooglePredictionAPITests.swift */; };
+		8DB006A11EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB006A01EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests.swift */; };
+		8DB006B41EC0950600623BE5 /* GooglePredictionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB006B31EC0950600623BE5 /* GooglePredictionManager.swift */; };
+		8DB40DFF1EC0EAE300D85753 /* Exermote-3ce618607d6f.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8DB40DFE1EC0EAE300D85753 /* Exermote-3ce618607d6f.pem */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8DB006921EC0925F00623BE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DB006751EC0925F00623BE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DB0067C1EC0925F00623BE5;
+			remoteInfo = ExermoteGooglePredictionAPI;
+		};
+		8DB0069D1EC0926000623BE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DB006751EC0925F00623BE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DB0067C1EC0925F00623BE5;
+			remoteInfo = ExermoteGooglePredictionAPI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2E5B9B43F79A44C6CD4F214A /* Pods-ExermoteGooglePredictionAPITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteGooglePredictionAPITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteGooglePredictionAPITests/Pods-ExermoteGooglePredictionAPITests.release.xcconfig"; sourceTree = "<group>"; };
+		2E72E49AD76A84670CB316AA /* Pods_ExermoteGooglePredictionAPIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteGooglePredictionAPIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38D4B5D0CE2040267A2355FD /* Pods-ExermoteGooglePredictionAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteGooglePredictionAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteGooglePredictionAPI/Pods-ExermoteGooglePredictionAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		3F87728D33A1CCF3800D6B98 /* Pods-ExermoteGooglePredictionAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteGooglePredictionAPITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteGooglePredictionAPITests/Pods-ExermoteGooglePredictionAPITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4274DB8F6E1EACEF6D2BF471 /* Pods-ExermoteGooglePredictionAPIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteGooglePredictionAPIUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteGooglePredictionAPIUITests/Pods-ExermoteGooglePredictionAPIUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		630327CD4F891E6F7FB7AE99 /* Pods_ExermoteGooglePredictionAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteGooglePredictionAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CC6F952668E0E748B4714CE /* Pods_ExermoteGooglePredictionAPITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteGooglePredictionAPITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D6DD6971EC0C395006A484A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8DB0067D1EC0925F00623BE5 /* ExermoteGooglePredictionAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExermoteGooglePredictionAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DB006801EC0925F00623BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8DB006821EC0925F00623BE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8DB006851EC0925F00623BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8DB006871EC0925F00623BE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DB0068A1EC0925F00623BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8DB0068C1EC0925F00623BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DB006911EC0925F00623BE5 /* ExermoteGooglePredictionAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExermoteGooglePredictionAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DB006951EC0926000623BE5 /* ExermoteGooglePredictionAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExermoteGooglePredictionAPITests.swift; sourceTree = "<group>"; };
+		8DB006971EC0926000623BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DB0069C1EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExermoteGooglePredictionAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DB006A01EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExermoteGooglePredictionAPIUITests.swift; sourceTree = "<group>"; };
+		8DB006A21EC0926000623BE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DB006AE1EC0931300623BE5 /* ExermoteGooglePredictionAPI-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExermoteGooglePredictionAPI-Bridging-Header.h"; sourceTree = "<group>"; };
+		8DB006B31EC0950600623BE5 /* GooglePredictionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePredictionManager.swift; sourceTree = "<group>"; };
+		8DB40DFE1EC0EAE300D85753 /* Exermote-3ce618607d6f.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Exermote-3ce618607d6f.pem"; sourceTree = "<group>"; };
+		B6BF773D1A9FB3B06E1B0619 /* Pods-ExermoteGooglePredictionAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteGooglePredictionAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteGooglePredictionAPI/Pods-ExermoteGooglePredictionAPI.release.xcconfig"; sourceTree = "<group>"; };
+		C2FE32E23495BBCFC6D68F32 /* Pods-ExermoteGooglePredictionAPIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteGooglePredictionAPIUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteGooglePredictionAPIUITests/Pods-ExermoteGooglePredictionAPIUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DB0067A1EC0925F00623BE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32E371A26D4772B68B67F0E9 /* Pods_ExermoteGooglePredictionAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DB0068E1EC0925F00623BE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				534578D186D398C5F48F2AF6 /* Pods_ExermoteGooglePredictionAPITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DB006991EC0926000623BE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35E093E602AB2FD46DE2FE07 /* Pods_ExermoteGooglePredictionAPIUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10A0B50F81D055C10CEE2C48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38D4B5D0CE2040267A2355FD /* Pods-ExermoteGooglePredictionAPI.debug.xcconfig */,
+				B6BF773D1A9FB3B06E1B0619 /* Pods-ExermoteGooglePredictionAPI.release.xcconfig */,
+				3F87728D33A1CCF3800D6B98 /* Pods-ExermoteGooglePredictionAPITests.debug.xcconfig */,
+				2E5B9B43F79A44C6CD4F214A /* Pods-ExermoteGooglePredictionAPITests.release.xcconfig */,
+				4274DB8F6E1EACEF6D2BF471 /* Pods-ExermoteGooglePredictionAPIUITests.debug.xcconfig */,
+				C2FE32E23495BBCFC6D68F32 /* Pods-ExermoteGooglePredictionAPIUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7684D07B2F8EDEE46516C311 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				630327CD4F891E6F7FB7AE99 /* Pods_ExermoteGooglePredictionAPI.framework */,
+				8CC6F952668E0E748B4714CE /* Pods_ExermoteGooglePredictionAPITests.framework */,
+				2E72E49AD76A84670CB316AA /* Pods_ExermoteGooglePredictionAPIUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DB006741EC0925F00623BE5 = {
+			isa = PBXGroup;
+			children = (
+				8DB0067F1EC0925F00623BE5 /* ExermoteGooglePredictionAPI */,
+				8DB006941EC0926000623BE5 /* ExermoteGooglePredictionAPITests */,
+				8DB0069F1EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests */,
+				8DB0067E1EC0925F00623BE5 /* Products */,
+				10A0B50F81D055C10CEE2C48 /* Pods */,
+				7684D07B2F8EDEE46516C311 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8DB0067E1EC0925F00623BE5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DB0067D1EC0925F00623BE5 /* ExermoteGooglePredictionAPI.app */,
+				8DB006911EC0925F00623BE5 /* ExermoteGooglePredictionAPITests.xctest */,
+				8DB0069C1EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8DB0067F1EC0925F00623BE5 /* ExermoteGooglePredictionAPI */ = {
+			isa = PBXGroup;
+			children = (
+				8DB006B31EC0950600623BE5 /* GooglePredictionManager.swift */,
+				8DB006801EC0925F00623BE5 /* AppDelegate.swift */,
+				8DB006821EC0925F00623BE5 /* ViewController.swift */,
+				8D6DD6971EC0C395006A484A /* Extensions.swift */,
+				8DB006841EC0925F00623BE5 /* Main.storyboard */,
+				8DB006871EC0925F00623BE5 /* Assets.xcassets */,
+				8DB006891EC0925F00623BE5 /* LaunchScreen.storyboard */,
+				8DB0068C1EC0925F00623BE5 /* Info.plist */,
+				8DB006AE1EC0931300623BE5 /* ExermoteGooglePredictionAPI-Bridging-Header.h */,
+				8DB40DFE1EC0EAE300D85753 /* Exermote-3ce618607d6f.pem */,
+			);
+			path = ExermoteGooglePredictionAPI;
+			sourceTree = "<group>";
+		};
+		8DB006941EC0926000623BE5 /* ExermoteGooglePredictionAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				8DB006951EC0926000623BE5 /* ExermoteGooglePredictionAPITests.swift */,
+				8DB006971EC0926000623BE5 /* Info.plist */,
+			);
+			path = ExermoteGooglePredictionAPITests;
+			sourceTree = "<group>";
+		};
+		8DB0069F1EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8DB006A01EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests.swift */,
+				8DB006A21EC0926000623BE5 /* Info.plist */,
+			);
+			path = ExermoteGooglePredictionAPIUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DB0067C1EC0925F00623BE5 /* ExermoteGooglePredictionAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DB006A51EC0926000623BE5 /* Build configuration list for PBXNativeTarget "ExermoteGooglePredictionAPI" */;
+			buildPhases = (
+				27A447D2A1F9C6D8393FD282 /* [CP] Check Pods Manifest.lock */,
+				8DB006791EC0925F00623BE5 /* Sources */,
+				8DB0067A1EC0925F00623BE5 /* Frameworks */,
+				8DB0067B1EC0925F00623BE5 /* Resources */,
+				E981739E33CF2EB4DA1B0CD2 /* [CP] Embed Pods Frameworks */,
+				F0359B0F8B42DA8E7B5412E4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExermoteGooglePredictionAPI;
+			productName = ExermoteGooglePredictionAPI;
+			productReference = 8DB0067D1EC0925F00623BE5 /* ExermoteGooglePredictionAPI.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8DB006901EC0925F00623BE5 /* ExermoteGooglePredictionAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DB006A81EC0926000623BE5 /* Build configuration list for PBXNativeTarget "ExermoteGooglePredictionAPITests" */;
+			buildPhases = (
+				60822ED18085EEB440E6EC15 /* [CP] Check Pods Manifest.lock */,
+				8DB0068D1EC0925F00623BE5 /* Sources */,
+				8DB0068E1EC0925F00623BE5 /* Frameworks */,
+				8DB0068F1EC0925F00623BE5 /* Resources */,
+				F1C267FF7F698FA5479DB16E /* [CP] Embed Pods Frameworks */,
+				6867F6ABC400C8A7802F448B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8DB006931EC0925F00623BE5 /* PBXTargetDependency */,
+			);
+			name = ExermoteGooglePredictionAPITests;
+			productName = ExermoteGooglePredictionAPITests;
+			productReference = 8DB006911EC0925F00623BE5 /* ExermoteGooglePredictionAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8DB0069B1EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DB006AB1EC0926000623BE5 /* Build configuration list for PBXNativeTarget "ExermoteGooglePredictionAPIUITests" */;
+			buildPhases = (
+				144102BBB2191450BA8DD1F6 /* [CP] Check Pods Manifest.lock */,
+				8DB006981EC0926000623BE5 /* Sources */,
+				8DB006991EC0926000623BE5 /* Frameworks */,
+				8DB0069A1EC0926000623BE5 /* Resources */,
+				09EACEB4245A05B956B90CF2 /* [CP] Embed Pods Frameworks */,
+				61356CD5AB948AB0CA811B77 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8DB0069E1EC0926000623BE5 /* PBXTargetDependency */,
+			);
+			name = ExermoteGooglePredictionAPIUITests;
+			productName = ExermoteGooglePredictionAPIUITests;
+			productReference = 8DB0069C1EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8DB006751EC0925F00623BE5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Stephan Lerner";
+				TargetAttributes = {
+					8DB0067C1EC0925F00623BE5 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = UD2UEZDYQ6;
+						ProvisioningStyle = Automatic;
+					};
+					8DB006901EC0925F00623BE5 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = UD2UEZDYQ6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8DB0067C1EC0925F00623BE5;
+					};
+					8DB0069B1EC0926000623BE5 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = UD2UEZDYQ6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8DB0067C1EC0925F00623BE5;
+					};
+				};
+			};
+			buildConfigurationList = 8DB006781EC0925F00623BE5 /* Build configuration list for PBXProject "ExermoteGooglePredictionAPI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8DB006741EC0925F00623BE5;
+			productRefGroup = 8DB0067E1EC0925F00623BE5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DB0067C1EC0925F00623BE5 /* ExermoteGooglePredictionAPI */,
+				8DB006901EC0925F00623BE5 /* ExermoteGooglePredictionAPITests */,
+				8DB0069B1EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DB0067B1EC0925F00623BE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DB0068B1EC0925F00623BE5 /* LaunchScreen.storyboard in Resources */,
+				8DB40DFF1EC0EAE300D85753 /* Exermote-3ce618607d6f.pem in Resources */,
+				8DB006881EC0925F00623BE5 /* Assets.xcassets in Resources */,
+				8DB006861EC0925F00623BE5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DB0068F1EC0925F00623BE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DB0069A1EC0926000623BE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09EACEB4245A05B956B90CF2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermoteGooglePredictionAPIUITests/Pods-ExermoteGooglePredictionAPIUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		144102BBB2191450BA8DD1F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		27A447D2A1F9C6D8393FD282 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		60822ED18085EEB440E6EC15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		61356CD5AB948AB0CA811B77 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermoteGooglePredictionAPIUITests/Pods-ExermoteGooglePredictionAPIUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6867F6ABC400C8A7802F448B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermoteGooglePredictionAPITests/Pods-ExermoteGooglePredictionAPITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E981739E33CF2EB4DA1B0CD2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermoteGooglePredictionAPI/Pods-ExermoteGooglePredictionAPI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0359B0F8B42DA8E7B5412E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermoteGooglePredictionAPI/Pods-ExermoteGooglePredictionAPI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1C267FF7F698FA5479DB16E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExermoteGooglePredictionAPITests/Pods-ExermoteGooglePredictionAPITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DB006791EC0925F00623BE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DB006B41EC0950600623BE5 /* GooglePredictionManager.swift in Sources */,
+				8DB006831EC0925F00623BE5 /* ViewController.swift in Sources */,
+				8DB006811EC0925F00623BE5 /* AppDelegate.swift in Sources */,
+				8D6DD6981EC0C395006A484A /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DB0068D1EC0925F00623BE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DB006961EC0926000623BE5 /* ExermoteGooglePredictionAPITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DB006981EC0926000623BE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DB006A11EC0926000623BE5 /* ExermoteGooglePredictionAPIUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8DB006931EC0925F00623BE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DB0067C1EC0925F00623BE5 /* ExermoteGooglePredictionAPI */;
+			targetProxy = 8DB006921EC0925F00623BE5 /* PBXContainerItemProxy */;
+		};
+		8DB0069E1EC0926000623BE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DB0067C1EC0925F00623BE5 /* ExermoteGooglePredictionAPI */;
+			targetProxy = 8DB0069D1EC0926000623BE5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8DB006841EC0925F00623BE5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DB006851EC0925F00623BE5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8DB006891EC0925F00623BE5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DB0068A1EC0925F00623BE5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8DB006A31EC0926000623BE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8DB006A41EC0926000623BE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8DB006A61EC0926000623BE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38D4B5D0CE2040267A2355FD /* Pods-ExermoteGooglePredictionAPI.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermoteGooglePredictionAPI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermoteGooglePredictionAPI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExermoteGooglePredictionAPI/ExermoteGooglePredictionAPI-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		8DB006A71EC0926000623BE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6BF773D1A9FB3B06E1B0619 /* Pods-ExermoteGooglePredictionAPI.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermoteGooglePredictionAPI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermoteGooglePredictionAPI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ExermoteGooglePredictionAPI/ExermoteGooglePredictionAPI-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		8DB006A91EC0926000623BE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F87728D33A1CCF3800D6B98 /* Pods-ExermoteGooglePredictionAPITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermoteGooglePredictionAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermoteGooglePredictionAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExermoteGooglePredictionAPI.app/ExermoteGooglePredictionAPI";
+			};
+			name = Debug;
+		};
+		8DB006AA1EC0926000623BE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E5B9B43F79A44C6CD4F214A /* Pods-ExermoteGooglePredictionAPITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermoteGooglePredictionAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermoteGooglePredictionAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExermoteGooglePredictionAPI.app/ExermoteGooglePredictionAPI";
+			};
+			name = Release;
+		};
+		8DB006AC1EC0926000623BE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4274DB8F6E1EACEF6D2BF471 /* Pods-ExermoteGooglePredictionAPIUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermoteGooglePredictionAPIUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermoteGooglePredictionAPIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ExermoteGooglePredictionAPI;
+			};
+			name = Debug;
+		};
+		8DB006AD1EC0926000623BE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2FE32E23495BBCFC6D68F32 /* Pods-ExermoteGooglePredictionAPIUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = UD2UEZDYQ6;
+				INFOPLIST_FILE = ExermoteGooglePredictionAPIUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = stephanlerner.ExermoteGooglePredictionAPIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ExermoteGooglePredictionAPI;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8DB006781EC0925F00623BE5 /* Build configuration list for PBXProject "ExermoteGooglePredictionAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DB006A31EC0926000623BE5 /* Debug */,
+				8DB006A41EC0926000623BE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DB006A51EC0926000623BE5 /* Build configuration list for PBXNativeTarget "ExermoteGooglePredictionAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DB006A61EC0926000623BE5 /* Debug */,
+				8DB006A71EC0926000623BE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DB006A81EC0926000623BE5 /* Build configuration list for PBXNativeTarget "ExermoteGooglePredictionAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DB006A91EC0926000623BE5 /* Debug */,
+				8DB006AA1EC0926000623BE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DB006AB1EC0926000623BE5 /* Build configuration list for PBXNativeTarget "ExermoteGooglePredictionAPIUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DB006AC1EC0926000623BE5 /* Debug */,
+				8DB006AD1EC0926000623BE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8DB006751EC0925F00623BE5 /* Project object */;
+}
