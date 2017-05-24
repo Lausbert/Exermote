@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (4.4.0)
+  - SwiftyJSON (3.1.4)
+  - SwiftyRSA (1.2.0):
+    - SwiftyRSA/ObjC (= 1.2.0)
+  - SwiftyRSA/ObjC (1.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - SwiftyJSON
+  - SwiftyRSA
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyRSA: 29221dba76837bf09e965ba7584e5919ea153c6f
+
+PODFILE CHECKSUM: 1e61f585d524f8019f8af1cc59ee8b2b54350284
+
+COCOAPODS: 1.2.1

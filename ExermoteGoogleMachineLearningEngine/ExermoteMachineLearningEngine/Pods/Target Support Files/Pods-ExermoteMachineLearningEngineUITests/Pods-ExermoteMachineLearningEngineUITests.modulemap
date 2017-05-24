@@ -1,0 +1,6 @@
+framework module Pods_ExermoteMachineLearningEngineUITests {
+  umbrella header "Pods-ExermoteMachineLearningEngineUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
