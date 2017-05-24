@@ -18,6 +18,7 @@
 		8DB5ED1F1ED1D5DD004BEB89 /* ExermoteMachineLearningEngineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB5ED1E1ED1D5DD004BEB89 /* ExermoteMachineLearningEngineUITests.swift */; };
 		8DB5ED2D1ED1D6D6004BEB89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DB5ED2C1ED1D6D6004BEB89 /* GoogleService-Info.plist */; };
 		8DB5ED321ED1D86E004BEB89 /* PredictionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB5ED311ED1D86E004BEB89 /* PredictionVC.swift */; };
+		8DFDF2621ED5DF8C00CCC47B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFDF2611ED5DF8C00CCC47B /* Constants.swift */; };
 		B4478E73A679DD8BA4A73851 /* Pods_ExermoteMachineLearningEngineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7787951BD196B690388381D5 /* Pods_ExermoteMachineLearningEngineUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		8DB5ED2C1ED1D6D6004BEB89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DB5ED2E1ED1D7A5004BEB89 /* ExermoteMachineLearningEngine-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExermoteMachineLearningEngine-Bridging-Header.h"; sourceTree = "<group>"; };
 		8DB5ED311ED1D86E004BEB89 /* PredictionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionVC.swift; sourceTree = "<group>"; };
+		8DFDF2611ED5DF8C00CCC47B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ACF851481651C32275114FD0 /* Pods-ExermoteMachineLearningEngine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteMachineLearningEngine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteMachineLearningEngine/Pods-ExermoteMachineLearningEngine.debug.xcconfig"; sourceTree = "<group>"; };
 		B2D4591A9B55E9D008CED0BF /* Pods-ExermoteMachineLearningEngineUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteMachineLearningEngineUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteMachineLearningEngineUITests/Pods-ExermoteMachineLearningEngineUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D6723F9101E4D99B6BE36A4D /* Pods-ExermoteMachineLearningEngineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteMachineLearningEngineTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteMachineLearningEngineTests/Pods-ExermoteMachineLearningEngineTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		8DB5ECFD1ED1D5DC004BEB89 /* ExermoteMachineLearningEngine */ = {
 			isa = PBXGroup;
 			children = (
+				8DFDF2611ED5DF8C00CCC47B /* Constants.swift */,
 				8DB5ECFE1ED1D5DC004BEB89 /* AppDelegate.swift */,
 				8DB5ED001ED1D5DC004BEB89 /* GoogleSignInVC.swift */,
 				8DB5ED021ED1D5DC004BEB89 /* Main.storyboard */,
@@ -462,6 +465,7 @@
 				8DB5ED321ED1D86E004BEB89 /* PredictionVC.swift in Sources */,
 				8DB5ED011ED1D5DC004BEB89 /* GoogleSignInVC.swift in Sources */,
 				8DB5ECFF1ED1D5DC004BEB89 /* AppDelegate.swift in Sources */,
+				8DFDF2621ED5DF8C00CCC47B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
