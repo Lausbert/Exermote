@@ -17,7 +17,7 @@ class MotionManager {
         motionManager.startDeviceMotionUpdates(using: CMAttitudeReferenceFrame.xArbitraryCorrectedZVertical)
     }
     
-    var currentMotionArray: [Double] {
+    var currentRawMotionArray: [Double] {
         return [xGravity,
                 yGravity,
                 zGravity,

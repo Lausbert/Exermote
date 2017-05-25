@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4759E8FF20EC3DFE85DEC268 /* Pods_ExermoteMachineLearningEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456DFAECF503DDAD0C845AAB /* Pods_ExermoteMachineLearningEngine.framework */; };
 		6F40B9101C3238247967DE8F /* Pods_ExermoteMachineLearningEngineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6A53EE9BA6CCF6A2D0C17A /* Pods_ExermoteMachineLearningEngineTests.framework */; };
+		8D44ECDC1ED726A800EE571F /* PredictionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D44ECDB1ED726A800EE571F /* PredictionManager.swift */; };
 		8DB5ECFF1ED1D5DC004BEB89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB5ECFE1ED1D5DC004BEB89 /* AppDelegate.swift */; };
 		8DB5ED011ED1D5DC004BEB89 /* GoogleSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB5ED001ED1D5DC004BEB89 /* GoogleSignInVC.swift */; };
 		8DB5ED041ED1D5DC004BEB89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB5ED021ED1D5DC004BEB89 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		456DFAECF503DDAD0C845AAB /* Pods_ExermoteMachineLearningEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteMachineLearningEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7787951BD196B690388381D5 /* Pods_ExermoteMachineLearningEngineUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteMachineLearningEngineUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6A53EE9BA6CCF6A2D0C17A /* Pods_ExermoteMachineLearningEngineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteMachineLearningEngineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D44ECDB1ED726A800EE571F /* PredictionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionManager.swift; sourceTree = "<group>"; };
 		8DB5ECFB1ED1D5DC004BEB89 /* ExermoteMachineLearningEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExermoteMachineLearningEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB5ECFE1ED1D5DC004BEB89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DB5ED001ED1D5DC004BEB89 /* GoogleSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInVC.swift; sourceTree = "<group>"; };
@@ -158,7 +160,6 @@
 				8DB5ED0A1ED1D5DC004BEB89 /* Info.plist */,
 				8DB5ED2C1ED1D6D6004BEB89 /* GoogleService-Info.plist */,
 				8DB5ED2E1ED1D7A5004BEB89 /* ExermoteMachineLearningEngine-Bridging-Header.h */,
-				8DB5ED311ED1D86E004BEB89 /* PredictionVC.swift */,
 			);
 			path = ExermoteMachineLearningEngine;
 			sourceTree = "<group>";
@@ -185,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				8DFDF2631ED5E2F200CCC47B /* MotionManager.swift */,
+				8D44ECDB1ED726A800EE571F /* PredictionManager.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				8DB5ED001ED1D5DC004BEB89 /* GoogleSignInVC.swift */,
+				8DB5ED311ED1D86E004BEB89 /* PredictionVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 			files = (
 				8DB5ED321ED1D86E004BEB89 /* PredictionVC.swift in Sources */,
 				8DFDF2641ED5E2F200CCC47B /* MotionManager.swift in Sources */,
+				8D44ECDC1ED726A800EE571F /* PredictionManager.swift in Sources */,
 				8DB5ED011ED1D5DC004BEB89 /* GoogleSignInVC.swift in Sources */,
 				8DB5ECFF1ED1D5DC004BEB89 /* AppDelegate.swift in Sources */,
 				8DFDF2621ED5DF8C00CCC47B /* Constants.swift in Sources */,

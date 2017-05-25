@@ -16,7 +16,7 @@ from tensorflow.python.saved_model import tag_constants, signature_constants
 from tensorflow.python.saved_model.signature_def_utils_impl import predict_signature_def
 
 #parameters
-epochs= 30
+epochs= 1
 batch_size= 100
 validation_split = 0.2
 
@@ -60,14 +60,18 @@ def train_model(train_file='data.csv', job_dir='leeeeeroooooyyyyyjeeeeeenkins', 
     data_dim = X.shape[1]
     num_classes = len(set(y))
 
+
     # scale X
     scaler = MinMaxScaler(feature_range=(0, 1))
     X = scaler.fit_transform(X)  # X*scaler.scale_+scaler.min_ (columnwise)
+    print('Multiplying each row in X elementwise: {}'.format(scaler.scale_))
+    print('Increasing each row in X elemtwise: {}'.format(scaler.min_))
 
     # encode Y
     encoder = LabelEncoder()
     encoder.fit(y)
     encoded_y = encoder.transform(y)  # encoder.classes_
+    print('Hotencoding Y: {}'.format(encoder.classes_))
     hot_encoded_y = np_utils.to_categorical(encoded_y)
 
     # prepare data for LSTM
