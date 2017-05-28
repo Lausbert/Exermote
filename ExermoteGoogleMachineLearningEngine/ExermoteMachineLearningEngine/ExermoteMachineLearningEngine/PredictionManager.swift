@@ -125,11 +125,11 @@ class PredictionManager {
             if let scores = output[0]["outputs"] as? [Double] {
                 if let maximumScore = scores.max() {
                     if let maximumScoreIndex = scores.index(of: maximumScore) {
-                        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[maximumScoreIndex]
+                        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[maximumScoreIndex].rawValue
                     }
                 }
             }
         }
-        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[4]
+        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[4].rawValue
     }
 }
