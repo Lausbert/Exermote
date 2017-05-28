@@ -16,19 +16,19 @@ from tensorflow.python.saved_model import tag_constants, signature_constants
 from tensorflow.python.saved_model.signature_def_utils_impl import predict_signature_def
 
 #parameters
-epochs= 1
+epochs= 10
 batch_size= 100
 validation_split = 0.2
 
 #model parameters
 dropout = 0.2
-timesteps = 30
-timesteps_in_future = 0
-nodes_per_layer = 16
+timesteps = 40
+timesteps_in_future = 20
+nodes_per_layer = 32
 filter_length = 3
 
-def train_model(train_file='data.csv', job_dir='leeeeeroooooyyyyyjeeeeeenkins', **args):
-    parameterString = 'dropout_' + str(dropout) + '_timesteps_' + str(timesteps) + '_timesteps_in_future_' + str(timesteps_in_future) + '_nodes_per_layer_' + str(nodes_per_layer) + '_filter_length_' + str(filter_length)
+def train_model(train_file='data_classes_4.csv', job_dir='leeeeeroooooyyyyyjeeeeeenkins', **args):
+    parameterString = 'final_10_classes_4' + '_dropout_' + str(dropout) + '_timesteps_' + str(timesteps) + '_timesteps_in_future_' + str(timesteps_in_future) + '_nodes_per_layer_' + str(nodes_per_layer) + '_filter_length_' + str(filter_length)
     if 'gs://' in job_dir:
         logs_path = 'gs://exermotemachinelearningengine' + '/logs/' + parameterString
     else:

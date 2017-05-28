@@ -16,15 +16,14 @@ let PREDICTION_MANAGER_SCALING_COEFFICIENTS: [[Double]] = [[0.5, 0.5, 0.5, 0.070
 let PREDICTION_MANAGER_HOT_ENCODING_ORDER = ["Break",
                                              "Burpee",
                                              "Situp",
-                                             "Squat",
-                                             "setBreak"
+                                             "Squat"
 ]
-let PREDICTION_MANAGER_TIMESTEPS_MODEL_INPUT: Int = 30
+let PREDICTION_MANAGER_TIMESTEPS_MODEL_INPUT: Int = 40
 let PREDICTION_MANAGER_GATHER_MOTION_DATA_FREQUENCY: Double = 10.0
-let PREDICTION_MANAGER_PREDICT_EXERCISE_FREQUENCY: Double = 5.0
+let PREDICTION_MANAGER_PREDICT_EXERCISE_FREQUENCY: Double = 10.0
 
 // MARK: Google Cloud Constants
 
 let GOOGLE_CLOUD_PROJECT: String = "exermotemachinelearningengine"
 let GOOGLE_CLOUD_MODEL: String = "predictExercise"
-let GOOGLE_CLOUD_VERSION: String = "timesteps_30_timesteps_in_future_10_nodes_per_layer_16_filter_length_3"
+let GOOGLE_CLOUD_VERSION: String = "final_1"
