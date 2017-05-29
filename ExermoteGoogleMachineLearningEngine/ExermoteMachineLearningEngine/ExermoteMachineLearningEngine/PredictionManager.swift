@@ -12,6 +12,8 @@ class PredictionManager {
     
     private let _motionManager = MotionManager()
     private var _currentScaledMotionArrays: [[Double]] = []
+    private var _currentEvaluationStep: EvaluationStep?
+    private var _lastEvaluationStep: EvaluationStep?
     
     private var _gatherMotionDataTimer:Timer? = nil {
         willSet {
@@ -32,6 +34,8 @@ class PredictionManager {
     func stopPrediction() {
         _gatherMotionDataTimer = nil
         _predictExerciseTimer = nil
+        _currentEvaluationStep = nil
+        _lastEvaluationStep = nil
     }
     
     @objc private func gatherMotionData() {
@@ -44,7 +48,19 @@ class PredictionManager {
     }
     
     @objc private func predictExercise() {
-        makePredictionRequest()
+        
+        guard _currentScaledMotionArrays.count == PREDICTION_MANAGER_TIMESTEPS_MODEL_INPUT else {return}
+        
+        let evaluationStep = EvaluationStep()
+        if _currentEvaluationStep == nil {
+            _currentEvaluationStep = evaluationStep
+            _lastEvaluationStep = evaluationStep
+        } else {
+            _lastEvaluationStep?.next = evaluationStep
+            _lastEvaluationStep = evaluationStep
+        }
+        makePredictionRequest(evaluationStep: evaluationStep)
+        tryEvaluation()
     }
     
     private func scaleRawMotionArray(rawMotionArray: [Double]) -> [Double] {
@@ -52,9 +68,7 @@ class PredictionManager {
         return scaledMotionArray
     }
     
-    func makePredictionRequest() {
-        
-        guard _currentScaledMotionArrays.count == PREDICTION_MANAGER_TIMESTEPS_MODEL_INPUT else {return}
+    func makePredictionRequest(evaluationStep: EvaluationStep) {
         
         var accessToken: String?
         
@@ -88,6 +102,7 @@ class PredictionManager {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
                 
             } catch let error {
+                self.stopPrediction()
                 print(error.localizedDescription)
             }
             
@@ -98,19 +113,23 @@ class PredictionManager {
             let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
                 
                 guard error == nil else {
+                    self.stopPrediction()
                     return
                 }
                 
                 guard let data = data else {
+                    self.stopPrediction()
                     return
                 }
                 
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                        print(self.decodePredictionRequest(json: json))
+                        let exercise = self.decodePredictionRequest(json: json)
+                        evaluationStep.exercise = exercise
                     }
                     
                 } catch let error {
+                    self.stopPrediction()
                     print(error.localizedDescription)
                 }
                 
@@ -120,16 +139,38 @@ class PredictionManager {
         }
     }
     
-    func decodePredictionRequest(json: [String: Any]) -> String {
+    func decodePredictionRequest(json: [String: Any]) -> PREDICTION_MODEL_EXERCISES {
         if let output = json["predictions"] as? [[String:Any]], !output.isEmpty {
             if let scores = output[0]["outputs"] as? [Double] {
                 if let maximumScore = scores.max() {
                     if let maximumScoreIndex = scores.index(of: maximumScore) {
-                        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[maximumScoreIndex].rawValue
+                        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[maximumScoreIndex]
                     }
                 }
             }
         }
-        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[4].rawValue
+        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[4]
+    }
+    
+    func tryEvaluation() {
+        while _currentEvaluationStep?.next != nil {
+            guard let currentExercise = _currentEvaluationStep?.exercise else {return}
+            print(currentExercise.rawValue)
+            print(_currentEvaluationStep?.birth)
+            _currentEvaluationStep = _currentEvaluationStep?.next
+        }
+    }
+}
+
+/// Every requested prediction is stored in an ordered linked-list like EvaluationStep, so these steps could be evaluated in the correct order and aren't whirled around through latency spikes.
+class EvaluationStep {
+    var exercise: PREDICTION_MODEL_EXERCISES?
+    var next: EvaluationStep?
+    var birth: String
+    
+    init() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "y-MM-dd HH-mm-ss-SSS"
+        birth = dateFormatter.string(from: Date())
     }
 }
