@@ -14,6 +14,7 @@ class PredictionManager {
     
     private let _motionManager = MotionManager()
     private var _currentScaledMotionArrays: [[Double]] = []
+    private var _isEvaluating: Bool?
     private var _currentEvaluationStep: EvaluationStep?
     private var _lastEvaluationStep: EvaluationStep?
     private var _currentExercise: PREDICTION_MODEL_EXERCISES?
@@ -33,6 +34,8 @@ class PredictionManager {
     func startPrediction() {
         _gatherMotionDataTimer = Timer.scheduledTimer(timeInterval: 1.0/PREDICTION_MANAGER_GATHER_MOTION_DATA_FREQUENCY, target: self, selector: #selector(gatherMotionData), userInfo: nil, repeats: true)
         _predictExerciseTimer = Timer.scheduledTimer(timeInterval: 1.0/PREDICTION_MANAGER_PREDICT_EXERCISE_FREQUENCY, target: self, selector: #selector(predictExercise), userInfo: nil, repeats: true)
+        _isEvaluating = false
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     func stopPrediction() {
@@ -40,6 +43,8 @@ class PredictionManager {
         _predictExerciseTimer = nil
         _currentEvaluationStep = nil
         _lastEvaluationStep = nil
+        _isEvaluating = nil
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     @objc private func gatherMotionData() {
@@ -64,7 +69,12 @@ class PredictionManager {
             _lastEvaluationStep = evaluationStep
         }
         makePredictionRequest(evaluationStep: evaluationStep)
-        tryEvaluation()
+        
+        if let isEvaluating = _isEvaluating  {
+            if !isEvaluating {
+                tryEvaluation()
+            }
+        }
     }
     
     private func scaleRawMotionArray(rawMotionArray: [Double]) -> [Double] {
@@ -129,6 +139,9 @@ class PredictionManager {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                         let exercise = self.decodePredictionRequest(json: json)
+                        DispatchQueue.main.async {
+                            self.delegate?.test(exercise: exercise)
+                        }
                         evaluationStep.exercise = exercise
                     }
                     
@@ -157,12 +170,20 @@ class PredictionManager {
     }
     
     func tryEvaluation() {
+        
+        _isEvaluating = true
+        
+        defer {
+            _isEvaluating = false
+        }
+        
         while _currentEvaluationStep?.next != nil {
             
             guard let currentExercise = _currentEvaluationStep?.exercise else {return}
             
             if currentExercise == _currentExercise {
                 _currentEvaluationStep = _currentEvaluationStep?.next
+                print(currentExercise.rawValue)
                 if currentExercise == PREDICTION_MODEL_EXERCISES.BREAK {
                     if var steps = _evalutationStepsSinceLastRepetition {
                         steps += 1
@@ -179,6 +200,7 @@ class PredictionManager {
             
             if currentExercise == currentNextExercise { // Only count repetitions if regarding exercise was predicted for two consecutive evalution stepts to reduce miscountings
                 _currentEvaluationStep = _currentEvaluationStep?.next
+                print(currentExercise.rawValue)
                 _currentExercise = currentExercise
                 delegate?.didDetectRepetition(exercise: currentExercise)
                 if currentExercise == PREDICTION_MODEL_EXERCISES.BREAK {
