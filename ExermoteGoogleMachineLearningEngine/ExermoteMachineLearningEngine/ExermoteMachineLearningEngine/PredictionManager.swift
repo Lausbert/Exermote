@@ -10,10 +10,14 @@ import Foundation
 
 class PredictionManager {
     
+    var delegate: PredictionManagerDelegate?
+    
     private let _motionManager = MotionManager()
     private var _currentScaledMotionArrays: [[Double]] = []
     private var _currentEvaluationStep: EvaluationStep?
     private var _lastEvaluationStep: EvaluationStep?
+    private var _currentExercise: PREDICTION_MODEL_EXERCISES?
+    private var _evalutationStepsSinceLastRepetition: Int?
     
     private var _gatherMotionDataTimer:Timer? = nil {
         willSet {
@@ -154,10 +158,34 @@ class PredictionManager {
     
     func tryEvaluation() {
         while _currentEvaluationStep?.next != nil {
+            
             guard let currentExercise = _currentEvaluationStep?.exercise else {return}
-            print(currentExercise.rawValue)
-            print(_currentEvaluationStep?.birth)
-            _currentEvaluationStep = _currentEvaluationStep?.next
+            
+            if currentExercise == _currentExercise {
+                _currentEvaluationStep = _currentEvaluationStep?.next
+                if currentExercise == PREDICTION_MODEL_EXERCISES.BREAK {
+                    if var steps = _evalutationStepsSinceLastRepetition {
+                        steps += 1
+                        _evalutationStepsSinceLastRepetition = steps
+                        if steps == PREDICTION_MANAGER_STEPS_UNTIL_SET_BREAK {
+                            delegate?.didDetectSetBreak()
+                        }
+                    }
+                }
+                return
+            }
+            
+            guard let currentNextExercise = _currentEvaluationStep?.next?.exercise else {return}
+            
+            if currentExercise == currentNextExercise { // Only count repetitions if regarding exercise was predicted for two consecutive evalution stepts to reduce miscountings
+                _currentEvaluationStep = _currentEvaluationStep?.next
+                _currentExercise = currentExercise
+                delegate?.didDetectRepetition(exercise: currentExercise)
+                if currentExercise == PREDICTION_MODEL_EXERCISES.BREAK {
+                    _evalutationStepsSinceLastRepetition = 0
+                }
+                return
+            }
         }
     }
 }
