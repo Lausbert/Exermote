@@ -7,22 +7,31 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PredictionVC: UIViewController, PredictionManagerDelegate {
+    
+    private let predictionManager = PredictionManager()
+    private let _speechSynthesizer = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let predictionManager = PredictionManager()
         predictionManager.delegate = self
         predictionManager.startPrediction()
     }
     
     func didDetectRepetition(exercise: PREDICTION_MODEL_EXERCISES) {
-        print(exercise.rawValue)
+        if exercise != PREDICTION_MODEL_EXERCISES.BREAK {
+            let speechUtterance = AVSpeechUtterance(string: exercise.rawValue)
+            speechUtterance.rate = 0.4
+            _speechSynthesizer.speak(speechUtterance)
+        }
     }
     
     func didDetectSetBreak() {
-        print("DING DING DING!!! SET BREAK!!!")
+        let speechUtterance = AVSpeechUtterance(string: "setBreak")
+        speechUtterance.rate = 0.4
+        _speechSynthesizer.speak(speechUtterance)
     }
 }
