@@ -19,6 +19,7 @@ class PredictionManager {
     private var _lastEvaluationStep: EvaluationStep?
     private var _currentExercise: PREDICTION_MODEL_EXERCISES?
     private var _evalutationStepsSinceLastRepetition: Int?
+    private var _predictionManagerState: PredictionManagerState?
     
     private var _gatherMotionDataTimer:Timer? = nil {
         willSet {
@@ -29,6 +30,10 @@ class PredictionManager {
         willSet {
             _predictExerciseTimer?.invalidate()
         }
+    }
+    
+    init() {
+        _predictionManagerState = PredictionManagerState.NotEvaluating
     }
     
     func startPrediction() {
@@ -44,6 +49,7 @@ class PredictionManager {
         _currentEvaluationStep = nil
         _lastEvaluationStep = nil
         _isEvaluating = nil
+        changePredictionManagerState(predictionManagerState: PredictionManagerState.NotEvaluating)
         UIApplication.shared.isIdleTimerDisabled = false
     }
     
@@ -59,6 +65,12 @@ class PredictionManager {
     @objc private func predictExercise() {
         
         guard _currentScaledMotionArrays.count == PREDICTION_MANAGER_TIMESTEPS_MODEL_INPUT else {return}
+        
+        if _predictionManagerState == PredictionManagerState.Initializing {
+            return
+        } else if _predictionManagerState == PredictionManagerState.NotEvaluating {
+            changePredictionManagerState(predictionManagerState: PredictionManagerState.Initializing)
+        }
         
         let evaluationStep = EvaluationStep()
         if _currentEvaluationStep == nil {
@@ -116,7 +128,7 @@ class PredictionManager {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
                 
             } catch let error {
-                self.stopPrediction()
+                evaluationStep.exercise = PREDICTION_MODEL_EXERCISES.BREAK
                 print(error.localizedDescription)
             }
             
@@ -126,27 +138,28 @@ class PredictionManager {
             
             let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
                 
+                if self._predictionManagerState == PredictionManagerState.Initializing {
+                    self.changePredictionManagerState(predictionManagerState: PredictionManagerState.Evaluating)
+                }
+                
                 guard error == nil else {
-                    self.stopPrediction()
+                    evaluationStep.exercise = PREDICTION_MODEL_EXERCISES.BREAK
                     return
                 }
                 
                 guard let data = data else {
-                    self.stopPrediction()
+                    evaluationStep.exercise = PREDICTION_MODEL_EXERCISES.BREAK
                     return
                 }
                 
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                         let exercise = self.decodePredictionRequest(json: json)
-                        DispatchQueue.main.async {
-                            self.delegate?.test(exercise: exercise)
-                        }
                         evaluationStep.exercise = exercise
                     }
                     
                 } catch let error {
-                    self.stopPrediction()
+                    evaluationStep.exercise = PREDICTION_MODEL_EXERCISES.BREAK
                     print(error.localizedDescription)
                 }
                 
@@ -166,7 +179,7 @@ class PredictionManager {
                 }
             }
         }
-        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[4]
+        return PREDICTION_MODEL_EXERCISES.BREAK
     }
     
     func tryEvaluation() {
@@ -181,34 +194,69 @@ class PredictionManager {
             
             guard let currentExercise = _currentEvaluationStep?.exercise else {return}
             
+            DispatchQueue.main.async {
+                self.delegate?.test(exercise: currentExercise)
+            }
+            
             if currentExercise == _currentExercise {
-                _currentEvaluationStep = _currentEvaluationStep?.next
-                print(currentExercise.rawValue)
                 if currentExercise == PREDICTION_MODEL_EXERCISES.BREAK {
                     if var steps = _evalutationStepsSinceLastRepetition {
                         steps += 1
                         _evalutationStepsSinceLastRepetition = steps
                         if steps == PREDICTION_MANAGER_STEPS_UNTIL_SET_BREAK {
-                            delegate?.didDetectSetBreak()
+                            DispatchQueue.main.async {
+                                self.delegate?.didDetectSetBreak()
+                            }
                         }
                     }
                 }
-                return
-            }
-            
-            guard let currentNextExercise = _currentEvaluationStep?.next?.exercise else {return}
-            
-            if currentExercise == currentNextExercise { // Only count repetitions if regarding exercise was predicted for two consecutive evalution stepts to reduce miscountings
-                _currentEvaluationStep = _currentEvaluationStep?.next
-                print(currentExercise.rawValue)
-                _currentExercise = currentExercise
-                delegate?.didDetectRepetition(exercise: currentExercise)
-                if currentExercise == PREDICTION_MODEL_EXERCISES.BREAK {
-                    _evalutationStepsSinceLastRepetition = 0
+            } else {
+                switch currentExercise {
+                    case PREDICTION_MODEL_EXERCISES.BREAK:
+                        guard let consecutiveBreakPrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_BREAK_PREDICTIONS_UNTIL_COUNT) else {return}
+                        if consecutiveBreakPrediction {
+                            _evalutationStepsSinceLastRepetition = 0
+                        }
+                    case PREDICTION_MODEL_EXERCISES.BURPEE:
+                        guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_BURPEE_PREDICTIONS_UNTIL_COUNT) else {return}
+                        if consecutiveExercisePrediction {
+                            DispatchQueue.main.async {
+                                self.delegate?.didDetectRepetition(exercise: currentExercise)
+                            }
+                        }
+                    case PREDICTION_MODEL_EXERCISES.SQUAT:
+                        guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_SQUAT_PREDICTIONS_UNTIL_COUNT) else {return}
+                        if consecutiveExercisePrediction {
+                            DispatchQueue.main.async {
+                                self.delegate?.didDetectRepetition(exercise: currentExercise)
+                            }
+                        }
+                    case PREDICTION_MODEL_EXERCISES.SITUP:
+                        guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_SITUP_PREDICTIONS_UNTIL_COUNT) else {return}
+                        if consecutiveExercisePrediction {
+                            DispatchQueue.main.async {
+                                self.delegate?.didDetectRepetition(exercise: currentExercise)
+                            }
+                        }
                 }
-                return
             }
+            
+            _currentExercise = currentExercise
+            _currentEvaluationStep = _currentEvaluationStep?.next
         }
+    }
+    
+    func exercisePredictedForConsecutiveSteps(evaluationStep: EvaluationStep?, steps: Int) -> Bool? {
+        if steps <= 0 {return true}
+        guard let exercise = evaluationStep?.exercise, let nextExercise = evaluationStep?.next?.exercise else {return nil}
+        if exercise != nextExercise {return false}
+        return exercisePredictedForConsecutiveSteps(evaluationStep: evaluationStep?.next ,steps: steps-1)
+    }
+    
+    func changePredictionManagerState(predictionManagerState: PredictionManagerState?) {
+        guard let predictionManagerState = predictionManagerState else {return}
+        _predictionManagerState = predictionManagerState
+        delegate?.didChangeStatus(predictionManagerState: predictionManagerState)
     }
 }
 
@@ -223,4 +271,12 @@ class EvaluationStep {
         dateFormatter.dateFormat = "y-MM-dd HH-mm-ss-SSS"
         birth = dateFormatter.string(from: Date())
     }
+}
+
+
+/// The first prediction request to Google Cloud ML Engine takes up tens of seconds, until the nodes are allocated. After that the model is in a ready state as long as you have a steady stream of requests. 
+enum PredictionManagerState: String {
+    case NotEvaluating = "NotEvaluating"
+    case Evaluating = "Evaluating"
+    case Initializing = "Initializing"
 }

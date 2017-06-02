@@ -27,8 +27,8 @@ timesteps_in_future = 20
 nodes_per_layer = 32
 filter_length = 3
 
-def train_model(train_file='data_classes_4.csv', job_dir='leeeeeroooooyyyyyjeeeeeenkins', **args):
-    parameterString = 'final_10_classes_4' + '_dropout_' + str(dropout) + '_timesteps_' + str(timesteps) + '_timesteps_in_future_' + str(timesteps_in_future) + '_nodes_per_layer_' + str(nodes_per_layer) + '_filter_length_' + str(filter_length)
+def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeeeroooooyyyyyjeeeeeenkins', **args):
+    parameterString = 'final_5_classes_4_squats_adjusted' + '_dropout_' + str(dropout) + '_timesteps_' + str(timesteps) + '_timesteps_in_future_' + str(timesteps_in_future) + '_nodes_per_layer_' + str(nodes_per_layer) + '_filter_length_' + str(filter_length)
     if 'gs://' in job_dir:
         logs_path = 'gs://exermotemachinelearningengine' + '/logs/' + parameterString
     else:

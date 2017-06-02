@@ -31,7 +31,14 @@ def merge_data_and_labels(X,y):
     for i in range(len(y)):
         if y[i][0] == 'setBreak':
             X[i].insert(0,'Break')
-            X[i].insert(0, 'Break')
+            X[i].insert(0,'Break')
+        elif y[i][0] == 'Squat':
+            if y[i-1][0] != 'Squat' or y[i+1][0] != 'Squat' or y[i-2][0] != 'Squat' or y[i+2][0] != 'Squat':
+                X[i].insert(0, 'Break')
+                X[i].insert(0, 'Break')
+            else:
+                X[i].insert(0, y[i][1])
+                X[i].insert(0, y[i][0])
         else:
             X[i].insert(0,y[i][1])
             X[i].insert(0, y[i][0])
@@ -52,6 +59,6 @@ header = [
 data.insert(0,header)
 
 #write data
-with open('data.csv', 'w', newline="") as f:
+with open('data_classes_4_squats_adjusted.csv', 'w', newline="") as f:
     writer = writer(f)
     writer.writerows(data)

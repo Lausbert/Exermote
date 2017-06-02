@@ -23,11 +23,9 @@ class PredictionVC: UIViewController, PredictionManagerDelegate {
     }
     
     func didDetectRepetition(exercise: PREDICTION_MODEL_EXERCISES) {
-        if exercise != PREDICTION_MODEL_EXERCISES.BREAK {
-            let speechUtterance = AVSpeechUtterance(string: exercise.rawValue)
-            speechUtterance.rate = 0.4
-            _speechSynthesizer.speak(speechUtterance)
-        }
+        let speechUtterance = AVSpeechUtterance(string: exercise.rawValue)
+        speechUtterance.rate = 0.4
+        _speechSynthesizer.speak(speechUtterance)
     }
     
     func didDetectSetBreak() {
@@ -38,5 +36,12 @@ class PredictionVC: UIViewController, PredictionManagerDelegate {
     
     func test(exercise: PREDICTION_MODEL_EXERCISES) {
         test.text = exercise.rawValue
+    }
+    
+    func didChangeStatus(predictionManagerState: PredictionManagerState) {
+        let speechUtterance = AVSpeechUtterance(string: predictionManagerState.rawValue)
+        speechUtterance.rate = 0.4
+        _speechSynthesizer.speak(speechUtterance)
+
     }
 }

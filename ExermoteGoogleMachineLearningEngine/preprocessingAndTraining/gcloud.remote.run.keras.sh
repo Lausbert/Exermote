@@ -12,4 +12,4 @@ gcloud ml-engine jobs submit training $JOB_NAME \
   --region $REGION \
   --config=trainer/cloudml-gpu.yaml \
   -- \
-  --train-file gs://exermotemachinelearningengine/data_classes_4.csv
+  --train-file gs://exermotemachinelearningengine/data_classes_4_squats_adjusted.csv
