@@ -6,6 +6,7 @@ target 'ExermoteMachineLearningEngine' do
   use_frameworks!
 
   pod 'Google/SignIn'
+  pod 'NVActivityIndicatorView'
 
   target 'ExermoteMachineLearningEngineTests' do
     inherit! :search_paths

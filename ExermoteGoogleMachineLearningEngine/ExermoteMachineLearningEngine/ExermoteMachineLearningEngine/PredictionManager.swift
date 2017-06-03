@@ -19,7 +19,7 @@ class PredictionManager {
     private var _lastEvaluationStep: EvaluationStep?
     private var _currentExercise: PREDICTION_MODEL_EXERCISES?
     private var _evalutationStepsSinceLastRepetition: Int?
-    private var _predictionManagerState: PredictionManagerState?
+    private var _predictionManagerState: PredictionManagerState
     
     private var _gatherMotionDataTimer:Timer? = nil {
         willSet {
@@ -30,6 +30,10 @@ class PredictionManager {
         willSet {
             _predictExerciseTimer?.invalidate()
         }
+    }
+    
+    var predictionManageState: PredictionManagerState {
+        return _predictionManagerState
     }
     
     init() {
@@ -193,10 +197,6 @@ class PredictionManager {
         while _currentEvaluationStep?.next != nil {
             
             guard let currentExercise = _currentEvaluationStep?.exercise else {return}
-            
-            DispatchQueue.main.async {
-                self.delegate?.test(exercise: currentExercise)
-            }
             
             if currentExercise == _currentExercise {
                 if currentExercise == PREDICTION_MODEL_EXERCISES.BREAK {
