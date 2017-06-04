@@ -66,6 +66,7 @@
 		8DB5ED2C1ED1D6D6004BEB89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DB5ED2E1ED1D7A5004BEB89 /* ExermoteMachineLearningEngine-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExermoteMachineLearningEngine-Bridging-Header.h"; sourceTree = "<group>"; };
 		8DB5ED311ED1D86E004BEB89 /* PredictionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionVC.swift; sourceTree = "<group>"; };
+		8DF7B79D1EE410CF005A419F /* ExermoteMachineLearningEngine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExermoteMachineLearningEngine.entitlements; sourceTree = "<group>"; };
 		8DFDF2611ED5DF8C00CCC47B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8DFDF2631ED5E2F200CCC47B /* MotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		ACF851481651C32275114FD0 /* Pods-ExermoteMachineLearningEngine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteMachineLearningEngine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteMachineLearningEngine/Pods-ExermoteMachineLearningEngine.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 		8DB5ECFD1ED1D5DC004BEB89 /* ExermoteMachineLearningEngine */ = {
 			isa = PBXGroup;
 			children = (
+				8DF7B79D1EE410CF005A419F /* ExermoteMachineLearningEngine.entitlements */,
 				8DFDF2691ED5E31A00CCC47B /* Utilities */,
 				8DFDF2651ED5E2FD00CCC47B /* Services */,
 				8DFDF2661ED5E30400CCC47B /* Model */,
@@ -305,6 +307,14 @@
 						DevelopmentTeam = UD2UEZDYQ6;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					8DB5ED0E1ED1D5DD004BEB89 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -596,6 +606,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_ACTIVITY_MODE = "";
+				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -647,6 +659,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_ACTIVITY_MODE = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -673,6 +686,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ExermoteMachineLearningEngine/ExermoteMachineLearningEngine.entitlements;
 				DEVELOPMENT_TEAM = UD2UEZDYQ6;
 				INFOPLIST_FILE = ExermoteMachineLearningEngine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -690,6 +704,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ExermoteMachineLearningEngine/ExermoteMachineLearningEngine.entitlements;
 				DEVELOPMENT_TEAM = UD2UEZDYQ6;
 				INFOPLIST_FILE = ExermoteMachineLearningEngine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
