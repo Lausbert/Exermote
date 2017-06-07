@@ -41,6 +41,8 @@ class PredictionManager {
     }
     
     func startPrediction() {
+        changePredictionManagerState(predictionManagerState: PredictionManagerState.Initializing)
+        makePredictionRequest(evaluationStep: EvaluationStep())
         _gatherMotionDataTimer = Timer.scheduledTimer(timeInterval: 1.0/PREDICTION_MANAGER_GATHER_MOTION_DATA_FREQUENCY, target: self, selector: #selector(gatherMotionData), userInfo: nil, repeats: true)
         _predictExerciseTimer = Timer.scheduledTimer(timeInterval: 1.0/PREDICTION_MANAGER_PREDICT_EXERCISE_FREQUENCY, target: self, selector: #selector(predictExercise), userInfo: nil, repeats: true)
         _isEvaluating = false
@@ -50,9 +52,12 @@ class PredictionManager {
     func stopPrediction() {
         _gatherMotionDataTimer = nil
         _predictExerciseTimer = nil
+        _currentScaledMotionArrays = []
         _currentEvaluationStep = nil
         _lastEvaluationStep = nil
+        _currentExercise = nil
         _isEvaluating = nil
+        _evalutationStepsSinceLastRepetition = nil
         changePredictionManagerState(predictionManagerState: PredictionManagerState.NotEvaluating)
         UIApplication.shared.isIdleTimerDisabled = false
     }
@@ -70,11 +75,7 @@ class PredictionManager {
         
         guard _currentScaledMotionArrays.count == PREDICTION_MANAGER_TIMESTEPS_MODEL_INPUT else {return}
         
-        if _predictionManagerState == PredictionManagerState.Initializing {
-            return
-        } else if _predictionManagerState == PredictionManagerState.NotEvaluating {
-            changePredictionManagerState(predictionManagerState: PredictionManagerState.Initializing)
-        }
+        if _predictionManagerState == PredictionManagerState.Initializing {return}
         
         let evaluationStep = EvaluationStep()
         if _currentEvaluationStep == nil {
@@ -123,7 +124,16 @@ class PredictionManager {
             
             let url = NSURL(string: "https://ml.googleapis.com/v1/projects/\(GOOGLE_CLOUD_PROJECT)/models/\(GOOGLE_CLOUD_MODEL)/versions/\(GOOGLE_CLOUD_VERSION):predict")
             
-            let session = URLSession.shared
+            let configuration = URLSessionConfiguration.default
+            switch _predictionManagerState{
+            case PredictionManagerState.Initializing:
+                configuration.timeoutIntervalForRequest = TimeInterval(PREDICTION_MANAGER_SECONDS_UNTIL_TIMEOUT_INITIALIZING)
+                configuration.timeoutIntervalForResource = TimeInterval(PREDICTION_MANAGER_SECONDS_UNTIL_TIMEOUT_INITIALIZING)
+            default:
+                configuration.timeoutIntervalForRequest = TimeInterval(PREDICTION_MANAGER_SECONDS_UNTIL_TIMEOUT_EVALUATING)
+                configuration.timeoutIntervalForResource = TimeInterval(PREDICTION_MANAGER_SECONDS_UNTIL_TIMEOUT_EVALUATING)
+            }
+            let session = URLSession(configuration: configuration)
             
             let request = NSMutableURLRequest(url: url! as URL)
             request.httpMethod = "POST" //set http method as POST
@@ -198,10 +208,13 @@ class PredictionManager {
             
             guard let currentExercise = _currentEvaluationStep?.exercise else {return}
             
+            print(currentExercise)
+            
             if currentExercise == _currentExercise {
                 if currentExercise == PREDICTION_MODEL_EXERCISES.BREAK {
                     if var steps = _evalutationStepsSinceLastRepetition {
                         steps += 1
+                        print(steps)
                         _evalutationStepsSinceLastRepetition = steps
                         if steps == PREDICTION_MANAGER_STEPS_UNTIL_SET_BREAK {
                             DispatchQueue.main.async {
@@ -212,32 +225,32 @@ class PredictionManager {
                 }
             } else {
                 switch currentExercise {
-                    case PREDICTION_MODEL_EXERCISES.BREAK:
-                        guard let consecutiveBreakPrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_BREAK_PREDICTIONS_UNTIL_COUNT) else {return}
-                        if consecutiveBreakPrediction {
-                            _evalutationStepsSinceLastRepetition = 0
+                case PREDICTION_MODEL_EXERCISES.BREAK:
+                    guard let consecutiveBreakPrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_BREAK_PREDICTIONS_UNTIL_COUNT) else {return}
+                    if consecutiveBreakPrediction {
+                        _evalutationStepsSinceLastRepetition = 0
+                    }
+                case PREDICTION_MODEL_EXERCISES.BURPEE:
+                    guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_BURPEE_PREDICTIONS_UNTIL_COUNT) else {return}
+                    if consecutiveExercisePrediction {
+                        DispatchQueue.main.async {
+                            self.delegate?.didDetectRepetition(exercise: currentExercise)
                         }
-                    case PREDICTION_MODEL_EXERCISES.BURPEE:
-                        guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_BURPEE_PREDICTIONS_UNTIL_COUNT) else {return}
-                        if consecutiveExercisePrediction {
-                            DispatchQueue.main.async {
-                                self.delegate?.didDetectRepetition(exercise: currentExercise)
-                            }
+                    }
+                case PREDICTION_MODEL_EXERCISES.SQUAT:
+                    guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_SQUAT_PREDICTIONS_UNTIL_COUNT) else {return}
+                    if consecutiveExercisePrediction {
+                        DispatchQueue.main.async {
+                            self.delegate?.didDetectRepetition(exercise: currentExercise)
                         }
-                    case PREDICTION_MODEL_EXERCISES.SQUAT:
-                        guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_SQUAT_PREDICTIONS_UNTIL_COUNT) else {return}
-                        if consecutiveExercisePrediction {
-                            DispatchQueue.main.async {
-                                self.delegate?.didDetectRepetition(exercise: currentExercise)
-                            }
+                    }
+                case PREDICTION_MODEL_EXERCISES.SITUP:
+                    guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_SITUP_PREDICTIONS_UNTIL_COUNT) else {return}
+                    if consecutiveExercisePrediction {
+                        DispatchQueue.main.async {
+                            self.delegate?.didDetectRepetition(exercise: currentExercise)
                         }
-                    case PREDICTION_MODEL_EXERCISES.SITUP:
-                        guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_SITUP_PREDICTIONS_UNTIL_COUNT) else {return}
-                        if consecutiveExercisePrediction {
-                            DispatchQueue.main.async {
-                                self.delegate?.didDetectRepetition(exercise: currentExercise)
-                            }
-                        }
+                    }
                 }
             }
             

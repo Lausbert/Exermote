@@ -41,7 +41,21 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
         _speechSynthesizer.speak(speechUtterance)
         
         if let activityIndicatorView = _activityIndicatorView {
-            
+            switch predictionManagerState {
+            case PredictionManagerState.NotEvaluating:
+                activityIndicatorView.stopAnimating()
+                activityIndicatorView.isHidden = false
+                activityIndicatorView.backgroundColor = UIColor.white
+            case PredictionManagerState.Initializing:
+                activityIndicatorView.isHidden = true
+                activityIndicatorView.backgroundColor = UIColor.clear
+                activityIndicatorView.type = NVActivityIndicatorType.ballScaleRippleMultiple
+                activityIndicatorView.startAnimating()
+            case PredictionManagerState.Evaluating:
+                UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: { _ in
+                    view.isHidden = hidden
+                }, completion: nil)
+            }
         } else {
             let width = self.view.bounds.width / 5
             let x = self.view.bounds.midX - width / 2
@@ -60,12 +74,12 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
     
     func didTapActivityIndicatorView() {
         switch _predictionManager.predictionManageState {
-            case PredictionManagerState.NotEvaluating:
-                _predictionManager.startPrediction()
-            case PredictionManagerState.Initializing:
-                _predictionManager.stopPrediction()
-            case PredictionManagerState.Evaluating:
-                _predictionManager.stopPrediction()
+        case PredictionManagerState.NotEvaluating:
+            _predictionManager.startPrediction()
+        case PredictionManagerState.Initializing:
+            _predictionManager.stopPrediction()
+        case PredictionManagerState.Evaluating:
+            _predictionManager.stopPrediction()
         }
     }
 }
