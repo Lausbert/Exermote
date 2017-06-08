@@ -1,0 +1,6 @@
+framework module Pods_ExermoteCoreMLUITests {
+  umbrella header "Pods-ExermoteCoreMLUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
