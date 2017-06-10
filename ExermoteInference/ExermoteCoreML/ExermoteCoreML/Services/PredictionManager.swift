@@ -44,7 +44,6 @@ class PredictionManager {
     
     func startPrediction() {
         changePredictionManagerState(predictionManagerState: PredictionManagerState.Initializing)
-        makePredictionRequest(evaluationStep: EvaluationStep())
         _gatherMotionDataTimer = Timer.scheduledTimer(timeInterval: 1.0/PREDICTION_MANAGER_GATHER_MOTION_DATA_FREQUENCY, target: self, selector: #selector(gatherMotionData), userInfo: nil, repeats: true)
         _predictExerciseTimer = Timer.scheduledTimer(timeInterval: 1.0/PREDICTION_MANAGER_PREDICT_EXERCISE_FREQUENCY, target: self, selector: #selector(predictExercise), userInfo: nil, repeats: true)
         _isEvaluating = false
@@ -77,7 +76,7 @@ class PredictionManager {
         
         guard _currentScaledMotionArrays.count == PREDICTION_MANAGER_TIMESTEPS_MODEL_INPUT else {return}
         
-        if _predictionManagerState == PredictionManagerState.Initializing {return}
+        if _predictionManagerState == PredictionManagerState.Initializing {changePredictionManagerState(predictionManagerState: PredictionManagerState.Evaluating)}
         
         let evaluationStep = EvaluationStep()
         if _currentEvaluationStep == nil {
@@ -102,12 +101,17 @@ class PredictionManager {
     }
     
     func makePredictionRequest(evaluationStep: EvaluationStep) {
-        _predictionModel = PredictionModel()
-        guard let mlMultiArray = try? MLMultiArray(dataPointer: <#T##UnsafeMutableRawPointer#>, shape: <#T##[NSNumber]#>, dataType: <#T##MLMultiArrayDataType#>, strides: <#T##[NSNumber]#>, deallocator: <#T##((UnsafeMutableRawPointer) -> Void)?##((UnsafeMutableRawPointer) -> Void)?##(UnsafeMutableRawPointer) -> Void#>) else {
-            fatalError("Unexpected runtime error.")
+        let data = _currentScaledMotionArrays.reduce([], +) //result is of type [Double] with 480 elements
+        guard let mlMultiArray = try? MLMultiArray(shape:[40,12], dataType:MLMultiArrayDataType.double) else {
+            fatalError("Unexpected runtime error. MLMultiArray")
         }
-        guard let predictionOutput = try? _predictionModel.prediction(accelerations: mlMultiArray, lstm_1_h_in: nil, lstm_1_c_in: nil, lstm_2_h_in: nil, lstm_2_c_in: nil) else {
-            fatalError("Unexpected runtime error.")
+        for (index, element) in data.enumerated() {
+            mlMultiArray[index] = NSNumber(value: element)
+        }
+        let input = PredictionModelInput(accelerations: mlMultiArray)
+        print(mlMultiArray) // Double 40 * 12 * matrix with proper values
+        guard let predictionOutput = try? _predictionModel.prediction(input: input) else {
+            fatalError("Unexpected runtime error. model.prediction")
         }
     }
     

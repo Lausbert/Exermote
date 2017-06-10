@@ -88,13 +88,13 @@ def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeee
 
     # define model
     model = Sequential([
-        Conv1D(nodes_per_layer, filter_length, subsample_length=2, activation='relu', input_shape=(timesteps, data_dim), name='input_x'), # strides = 2 for faster training and better generalization
+        Conv1D(nodes_per_layer, filter_length, subsample_length=2, activation='relu', input_shape=(timesteps, data_dim), name='accelerations'),
         Conv1D(nodes_per_layer, filter_length, subsample_length=1, activation='relu'),
         LSTM(nodes_per_layer, return_sequences=True),
         LSTM(nodes_per_layer, return_sequences=False),
         Dropout(dropout),
         Dense(num_classes),
-        Activation('softmax', name='output_y'),
+        Activation('softmax', name='scores'),
     ])
 
     model.summary()
