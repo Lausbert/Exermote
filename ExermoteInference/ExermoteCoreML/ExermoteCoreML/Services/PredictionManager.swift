@@ -102,16 +102,22 @@ class PredictionManager {
     
     func makePredictionRequest(evaluationStep: EvaluationStep) {
         let data = _currentScaledMotionArrays.reduce([], +) //result is of type [Double] with 480 elements
-        guard let mlMultiArray = try? MLMultiArray(shape:[40,12], dataType:MLMultiArrayDataType.double) else {
-            fatalError("Unexpected runtime error. MLMultiArray")
+        do {
+            let accelerationsMultiArray = try MLMultiArray(shape:[1,40,12], dataType:MLMultiArrayDataType.double)
+            for (index, element) in data.enumerated() {
+                accelerationsMultiArray[index] = NSNumber(value: element)
+            }
+            print(accelerationsMultiArray)
+            let hiddenStatesMultiArray = try MLMultiArray(shape: [1,1,32], dataType: MLMultiArrayDataType.double)
+            for index in 0..<32 {
+                hiddenStatesMultiArray[index] = NSNumber(integerLiteral: 0)
+            }
+            print(hiddenStatesMultiArray)
+            let input = PredictionModelInput(accelerations: accelerationsMultiArray, lstm_1_h_in: hiddenStatesMultiArray, lstm_1_c_in: hiddenStatesMultiArray, lstm_2_h_in: hiddenStatesMultiArray, lstm_2_c_in: hiddenStatesMultiArray)
+            let predictionOutput = try _predictionModel.prediction(input: input)
         }
-        for (index, element) in data.enumerated() {
-            mlMultiArray[index] = NSNumber(value: element)
-        }
-        let input = PredictionModelInput(accelerations: mlMultiArray)
-        print(mlMultiArray) // Double 40 * 12 * matrix with proper values
-        guard let predictionOutput = try? _predictionModel.prediction(input: input) else {
-            fatalError("Unexpected runtime error. model.prediction")
+        catch {
+            print(error.localizedDescription)
         }
     }
     

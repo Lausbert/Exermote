@@ -22,9 +22,10 @@ class GoogleSignInVC: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         guard error == nil else {print(error); return}
         
         print("Successfully loggend in with \(user.profile.name)")
-        
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PredictionVC") as UIViewController
-        present(viewController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PredictionVC") as UIViewController
+            self.present(viewController, animated: true, completion: nil)
+        }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

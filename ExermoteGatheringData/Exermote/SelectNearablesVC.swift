@@ -31,7 +31,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let settingRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
+        let settingRef = Database.database().reference().child(FIREBASE_SETTINGS)
         settingRef.observe(.value, with: { snapshot in
             
             if let settingDict = snapshot.value as? Dictionary<String, Any> {
@@ -55,7 +55,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
             }
         })
         
-        let exercisesRef = FIRDatabase.database().reference().child(FIREBASE_EXERCISES)
+        let exercisesRef = Database.database().reference().child(FIREBASE_EXERCISES)
         exercisesRef.observe(.value, with: { snapshot in
             
             if let exercisesDict = snapshot.value as? Dictionary<String, Any> {
@@ -121,7 +121,7 @@ class SelectNearablesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         else if isNoNearableSelected() {
             selectionAlert()
         } else {
-            let settingRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
+            let settingRef = Database.database().reference().child(FIREBASE_SETTINGS)
             settingRef.removeAllObservers()
             let settingDict = [FIREBASE_SETTINGS_RECORDING: true]
             settingRef.updateChildValues(settingDict)

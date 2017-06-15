@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +13,6 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GoogleSignInVC" customModule="ExermoteMachineLearningEngine" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,33 +26,52 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1434532105922699" green="0.17722657322883606" blue="0.20065930485725403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Ct8-WR-td4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H1z-Qh-VjP"/>
+                            <constraint firstItem="Ct8-WR-td4" firstAttribute="centerX" secondItem="GZv-LK-BLl" secondAttribute="centerX" id="H1z-Qh-VjP"/>
                             <constraint firstItem="Ct8-WR-td4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Vx9-8B-x93"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="GZv-LK-BLl"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="183" y="98"/>
         </scene>
         <!--PredictionVC-->
         <scene sceneID="fzQ-2O-nYv">
             <objects>
                 <viewController storyboardIdentifier="PredictionVC" id="y4G-nT-Qmt" customClass="PredictionVC" customModule="ExermoteMachineLearningEngine" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Xvm-3X-q8x"/>
-                        <viewControllerLayoutGuide type="bottom" id="4bJ-ro-otU"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4i6-Ex-ato">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJv-Fd-QD6" customClass="CustomButton" customModule="ExermoteMachineLearningEngine" customModuleProvider="target">
+                                <rect key="frame" x="16" y="591" width="343" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="hSU-Ee-uVu"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="didTapControlBtn:" destination="y4G-nT-Qmt" eventType="touchUpInside" id="igN-tR-9qe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1434532105922699" green="0.17722657322883606" blue="0.20065930485725403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dJv-Fd-QD6" firstAttribute="leading" secondItem="S6L-SN-UyO" secondAttribute="leading" constant="16" id="3dJ-Qq-mBf"/>
+                            <constraint firstItem="S6L-SN-UyO" firstAttribute="bottom" secondItem="dJv-Fd-QD6" secondAttribute="bottom" constant="16" id="BcN-od-Ppt"/>
+                            <constraint firstItem="S6L-SN-UyO" firstAttribute="trailing" secondItem="dJv-Fd-QD6" secondAttribute="trailing" constant="16" id="uyW-gg-whI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S6L-SN-UyO"/>
                     </view>
+                    <connections>
+                        <outlet property="controlBtn" destination="dJv-Fd-QD6" id="EXG-yw-fwR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeu-75-0Tc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="919" y="98"/>
+            <point key="canvasLocation" x="917.60000000000002" y="97.601199400299862"/>
         </scene>
     </scenes>
 </document>

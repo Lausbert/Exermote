@@ -8,6 +8,12 @@
 
 import Foundation
 
+// MARK: Color Constants
+
+let COLOR_NOT_EVALUATING = UIColor(colorLiteralRed: 0.0/256.0, green: 125.0/256.0, blue: 213.0/256.0, alpha: 1.0).cgColor
+let COLOR_INITIALIZING = UIColor(colorLiteralRed: 168.0/256.0, green: 183.0/256.0, blue: 40.0/256.0, alpha: 1.0).cgColor
+let COLOR_EVALUATING = UIColor(colorLiteralRed: 0.0/256.0, green: 180.0/256.0, blue: 136.0/256.0, alpha: 1.0).cgColor
+
 // MARK: PredictionManager Constants
 
 let PREDICTION_MANAGER_SCALING_COEFFICIENTS: [[Double]] = [[0.5, 0.5, 0.5, 0.07007708, 0.07621951, 0.06131208, 0.31948882,  0.15923567, 0.15923567, 0.04504505, 0.03229974, 0.05347594],

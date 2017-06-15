@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        FIRApp.configure()
+        FirebaseApp.configure()
         
         let arguments = ProcessInfo.processInfo.arguments
         let UITest = arguments.contains("UITest")
@@ -69,7 +69,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(encodedData, forKey: USER_DEFAULTS_EXERCISES)
         }
         
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray, NSFontAttributeName: UIFont(name: "NotoSans", size: 20)!]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.darkGray, NSAttributedStringKey.font.rawValue: UIFont(name: "NotoSans", size: 20)!]
+        
+        for family: String in UIFont.familyNames
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
         
         return true
     }

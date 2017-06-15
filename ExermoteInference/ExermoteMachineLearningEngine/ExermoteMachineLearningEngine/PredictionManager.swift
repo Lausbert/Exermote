@@ -269,7 +269,9 @@ class PredictionManager {
     func changePredictionManagerState(predictionManagerState: PredictionManagerState?) {
         guard let predictionManagerState = predictionManagerState else {return}
         _predictionManagerState = predictionManagerState
-        delegate?.didChangeStatus(predictionManagerState: predictionManagerState)
+        DispatchQueue.main.async {
+            self.delegate?.didChangeStatus(predictionManagerState: predictionManagerState)
+        }
     }
 }
 

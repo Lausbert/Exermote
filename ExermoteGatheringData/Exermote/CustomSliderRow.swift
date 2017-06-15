@@ -52,18 +52,18 @@ open class CustomSliderCell: Cell<Float>, CellType {
     
     open var titleLabel: UILabel! {
         textLabel?.translatesAutoresizingMaskIntoConstraints = false
-        textLabel?.setContentHuggingPriority(500, for: .horizontal)
+        textLabel?.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
         return textLabel
     }
     open var valueLabel: UILabel! {
         detailTextLabel?.translatesAutoresizingMaskIntoConstraints = false
-        detailTextLabel?.setContentHuggingPriority(500, for: .horizontal)
+        detailTextLabel?.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
         return detailTextLabel
     }
     lazy open var slider: UISlider = {
         let result = UISlider()
         result.translatesAutoresizingMaskIntoConstraints = false
-        result.setContentHuggingPriority(500, for: .horizontal)
+        result.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
         return result
     }()
     open var formatter: NumberFormatter?

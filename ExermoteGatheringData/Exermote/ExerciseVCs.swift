@@ -159,7 +159,7 @@ class EditExerciseVC: FormViewController {
             for exercise in exercises {
                 exercisesDict[exercise.name] = exercise.dictionary
             }
-            let exercisesRef = FIRDatabase.database().reference().child(FIREBASE_EXERCISES)
+            let exercisesRef = Database.database().reference().child(FIREBASE_EXERCISES)
             exercisesRef.setValue(exercisesDict)
             
             self.navigationController?.pop(transitionType: TRANSITION_TYPE, transitionSubType: kCATransitionFromLeft, duration: TRANSITION_DURATION)

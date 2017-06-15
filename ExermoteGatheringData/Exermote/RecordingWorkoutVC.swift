@@ -53,7 +53,7 @@ class RecordingWorkoutVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let settingRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
+        let settingRef = Database.database().reference().child(FIREBASE_SETTINGS)
         
         settingRef.observe(.value, with: { snapshot in
             
@@ -137,7 +137,7 @@ class RecordingWorkoutVC: UIViewController {
 
         self.dismiss(animated: false, completion: nil)
         
-        let settingRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
+        let settingRef = Database.database().reference().child(FIREBASE_SETTINGS)
         settingRef.removeAllObservers()
         let settingDict = [FIREBASE_SETTINGS_RECORDING: false]
         settingRef.updateChildValues(settingDict)

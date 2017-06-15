@@ -64,17 +64,17 @@ open class SliderCell: Cell<Float>, CellType {
             // title
             let title = textLabel
             textLabel?.translatesAutoresizingMaskIntoConstraints = false
-            textLabel?.setContentHuggingPriority(500, for: .horizontal)
+            textLabel?.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
             self.titleLabel = title
 
             let value = detailTextLabel
             value?.translatesAutoresizingMaskIntoConstraints = false
-            value?.setContentHuggingPriority(500, for: .horizontal)
+            value?.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
             self.valueLabel = value
 
             let slider = UISlider()
             slider.translatesAutoresizingMaskIntoConstraints = false
-            slider.setContentHuggingPriority(500, for: .horizontal)
+            slider.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
             self.slider = slider
 
             if shouldShowTitle {
@@ -97,6 +97,7 @@ open class SliderCell: Cell<Float>, CellType {
         valueLabel.isHidden = !shouldShowTitle && !awakeFromNibCalled
         titleLabel.isHidden = valueLabel.isHidden
         slider.value = row.value ?? 0.0
+        slider.isEnabled = !row.isDisabled
     }
 
     func addConstraints() {
@@ -115,7 +116,7 @@ open class SliderCell: Cell<Float>, CellType {
 
     }
 
-    func valueChanged() {
+    @objc func valueChanged() {
         let roundedValue: Float
         let steps = Float(sliderRow.steps)
         if steps > 0 {

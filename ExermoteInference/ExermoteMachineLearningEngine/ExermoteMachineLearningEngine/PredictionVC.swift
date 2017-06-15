@@ -13,7 +13,8 @@ import NVActivityIndicatorView
 @objcMembers
 class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndicatorViewable {
     
-    private var _activityIndicatorView: NVActivityIndicatorView?
+    @IBOutlet weak var controlBtn: CustomButton!
+    
     private let _predictionManager = PredictionManager()
     private let _speechSynthesizer = AVSpeechSynthesizer()
     
@@ -40,40 +41,10 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
         let speechUtterance = AVSpeechUtterance(string: predictionManagerState.rawValue)
         speechUtterance.rate = 0.4
         _speechSynthesizer.speak(speechUtterance)
-        
-        if let activityIndicatorView = _activityIndicatorView {
-            switch predictionManagerState {
-            case PredictionManagerState.NotEvaluating:
-                activityIndicatorView.stopAnimating()
-                activityIndicatorView.isHidden = false
-                activityIndicatorView.backgroundColor = UIColor.white
-            case PredictionManagerState.Initializing:
-                activityIndicatorView.isHidden = true
-                activityIndicatorView.backgroundColor = UIColor.clear
-                activityIndicatorView.type = NVActivityIndicatorType.ballScaleRippleMultiple
-                activityIndicatorView.startAnimating()
-            case PredictionManagerState.Evaluating: break
-                //UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: { _ in
-                //    view.isHidden = true
-                //}, completion: nil)
-            }
-        } else {
-            let width = self.view.bounds.width / 5
-            let x = self.view.bounds.midX - width / 2
-            let y = self.view.bounds.midY - width / 2
-            let frame = CGRect(x: x, y: y, width: width, height: width)
-            let activityIndicatorView = NVActivityIndicatorView(frame: frame)
-            activityIndicatorView.isHidden = false
-            activityIndicatorView.backgroundColor = UIColor.white
-            activityIndicatorView.layer.cornerRadius = activityIndicatorView.frame.width / 2
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTapActivityIndicatorView))
-            activityIndicatorView.addGestureRecognizer(tapGesture)
-            self.view.addSubview(activityIndicatorView)
-            _activityIndicatorView = activityIndicatorView
-        }
+        animateControlBtn(predictionManagerState: predictionManagerState)
     }
     
-    func didTapActivityIndicatorView() {
+    @IBAction func didTapControlBtn(_ sender: UIButton) {
         switch _predictionManager.predictionManageState {
         case PredictionManagerState.NotEvaluating:
             _predictionManager.startPrediction()
@@ -82,5 +53,31 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
         case PredictionManagerState.Evaluating:
             _predictionManager.stopPrediction()
         }
+    }
+    
+    func animateControlBtn(predictionManagerState: PredictionManagerState) {
+        
+        var newColor = UIColor.clear.cgColor
+        
+        switch predictionManagerState {
+        case PredictionManagerState.NotEvaluating:
+            newColor = COLOR_NOT_EVALUATING
+        case PredictionManagerState.Initializing:
+            newColor = COLOR_INITIALIZING
+        case PredictionManagerState.Evaluating:
+            newColor = COLOR_EVALUATING
+        }
+        
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.duration = 0.5
+        
+        let colourAnim = CABasicAnimation(keyPath: "backgroundColor")
+        colourAnim.fromValue = controlBtn.backgroundColor?.cgColor
+        colourAnim.toValue = newColor
+        
+        groupAnimation.animations = [colourAnim]
+        controlBtn.layer.add(groupAnimation, forKey: nil)
+        
+        controlBtn.layer.backgroundColor = newColor
     }
 }

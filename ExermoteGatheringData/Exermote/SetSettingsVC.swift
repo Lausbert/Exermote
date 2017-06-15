@@ -129,7 +129,7 @@ class SetSettingsVC: FormViewController {
     
     func leftBarButtonItemPressed() {
         
-        let settingsRef = FIRDatabase.database().reference().child(FIREBASE_SETTINGS)
+        let settingsRef = Database.database().reference().child(FIREBASE_SETTINGS)
         settingsRef.updateChildValues(form.values() as Any as! [AnyHashable : Any])
         
         if isAnyDataSelected() {

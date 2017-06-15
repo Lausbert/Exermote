@@ -107,7 +107,7 @@ final class ToneOutputUnit: NSObject {
                     channels:AVAudioChannelCount(2),
                     interleaved: true )                                 // interleaved stereo
                 
-                try bus0.setFormat(audioFormat)  //      for speaker bus
+                try bus0.setFormat(audioFormat!)  //      for speaker bus
                 
                 auAudioUnit.outputProvider = { (	//  AURenderPullInputBlock?
                     actionFlags,

@@ -54,7 +54,7 @@ class Exercise: NSObject, NSCoding {
         dict[EXERCISE_ATTRIBUTES[1]] = _includedInWorkout
         dict[EXERCISE_ATTRIBUTES[2]] = _maximumDuration
         dict[EXERCISE_ATTRIBUTES[3]] = _minimumDuration
-        dict[EXERCISE_ATTRIBUTES[4]] = Float(_firstHalfSecondHalfRatio)
+        dict[EXERCISE_ATTRIBUTES[4]] = _firstHalfSecondHalfRatio
         dict[EXERCISE_ATTRIBUTES[5]] = _repetitionBreakDuration
         dict[EXERCISE_ATTRIBUTES[6]] = _setBreakDuration
         
@@ -92,7 +92,7 @@ class Exercise: NSObject, NSCoding {
         _includedInWorkout = exerciseDict[EXERCISE_ATTRIBUTES[1]] as! Bool
         _maximumDuration = exerciseDict[EXERCISE_ATTRIBUTES[2]] as! Double
         _minimumDuration = exerciseDict[EXERCISE_ATTRIBUTES[3]] as! Double
-        _firstHalfSecondHalfRatio = Double(exerciseDict[EXERCISE_ATTRIBUTES[4]] as! Float)
+        _firstHalfSecondHalfRatio = Double(exerciseDict[EXERCISE_ATTRIBUTES[4]] as! Double)
         _repetitionBreakDuration = exerciseDict[EXERCISE_ATTRIBUTES[5]] as! Double
         _setBreakDuration = exerciseDict[EXERCISE_ATTRIBUTES[6]] as! Double
     }

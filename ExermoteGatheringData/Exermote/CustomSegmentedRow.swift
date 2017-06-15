@@ -33,13 +33,13 @@ open class CustomSegmentedCell<T: Equatable> : Cell<T>, CellType {
     
     open var titleLabel : UILabel? {
         textLabel?.translatesAutoresizingMaskIntoConstraints = false
-        textLabel?.setContentHuggingPriority(500, for: .horizontal)
+        textLabel?.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
         return textLabel
     }
     lazy open var segmentedControl : UISegmentedControl = {
         let result = UISegmentedControl()
         result.translatesAutoresizingMaskIntoConstraints = false
-        result.setContentHuggingPriority(250, for: .horizontal)
+        result.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
         return result
     }()
     private var dynamicConstraints = [NSLayoutConstraint]()
