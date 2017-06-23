@@ -156,8 +156,11 @@ class PredictionManager {
                     self.changePredictionManagerState(predictionManagerState: PredictionManagerState.Evaluating)
                 }
                 
-                guard error == nil else {
+                if let err = error {
                     evaluationStep.exercise = PREDICTION_MODEL_EXERCISES.BREAK
+                    if err.localizedDescription == "The Internet connection appears to be offline." {
+                        self.delegate?.reinitiate()
+                    }
                     return
                 }
                 

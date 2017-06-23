@@ -171,6 +171,9 @@ def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeee
     coreml_model.save(model_mlmodel_name)
 
     # save model.mlmodel on to google storage
+    # Note: If this piece of code did help you to achieve your goal, please upvote my solution under:
+    # https://stackoverflow.com/questions/41959318/deploying-keras-models-via-google-cloud-ml/44232441#44232441
+    # Thank you so much :)
     with file_io.FileIO(model_mlmodel_name, mode='r') as input_f:
         with file_io.FileIO(logs_path + '/' + model_mlmodel_name, mode='w+') as output_f:
             output_f.write(input_f.read())

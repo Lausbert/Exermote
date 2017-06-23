@@ -14,8 +14,9 @@ import NVActivityIndicatorView
 class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndicatorViewable {
     
     @IBOutlet weak var controlBtn: CustomButton!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
-    private let _predictionManager = PredictionManager()
+    private var _predictionManager = PredictionManager()
     private let _speechSynthesizer = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
@@ -23,6 +24,11 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
         
         _predictionManager.delegate = self
         didChangeStatus(predictionManagerState: PredictionManagerState.NotEvaluating)
+    }
+    
+    func reinitiate() {
+        _predictionManager = PredictionManager()
+        _predictionManager.startPrediction()
     }
     
     func didDetectRepetition(exercise: PREDICTION_MODEL_EXERCISES) {
@@ -58,14 +64,21 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
     func animateControlBtn(predictionManagerState: PredictionManagerState) {
         
         var newColor = UIColor.clear.cgColor
+        activityIndicator.stopAnimating()
         
         switch predictionManagerState {
         case PredictionManagerState.NotEvaluating:
             newColor = COLOR_NOT_EVALUATING
+            activityIndicator.type = NVActivityIndicatorType.blank
+            controlBtn.titleLabel?.isHidden = false
         case PredictionManagerState.Initializing:
             newColor = COLOR_INITIALIZING
+            activityIndicator.type = NVActivityIndicatorType.ballClipRotate
+            controlBtn.titleLabel?.isHidden = true
         case PredictionManagerState.Evaluating:
             newColor = COLOR_EVALUATING
+            activityIndicator.type = NVActivityIndicatorType.lineScalePulseOut
+            controlBtn.titleLabel?.isHidden = true
         }
         
         let groupAnimation = CAAnimationGroup()
@@ -79,5 +92,6 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
         controlBtn.layer.add(groupAnimation, forKey: nil)
         
         controlBtn.layer.backgroundColor = newColor
+        activityIndicator.startAnimating()
     }
 }

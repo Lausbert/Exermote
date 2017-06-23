@@ -5,14 +5,21 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Google Sign InVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GoogleSignInVC" customModule="ExermoteMachineLearningEngine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides/>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,30 +49,56 @@
         <scene sceneID="fzQ-2O-nYv">
             <objects>
                 <viewController storyboardIdentifier="PredictionVC" id="y4G-nT-Qmt" customClass="PredictionVC" customModule="ExermoteMachineLearningEngine" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides/>
                     <view key="view" contentMode="scaleToFill" id="4i6-Ex-ato">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJv-Fd-QD6" customClass="CustomButton" customModule="ExermoteMachineLearningEngine" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v39-5k-aDW" userLabel="ContainerView">
                                 <rect key="frame" x="16" y="591" width="343" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJv-Fd-QD6" customClass="CustomButton" customModule="ExermoteMachineLearningEngine" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                        <state key="normal" title="START">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapControlBtn:" destination="y4G-nT-Qmt" eventType="touchUpInside" id="igN-tR-9qe"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yh-mX-hK2" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="153" y="12" width="36" height="36"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="0Yh-mX-hK2" secondAttribute="height" multiplier="1:1" id="buA-zZ-gLM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="hSU-Ee-uVu"/>
+                                    <constraint firstItem="0Yh-mX-hK2" firstAttribute="centerX" secondItem="v39-5k-aDW" secondAttribute="centerX" id="86O-kR-mtT"/>
+                                    <constraint firstAttribute="bottom" secondItem="dJv-Fd-QD6" secondAttribute="bottom" id="9CA-Nz-56f"/>
+                                    <constraint firstItem="0Yh-mX-hK2" firstAttribute="top" secondItem="v39-5k-aDW" secondAttribute="top" constant="12" id="EzX-H8-G78"/>
+                                    <constraint firstItem="dJv-Fd-QD6" firstAttribute="top" secondItem="v39-5k-aDW" secondAttribute="top" id="cDL-03-q2o"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Yh-mX-hK2" secondAttribute="bottom" constant="12" id="dPh-xG-4wZ"/>
+                                    <constraint firstAttribute="height" constant="60" id="hxT-EP-ixZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="dJv-Fd-QD6" secondAttribute="trailing" id="vgQ-dt-1WX"/>
+                                    <constraint firstItem="dJv-Fd-QD6" firstAttribute="leading" secondItem="v39-5k-aDW" secondAttribute="leading" id="zdd-yp-SVx"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="didTapControlBtn:" destination="y4G-nT-Qmt" eventType="touchUpInside" id="igN-tR-9qe"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.1434532105922699" green="0.17722657322883606" blue="0.20065930485725403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dJv-Fd-QD6" firstAttribute="leading" secondItem="S6L-SN-UyO" secondAttribute="leading" constant="16" id="3dJ-Qq-mBf"/>
-                            <constraint firstItem="S6L-SN-UyO" firstAttribute="bottom" secondItem="dJv-Fd-QD6" secondAttribute="bottom" constant="16" id="BcN-od-Ppt"/>
-                            <constraint firstItem="S6L-SN-UyO" firstAttribute="trailing" secondItem="dJv-Fd-QD6" secondAttribute="trailing" constant="16" id="uyW-gg-whI"/>
+                            <constraint firstItem="S6L-SN-UyO" firstAttribute="trailing" secondItem="v39-5k-aDW" secondAttribute="trailing" constant="16" id="cew-nL-2hT"/>
+                            <constraint firstItem="v39-5k-aDW" firstAttribute="leading" secondItem="S6L-SN-UyO" secondAttribute="leading" constant="16" id="qD2-Uy-Dt1"/>
+                            <constraint firstItem="S6L-SN-UyO" firstAttribute="bottom" secondItem="v39-5k-aDW" secondAttribute="bottom" constant="16" id="rMx-TZ-o3o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S6L-SN-UyO"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="0Yh-mX-hK2" id="7NW-ZR-hfn"/>
                         <outlet property="controlBtn" destination="dJv-Fd-QD6" id="EXG-yw-fwR"/>
                     </connections>
                 </viewController>

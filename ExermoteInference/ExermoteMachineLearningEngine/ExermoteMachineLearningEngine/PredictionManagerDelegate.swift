@@ -12,4 +12,5 @@ protocol PredictionManagerDelegate {
     func didDetectRepetition(exercise: PREDICTION_MODEL_EXERCISES)
     func didDetectSetBreak()
     func didChangeStatus(predictionManagerState: PredictionManagerState)
+    func reinitiate()
 }
