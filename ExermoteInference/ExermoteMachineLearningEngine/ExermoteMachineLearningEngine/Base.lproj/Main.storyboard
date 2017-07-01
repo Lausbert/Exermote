@@ -11,6 +11,7 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
             <string>HelveticaNeue-Bold</string>
         </array>
     </customFonts>
@@ -88,9 +89,49 @@
                                     <constraint firstItem="dJv-Fd-QD6" firstAttribute="leading" secondItem="v39-5k-aDW" secondAttribute="leading" id="zdd-yp-SVx"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0LQ-Y7-tYR" customClass="RingView" customModule="ExermoteMachineLearningEngine" customModuleProvider="target">
+                                <rect key="frame" x="16" y="161.5" width="343" height="343"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZFq-43-lKy">
+                                        <rect key="frame" x="114" y="110" width="113.5" height="124.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lC-FI-9Fl">
+                                                <rect key="frame" x="18" y="0.0" width="78" height="83.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="70"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Burpee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3V-tb-j10">
+                                                <rect key="frame" x="0.0" y="83.5" width="113.5" height="41"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0LQ-Y7-tYR" secondAttribute="height" multiplier="1:1" id="J81-0m-AvG"/>
+                                    <constraint firstItem="ZFq-43-lKy" firstAttribute="centerX" secondItem="0LQ-Y7-tYR" secondAttribute="centerX" id="d8m-ji-Wgc"/>
+                                    <constraint firstItem="ZFq-43-lKy" firstAttribute="centerY" secondItem="0LQ-Y7-tYR" secondAttribute="centerY" id="myW-tU-LWq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ringThickness">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ringColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.1434532105922699" green="0.17722657322883606" blue="0.20065930485725403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="v39-5k-aDW" firstAttribute="leading" secondItem="0LQ-Y7-tYR" secondAttribute="leading" id="HD2-fP-t7d"/>
+                            <constraint firstItem="0LQ-Y7-tYR" firstAttribute="centerY" secondItem="4i6-Ex-ato" secondAttribute="centerY" id="J1L-hO-tSE"/>
+                            <constraint firstItem="0LQ-Y7-tYR" firstAttribute="centerX" secondItem="4i6-Ex-ato" secondAttribute="centerX" id="P0X-qz-HZV"/>
+                            <constraint firstItem="v39-5k-aDW" firstAttribute="trailing" secondItem="0LQ-Y7-tYR" secondAttribute="trailing" id="UD7-u7-zir"/>
                             <constraint firstItem="S6L-SN-UyO" firstAttribute="trailing" secondItem="v39-5k-aDW" secondAttribute="trailing" constant="16" id="cew-nL-2hT"/>
                             <constraint firstItem="v39-5k-aDW" firstAttribute="leading" secondItem="S6L-SN-UyO" secondAttribute="leading" constant="16" id="qD2-Uy-Dt1"/>
                             <constraint firstItem="S6L-SN-UyO" firstAttribute="bottom" secondItem="v39-5k-aDW" secondAttribute="bottom" constant="16" id="rMx-TZ-o3o"/>

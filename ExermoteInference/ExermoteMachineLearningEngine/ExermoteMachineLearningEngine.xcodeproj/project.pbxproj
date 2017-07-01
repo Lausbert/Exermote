@@ -11,6 +11,7 @@
 		6F40B9101C3238247967DE8F /* Pods_ExermoteMachineLearningEngineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A6A53EE9BA6CCF6A2D0C17A /* Pods_ExermoteMachineLearningEngineTests.framework */; };
 		8D3D61B81EDDCA3F003800EF /* PredictionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3D61B71EDDCA3F003800EF /* PredictionManagerDelegate.swift */; };
 		8D44ECDC1ED726A800EE571F /* PredictionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D44ECDB1ED726A800EE571F /* PredictionManager.swift */; };
+		8D49D3661F07DD9D00F2C52C /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D49D3651F07DD9D00F2C52C /* RingView.swift */; };
 		8D7025C81EF2C9B7009CDBF2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7025C71EF2C9B7009CDBF2 /* CustomButton.swift */; };
 		8DB5ECFF1ED1D5DC004BEB89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB5ECFE1ED1D5DC004BEB89 /* AppDelegate.swift */; };
 		8DB5ED011ED1D5DC004BEB89 /* GoogleSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB5ED001ED1D5DC004BEB89 /* GoogleSignInVC.swift */; };
@@ -51,6 +52,7 @@
 		7A6A53EE9BA6CCF6A2D0C17A /* Pods_ExermoteMachineLearningEngineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteMachineLearningEngineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D3D61B71EDDCA3F003800EF /* PredictionManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionManagerDelegate.swift; sourceTree = "<group>"; };
 		8D44ECDB1ED726A800EE571F /* PredictionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionManager.swift; sourceTree = "<group>"; };
+		8D49D3651F07DD9D00F2C52C /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		8D7025C71EF2C9B7009CDBF2 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8DB5ECFB1ED1D5DC004BEB89 /* ExermoteMachineLearningEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExermoteMachineLearningEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB5ECFE1ED1D5DC004BEB89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				8D7025C71EF2C9B7009CDBF2 /* CustomButton.swift */,
+				8D49D3651F07DD9D00F2C52C /* RingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D49D3661F07DD9D00F2C52C /* RingView.swift in Sources */,
 				8DB5ED321ED1D86E004BEB89 /* PredictionVC.swift in Sources */,
 				8D3D61B81EDDCA3F003800EF /* PredictionManagerDelegate.swift in Sources */,
 				8DFDF2641ED5E2F200CCC47B /* MotionManager.swift in Sources */,
