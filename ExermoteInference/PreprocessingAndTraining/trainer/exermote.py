@@ -8,33 +8,36 @@ from keras.layers import Dense, Activation, Dropout, LSTM, Conv1D
 from keras.callbacks import TensorBoard, ModelCheckpoint
 from numpy import array, split
 
-import keras.backend as K
+import keras.backend as k
 import tensorflow as tf
-from keras.models import load_model, Sequential
+from keras.models import load_model
 from tensorflow.python.saved_model import builder as saved_model_builder
 from tensorflow.python.saved_model import tag_constants, signature_constants
 from tensorflow.python.saved_model.signature_def_utils_impl import predict_signature_def
 
 import coremltools
 
-#parameters
-epochs= 50
-batch_size= 100
+# parameters
+epochs = 50
+batch_size = 100
 validation_split = 0.2
 
-#model parameters
+# model parameters
 dropout = 0.2
 timesteps = 40
 timesteps_in_future = 20
 nodes_per_layer = 32
 filter_length = 3
 
+
 def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeeeroooooyyyyyjeeeeeenkins', **args):
-    parameterString = 'final_25_classes_4_squats_adjusted' + '_dropout_' + str(dropout) + '_timesteps_' + str(timesteps) + '_timesteps_in_future_' + str(timesteps_in_future) + '_nodes_per_layer_' + str(nodes_per_layer) + '_filter_length_' + str(filter_length)
+    parameter_string = 'final_0_classes_4_squats_adjusted' + '_dropout_' + str(dropout) + '_timesteps_' + str(
+        timesteps) + '_timesteps_in_future_' + str(timesteps_in_future) + '_nodes_per_layer_' + str(
+        nodes_per_layer) + '_filter_length_' + str(filter_length)
     if 'gs://' in job_dir:
-        logs_path = 'gs://exermotemachinelearningengine' + '/logs/' + parameterString
+        logs_path = 'gs://exermotemachinelearningengine' + '/logs/' + parameter_string
     else:
-        logs_path = '.' + '/logs/' + parameterString
+        logs_path = '.' + '/logs/' + parameter_string
     print('-----------------------')
     print('Using train_file located at {}'.format(train_file))
     print('Using logs_path located at {}'.format(logs_path))
@@ -62,7 +65,6 @@ def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeee
     data_dim = X.shape[1]
     num_classes = len(set(y))
 
-
     # scale X
     scaler = MinMaxScaler(feature_range=(0, 1))
     X = scaler.fit_transform(X)  # X*scaler.scale_+scaler.min_ (columnwise)
@@ -88,8 +90,9 @@ def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeee
 
     # define model
     model = Sequential([
-        Conv1D(nodes_per_layer, filter_length, subsample_length=2, activation='relu', input_shape=(timesteps, data_dim), name='accelerations'),
-        Conv1D(nodes_per_layer, filter_length, subsample_length=1, activation='relu'),
+        Conv1D(nodes_per_layer, filter_length, strides=2, activation='relu', input_shape=(timesteps, data_dim),
+               name='accelerations'),
+        Conv1D(nodes_per_layer, filter_length, strides=1, activation='relu'),
         LSTM(nodes_per_layer, return_sequences=True),
         LSTM(nodes_per_layer, return_sequences=False),
         Dropout(dropout),
@@ -116,18 +119,17 @@ def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeee
 
     # train model
     model.fit(X, hot_encoded_y,
-                        batch_size=batch_size,
-                        nb_epoch=epochs,
-                        verbose=1,
-                        validation_split=validation_split,
-                        callbacks=callbacks
-                        )
+              batch_size=batch_size,
+              epochs=epochs,
+              verbose=1,
+              validation_split=validation_split,
+              callbacks=callbacks
+              )
 
     # load best checkpoint
     model.load_weights('best_weights.h5')
 
     # evaluate best model
-
     def non_shuffling_train_test_split(X, y, test_size=validation_split):
         i = int((1 - test_size) * X.shape[0]) + 1
         X_train, X_test = split(X, [i])
@@ -148,16 +150,16 @@ def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeee
         with file_io.FileIO(logs_path + '/' + model_h5_name, mode='w+') as output_f:
             output_f.write(input_f.read())
 
-    # reset session
+            # reset session
             # Note: If this piece of code did help you to achieve your goal, please upvote my solution under:
             # https://stackoverflow.com/questions/41959318/deploying-keras-models-via-google-cloud-ml/44232441#44232441
             # Thank you so much :)
-    K.clear_session()
+    k.clear_session()
     sess = tf.Session()
-    K.set_session(sess)
+    k.set_session(sess)
 
     # disable loading of learning nodes
-    K.set_learning_phase(0)
+    k.set_learning_phase(0)
 
     # load model
     model = load_model(model_h5_name)
@@ -178,7 +180,7 @@ def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeee
         with file_io.FileIO(logs_path + '/' + model_mlmodel_name, mode='w+') as output_f:
             output_f.write(input_f.read())
 
-    # export saved model
+            # export saved model
             # Note: If this piece of code did help you to achieve your goal, please upvote my solution under:
             # https://stackoverflow.com/questions/41959318/deploying-keras-models-via-google-cloud-ml/44232441#44232441
             # Thank you so much :)
@@ -188,25 +190,26 @@ def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeee
     signature = predict_signature_def(inputs={'accelerations': new_Model.input},
                                       outputs={'scores': new_Model.output})
 
-    with K.get_session() as sess:
+    with k.get_session() as sess:
         builder.add_meta_graph_and_variables(sess=sess,
                                              tags=[tag_constants.SERVING],
                                              signature_def_map={
                                                  signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY: signature})
         builder.save()
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # Input Arguments
     parser.add_argument(
-      '--train-file',
-      help='GCS or local paths to training data',
-      required=True
+        '--train-file',
+        help='GCS or local paths to training data',
+        required=True
     )
     parser.add_argument(
-      '--job-dir',
-      help='GCS location to write checkpoints and export models',
-      required=True
+        '--job-dir',
+        help='GCS location to write checkpoints and export models',
+        required=True
     )
     args = parser.parse_args()
     arguments = args.__dict__
