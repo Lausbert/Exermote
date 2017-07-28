@@ -31,7 +31,7 @@ filter_length = 3
 
 
 def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeeeroooooyyyyyjeeeeeenkins', **args):
-    parameter_string = 'final_0_classes_4_squats_adjusted' + '_dropout_' + str(dropout) + '_timesteps_' + str(
+    parameter_string = 'final_25_classes_4_squats_adjusted' + '_dropout_' + str(dropout) + '_timesteps_' + str(
         timesteps) + '_timesteps_in_future_' + str(timesteps_in_future) + '_nodes_per_layer_' + str(
         nodes_per_layer) + '_filter_length_' + str(filter_length)
     if 'gs://' in job_dir:

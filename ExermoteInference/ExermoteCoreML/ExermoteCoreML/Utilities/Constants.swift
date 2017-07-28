@@ -1,12 +1,19 @@
 //
 //  Constants.swift
-//  ExermoteCoreML
+//  Exermote
 //
-//  Created by Stephan Lerner on 09.06.17.
-//  Copyright © 2017 Stephan Lerner. All rights reserved.
+//  Created by Stephan Lerner on 24.05.17.
+//  Copyright © 2016 Stephan. All rights reserved.
 //
 
 import Foundation
+import UIKit
+
+// MARK: Color Constants
+
+let COLOR_NOT_EVALUATING = UIColor(colorLiteralRed: 0.0/256.0, green: 125.0/256.0, blue: 213.0/256.0, alpha: 1.0).cgColor
+let COLOR_INITIALIZING = UIColor(colorLiteralRed: 168.0/256.0, green: 183.0/256.0, blue: 40.0/256.0, alpha: 1.0).cgColor
+let COLOR_EVALUATING = UIColor(colorLiteralRed: 0.0/256.0, green: 180.0/256.0, blue: 136.0/256.0, alpha: 1.0).cgColor
 
 // MARK: PredictionManager Constants
 
@@ -26,6 +33,14 @@ let PREDICTION_MANAGER_CONSECUTIVE_BREAK_PREDICTIONS_UNTIL_COUNT: Int = 2
 let PREDICTION_MANAGER_CONSECUTIVE_BURPEE_PREDICTIONS_UNTIL_COUNT: Int = 15
 let PREDICTION_MANAGER_CONSECUTIVE_SQUAT_PREDICTIONS_UNTIL_COUNT: Int = 5
 let PREDICTION_MANAGER_CONSECUTIVE_SITUP_PREDICTIONS_UNTIL_COUNT: Int = 10
+let PREDICTION_MANAGER_SECONDS_UNTIL_TIMEOUT_INITIALIZING: Int = 60
+let PREDICTION_MANAGER_SECONDS_UNTIL_TIMEOUT_EVALUATING: Int = 5
+
+// MARK: Google Cloud Constants
+
+let GOOGLE_CLOUD_PROJECT: String = "exermotemachinelearningengine"
+let GOOGLE_CLOUD_MODEL: String = "predictExercise"
+let GOOGLE_CLOUD_VERSION: String = "final"
 
 // MARK: Prediction Model Constants
 

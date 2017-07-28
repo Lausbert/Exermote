@@ -13,13 +13,15 @@
 		8D02F9A91EEAE0F80015BD67 /* PredictionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02F9A81EEAE0F80015BD67 /* PredictionVC.swift */; };
 		8D02F9AB1EEAE18D0015BD67 /* PredictionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02F9AA1EEAE18D0015BD67 /* PredictionManager.swift */; };
 		8D02F9AD1EEAE1D90015BD67 /* PredictionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02F9AC1EEAE1D90015BD67 /* PredictionManagerDelegate.swift */; };
-		8D1753EA1EEADA6E00C2F69E /* PredictionModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8D1753E91EEADA6D00C2F69E /* PredictionModel.mlmodel */; };
+		8D49AB241F2A44F7007C6837 /* PredictionModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8D49AB231F2A44F6007C6837 /* PredictionModel.mlmodel */; };
 		8D85649A1EE9A7F000F904CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8564991EE9A7F000F904CA /* AppDelegate.swift */; };
 		8D85649F1EE9A7F000F904CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D85649D1EE9A7F000F904CA /* Main.storyboard */; };
 		8D8564A11EE9A7F000F904CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D8564A01EE9A7F000F904CA /* Assets.xcassets */; };
 		8D8564A41EE9A7F000F904CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8564A21EE9A7F000F904CA /* LaunchScreen.storyboard */; };
 		8D8564AF1EE9A7F000F904CA /* ExermoteCoreMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8564AE1EE9A7F000F904CA /* ExermoteCoreMLTests.swift */; };
 		8D8564BA1EE9A7F000F904CA /* ExermoteCoreMLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8564B91EE9A7F000F904CA /* ExermoteCoreMLUITests.swift */; };
+		8DA605861F2B0F250030C279 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA605851F2B0F250030C279 /* CustomButton.swift */; };
+		8DA605881F2B10230030C279 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA605871F2B10230030C279 /* RingView.swift */; };
 		8FB8C7E3FF6E3AC93E13C973 /* Pods_ExermoteCoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D984A27702E54271C14D94 /* Pods_ExermoteCoreML.framework */; };
 		E68CB60E31ED3418A9EAA81D /* Pods_ExermoteCoreMLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA083D98F5104D5DA731B1C1 /* Pods_ExermoteCoreMLTests.framework */; };
 /* End PBXBuildFile section */
@@ -50,7 +52,7 @@
 		8D02F9A81EEAE0F80015BD67 /* PredictionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionVC.swift; sourceTree = "<group>"; };
 		8D02F9AA1EEAE18D0015BD67 /* PredictionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionManager.swift; sourceTree = "<group>"; };
 		8D02F9AC1EEAE1D90015BD67 /* PredictionManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionManagerDelegate.swift; sourceTree = "<group>"; };
-		8D1753E91EEADA6D00C2F69E /* PredictionModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PredictionModel.mlmodel; sourceTree = "<group>"; };
+		8D49AB231F2A44F6007C6837 /* PredictionModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PredictionModel.mlmodel; sourceTree = "<group>"; };
 		8D8564961EE9A7F000F904CA /* ExermoteCoreML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExermoteCoreML.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D8564991EE9A7F000F904CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D85649E1EE9A7F000F904CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +65,8 @@
 		8D8564B51EE9A7F000F904CA /* ExermoteCoreMLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExermoteCoreMLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D8564B91EE9A7F000F904CA /* ExermoteCoreMLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExermoteCoreMLUITests.swift; sourceTree = "<group>"; };
 		8D8564BB1EE9A7F000F904CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DA605851F2B0F250030C279 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		8DA605871F2B10230030C279 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		8E5F24CF4FE351E7B168E942 /* Pods-ExermoteCoreMLTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteCoreMLTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteCoreMLTests/Pods-ExermoteCoreMLTests.release.xcconfig"; sourceTree = "<group>"; };
 		96F707AB8F00A3A7B4142BFE /* Pods-ExermoteCoreMLTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteCoreMLTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteCoreMLTests/Pods-ExermoteCoreMLTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A876F8EE7CFA47417AD70C47 /* Pods-ExermoteCoreMLUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteCoreMLUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteCoreMLUITests/Pods-ExermoteCoreMLUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,7 +124,7 @@
 		8D1753ED1EEADB1900C2F69E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8D1753E91EEADA6D00C2F69E /* PredictionModel.mlmodel */,
+				8D49AB231F2A44F6007C6837 /* PredictionModel.mlmodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,6 +132,8 @@
 		8D1753EE1EEADB1E00C2F69E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8DA605851F2B0F250030C279 /* CustomButton.swift */,
+				8DA605871F2B10230030C279 /* RingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -498,10 +504,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D1753EA1EEADA6E00C2F69E /* PredictionModel.mlmodel in Sources */,
+				8D49AB241F2A44F7007C6837 /* PredictionModel.mlmodel in Sources */,
 				8D02F9AD1EEAE1D90015BD67 /* PredictionManagerDelegate.swift in Sources */,
 				8D85649A1EE9A7F000F904CA /* AppDelegate.swift in Sources */,
+				8DA605881F2B10230030C279 /* RingView.swift in Sources */,
 				8D02F9AB1EEAE18D0015BD67 /* PredictionManager.swift in Sources */,
+				8DA605861F2B0F250030C279 /* CustomButton.swift in Sources */,
 				8D02F9A51EEAE09D0015BD67 /* Constants.swift in Sources */,
 				8D02F9A71EEAE0D00015BD67 /* MotionManager.swift in Sources */,
 				8D02F9A91EEAE0F80015BD67 /* PredictionVC.swift in Sources */,

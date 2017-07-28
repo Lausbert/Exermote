@@ -15,6 +15,8 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
     
     @IBOutlet weak var controlBtn: CustomButton!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var repetitionLbl: UILabel!
+    @IBOutlet weak var exerciseLbl: UILabel!
     
     private var _predictionManager = PredictionManager()
     private let _speechSynthesizer = AVSpeechSynthesizer()
@@ -35,12 +37,26 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
         let speechUtterance = AVSpeechUtterance(string: exercise.rawValue)
         speechUtterance.rate = 0.4
         _speechSynthesizer.speak(speechUtterance)
+        
+        if exercise.rawValue != exerciseLbl.text {
+            exerciseLbl.text = exercise.rawValue
+            repetitionLbl.text = "1"
+        } else {
+            if let curRepStr = repetitionLbl.text {
+                if let curRep = Int(curRepStr) {
+                    repetitionLbl.text = String(curRep + 1)
+                }
+            }
+        }
     }
     
     func didDetectSetBreak() {
-        let speechUtterance = AVSpeechUtterance(string: "setBreak")
+        let speechUtterance = AVSpeechUtterance(string: "Set Break")
         speechUtterance.rate = 0.4
         _speechSynthesizer.speak(speechUtterance)
+        
+        exerciseLbl.text = "Set Break"
+        repetitionLbl.text = "-"
     }
     
     func didChangeStatus(predictionManagerState: PredictionManagerState) {

@@ -11,7 +11,7 @@ import CoreML
 
 class PredictionManager {
     
-    var delegate: PredictionManagerDelegate?
+    
     
     private let _predictionModel = PredictionModel()
     private let _motionManager = MotionManager()
@@ -22,6 +22,7 @@ class PredictionManager {
     private var _currentExercise: PREDICTION_MODEL_EXERCISES?
     private var _evalutationStepsSinceLastRepetition: Int?
     private var _predictionManagerState: PredictionManagerState
+    private var _delegate: PredictionManagerDelegate?
     
     private var _gatherMotionDataTimer:Timer? = nil {
         willSet {
@@ -38,8 +39,10 @@ class PredictionManager {
         return _predictionManagerState
     }
     
-    init() {
-        _predictionManagerState = PredictionManagerState.NotEvaluating
+    init(delegate: PredictionManagerDelegate) {
+        self._delegate = delegate
+        self._predictionManagerState = PredictionManagerState.NotEvaluating
+        changePredictionManagerState(predictionManagerState: _predictionManagerState)
     }
     
     func startPrediction() {
@@ -86,7 +89,10 @@ class PredictionManager {
             _lastEvaluationStep?.next = evaluationStep
             _lastEvaluationStep = evaluationStep
         }
-        makePredictionRequest(evaluationStep: evaluationStep)
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.makePredictionRequest(evaluationStep: evaluationStep)
+        }
         
         if let isEvaluating = _isEvaluating  {
             if !isEvaluating {
@@ -103,51 +109,45 @@ class PredictionManager {
     func makePredictionRequest(evaluationStep: EvaluationStep) {
         let data = _currentScaledMotionArrays.reduce([], +) //result is of type [Double] with 480 elements
         do {
-            let accelerationsMultiArray = try MLMultiArray(shape:[1,40,12], dataType:MLMultiArrayDataType.double)
+            let accelerationsMultiArray = try MLMultiArray(shape:[40,1,12], dataType:MLMultiArrayDataType.double)
             for (index, element) in data.enumerated() {
                 accelerationsMultiArray[index] = NSNumber(value: element)
             }
-            print(accelerationsMultiArray)
-            let hiddenStatesMultiArray = try MLMultiArray(shape: [1,1,32], dataType: MLMultiArrayDataType.double)
+            let hiddenStatesMultiArray = try MLMultiArray(shape: [32], dataType: MLMultiArrayDataType.double)
             for index in 0..<32 {
                 hiddenStatesMultiArray[index] = NSNumber(integerLiteral: 0)
             }
-            print(hiddenStatesMultiArray)
             let input = PredictionModelInput(accelerations: accelerationsMultiArray, lstm_1_h_in: hiddenStatesMultiArray, lstm_1_c_in: hiddenStatesMultiArray, lstm_2_h_in: hiddenStatesMultiArray, lstm_2_c_in: hiddenStatesMultiArray)
             let predictionOutput = try _predictionModel.prediction(input: input)
+            if let scores = [predictionOutput.scores[0], predictionOutput.scores[1], predictionOutput.scores[2], predictionOutput.scores[3]] as? [Double] {
+                evaluationStep.exercise = decodePredictionRequest(scores: scores)
+            } else {
+                print("Could not cast predictionOutput.scores to [Double].")
+            }
         }
         catch {
             print(error.localizedDescription)
+            self.stopPrediction()
         }
     }
     
-    func decodePredictionRequest(json: [String: Any]) -> PREDICTION_MODEL_EXERCISES {
-        if let output = json["predictions"] as? [[String:Any]], !output.isEmpty {
-            if let scores = output[0]["outputs"] as? [Double] {
-                if let maximumScore = scores.max() {
-                    if let maximumScoreIndex = scores.index(of: maximumScore) {
-                        return PREDICTION_MANAGER_HOT_ENCODING_ORDER[maximumScoreIndex]
-                    }
-                }
+    func decodePredictionRequest(scores: [Double]) -> PREDICTION_MODEL_EXERCISES {
+        if let maximumScore = scores.max() {
+            if let maximumScoreIndex = scores.index(of: maximumScore) {
+                return PREDICTION_MANAGER_HOT_ENCODING_ORDER[maximumScoreIndex]
             }
         }
         return PREDICTION_MODEL_EXERCISES.BREAK
     }
     
     func tryEvaluation() {
-        
         _isEvaluating = true
-        
         defer {
             _isEvaluating = false
         }
-        
         while _currentEvaluationStep?.next != nil {
-            
             guard let currentExercise = _currentEvaluationStep?.exercise else {return}
-            
             print(currentExercise)
-            
             if currentExercise == _currentExercise {
                 if currentExercise == PREDICTION_MODEL_EXERCISES.BREAK {
                     if var steps = _evalutationStepsSinceLastRepetition {
@@ -156,7 +156,7 @@ class PredictionManager {
                         _evalutationStepsSinceLastRepetition = steps
                         if steps == PREDICTION_MANAGER_STEPS_UNTIL_SET_BREAK {
                             DispatchQueue.main.async {
-                                self.delegate?.didDetectSetBreak()
+                                self._delegate?.didDetectSetBreak()
                             }
                         }
                     }
@@ -172,26 +172,25 @@ class PredictionManager {
                     guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_BURPEE_PREDICTIONS_UNTIL_COUNT) else {return}
                     if consecutiveExercisePrediction {
                         DispatchQueue.main.async {
-                            self.delegate?.didDetectRepetition(exercise: currentExercise)
+                            self._delegate?.didDetectRepetition(exercise: currentExercise)
                         }
                     }
                 case PREDICTION_MODEL_EXERCISES.SQUAT:
                     guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_SQUAT_PREDICTIONS_UNTIL_COUNT) else {return}
                     if consecutiveExercisePrediction {
                         DispatchQueue.main.async {
-                            self.delegate?.didDetectRepetition(exercise: currentExercise)
+                            self._delegate?.didDetectRepetition(exercise: currentExercise)
                         }
                     }
                 case PREDICTION_MODEL_EXERCISES.SITUP:
                     guard let consecutiveExercisePrediction = exercisePredictedForConsecutiveSteps(evaluationStep: _currentEvaluationStep, steps: PREDICTION_MANAGER_CONSECUTIVE_SITUP_PREDICTIONS_UNTIL_COUNT) else {return}
                     if consecutiveExercisePrediction {
                         DispatchQueue.main.async {
-                            self.delegate?.didDetectRepetition(exercise: currentExercise)
+                            self._delegate?.didDetectRepetition(exercise: currentExercise)
                         }
                     }
                 }
             }
-            
             _currentExercise = currentExercise
             _currentEvaluationStep = _currentEvaluationStep?.next
         }
@@ -207,7 +206,7 @@ class PredictionManager {
     func changePredictionManagerState(predictionManagerState: PredictionManagerState?) {
         guard let predictionManagerState = predictionManagerState else {return}
         _predictionManagerState = predictionManagerState
-        delegate?.didChangeStatus(predictionManagerState: predictionManagerState)
+        _delegate?.didChangeStatus(predictionManagerState: predictionManagerState)
     }
 }
 
@@ -225,7 +224,7 @@ class EvaluationStep {
 }
 
 
-/// The first prediction request to Google Cloud ML Engine takes up tens of seconds, until the nodes are allocated. After that the model is in a ready state as long as you have a steady stream of requests.
+/// It takes soe time until enough acceleration data points for prediction are collected.
 enum PredictionManagerState: String {
     case NotEvaluating = "NotEvaluating"
     case Evaluating = "Evaluating"

@@ -1,29 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y4G-nT-Qmt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--PredictionVC-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="fzQ-2O-nYv">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PredictionVC" customModule="ExermoteCoreML" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController storyboardIdentifier="PredictionVC" id="y4G-nT-Qmt" customClass="PredictionVC" customModule="ExermoteCoreML" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides/>
+                    <view key="view" contentMode="scaleToFill" id="4i6-Ex-ato">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v39-5k-aDW" userLabel="ContainerView">
+                                <rect key="frame" x="16" y="591" width="343" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJv-Fd-QD6" customClass="CustomButton" customModule="ExermoteCoreML" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                        <state key="normal" title="START">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapControlBtn:" destination="y4G-nT-Qmt" eventType="touchUpInside" id="igN-tR-9qe"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yh-mX-hK2" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="153" y="12" width="36" height="36"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="0Yh-mX-hK2" secondAttribute="height" multiplier="1:1" id="buA-zZ-gLM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="0Yh-mX-hK2" firstAttribute="centerX" secondItem="v39-5k-aDW" secondAttribute="centerX" id="86O-kR-mtT"/>
+                                    <constraint firstAttribute="bottom" secondItem="dJv-Fd-QD6" secondAttribute="bottom" id="9CA-Nz-56f"/>
+                                    <constraint firstItem="0Yh-mX-hK2" firstAttribute="top" secondItem="v39-5k-aDW" secondAttribute="top" constant="12" id="EzX-H8-G78"/>
+                                    <constraint firstItem="dJv-Fd-QD6" firstAttribute="top" secondItem="v39-5k-aDW" secondAttribute="top" id="cDL-03-q2o"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Yh-mX-hK2" secondAttribute="bottom" constant="12" id="dPh-xG-4wZ"/>
+                                    <constraint firstAttribute="height" constant="60" id="hxT-EP-ixZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="dJv-Fd-QD6" secondAttribute="trailing" id="vgQ-dt-1WX"/>
+                                    <constraint firstItem="dJv-Fd-QD6" firstAttribute="leading" secondItem="v39-5k-aDW" secondAttribute="leading" id="zdd-yp-SVx"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0LQ-Y7-tYR" customClass="RingView" customModule="ExermoteCoreML" customModuleProvider="target">
+                                <rect key="frame" x="16" y="161.5" width="343" height="343"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZFq-43-lKy">
+                                        <rect key="frame" x="94.5" y="110" width="153" height="124.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lC-FI-9Fl">
+                                                <rect key="frame" x="62.5" y="0.0" width="28.5" height="83.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="70"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Break" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3V-tb-j10">
+                                                <rect key="frame" x="0.0" y="83.5" width="153" height="41"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0LQ-Y7-tYR" secondAttribute="height" multiplier="1:1" id="J81-0m-AvG"/>
+                                    <constraint firstItem="ZFq-43-lKy" firstAttribute="centerX" secondItem="0LQ-Y7-tYR" secondAttribute="centerX" id="d8m-ji-Wgc"/>
+                                    <constraint firstItem="ZFq-43-lKy" firstAttribute="centerY" secondItem="0LQ-Y7-tYR" secondAttribute="centerY" id="myW-tU-LWq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ringThickness">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ringColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1434532105922699" green="0.17722657322883606" blue="0.20065930485725403" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="v39-5k-aDW" firstAttribute="leading" secondItem="0LQ-Y7-tYR" secondAttribute="leading" id="HD2-fP-t7d"/>
+                            <constraint firstItem="0LQ-Y7-tYR" firstAttribute="centerY" secondItem="4i6-Ex-ato" secondAttribute="centerY" id="J1L-hO-tSE"/>
+                            <constraint firstItem="0LQ-Y7-tYR" firstAttribute="centerX" secondItem="4i6-Ex-ato" secondAttribute="centerX" id="P0X-qz-HZV"/>
+                            <constraint firstItem="v39-5k-aDW" firstAttribute="trailing" secondItem="0LQ-Y7-tYR" secondAttribute="trailing" id="UD7-u7-zir"/>
+                            <constraint firstItem="S6L-SN-UyO" firstAttribute="trailing" secondItem="v39-5k-aDW" secondAttribute="trailing" constant="16" id="cew-nL-2hT"/>
+                            <constraint firstItem="v39-5k-aDW" firstAttribute="leading" secondItem="S6L-SN-UyO" secondAttribute="leading" constant="16" id="qD2-Uy-Dt1"/>
+                            <constraint firstItem="S6L-SN-UyO" firstAttribute="bottom" secondItem="v39-5k-aDW" secondAttribute="bottom" constant="16" id="rMx-TZ-o3o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S6L-SN-UyO"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="0Yh-mX-hK2" id="7NW-ZR-hfn"/>
+                        <outlet property="controlBtn" destination="dJv-Fd-QD6" id="EXG-yw-fwR"/>
+                        <outlet property="exerciseLbl" destination="q3V-tb-j10" id="QuS-2k-TiY"/>
+                        <outlet property="repetitionLbl" destination="2lC-FI-9Fl" id="cBB-9Z-NlK"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aeu-75-0Tc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="917.60000000000002" y="97.601199400299862"/>
         </scene>
     </scenes>
 </document>

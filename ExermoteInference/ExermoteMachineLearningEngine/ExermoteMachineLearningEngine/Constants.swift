@@ -39,7 +39,7 @@ let PREDICTION_MANAGER_SECONDS_UNTIL_TIMEOUT_EVALUATING: Int = 5
 
 let GOOGLE_CLOUD_PROJECT: String = "exermotemachinelearningengine"
 let GOOGLE_CLOUD_MODEL: String = "predictExercise"
-let GOOGLE_CLOUD_VERSION: String = "final_1_classes_4_squats_adjusted"
+let GOOGLE_CLOUD_VERSION: String = "final"
 
 // MARK: Prediction Model Constants
 
