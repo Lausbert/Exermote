@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B747D382A3CD5F676302BEDCF895895"
+               BlueprintIdentifier = "F07C9C5C70F451B38A91BDC3DB23873A"
                BuildableName = "Pods_ExermoteCoreML.framework"
                BlueprintName = "Pods-ExermoteCoreML"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B747D382A3CD5F676302BEDCF895895"
+            BlueprintIdentifier = "F07C9C5C70F451B38A91BDC3DB23873A"
             BuildableName = "Pods_ExermoteCoreML.framework"
             BlueprintName = "Pods-ExermoteCoreML"
             ReferencedContainer = "container:Pods.xcodeproj">

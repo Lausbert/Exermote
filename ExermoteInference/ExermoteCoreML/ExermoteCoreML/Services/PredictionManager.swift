@@ -8,10 +8,9 @@
 
 import Foundation
 import CoreML
+import UIKit
 
 class PredictionManager {
-    
-    
     
     private let _predictionModel = PredictionModel()
     private let _motionManager = MotionManager()
@@ -50,7 +49,7 @@ class PredictionManager {
         _gatherMotionDataTimer = Timer.scheduledTimer(timeInterval: 1.0/PREDICTION_MANAGER_GATHER_MOTION_DATA_FREQUENCY, target: self, selector: #selector(gatherMotionData), userInfo: nil, repeats: true)
         _predictExerciseTimer = Timer.scheduledTimer(timeInterval: 1.0/PREDICTION_MANAGER_PREDICT_EXERCISE_FREQUENCY, target: self, selector: #selector(predictExercise), userInfo: nil, repeats: true)
         _isEvaluating = false
-        //UIApplication.shared.isIdleTimerDisabled = true
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     func stopPrediction() {
@@ -63,7 +62,7 @@ class PredictionManager {
         _isEvaluating = nil
         _evalutationStepsSinceLastRepetition = nil
         changePredictionManagerState(predictionManagerState: PredictionManagerState.NotEvaluating)
-        //UIApplication.shared.isIdleTimerDisabled = false
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     @objc private func gatherMotionData() {

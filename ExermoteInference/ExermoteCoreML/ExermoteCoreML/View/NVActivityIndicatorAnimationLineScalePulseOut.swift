@@ -1,5 +1,5 @@
 //
-//  NVActivityIndicatorAnimationBallScaleRippleMultiple.swift
+//  NVActivityIndicatorAnimationLineScalePulseOut.swift
 //  NVActivityIndicatorViewDemo
 //
 // The MIT License (MIT)
@@ -27,50 +27,39 @@
 
 import UIKit
 
-class NVActivityIndicatorAnimationBallScaleRippleMultiple: NVActivityIndicatorAnimationDelegate {
-
+class NVActivityIndicatorAnimationLineScalePulseOut: NVActivityIndicatorAnimationDelegate {
+    
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
-        let duration: CFTimeInterval = 1.25
+        let lineSize = size.width / 9
+        let x = (layer.bounds.size.width - size.width) / 2
+        let y = (layer.bounds.size.height - size.height) / 2
+        let duration: CFTimeInterval = 1
         let beginTime = CACurrentMediaTime()
-        let beginTimes = [0, 0.2, 0.4]
-        let timingFunction = CAMediaTimingFunction(controlPoints: 0.21, 0.53, 0.56, 0.8)
-
-        // Scale animation
-        let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-
-        scaleAnimation.keyTimes = [0, 0.7]
-        scaleAnimation.timingFunction = timingFunction
-        scaleAnimation.values = [0, 1]
-        scaleAnimation.duration = duration
-
-        // Opacity animation
-        let opacityAnimation = CAKeyframeAnimation(keyPath: "opacity")
-
-        opacityAnimation.keyTimes = [0, 0.7, 1]
-        opacityAnimation.timingFunctions = [timingFunction, timingFunction]
-        opacityAnimation.values = [1, 0.7, 0]
-        opacityAnimation.duration = duration
-
+        let beginTimes = [0.4, 0.2, 0, 0.2, 0.4]
+        let timingFunction = CAMediaTimingFunction(controlPoints: 0.85, 0.25, 0.37, 0.85)
+        
         // Animation
-        let animation = CAAnimationGroup()
-
-        animation.animations = [scaleAnimation, opacityAnimation]
+        let animation = CAKeyframeAnimation(keyPath: "transform.scale.y")
+        
+        animation.keyTimes = [0, 0.5, 1]
+        animation.timingFunctions = [timingFunction, timingFunction]
+        animation.values = [1, 0.4, 1]
         animation.duration = duration
         animation.repeatCount = HUGE
         animation.isRemovedOnCompletion = false
-
-        // Draw circles
-        for i in 0 ..< 3 {
-            let circle = NVActivityIndicatorShape.ring.layerWith(size: size, color: color)
-            let frame = CGRect(x: (layer.bounds.size.width - size.width) / 2,
-                               y: (layer.bounds.size.height - size.height) / 2,
-                               width: size.width,
+        
+        // Draw lines
+        for i in 0 ..< 5 {
+            let line = NVActivityIndicatorShape.line.layerWith(size: CGSize(width: lineSize, height: size.height), color: color)
+            let frame = CGRect(x: x + lineSize * 2 * CGFloat(i),
+                               y: y,
+                               width: lineSize,
                                height: size.height)
-
+            
             animation.beginTime = beginTime + beginTimes[i]
-            circle.frame = frame
-            circle.add(animation, forKey: "animation")
-            layer.addSublayer(circle)
+            line.frame = frame
+            line.add(animation, forKey: "animation")
+            layer.addSublayer(line)
         }
     }
 }

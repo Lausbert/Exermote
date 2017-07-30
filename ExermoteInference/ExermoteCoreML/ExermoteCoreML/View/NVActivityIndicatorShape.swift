@@ -38,12 +38,12 @@ enum NVActivityIndicatorShape {
     case triangle
     case line
     case pacman
-
+    
     func layerWith(size: CGSize, color: UIColor) -> CALayer {
         let layer: CAShapeLayer = CAShapeLayer()
         var path: UIBezierPath = UIBezierPath()
         let lineWidth: CGFloat = 2
-
+        
         switch self {
         case .circle:
             path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
@@ -121,11 +121,11 @@ enum NVActivityIndicatorShape {
             path.addLine(to: CGPoint(x: 0, y: size.height))
             layer.fillColor = color.cgColor
         case .triangle:
-            let offsetY = size.height / 4
-
-            path.move(to: CGPoint(x: 0, y: size.height - offsetY))
-            path.addLine(to: CGPoint(x: size.width / 2, y: size.height / 2 - offsetY))
-            path.addLine(to: CGPoint(x: size.width, y: size.height - offsetY))
+            let offsetX = size.width / 4
+            
+            path.move(to: CGPoint(x: size.width / 2 - offsetX, y: 0))
+            path.addLine(to: CGPoint(x: size.width - offsetX, y: size.height / 2))
+            path.addLine(to: CGPoint(x: size.width / 2 - offsetX, y: size.height))
             path.close()
             layer.fillColor = color.cgColor
         case .line:
@@ -142,11 +142,11 @@ enum NVActivityIndicatorShape {
             layer.strokeColor = color.cgColor
             layer.lineWidth = size.width / 2
         }
-
+        
         layer.backgroundColor = nil
         layer.path = path.cgPath
         layer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-
+        
         return layer
     }
 }

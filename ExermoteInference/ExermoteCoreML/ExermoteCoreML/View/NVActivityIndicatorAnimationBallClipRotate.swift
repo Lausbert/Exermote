@@ -1,5 +1,5 @@
 //
-//  NVActivityIndicatorAnimationBallPulse.swift
+//  NVActivityIndicatorBallClipRotate.swift
 //  NVActivityIndicatorViewDemo
 //
 // The MIT License (MIT)
@@ -27,38 +27,41 @@
 
 import UIKit
 
-class NVActivityIndicatorAnimationBallPulse: NVActivityIndicatorAnimationDelegate {
+class NVActivityIndicatorAnimationBallClipRotate: NVActivityIndicatorAnimationDelegate {
+    
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
-        let circleSpacing: CGFloat = 2
-        let circleSize: CGFloat = (size.width - 2 * circleSpacing) / 3
-        let x: CGFloat = (layer.bounds.size.width - size.width) / 2
-        let y: CGFloat = (layer.bounds.size.height - circleSize) / 2
         let duration: CFTimeInterval = 0.75
-        let beginTime = CACurrentMediaTime()
-        let beginTimes: [CFTimeInterval] = [0.12, 0.24, 0.36]
-        let timingFunction = CAMediaTimingFunction(controlPoints: 0.2, 0.68, 0.18, 1.08)
-        let animation = CAKeyframeAnimation(keyPath: "transform.scale")
-
+        
+        //    Scale animation
+        let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        
+        scaleAnimation.keyTimes = [0, 0.5, 1]
+        scaleAnimation.values = [1, 0.6, 1]
+        
+        // Rotate animation
+        let rotateAnimation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+        
+        rotateAnimation.keyTimes = scaleAnimation.keyTimes
+        rotateAnimation.values = [0, Double.pi, 2 * Double.pi]
+        
         // Animation
-        animation.keyTimes = [0, 0.3, 1]
-        animation.timingFunctions = [timingFunction, timingFunction]
-        animation.values = [1, 0.3, 1]
+        let animation = CAAnimationGroup()
+        
+        animation.animations = [scaleAnimation, rotateAnimation]
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         animation.duration = duration
         animation.repeatCount = HUGE
         animation.isRemovedOnCompletion = false
-
-        // Draw circles
-        for i in 0 ..< 3 {
-            let circle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
-            let frame = CGRect(x: x + circleSize * CGFloat(i) + circleSpacing * CGFloat(i),
-                               y: y,
-                               width: circleSize,
-                               height: circleSize)
-
-            animation.beginTime = beginTime + beginTimes[i]
-            circle.frame = frame
-            circle.add(animation, forKey: "animation")
-            layer.addSublayer(circle)
-        }
+        
+        // Draw circle
+        let circle = NVActivityIndicatorShape.ringThirdFour.layerWith(size: CGSize(width: size.width, height: size.height), color: color)
+        let frame = CGRect(x: (layer.bounds.size.width - size.width) / 2,
+                           y: (layer.bounds.size.height - size.height) / 2,
+                           width: size.width,
+                           height: size.height)
+        
+        circle.frame = frame
+        circle.add(animation, forKey: "animation")
+        layer.addSublayer(circle)
     }
 }

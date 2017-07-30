@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import NVActivityIndicatorView
 
 @objcMembers
 class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndicatorViewable {
@@ -78,15 +77,12 @@ class PredictionVC: UIViewController, PredictionManagerDelegate, NVActivityIndic
         
         switch predictionManagerState {
         case PredictionManagerState.NotEvaluating:
-            controlBtn.titleLabel?.isHidden = false
             newColor = COLOR_NOT_EVALUATING
-            activityIndicator.type = NVActivityIndicatorType.blank
+            activityIndicator.type = NVActivityIndicatorType.triangleSkewSpin
         case PredictionManagerState.Initializing:
-            controlBtn.titleLabel?.isHidden = true
             newColor = COLOR_INITIALIZING
             activityIndicator.type = NVActivityIndicatorType.ballClipRotate
         case PredictionManagerState.Evaluating:
-            controlBtn.titleLabel?.isHidden = true
             newColor = COLOR_EVALUATING
             activityIndicator.type = NVActivityIndicatorType.lineScalePulseOut
         }

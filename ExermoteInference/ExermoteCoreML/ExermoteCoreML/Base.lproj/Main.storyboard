@@ -32,14 +32,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                        <state key="normal" title="START">
+                                        <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapControlBtn:" destination="y4G-nT-Qmt" eventType="touchUpInside" id="igN-tR-9qe"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yh-mX-hK2" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yh-mX-hK2" customClass="NVActivityIndicatorView" customModule="ExermoteCoreML">
                                         <rect key="frame" x="153" y="12" width="36" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
