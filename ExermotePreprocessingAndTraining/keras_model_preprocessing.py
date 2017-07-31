@@ -4,7 +4,7 @@ from pandas import read_csv, concat
 from csv import writer
 
 #load data
-folder_path = '/Users/stephanlerner/Library/Mobile Documents/iCloud~com~Lausbert~Exermote/Documents/'
+folder_path = 'RawData/'
 all_files = glob(path.join(folder_path, '*.csv'))
 dataframe = concat((read_csv(f,header=0) for f in all_files),ignore_index=True)
 dataframe.fillna(0, inplace=True)
