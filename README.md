@@ -10,8 +10,8 @@ It will take some time until .gif is loaded. Have a look on youtube for the raw 
 
 The project is divided into the following steps:
 
-<a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteGatheringData">ExermoteGatheringData</a>
+<a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteGatheringData">Gathering Data</a>
 
-<a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining">ExermotePreprocessingAndTraining</a>
+<a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining">Preprocessing And Training</a>
 
-<a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteInference">ExermoteInference</a>
+<a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteInference">Inference</a>
