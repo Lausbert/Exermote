@@ -3,6 +3,8 @@
 Exermote is a fitness app prototype, which is capable to detect Burpees, Squats and Situps and to count related repetitions.
 
 <p align="center">
+It will take some time until .gif is loaded. Have a look on youtube for the raw <a href="https://www.youtube.com/watch?v=ieoInbYI_TA&feature=youtu.be">video</a> with sound.
+<br>
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteInference/ExermoteCoreML/ExampleGif/ExermoteGif.gif" width="500">
 </p>
 
