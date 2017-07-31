@@ -19,4 +19,4 @@ Checkout links for further documentation.
 
 ---
 
-As a side product of this project, <a href="https://github.com/Lausbert/Exermote/tree/Testmote">Testmote</a> was released to the AppStore.
+<a href="https://github.com/Lausbert/Exermote/tree/Testmote">Testmote</a> was released to the AppStore as a side product of this project.
