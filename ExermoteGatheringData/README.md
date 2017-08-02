@@ -1,22 +1,11 @@
-# Exermote
+# Exermote Gathering Data
 
-Exermote is a fitness app prototype, which is capable to detect Burpees, Squats and Situps and to count related repetitions. The exercise recognition is done with Convolutional LSTM Neural Networks.
+Since the later learning procedure is supervised, labeled data is needed.
+
+**Setting**
+
 <p align="center">
-<sub><sup>It will take some time until .gif is loaded. Have a look on youtube for the raw <a href="https://www.youtube.com/watch?v=ieoInbYI_TA&feature=youtu.be">video</a> with sound.</sup></sub>
-<br>
-<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteInference/ExermoteCoreML/ExampleGif/ExermoteGif.gif" width="700">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2587.JPG" width="250">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2751.JPG" width="250">
+  <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2755.JPG" width="250">
 </p>
-
-The project is divided into following steps:
-
-<a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteGatheringData">Gathering Data</a>
-
-<a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining">Preprocessing And Training</a>
-
-<a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteInference">Inference</a>
-
-Checkout links for further documentation.
-
----
-
-<a href="https://github.com/Lausbert/Exermote/tree/Testmote">Testmote</a> was released to the AppStore as a side product of this project.
