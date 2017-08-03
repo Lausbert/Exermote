@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PredictionManagerDelegate {
+protocol PredictionManagerDelegate: class {
     func didDetectRepetition(exercise: PREDICTION_MODEL_EXERCISES)
     func didDetectSetBreak()
     func didChangeStatus(predictionManagerState: PredictionManagerState)

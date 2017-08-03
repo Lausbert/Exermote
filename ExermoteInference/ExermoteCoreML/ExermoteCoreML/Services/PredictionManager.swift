@@ -21,7 +21,7 @@ class PredictionManager {
     private var _currentExercise: PREDICTION_MODEL_EXERCISES?
     private var _evalutationStepsSinceLastRepetition: Int?
     private var _predictionManagerState: PredictionManagerState
-    private var _delegate: PredictionManagerDelegate?
+    private weak var _delegate: PredictionManagerDelegate?
     
     private var _gatherMotionDataTimer:Timer? = nil {
         willSet {
