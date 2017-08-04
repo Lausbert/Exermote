@@ -38,4 +38,4 @@ Before recording was started remotely via firebase a 5 minute training consistin
 
 To ensure that exercising individuals trained accordingly to the pre-generated training, the app gave spoken hints which exercise will follow. Additionally there was a generated whistle, whose pitch decreased during first half and increased during second half of an exerecise repetition. This process guaranteed that pre-generated lables matched perfectly to recorded movement data.
 
-The recorded raw data was saved to my iCloud drive, when recording was finished. It could be found <a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining/RawData">here</a>
+The recorded raw data was saved to my iCloud drive, when recording was finished. It could be found <a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining/RawData">here</a>.
