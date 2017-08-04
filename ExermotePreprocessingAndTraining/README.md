@@ -19,8 +19,27 @@ I intended to write my master thesis in human activity recognition (HAR), but I 
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/MasterThesisProposal/Bildschirmfoto%202017-08-04%20um%2014.55.17.png">
 </p>
 
-As you can see in the last row DeepConvLSTM Neural Networks were already tested by Francisco Javier Ordóñez and Daniel Roggen for recognizing activities of daily living. Their <a href="https://github.com/sussexwearlab/DeepConvLSTM">approach</a> and their <a href="http://www.mdpi.com/1424-8220/16/1/115/html">results</a> impressed me and so I decided to take their model and give it a try for my purpose.
+As you can see in the last row DeepConvLSTM Neural Networks were already tested by Francisco Javier Ordóñez and Daniel Roggen for recognizing activities of daily living. Their <a href="https://github.com/sussexwearlab/DeepConvLSTM">approach</a> and their <a href="http://www.mdpi.com/1424-8220/16/1/115/html">results</a> impressed me and so I decided to take their model and give it a try for my purpose. A simpliefied model represantation looks like this:
 
 <p align="center">
-<img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/MasterThesisProposal/methodology.pdf" width="500">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/MasterThesisProposal/Bildschirmfoto%202017-08-04%20um%2016.29.02.png" width="400">
 </p>
+
+The actual model differs in terms of layer and channel numbers. Furthermore a higher stride and a dropout layer were added for better generalization:
+
+```python
+model = Sequential([
+        Conv1D(nodes_per_layer, filter_length, strides=2, activation='relu', input_shape=(timesteps, data_dim),
+               name='accelerations'),
+        Conv1D(nodes_per_layer, filter_length, strides=1, activation='relu'),
+        LSTM(nodes_per_layer, return_sequences=True),
+        LSTM(nodes_per_layer, return_sequences=False),
+        Dropout(dropout),
+        Dense(num_classes),
+        Activation('softmax', name='scores'),
+    ])
+```
+
+The optimum parameters are determined in the next step.
+
+**Training**
