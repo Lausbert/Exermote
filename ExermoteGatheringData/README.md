@@ -12,7 +12,7 @@ To record training data of different individuals I used 2 different types of dev
 So there are 36 data features in total. The Nearables were reshaped by using Stewalin, a muffin form and some Velcro cable ties :)
 
 <p align="center">
-<sub><sup>needed untensils (left), reshaped Nearables (mid), controlling Iphone remotely via firebase during recording (right)</sup></sub>
+<sub><sup>needed untensils (left), reshaped Nearables (mid), remotely starting recording procedure via firebase (right)</sup></sub>
 <br>
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2587.JPG" width="250">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2751.JPG" width="250">
@@ -23,7 +23,7 @@ So there are 36 data features in total. The Nearables were reshaped by using Ste
 
 Recording frequency was 10 Hz for the reason that Nearable send frequency is limited to this value on hardware side. Since the official SDK only allows to get Nearable acceleration data once per second, I had to access and decode advertisment data direcly via ```CBCentralManager```. Many thanks to <a href="https://github.com/reelyactive/advlib">reelyactive</a> for inspiration.
 
-Before recording was started remotely via firebase a 5 minute training consisting of burpees, squats, situps, set breaks and breaks was generated randomly.
+Before recording was started a 5 minute training consisting of burpees, squats, situps, set breaks and breaks was generated randomly.
 
 | time  | exercise type | exercise sub type | 36 data feature columns ... |
 |-------|---------------|-------------------|-------------------------|
@@ -36,6 +36,6 @@ Before recording was started remotely via firebase a 5 minute training consistin
 | 0.7 s | burpee        | first half        |                         |
 | 0.8 s | ...           | ...               |                         |
 
-To ensure that exercising individuals trained accordingly to the pre-generated training, the app gave spoken hints which exercise will follow. Additionally there was a generated whistle, whose pitch decreased during first half and increased during second half of an exerecise repetition. This process guaranteed that pre-generated lables matched perfectly to recorded movement data.
+To ensure that exercising individuals trained accordingly to the pre-generated training and therefore labels matched perfectly to recorded movement data, the app gave spoken hints which exercise will follow. Additionally there was a generated whistle, whose pitch decreased during first half and increased during second half of an exerecise repetition.
 
-The recorded raw data was saved to my iCloud drive, when recording was finished. It could be found <a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining/RawData">here</a>.
+The <a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining/RawData">raw dara</a>. was saved to my iCloud drive, when recording was finished.
