@@ -7,9 +7,9 @@ Since the later learning procedure is supervised, labeled data is needed.
 To record training data of different individuals I used 2 different types of devices:
 
 - Iphone on right upper arm: 12 data features (3x gravity, 3x acceleration, 3x euler angle, 3x rotation rate)
-- 6x <a href="https://estimote.com">Estimote Nearables</a> on chest, belly, hands and feet: each 3 data features (3x acceleration)
+- 6x <a href="https://estimote.com">Estimote Nearables</a> on chest, belly, hands and feet: each 4 data features (3x acceleration, 1x rssi)
 
-So there are 30 data features in total. The Nearables were reshaped by using Stewalin, a muffin form and some Velcro cable ties :)
+So there are 36 data features in total. The Nearables were reshaped by using Stewalin, a muffin form and some Velcro cable ties :)
 
 <p align="center">
 <sub><sup>needed untensils (left), reshaped Nearables (mid), controlling Iphone remotely via firebase during recording (right)</sup></sub>
@@ -25,7 +25,7 @@ Recording frequency was 10 Hz for the reason that Nearable send frequency is lim
 
 Before recording was started remotely via firebase a 5 minute training consisting of burpees, squats, situps, set breaks and breaks was generated randomly.
 
-| time  | exercise type | exercise sub type | 30 data feature columns ... |
+| time  | exercise type | exercise sub type | 36 data feature columns ... |
 |-------|---------------|-------------------|-------------------------|
 | 0.1 s | set break     | set break         |                         |
 | 0.2 s | set break     | set break         |                         |
