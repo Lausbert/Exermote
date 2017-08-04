@@ -12,6 +12,8 @@ To record training data of different individuals I used 2 different types of dev
 So there are 30 data features in total. The Nearables were reshaped by using Stewalin, a muffin form and some Velcro cable ties :)
 
 <p align="center">
+<sub><sup>needed untensils (left), reshaped Nearables (mid), controlling Iphone remotely via firebase during recording (right)</sup></sub>
+<br>
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2587.JPG" width="250">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2751.JPG" width="250">
   <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2755.JPG" width="250">
@@ -19,4 +21,5 @@ So there are 30 data features in total. The Nearables were reshaped by using Ste
 
 **Recording**
 
+Recording frequency was 10 Hz for the reason that Nearable send frequency is limited to this value on hardware side. Since the official SDK only allows to get Nearable acceleration data once per second, I had to access and decode advertisment data direcly via ```CBCentralManager```. Many thanks to <a href="https://github.com/reelyactive/advlib">reelyactive</a> for inspiration.
 
