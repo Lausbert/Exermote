@@ -38,4 +38,4 @@ Before recording was started a 5 minute training consisting of burpees, squats, 
 
 To ensure that exercising individuals trained accordingly to the pre-generated training and therefore labels matched perfectly to recorded movement data, the app gave spoken hints which exercise will follow. Additionally there was a generated whistle, whose pitch decreased during first half and increased during second half of an exerecise repetition.
 
-The <a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining/RawData">raw dara</a>. was saved to my iCloud drive, when recording was finished.
+The <a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining/RawData">raw data</a> was saved to my iCloud drive, when recording was finished.
