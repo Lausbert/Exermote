@@ -25,7 +25,7 @@ As you can see in the last row DeepConvLSTM Neural Networks were already tested 
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/MasterThesisProposal/Bildschirmfoto%202017-08-04%20um%2016.29.02.png" width="400">
 </p>
 
-The actual model differs in terms of layer and channel numbers. Furthermore a higher stride and a dropout layer were added for better generalization:
+The actual model differs in terms of layer and channel (data feature) numbers. Furthermore a higher stride and a dropout layer were added for better generalization:
 
 ```python
 model = Sequential([
