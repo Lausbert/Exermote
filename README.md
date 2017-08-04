@@ -4,7 +4,7 @@ Exermote is a fitness app prototype, which is capable to detect Burpees, Squats 
 <p align="center">
 <sub><sup>It will take some time until .gif is loaded. Have a look on youtube for the raw <a href="https://www.youtube.com/watch?v=ieoInbYI_TA&feature=youtu.be">video</a> with sound.</sup></sub>
 <br>
-<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteInference/ExermoteCoreML/ExampleGif/ExermoteGif.gif" width="700">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteInference/ExermoteCoreML/ExampleGif/ExermoteGif.gif">
 </p>
 
 The project is divided into following steps:
