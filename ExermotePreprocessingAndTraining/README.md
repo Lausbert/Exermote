@@ -1,8 +1,10 @@
+<a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteGatheringData">< Exermote Gathering Data</a> | <a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteInference">Exermote Inference ></a>
+
 # Exermote Preprocessing and Training
 
 After collecting labeled data, a model needs to be trained!
 
-**Preprocessing**
+## Preprocessing
 
 There were a few preprocessing steps I made. Some of them are rooted in insights I had, when I was already training models:
 
@@ -10,13 +12,12 @@ There were a few preprocessing steps I made. Some of them are rooted in insights
 - reducing total number of classes from 5 to 4, by converting "set break" to "break". I don't know what I was thinking when introducing two different break classes...
 - converting the first and last two time steps of every squat repetition to "break". Earlier models often counted squats, when I actually didn't do anything. This fixed it.
 
-
-**Choosing a model**
+## Choosing a model
 
 I intended to write my master thesis in human activity recognition (HAR), but I didn't find a supervisor. Anyway I could use some of the insights from my <a href="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/MasterThesisProposal/master%20thesis%20proposal.pdf">thesis proposal</a>. The following table is an excerpt from this proposal.
 
 <p align="center">
-<img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/MasterThesisProposal/Bildschirmfoto%202017-08-04%20um%2014.55.17.png">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/MasterThesisProposal/Bildschirmfoto%202017-08-04%20um%2014.55.17.png" width="800">
 </p>
 
 As you can see in the last row DeepConvLSTM Neural Networks were already tested by Francisco Javier Ordóñez and Daniel Roggen for recognizing activities of daily living. Their <a href="https://github.com/sussexwearlab/DeepConvLSTM">approach</a> and their <a href="http://www.mdpi.com/1424-8220/16/1/115/html">results</a> impressed me and so I decided to take their model and give it a try for my purpose. The model takes time sequences of raw sensor data and outputs the according exercise label. A simpliefied model represantation looks like this:
@@ -42,6 +43,34 @@ model = Sequential([
 
 The optimum parameters are determined in the next step.
 
-**Training**
+## Training
 
 The whole training procedure took place in the google cloud, since I found <a href="http://liufuyang.github.io/2017/04/02/just-another-tensorflow-beginner-guide-4.html">this wonderful tutorial</a>. The machine learning framework in use was Keras with TensorFlow as backend. Many thanks to Google for 300$ of free credits. After training hundreds of models there are still plenty left:
+
+<p align="center">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/investigation/Bildschirmfoto%202017-08-05%20um%2013.06.51.png" width="400">
+</p>
+
+The (optimum) parameters shown below where determined during training. ```timesteps``` defines the sliding window length, while ```timesteps_in_future``` specifies which time step label should be characteristic for a sliding window. More ```timesteps_in_future``` would mean a higher accuracy in recognition, while it would worsen live prediction experience.
+
+```python
+# training parameters
+epochs = 50
+batch_size = 100
+validation_split = 0.2
+
+# model parameters
+dropout = 0.2
+timesteps = 40
+timesteps_in_future = 20
+nodes_per_layer = 32
+filter_length = 3
+```
+
+For training observation I used TensorBoard:
+
+<p align="center">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/investigation/Bildschirmfoto%202017-05-19%20um%2017.46.51.png" width="800">
+</p>
+
+The highest recognition accuray achieved on test data was 95.56 %. Since mainly first or last timesteps of a repetition were confused for a break or the other way around, this accuracy is sufficient for recognizing and counting the mentioned exercises. The best model of a training procedure was saved to google cloud bucket. The model was also exported to .pb and .mlmodel format for later use in the google cloud and on the iPhone.
