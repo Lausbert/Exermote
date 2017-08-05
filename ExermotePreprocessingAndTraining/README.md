@@ -41,8 +41,6 @@ model = Sequential([
     ])
 ```
 
-The optimum parameters are determined in the next step.
-
 ## Training
 
 The whole training procedure took place in the google cloud, since I found <a href="http://liufuyang.github.io/2017/04/02/just-another-tensorflow-beginner-guide-4.html">this wonderful tutorial</a>. The machine learning framework in use was Keras with TensorFlow as backend. Many thanks to Google for 300$ of free credits. After training hundreds of models there are still plenty left:
