@@ -2,7 +2,7 @@
 
 Since the later learning procedure is supervised, labeled data is needed.
 
-**Setting**
+## Setting
 
 To record training data of different individuals I used 2 different types of devices:
 
@@ -19,7 +19,7 @@ So there are 36 data features in total. The Nearables were reshaped by using Ste
   <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2755.JPG" width="250">
 </p>
 
-**Recording**
+## Recording
 
 Recording frequency was 10 Hz for the reason that Nearable send frequency is limited to this value on hardware side. Since the official SDK only allows to get Nearable acceleration data once per second, I had to access and decode advertisment data direcly via ```CBCentralManager```. Many thanks to <a href="https://github.com/reelyactive/advlib">reelyactive</a> for inspiration.
 
