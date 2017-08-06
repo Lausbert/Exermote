@@ -71,4 +71,4 @@ For training observation I used TensorBoard:
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/investigation/Bildschirmfoto%202017-05-19%20um%2017.46.51.png" width="800">
 </p>
 
-The highest recognition accuray achieved on test data was 95.56 %. Since mainly first or last timesteps of a repetition were confused for a break or the other way around, this accuracy is sufficient for recognizing and counting the mentioned exercises. The best model of a training procedure was saved to google cloud bucket. The model was also exported to .pb and .mlmodel format for later use in the google cloud and on the iPhone.
+The highest recognition accuray achieved on test data was 95.56 %. Since mainly first or last timesteps of a repetition were confused for a break or the other way around, this accuracy is sufficient for recognizing and counting the mentioned exercises. The best model of a training procedure was saved to google cloud bucket. The model was also exported to .pb and .mlmodel format for later use on google cloud and on iPhone.
