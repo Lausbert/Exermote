@@ -25,7 +25,7 @@ So there are 36 data features in total. The Nearables were reshaped by using Ste
 
 Recording frequency was 10 Hz for the reason that Nearable send frequency is limited to this value on hardware side. Since the official SDK only allows to get Nearable acceleration data once per second, I had to access and decode advertisment data direcly via ```CBCentralManager```. Many thanks to <a href="https://github.com/reelyactive/advlib">reelyactive</a> for inspiration.
 
-Before recording was started a 5 minute training consisting of "burpees", "squats", "situps", "set breaks" and "breaks" was generated randomly.
+Before recording was started a 5 minute training consisting of "burpees", "squats", "situps", "set breaks" and "breaks" had been generated randomly.
 
 | time  | exercise type | exercise sub type | 36 data feature columns ... |
 |-------|---------------|-------------------|-------------------------|
