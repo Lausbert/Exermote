@@ -49,6 +49,12 @@ The whole training procedure took place in the google cloud, since I found <a hr
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/investigation/Bildschirmfoto%202017-08-05%20um%2013.06.51.png" width="400">
 </p>
 
+For training observation I used TensorBoard:
+
+<p align="center">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/investigation/Bildschirmfoto%202017-05-19%20um%2017.46.51.png" width="800">
+</p>
+
 The (optimum) parameters shown below where determined during training. ```timesteps``` defines the sliding window length, while ```timesteps_in_future``` specifies which time step label should be characteristic for a sliding window. More ```timesteps_in_future``` would mean a higher accuracy in recognition, while it would worsen live prediction experience.
 
 ```python
@@ -65,10 +71,19 @@ nodes_per_layer = 32
 filter_length = 3
 ```
 
-For training observation I used TensorBoard:
+While training models with various input combinations, it became clear that the benefit of using the mentioned Nearables is a smaller one. Therefore I gave up on using them any longer. Additional sensors might get interesting again for recognizing one-armed exercises or exercises where only your feet and/or legs are moving.
 
-<p align="center">
-<img src="https://github.com/Lausbert/Exermote/blob/master/ExermotePreprocessingAndTraining/investigation/Bildschirmfoto%202017-05-19%20um%2017.46.51.png" width="800">
-</p>
+```python
+X = dataset[:, [
+        2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, # Device: xGravity, yGravity, zGravity, xAcceleration, yAcceleration, zAcceleration, pitch, roll, yaw, xRotationRate, yRotationRate, zRotationRate
+        # 14,15,16,17,                          # Right Hand: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 18,19,20,21,                          # Left Hand: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 22,23,24,25,                          # Right Foot: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 26,27,28,29,                          # Left Foot: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 30,31,32,33,                          # Chest: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 34,35,36,37                           # Belly: rssi, xAcceleration, yAcceleration, zAcceleration
+    ]].astype(float)
+    y = dataset[:, 0]  # ExerciseType (Index 1 is ExerciseSubType)
+```
 
-The highest recognition accuray achieved on test data was 95.56 %. Since mainly first or last timesteps of a repetition were confused for a break or the other way around, this accuracy is sufficient for recognizing and counting the mentioned exercises. The best model of a training procedure was saved to google cloud bucket. The model was also exported to .pb and .mlmodel format for later use on google cloud and on iPhone.
+The highest recognition accuray achieved on test data with only 12 data features was 95.56 %. Since mainly first or last timesteps of a repetition were confused for a break or the other way around, this accuracy is sufficient for recognizing and counting the mentioned exercises. The best model of a training procedure was saved to google cloud bucket. The model was also exported to .pb and .mlmodel format for later use on google cloud and on iPhone.
