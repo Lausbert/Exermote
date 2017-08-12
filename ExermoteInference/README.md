@@ -10,7 +10,7 @@ Before WWDC 2017 and CoreML I couldn't find a proper way for doing inference dir
 
 ## CoreML
 
-
+Since I already exported the model as .mlmodel file, implementing it was quite easy. The interesting line below is ```let predictionOutput = try _predictionModel.prediction(input: input)```, because that is where the actual calculation is done. The initialization of the model inputs was the hardest part about this and as you can see below it is done in a not very ```swifty``` way. Let's hope that this is due the beta status of CoreML.
 
 ```swift
 func makePredictionRequest(evaluationStep: EvaluationStep) {
@@ -38,3 +38,11 @@ func makePredictionRequest(evaluationStep: EvaluationStep) {
         }
     }
 ```
+
+The result of my project is a pretty stable exercise recognizer! :)
+
+<p align="center">
+<sub><sup>It will take some time until .gif is loaded. Have a look on youtube for the raw <a href="https://www.youtube.com/watch?v=ieoInbYI_TA&feature=youtu.be">video</a> with sound.</sup></sub>
+<br>
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteInference/ExermoteCoreML/ExampleGif/ExermoteGif.gif">
+</p>
