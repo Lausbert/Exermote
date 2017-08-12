@@ -50,14 +50,13 @@ def train_model(train_file='data_classes_4_squats_adjusted.csv', job_dir='leeeee
     dataset = dataframe.values
 
     X = dataset[:, [
-        2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-        # Device: xGravity, yGravity, zGravity, xAcceleration, yAcceleration, zAcceleration, pitch, roll, yaw, xRotationRate, yRotationRate, zRotationRate
-        # 14,15,16,17,                        # Right Hand: rssi, xAcceleration, yAcceleration, zAcceleration
-        # 18,19,20,21,                        # Left Hand: rssi, xAcceleration, yAcceleration, zAcceleration
-        # 22,23,24,25,                        # Right Foot: rssi, xAcceleration, yAcceleration, zAcceleration
-        # 26,27,28,29,                        # Left Foot: rssi, xAcceleration, yAcceleration, zAcceleration
-        # 30,31,32,33,                        # Chest: rssi, xAcceleration, yAcceleration, zAcceleration
-        # 34,35,36,37                         # Belly: rssi, xAcceleration, yAcceleration, zAcceleration
+        2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, # Device: xGravity, yGravity, zGravity, xAcceleration, yAcceleration, zAcceleration, pitch, roll, yaw, xRotationRate, yRotationRate, zRotationRate
+        # 14,15,16,17,                          # Right Hand: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 18,19,20,21,                          # Left Hand: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 22,23,24,25,                          # Right Foot: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 26,27,28,29,                          # Left Foot: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 30,31,32,33,                          # Chest: rssi, xAcceleration, yAcceleration, zAcceleration
+        # 34,35,36,37                           # Belly: rssi, xAcceleration, yAcceleration, zAcceleration
     ]].astype(float)
     y = dataset[:, 0]  # ExerciseType (Index 1 is ExerciseSubType)
 
