@@ -10,7 +10,7 @@ Before WWDC 2017 and CoreML I couldn't find a proper way for doing inference dir
 
 ## CoreML
 
-Since I already exported the model as .mlmodel file, implementing it was quite easy. The interesting line below is ```let predictionOutput = try _predictionModel.prediction(input: input)```, because that is where the actual calculation is done. The initialization of the model inputs was the hardest part about this and as you can see below it is done in a not very ```swifty``` way. Let's hope that this is due the beta status of CoreML.
+Since I already exported the model as .mlmodel file, implementing it was quite easy. The interesting line below is ```let predictionOutput = try _predictionModel.prediction(input: input)```, because that is where the calculation is done. Actually initialization of model inputs was the hardest part and as you can see below it is done in a not very ```swifty``` way. Let's hope that this is due the beta status of CoreML.
 
 ```swift
 func makePredictionRequest(evaluationStep: EvaluationStep) {
