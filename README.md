@@ -1,3 +1,5 @@
+Leave me a comment on my <a href="http://lausbert.com/2017/08/03/exermote/">blog</a>!
+
 # Exermote
 
 Exermote is a fitness app prototype, which is capable to detect Burpees, Squats and Situps and to count related repetitions. The exercise recognition is done with Convolutional LSTM Neural Networks.

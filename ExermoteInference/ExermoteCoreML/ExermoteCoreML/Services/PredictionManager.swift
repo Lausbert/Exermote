@@ -105,6 +105,9 @@ class PredictionManager {
         return scaledMotionArray
     }
     
+    // Note: If this piece of code did help you to achieve your goal, please upvote my solution under:
+    // https://stackoverflow.com/questions/44460532/how-to-initialize-a-mlmultiarray-in-coreml/44462908#44462908
+    // Thank you so much :)
     func makePredictionRequest(evaluationStep: EvaluationStep) {
         let data = _currentScaledMotionArrays.reduce([], +) //result is of type [Double] with 480 elements
         do {
