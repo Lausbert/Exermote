@@ -12,7 +12,7 @@ import UIKit
 
 class PredictionManager {
     
-    private let _predictionModel = PredictionModel()
+    private let _predictionModel = Exermote()
     private let _motionManager = MotionManager()
     private var _currentScaledMotionArrays: [[Double]] = []
     private var _isEvaluating: Bool?
@@ -116,7 +116,7 @@ class PredictionManager {
             for index in 0..<32 {
                 hiddenStatesMultiArray[index] = NSNumber(integerLiteral: 0)
             }
-            let input = PredictionModelInput(accelerations: accelerationsMultiArray, lstm_1_h_in: hiddenStatesMultiArray, lstm_1_c_in: hiddenStatesMultiArray, lstm_2_h_in: hiddenStatesMultiArray, lstm_2_c_in: hiddenStatesMultiArray)
+            let input = ExermoteInput(accelerations: accelerationsMultiArray, lstm_1_h_in: hiddenStatesMultiArray, lstm_1_c_in: hiddenStatesMultiArray, lstm_2_h_in: hiddenStatesMultiArray, lstm_2_c_in: hiddenStatesMultiArray)
             let predictionOutput = try _predictionModel.prediction(input: input)
             if let scores = [predictionOutput.scores[0], predictionOutput.scores[1], predictionOutput.scores[2], predictionOutput.scores[3]] as? [Double] {
                 evaluationStep.exercise = decodePredictionRequest(scores: scores)

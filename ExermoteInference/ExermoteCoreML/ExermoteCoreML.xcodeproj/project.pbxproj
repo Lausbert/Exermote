@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7BC054566AC4AE479C7F12C7 /* Pods_ExermoteCoreMLUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAE41870872E349A3EC2B8E /* Pods_ExermoteCoreMLUITests.framework */; };
+		8D01BDDA1F5EE23A0084A418 /* Exermote.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8D01BDD91F5EE2270084A418 /* Exermote.mlmodel */; };
 		8D02F9A51EEAE09D0015BD67 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02F9A41EEAE09D0015BD67 /* Constants.swift */; };
 		8D02F9A71EEAE0D00015BD67 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02F9A61EEAE0D00015BD67 /* MotionManager.swift */; };
 		8D02F9A91EEAE0F80015BD67 /* PredictionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02F9A81EEAE0F80015BD67 /* PredictionVC.swift */; };
 		8D02F9AB1EEAE18D0015BD67 /* PredictionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02F9AA1EEAE18D0015BD67 /* PredictionManager.swift */; };
 		8D02F9AD1EEAE1D90015BD67 /* PredictionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02F9AC1EEAE1D90015BD67 /* PredictionManagerDelegate.swift */; };
-		8D49AB241F2A44F7007C6837 /* PredictionModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8D49AB231F2A44F6007C6837 /* PredictionModel.mlmodel */; };
 		8D75D47E1F2E3D040029C834 /* NVActivityIndicatorShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D75D47D1F2E3D040029C834 /* NVActivityIndicatorShape.swift */; };
 		8D75D4801F2E3D3A0029C834 /* NVActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D75D47F1F2E3D3A0029C834 /* NVActivityIndicatorView.swift */; };
 		8D75D4821F2E3D6B0029C834 /* NVActivityIndicatorViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D75D4811F2E3D6B0029C834 /* NVActivityIndicatorViewable.swift */; };
@@ -55,12 +55,12 @@
 		25C66C3FCF40DDE53365252C /* Pods-ExermoteCoreML.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteCoreML.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteCoreML/Pods-ExermoteCoreML.release.xcconfig"; sourceTree = "<group>"; };
 		3AAE41870872E349A3EC2B8E /* Pods_ExermoteCoreMLUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExermoteCoreMLUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77891FDD9207057BEC34248D /* Pods-ExermoteCoreML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExermoteCoreML.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExermoteCoreML/Pods-ExermoteCoreML.debug.xcconfig"; sourceTree = "<group>"; };
+		8D01BDD91F5EE2270084A418 /* Exermote.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Exermote.mlmodel; sourceTree = "<group>"; };
 		8D02F9A41EEAE09D0015BD67 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8D02F9A61EEAE0D00015BD67 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		8D02F9A81EEAE0F80015BD67 /* PredictionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionVC.swift; sourceTree = "<group>"; };
 		8D02F9AA1EEAE18D0015BD67 /* PredictionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionManager.swift; sourceTree = "<group>"; };
 		8D02F9AC1EEAE1D90015BD67 /* PredictionManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionManagerDelegate.swift; sourceTree = "<group>"; };
-		8D49AB231F2A44F6007C6837 /* PredictionModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PredictionModel.mlmodel; sourceTree = "<group>"; };
 		8D75D47D1F2E3D040029C834 /* NVActivityIndicatorShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorShape.swift; sourceTree = "<group>"; };
 		8D75D47F1F2E3D3A0029C834 /* NVActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorView.swift; sourceTree = "<group>"; };
 		8D75D4811F2E3D6B0029C834 /* NVActivityIndicatorViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorViewable.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 		8D1753ED1EEADB1900C2F69E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8D49AB231F2A44F6007C6837 /* PredictionModel.mlmodel */,
+				8D01BDD91F5EE2270084A418 /* Exermote.mlmodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -530,9 +530,9 @@
 			files = (
 				8DA11D8E1F2E40800098A5DE /* NVActivityIndicatorPresenter.swift in Sources */,
 				8D75D47E1F2E3D040029C834 /* NVActivityIndicatorShape.swift in Sources */,
-				8D49AB241F2A44F7007C6837 /* PredictionModel.mlmodel in Sources */,
 				8D75D4881F2E3E1B0029C834 /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				8D02F9AD1EEAE1D90015BD67 /* PredictionManagerDelegate.swift in Sources */,
+				8D01BDDA1F5EE23A0084A418 /* Exermote.mlmodel in Sources */,
 				8D85649A1EE9A7F000F904CA /* AppDelegate.swift in Sources */,
 				8D75D4801F2E3D3A0029C834 /* NVActivityIndicatorView.swift in Sources */,
 				8DA605881F2B10230030C279 /* RingView.swift in Sources */,
