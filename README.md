@@ -1,4 +1,4 @@
-Leave me a comment on my <a href="http://lausbert.com/2017/08/03/exermote/">blog</a>!
+Leave me a comment on my <a href="http://lausbert.com">blog</a>!
 
 # Exermote
 
