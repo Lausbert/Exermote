@@ -58,11 +58,11 @@ class SGAN:
 
         model.add(Conv1D(self.nodes_per_layer, self.filter_length, strides=2, activation="relu",
                          input_shape=(self.timesteps, self.features)))
-        model.add(BatchNormalization(momentum=0.8))
+        #model.add(BatchNormalization(momentum=0.8))
         model.add(Conv1D(self.nodes_per_layer, self.filter_length, strides=1, activation="relu"))
-        model.add(BatchNormalization(momentum=0.8))
+        #model.add(BatchNormalization(momentum=0.8))
         model.add(LSTM(self.nodes_per_layer, return_sequences=True))
-        model.add(BatchNormalization(momentum=0.8))
+        #model.add(BatchNormalization(momentum=0.8))
         model.add(LSTM(self.nodes_per_layer, return_sequences=False))
         model.add(Dropout(self.dropout))
 
@@ -75,13 +75,16 @@ class SGAN:
 
         model = Sequential()
 
-        model.add(Dense(self.timesteps * self.features * self.nodes_per_layer, activation="relu", input_dim=100))
-        model.add(Reshape((self.timesteps, self.features, self.nodes_per_layer)))
-        model.add(BatchNormalization(momentum=0.8))
+        model.add(Dense(self.timesteps * self.features * 1, activation="relu", input_dim=100))
+        model.add(Reshape((self.timesteps, self.features)))
+        model.add(LSTM(self.features, return_sequences=True))
+        model.add(LSTM(self.features, return_sequences=True))
+        model.add(Reshape((self.timesteps, self.features, 1)))
+        #model.add(BatchNormalization(momentum=0.8))
         model.add(Conv2D(self.nodes_per_layer, kernel_size=3, padding="same", activation="relu"))
-        model.add(BatchNormalization(momentum=0.8))
+        #model.add(BatchNormalization(momentum=0.8))
         model.add(Conv2D(self.nodes_per_layer, kernel_size=3, padding="same", activation="relu"))
-        model.add(BatchNormalization(momentum=0.8))
+        #model.add(BatchNormalization(momentum=0.8))
         model.add(Conv2D(1, kernel_size=3, padding="same", activation="tanh"))
 
         random_labels = Input(shape=(self.num_classes + 1,), name="random_labels")
@@ -138,7 +141,8 @@ class SGAN:
         noise = random.normal(0, 1, (half_batch_size, 100 - (self.num_classes + 1)))
         gen_accelerations = self.generator.predict([random_labels, noise])
 
-        print("Generator - Mean:" + str(mean(gen_accelerations)))
+        print("Generator - Mean: " + str(mean(gen_accelerations)) + " Std: " + str(std(gen_accelerations)))
+        print("Discriminator - Mean: " + str(mean(accelerations)) + " Std: " + str(std(accelerations)))
 
         labels = y[idx]
         fake_labels = to_categorical(full((half_batch_size, 1), self.num_classes), num_classes=self.num_classes + 1)
@@ -202,10 +206,10 @@ class SGAN:
 
         for epoch in range(epochs):
 
-            if d_loss[0] >= g_loss:
-                d_loss = self.__train_discrimantor(X=X, y=hot_encoded_y, batch_size=batch_size, class_weights=class_weights)
-            else:
-                g_loss = self.__train_generator(batch_size=batch_size, class_weights=class_weights)
+            #if d_loss[0] >= g_loss:
+            d_loss = self.__train_discrimantor(X=X, y=hot_encoded_y, batch_size=batch_size, class_weights=class_weights)
+            #else:
+            g_loss = self.__train_generator(batch_size=batch_size, class_weights=class_weights)
 
             self.__print_progress(epoch=epoch, d_loss=d_loss, g_loss=g_loss)
 
