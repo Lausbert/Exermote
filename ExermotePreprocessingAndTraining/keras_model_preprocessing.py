@@ -24,6 +24,10 @@ Y = dataset[:,[
     66, 67                               #Label: ExerciseType, ExerciseSubType
     ]]
 
+individual = dataset[:,[
+             69                          #Individual
+             ]]
+
 X = X.tolist()
 Y = Y.tolist()
 
@@ -45,6 +49,9 @@ def merge_data_and_labels(X,y):
     return(X)
 
 data = merge_data_and_labels(X,Y)
+for i in range(len(data)):
+    data[i].append(individual[i][0])
+
 header = [
     'ExerciseType', 'ExerciseSubType',
     'Device:xGravity', 'Device:yGravity', 'Device:zGravity', 'Device:xAcceleration', 'Device:yAcceleration', 'Device:zAcceleration', 'Device:pitch', 'Device:roll', 'Device:yaw', 'Device:xRotationRate', 'Device:yRotationRate', 'Device:zRotationRate',
@@ -53,12 +60,13 @@ header = [
     'Right Foot:rssi', 'Right Foot:xAcceleration', 'Right Foot:yAcceleration', 'Right Foot:zAcceleration',
     'Left Foot:rssi', 'Left Foot:xAcceleration', 'Left Foot:yAcceleration', 'Left Foot:zAcceleration',
     'Chest:rssi', 'Chest:xAcceleration', 'Chest:yAcceleration', 'Chest:zAcceleration',
-    'Belly:rssi', 'Belly:xAcceleration', 'Belly:yAcceleration', 'Belly:zAcceleration'
+    'Belly:rssi', 'Belly:xAcceleration', 'Belly:yAcceleration', 'Belly:zAcceleration',
+    'Individual'
 ]
 
 data.insert(0,header)
 
 #write data
-with open('data_classes_4_squats_adjusted.csv', 'w', newline="") as f:
+with open('data_classes_4_squats_adjusted_individual_added.csv', 'w', newline="") as f:
     writer = writer(f)
     writer.writerows(data)
