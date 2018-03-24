@@ -257,6 +257,8 @@ class SGAN:
         plt.plot(accuracies[:,0], accuracies[:,1], label="discriminator")
         plt.plot(accuracies[:,0], accuracies[:,2], label="baseline")
         plt.title("accuracies: " + test_name)
+        plt.ylabel("accuracies on test data")
+        plt.xlabel("epochs")
         axs = plt.gca()
         axs.set_xlim([0,epochs])
         axs.set_ylim([0,1])
