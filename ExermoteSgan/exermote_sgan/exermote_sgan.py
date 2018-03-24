@@ -134,13 +134,14 @@ class SGAN:
             y_temp.append(y[i + timesteps - timesteps_in_future - 1, :])
         return np.array(X_temp), np.array(y_temp)
 
-    def __scale_dataset(self, X):
+    def __scale_dataset(self, X_train, X_test):
 
         scaler = MinMaxScaler(feature_range=(0, 1))
-        X = scaler.fit_transform(X)  # X*scaler.scale_+scaler.min_ (columnwise)
+        X_train = scaler.fit_transform(X_train)  # X*scaler.scale_+scaler.min_ (columnwise)
+        X_test = scaler.transform(X_test)
         print('Multiplying each row in X elementwise: {}'.format(scaler.scale_))
         print('Increasing each row in X elementtwise: {}'.format(scaler.min_))
-        return X
+        return X_train, X_test
 
     def __hot_encode_dataset(self, y, num_classes):
 
@@ -176,8 +177,7 @@ class SGAN:
         accelerations = X[idx]
 
         # Sample noise and generate a half batch of new accelerations
-        random_labels = to_categorical(np.random.randint(0, self.num_classes, (half_batch_size, 1)),
-                                       num_classes=self.num_classes + 1)
+        random_labels = to_categorical(np.random.randint(0, self.num_classes, (half_batch_size, 1)), num_classes=self.num_classes + 1)
         noise = np.random.normal(0, 1, (half_batch_size, self.generator_input_length - (self.num_classes + 1)))
         gen_accelerations = self.generator.predict([random_labels, noise])
 
@@ -194,8 +194,7 @@ class SGAN:
 
         # Sample noise and generate a batch of new accelerations
         noise = np.random.normal(0, 1, (batch_size, self.generator_input_length - (self.num_classes + 1)))
-        random_labels = to_categorical(np.random.randint(0, self.num_classes, (batch_size, 1)),
-                                       num_classes=self.num_classes + 1)
+        random_labels = to_categorical(np.random.randint(0, self.num_classes, (batch_size, 1)), num_classes=self.num_classes + 1)
 
         # Train the generator
         g_loss = self.combined.train_on_batch([random_labels, noise], random_labels, class_weight=class_weights)
@@ -219,11 +218,9 @@ class SGAN:
 
     def __save_imgs(self, X, y, epoch, fake_images_per_exercise, real_images_per_exercise):
 
-        labels = np.repeat(range(self.num_classes), fake_images_per_exercise).reshape(
-            fake_images_per_exercise * self.num_classes, -1)
+        labels = np.repeat(range(self.num_classes), fake_images_per_exercise).reshape(fake_images_per_exercise * self.num_classes, -1)
         random_labels = to_categorical(labels, num_classes=self.num_classes + 1)
         noise = np.random.normal(0, 1, (fake_images_per_exercise * self.num_classes, self.generator_input_length - (self.num_classes + 1)))
-
         gen_accelerations = self.generator.predict([random_labels, noise])
 
         fig, axs = subplots(fake_images_per_exercise + real_images_per_exercise, self.num_classes)
@@ -248,13 +245,15 @@ class SGAN:
         fig.savefig("accelerations/accelerations_%d.png" % epoch)
         close()
 
-    def train(self, X_train, y_train, epochs, batch_size=100, save_interval=50):
+    def train(self, X_train, y_train, X_test, y_test, epochs, batch_size=100, save_interval=50):
 
-        X = self.__scale_dataset(X_train)
-        hot_encoded_y_sgan = self.__hot_encode_dataset(y_train, num_classes=self.num_classes + 1)
-        X_sgan, hot_encoded_y_sgan = self.__create_LSTM_dataset(X=X, y=hot_encoded_y_sgan, timesteps=self.timesteps, timesteps_in_future=self.timesteps_in_future)
-        hot_encoded_y_baseline = self.__hot_encode_dataset(y_train, num_classes=self.num_classes)
-        X_baseline, hot_encoded_y_baseline = self.__create_LSTM_dataset(X=X, y=hot_encoded_y_baseline, timesteps=self.timesteps, timesteps_in_future=self.timesteps_in_future)
+        X_train, X_test = self.__scale_dataset(X_train, X_test)
+        hot_encoded_y_train_sgan = self.__hot_encode_dataset(y_train, num_classes=self.num_classes + 1)
+        X_sgan, hot_encoded_y_train_sgan = self.__create_LSTM_dataset(X=X_train, y=hot_encoded_y_train_sgan, timesteps=self.timesteps, timesteps_in_future=self.timesteps_in_future)
+        hot_encoded_y_train_baseline = self.__hot_encode_dataset(y_train, num_classes=self.num_classes)
+        X_baseline, hot_encoded_y_train_baseline = self.__create_LSTM_dataset(X=X_train, y=hot_encoded_y_train_baseline, timesteps=self.timesteps, timesteps_in_future=self.timesteps_in_future)
+        hot_encoded_y_test = self.__hot_encode_dataset(y_test, num_classes=self.num_classes)
+        X_test, hot_encoded_y_test = self.__create_LSTM_dataset(X=X_test, y=hot_encoded_y_test, timesteps=self.timesteps, timesteps_in_future=self.timesteps_in_future)
 
         class_weights_sgan = self.__get_class_weights(y_train)
         class_weights_baseline = self.__get_class_weights(y_train, sgan=False)
@@ -262,14 +261,20 @@ class SGAN:
 
         for epoch in range(epochs):
 
-            d_loss = self.__train_discrimantor(X=X_sgan, y=hot_encoded_y_sgan, batch_size=batch_size, class_weights=class_weights_sgan)
+            d_loss = self.__train_discrimantor(X=X_sgan, y=hot_encoded_y_train_sgan, batch_size=batch_size, class_weights=class_weights_sgan)
             g_loss = self.__train_generator(batch_size=batch_size, class_weights=class_weights_baseline)
-            b_loss = self.__train_baseline(X=X_baseline, y=hot_encoded_y_baseline, batch_size=batch_size, class_weights=class_weights_baseline)
+            b_loss = self.__train_baseline(X=X_baseline, y=hot_encoded_y_train_baseline, batch_size=batch_size, class_weights=class_weights_baseline)
 
             self.__print_progress(epoch=epoch, d_loss=d_loss, g_loss=g_loss, b_loss=b_loss)
 
             if epoch % save_interval == 0:
-                self.__save_imgs(X=X_sgan, y=hot_encoded_y_sgan, epoch=epoch, fake_images_per_exercise=2, real_images_per_exercise=2)
+
+                print(self.inference_discriminator.metrics_names)
+                print(self.inference_discriminator.evaluate(X_test, hot_encoded_y_test))
+                print(self.baseline.metrics_names)
+                print(self.baseline.evaluate(X_test, hot_encoded_y_test))
+
+                self.__save_imgs(X=X_sgan, y=hot_encoded_y_train_sgan, epoch=epoch, fake_images_per_exercise=2, real_images_per_exercise=2)
 
 
 def load_data(train_file="data_classes_4_squats_adjusted_individual_added.csv"):
@@ -295,7 +300,15 @@ def load_data(train_file="data_classes_4_squats_adjusted_individual_added.csv"):
     return X, y, individual
 
 
+def non_shuffling_train_test_split(X, y, validation_split):
+    i = int((1 - validation_split) * X.shape[0]) + 1
+    X_train, X_test = np.split(X, [i])
+    y_train, y_test = np.split(y, [i])
+    return X_train, X_test, y_train, y_test
+
+
 if __name__ == "__main__":
     sgan = SGAN()
     X, y, individual = load_data("data_classes_4_squats_adjusted_individual_added.csv")
-    sgan.train(X_train=X, y_train=y, epochs=20001, batch_size=100, save_interval=50)
+    X_train, X_test, y_train, y_test = non_shuffling_train_test_split(X, y, validation_split=0.3)
+    sgan.train(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, epochs=20001, batch_size=100, save_interval=50)

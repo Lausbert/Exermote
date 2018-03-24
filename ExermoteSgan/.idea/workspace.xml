@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66eefce6-51c0-4091-97d9-a14761bd131f" name="Default" comment="" />
+    <list default="true" id="66eefce6-51c0-4091-97d9-a14761bd131f" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_0.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_0.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_100.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_100.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_150.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_150.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_200.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_200.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_250.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_250.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_300.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_300.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_350.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_350.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_400.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_400.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_450.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_450.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_50.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_50.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_500.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_500.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_550.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_550.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_600.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_600.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_650.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_650.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_700.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_700.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_750.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_750.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/exermote_sgan.py" afterPath="$PROJECT_DIR$/exermote_sgan/exermote_sgan.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,21 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="keras_model_preprocessing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ExermotePreprocessingAndTraining/keras_model_preprocessing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="52" column="19" lean-forward="false" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="exermote_sgan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="166" column="40" lean-forward="false" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
+            <state relative-caret-position="270">
+              <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -39,6 +49,9 @@
       <find>100</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -48,9 +61,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
-    <option name="width" value="1991" />
-    <option name="height" value="1129" />
+    <option name="x" value="7" />
+    <option name="y" value="54" />
+    <option name="width" value="1896" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -68,6 +82,7 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -104,7 +119,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -183,13 +198,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1991" height="1129" extended-state="6" />
+    <frame x="0" y="23" width="1867" height="1057" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16574585" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17354044" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36896878" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3675127" sideWeight="0.24477772" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3675127" sideWeight="0.75522226" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -212,11 +228,33 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../ExermotePreprocessingAndTraining/keras_model_preprocessing.py">
+    <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ExermotePreprocessingAndTraining/keras_model_preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="19" lean-forward="false" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2490">
+          <caret line="166" column="40" lean-forward="false" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ExermotePreprocessingAndTraining/keras_model_preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -327,16 +365,15 @@
     <entry file="file://$PROJECT_DIR$/../../sgan_modified/sgan_modified/sgan_modified.py" />
     <entry file="file://$PROJECT_DIR$/../ExermotePreprocessingAndTraining/keras_model_preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
+        <state relative-caret-position="301">
           <caret line="52" column="19" lean-forward="false" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="166" column="40" lean-forward="false" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
+        <state relative-caret-position="270">
+          <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
           <folding />
         </state>
       </provider>
