@@ -8,7 +8,8 @@ from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from keras.utils.np_utils import to_categorical
 from keras.utils.generic_utils import get_custom_objects
 import numpy as np
-from matplotlib.pyplot import subplots, close
+import matplotlib.pyplot as plt
+import os
 
 
 def normalized_linear(x):
@@ -213,17 +214,21 @@ class SGAN:
 
         return b_loss
 
-    def __print_progress(self, epoch, d_loss, g_loss, b_loss):
-        print("%d [D loss: %f, acc: %.2f%%] [G loss: %f] [B loss: %f, acc: %.2f%%]" % (epoch, d_loss[0], 100 * d_loss[1], g_loss, b_loss[0], 100 * b_loss[1]))
+    def __print_progress_on_training(self, epoch, d_loss, g_loss, b_loss):
+        print("Training epoch %d [D loss: %f, acc: %.2f%%] [G loss: %f] [B loss: %f, acc: %.2f%%]" % (epoch, d_loss[0], 100 * d_loss[1], g_loss, b_loss[0], 100 * b_loss[1]))
 
-    def __save_imgs(self, X, y, epoch, fake_images_per_exercise, real_images_per_exercise):
+    def __print_progress_on_testing(self, d_loss, b_loss):
+        print("Testing [D loss: %f, acc: %.2f%%] [B loss: %f, acc: %.2f%%]" % (d_loss[0], 100 * d_loss[1], b_loss[0], 100 * b_loss[1]))
+
+    def __save_acceleration_images(self, X, y, epoch, fake_images_per_exercise, real_images_per_exercise, test_name):
 
         labels = np.repeat(range(self.num_classes), fake_images_per_exercise).reshape(fake_images_per_exercise * self.num_classes, -1)
         random_labels = to_categorical(labels, num_classes=self.num_classes + 1)
         noise = np.random.normal(0, 1, (fake_images_per_exercise * self.num_classes, self.generator_input_length - (self.num_classes + 1)))
         gen_accelerations = self.generator.predict([random_labels, noise])
 
-        fig, axs = subplots(fake_images_per_exercise + real_images_per_exercise, self.num_classes)
+        fig, axs = plt.subplots(fake_images_per_exercise + real_images_per_exercise, self.num_classes)
+        fig.suptitle("epoch: %d" % (epoch) + " - accelerations: " + test_name)
 
         for j in range(self.num_classes):
             for i in range(fake_images_per_exercise + real_images_per_exercise):
@@ -242,10 +247,30 @@ class SGAN:
                 axs[i, j].axvline(5.5, color='w')
                 axs[i, j].axvline(8.5, color='w')
 
-        fig.savefig("accelerations/accelerations_%d.png" % epoch)
-        close()
+        accelerations_folder = test_name + "/accelerations/"
+        if not os.path.exists(accelerations_folder):
+            os.makedirs(accelerations_folder)
+        fig.savefig(accelerations_folder + "accelerations_%d.png" % epoch)
+        plt.close()
 
-    def train(self, X_train, y_train, X_test, y_test, epochs, batch_size=100, save_interval=50):
+    def __save_accuracy_plot(self, accuracies, epoch, epochs, test_name):
+        plt.plot(accuracies[:,0], accuracies[:,1], label="discriminator")
+        plt.plot(accuracies[:,0], accuracies[:,2], label="baseline")
+        plt.title("epoch: %d" % (epoch) + " - accuracies: " + test_name)
+        axs = plt.gca()
+        axs.set_xlim([0,epochs])
+        axs.set_ylim([0,1])
+        axs.xaxis.set_ticks(np.arange(0, epochs + 1, epochs/10))
+        axs.yaxis.set_ticks(np.arange(0,1.001,0.1))
+        handles, labels = axs.get_legend_handles_labels()
+        axs.legend(handles, labels, loc=4)
+        accuracies_folder = test_name + "/accuracies/"
+        if not os.path.exists(accuracies_folder):
+            os.makedirs(accuracies_folder)
+        plt.savefig(accuracies_folder + "accuracies_%d.png" % epoch)
+        plt.close()
+
+    def train(self, X_train, y_train, X_test, y_test, epochs, batch_size=100, save_interval=50, test_name="test"):
 
         X_train, X_test = self.__scale_dataset(X_train, X_test)
         hot_encoded_y_train_sgan = self.__hot_encode_dataset(y_train, num_classes=self.num_classes + 1)
@@ -258,6 +283,8 @@ class SGAN:
         class_weights_sgan = self.__get_class_weights(y_train)
         class_weights_baseline = self.__get_class_weights(y_train, sgan=False)
 
+        accuracies = np.empty((0,3), float)
+
 
         for epoch in range(epochs):
 
@@ -265,16 +292,17 @@ class SGAN:
             g_loss = self.__train_generator(batch_size=batch_size, class_weights=class_weights_baseline)
             b_loss = self.__train_baseline(X=X_baseline, y=hot_encoded_y_train_baseline, batch_size=batch_size, class_weights=class_weights_baseline)
 
-            self.__print_progress(epoch=epoch, d_loss=d_loss, g_loss=g_loss, b_loss=b_loss)
+            self.__print_progress_on_training(epoch=epoch, d_loss=d_loss, g_loss=g_loss, b_loss=b_loss)
 
             if epoch % save_interval == 0:
 
-                print(self.inference_discriminator.metrics_names)
-                print(self.inference_discriminator.evaluate(X_test, hot_encoded_y_test))
-                print(self.baseline.metrics_names)
-                print(self.baseline.evaluate(X_test, hot_encoded_y_test))
+                d_loss = self.inference_discriminator.evaluate(X_test, hot_encoded_y_test, verbose=False)
+                b_loss = self.baseline.evaluate(X_test, hot_encoded_y_test, verbose=False)
+                self.__print_progress_on_testing(d_loss, b_loss)
+                accuracies = np.append(accuracies, [[epoch, d_loss[1], b_loss[1]]], axis=0)
 
-                self.__save_imgs(X=X_sgan, y=hot_encoded_y_train_sgan, epoch=epoch, fake_images_per_exercise=2, real_images_per_exercise=2)
+                self.__save_accuracy_plot(accuracies=accuracies, epoch=epoch, epochs=epochs, test_name=test_name)
+                self.__save_acceleration_images(X=X_sgan, y=hot_encoded_y_train_sgan, epoch=epoch, fake_images_per_exercise=2, real_images_per_exercise=2, test_name=test_name)
 
 
 def load_data(train_file="data_classes_4_squats_adjusted_individual_added.csv"):
@@ -311,4 +339,4 @@ if __name__ == "__main__":
     sgan = SGAN()
     X, y, individual = load_data("data_classes_4_squats_adjusted_individual_added.csv")
     X_train, X_test, y_train, y_test = non_shuffling_train_test_split(X, y, validation_split=0.3)
-    sgan.train(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, epochs=20001, batch_size=100, save_interval=50)
+    sgan.train(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, epochs=20000, batch_size=100, save_interval=50, test_name="test")

@@ -2,24 +2,408 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66eefce6-51c0-4091-97d9-a14761bd131f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_0.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_0.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_100.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_100.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_150.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_150.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_200.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_200.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_250.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_250.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_300.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_300.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_350.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_350.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_400.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_400.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_450.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_450.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_50.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_50.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_500.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_500.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_550.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_550.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_600.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_600.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_650.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_650.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_700.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_700.png" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_750.png" afterPath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_750.png" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_0.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_10950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_11950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_12950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_13950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_14950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_15950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_16950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_17950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_18950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_1950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_19950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_20000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_2950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_3950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_4950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_50.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_5950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_6950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_7950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_8950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9000.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9200.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9250.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9300.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9350.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9450.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_950.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9500.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9550.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9600.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9650.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9700.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9750.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9800.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9850.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9900.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/accelerations/accelerations_9950.png" afterPath="" />
       <change beforePath="$PROJECT_DIR$/exermote_sgan/exermote_sgan.py" afterPath="$PROJECT_DIR$/exermote_sgan/exermote_sgan.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,9 +418,11 @@
       <file leaf-file-name="exermote_sgan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
-              <folding />
+            <state relative-caret-position="1369">
+              <caret line="330" column="46" lean-forward="false" selection-start-line="330" selection-start-column="46" selection-end-line="330" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#116#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,11 +446,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="7" />
-    <option name="y" value="54" />
-    <option name="width" value="1896" />
-    <option name="height" value="1098" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="10" />
+    <option name="y" value="55" />
+    <option name="width" value="1867" />
+    <option name="height" value="963" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -98,6 +484,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -114,12 +502,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -198,19 +584,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1867" height="1057" extended-state="6" />
+    <frame x="10" y="55" width="1867" height="963" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17354044" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3675127" sideWeight="0.24477772" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3675127" sideWeight="0.75522226" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36700338" sideWeight="0.25120515" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.49812534" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36700338" sideWeight="0.74879485" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -232,7 +618,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -247,7 +655,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2490">
           <caret line="166" column="40" lean-forward="false" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -262,7 +672,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -270,7 +682,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -278,7 +692,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -286,7 +702,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -294,7 +712,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1005">
           <caret line="75" column="33" lean-forward="false" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -302,7 +722,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -310,7 +732,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -318,7 +742,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -326,7 +752,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -334,7 +762,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -342,7 +772,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -350,7 +782,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -358,7 +792,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -372,11 +808,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="28" column="41" lean-forward="true" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="1369">
+          <caret line="330" column="46" lean-forward="false" selection-start-line="330" selection-start-column="46" selection-end-line="330" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
