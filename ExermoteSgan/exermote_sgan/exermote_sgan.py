@@ -228,7 +228,7 @@ class SGAN:
         gen_accelerations = self.generator.predict([random_labels, noise])
 
         fig, axs = plt.subplots(fake_images_per_exercise + real_images_per_exercise, self.num_classes)
-        fig.suptitle("epoch: %d" % (epoch) + " - accelerations: " + test_name)
+        fig.suptitle("accelerations: " + test_name + " - epoch: %d" % (epoch))
 
         for j in range(self.num_classes):
             for i in range(fake_images_per_exercise + real_images_per_exercise):
@@ -256,7 +256,7 @@ class SGAN:
     def __save_accuracy_plot(self, accuracies, epoch, epochs, test_name):
         plt.plot(accuracies[:,0], accuracies[:,1], label="discriminator")
         plt.plot(accuracies[:,0], accuracies[:,2], label="baseline")
-        plt.title("epoch: %d" % (epoch) + " - accuracies: " + test_name)
+        plt.title("accuracies: " + test_name)
         axs = plt.gca()
         axs.set_xlim([0,epochs])
         axs.set_ylim([0,1])
