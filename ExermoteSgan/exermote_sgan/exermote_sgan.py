@@ -10,6 +10,7 @@ from keras.utils.generic_utils import get_custom_objects
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import datetime
 
 
 def normalized_linear(x):
@@ -30,6 +31,8 @@ class SGAN:
         self.generator_input_length = 100
         self.dropout = 0.2
         self.encoder = LabelEncoder()
+        self.results_folder_name = "results/" + datetime.datetime.now().strftime('%Y%m%d_%H-%M-%S')
+        self.exercise_description = ""
 
         optimizer = Adam(0.0002, 0.5)
 
@@ -127,12 +130,12 @@ class SGAN:
         return Model(accelerations, scores)
 
 
-    def __create_LSTM_dataset(self, X, y, timesteps, timesteps_in_future):
+    def __create_LSTM_dataset(self, X, y):
 
         X_temp, y_temp = [], []
-        for i in range(len(X) - timesteps + 1):
-            X_temp.append(X[i:i + timesteps, :])
-            y_temp.append(y[i + timesteps - timesteps_in_future - 1, :])
+        for i in range(len(X) - self.timesteps + 1):
+            X_temp.append(X[i:i + self.timesteps, :])
+            y_temp.append(y[i + self.timesteps - self.timesteps_in_future - 1, :])
         return np.array(X_temp), np.array(y_temp)
 
     def __scale_dataset(self, X_train, X_test):
@@ -220,7 +223,7 @@ class SGAN:
     def __print_progress_on_testing(self, d_loss, b_loss):
         print("Testing [D loss: %f, acc: %.2f%%] [B loss: %f, acc: %.2f%%]" % (d_loss[0], 100 * d_loss[1], b_loss[0], 100 * b_loss[1]))
 
-    def __save_acceleration_images(self, X, y, epoch, fake_images_per_exercise, real_images_per_exercise, test_name):
+    def __save_acceleration_images(self, X, y, epoch, fake_images_per_exercise=2, real_images_per_exercise=2):
 
         labels = np.repeat(range(self.num_classes), fake_images_per_exercise).reshape(fake_images_per_exercise * self.num_classes, -1)
         random_labels = to_categorical(labels, num_classes=self.num_classes + 1)
@@ -228,7 +231,8 @@ class SGAN:
         gen_accelerations = self.generator.predict([random_labels, noise])
 
         fig, axs = plt.subplots(fake_images_per_exercise + real_images_per_exercise, self.num_classes)
-        fig.suptitle("accelerations: " + test_name + " - epoch: %d" % (epoch))
+        fig.suptitle("accelerations - epoch %d" % (epoch))
+        plt.figtext(0.5, 0.915, self.exercise_description, horizontalalignment='center', size=5)
 
         for j in range(self.num_classes):
             for i in range(fake_images_per_exercise + real_images_per_exercise):
@@ -247,18 +251,19 @@ class SGAN:
                 axs[i, j].axvline(5.5, color='w')
                 axs[i, j].axvline(8.5, color='w')
 
-        accelerations_folder = test_name + "/accelerations/"
+        accelerations_folder = self.results_folder_name + "/accelerations/"
         if not os.path.exists(accelerations_folder):
             os.makedirs(accelerations_folder)
-        fig.savefig(accelerations_folder + "accelerations_%d.png" % epoch)
+        fig.savefig(accelerations_folder + "accelerations_%d.png" % epoch, dpi=200)
         plt.close()
 
-    def __save_accuracy_plot(self, accuracies, epoch, epochs, test_name):
+    def __save_accuracy_plot(self, accuracies, epoch, epochs):
         plt.plot(accuracies[:,0], accuracies[:,1], label="discriminator")
         plt.plot(accuracies[:,0], accuracies[:,2], label="baseline")
-        plt.title("accuracies: " + test_name)
+        plt.suptitle("accuracies")
         plt.ylabel("accuracies on test data")
         plt.xlabel("epochs")
+        plt.figtext(0.5, 0.915, self.exercise_description, horizontalalignment='center', size=5)
         axs = plt.gca()
         axs.set_xlim([0,epochs])
         axs.set_ylim([0,1])
@@ -266,21 +271,38 @@ class SGAN:
         axs.yaxis.set_ticks(np.arange(0,1.001,0.1))
         handles, labels = axs.get_legend_handles_labels()
         axs.legend(handles, labels, loc=4)
-        accuracies_folder = test_name + "/accuracies/"
+        accuracies_folder = self.results_folder_name + "/accuracies/"
         if not os.path.exists(accuracies_folder):
             os.makedirs(accuracies_folder)
-        plt.savefig(accuracies_folder + "accuracies_%d.png" % epoch)
+        plt.savefig(accuracies_folder + "accuracies_%d.png" % epoch, dpi=200)
         plt.close()
 
-    def train(self, X_train, y_train, X_test, y_test, epochs, batch_size=100, save_interval=50, test_name="test"):
+    def __exercise_description(self, y):
+        unique_exercises = np.unique(y)
+        counts = np.zeros(unique_exercises.shape)
+        unique_exercises_with_counts = dict(zip(unique_exercises, counts))
+        for i in range(len(y)):
+            if i == 0 or y[i] != y[i - 1]:
+                unique_exercises_with_counts[y[i]] = unique_exercises_with_counts[y[i]] + 1
+        unique_exercises_with_counts_strings = []
+        for key, value in unique_exercises_with_counts.items():
+            unique_exercises_with_counts_strings.append(key + "s: " + str(int(value)))
+        return ", ".join(unique_exercises_with_counts_strings)
+
+    def train(self, X_train, y_train, X_test, y_test, epochs, batch_size=100, save_interval=50):
+
+        self.exercise_description = "training data: " + self.__exercise_description(y_train) + "\n" + "testing_data: " + self.__exercise_description(y_test)
 
         X_train, X_test = self.__scale_dataset(X_train, X_test)
+
         hot_encoded_y_train_sgan = self.__hot_encode_dataset(y_train, num_classes=self.num_classes + 1)
-        X_sgan, hot_encoded_y_train_sgan = self.__create_LSTM_dataset(X=X_train, y=hot_encoded_y_train_sgan, timesteps=self.timesteps, timesteps_in_future=self.timesteps_in_future)
+        X_sgan, hot_encoded_y_train_sgan = self.__create_LSTM_dataset(X=X_train, y=hot_encoded_y_train_sgan)
+
         hot_encoded_y_train_baseline = self.__hot_encode_dataset(y_train, num_classes=self.num_classes)
-        X_baseline, hot_encoded_y_train_baseline = self.__create_LSTM_dataset(X=X_train, y=hot_encoded_y_train_baseline, timesteps=self.timesteps, timesteps_in_future=self.timesteps_in_future)
+        X_baseline, hot_encoded_y_train_baseline = self.__create_LSTM_dataset(X=X_train, y=hot_encoded_y_train_baseline)
+
         hot_encoded_y_test = self.__hot_encode_dataset(y_test, num_classes=self.num_classes)
-        X_test, hot_encoded_y_test = self.__create_LSTM_dataset(X=X_test, y=hot_encoded_y_test, timesteps=self.timesteps, timesteps_in_future=self.timesteps_in_future)
+        X_test, hot_encoded_y_test = self.__create_LSTM_dataset(X=X_test, y=hot_encoded_y_test)
 
         class_weights_sgan = self.__get_class_weights(y_train)
         class_weights_baseline = self.__get_class_weights(y_train, sgan=False)
@@ -303,8 +325,8 @@ class SGAN:
                 self.__print_progress_on_testing(d_loss, b_loss)
                 accuracies = np.append(accuracies, [[epoch, d_loss[1], b_loss[1]]], axis=0)
 
-                self.__save_accuracy_plot(accuracies=accuracies, epoch=epoch, epochs=epochs, test_name=test_name)
-                self.__save_acceleration_images(X=X_sgan, y=hot_encoded_y_train_sgan, epoch=epoch, fake_images_per_exercise=2, real_images_per_exercise=2, test_name=test_name)
+                self.__save_accuracy_plot(accuracies=accuracies, epoch=epoch, epochs=epochs)
+                self.__save_acceleration_images(X=X_sgan, y=hot_encoded_y_train_sgan, epoch=epoch)
 
 
 def load_data(train_file="data_classes_4_squats_adjusted_individual_added.csv"):
@@ -334,28 +356,29 @@ def load_data(train_file="data_classes_4_squats_adjusted_individual_added.csv"):
     return X, y
 
 
-#def non_shuffling_split(X, y, validation_split):
-#    i = int((1 - validation_split) * X.shape[0]) + 1
-#    X_train, X_test = np.split(X, [i])
-#    y_train, y_test = np.split(y, [i])
-#    return X_train, X_test, y_train, y_test
+def non_shuffling_split(X, y, validation_split):
+   i = int((1 - validation_split) * X.shape[0]) + 1
+   X_train, X_test = np.split(X, [i])
+   y_train, y_test = np.split(y, [i])
+   return X_train, X_test, y_train, y_test
 
-def exercise_description(y):
-    unique_exercises = np.unique(y)
-    counts = np.zeros(unique_exercises.shape)
-    unique_exercises_with_counts = dict(zip(unique_exercises, counts))
-    for i in range(len(y)):
-        if i == 0 or y[i] != y[i-1]:
-            unique_exercises_with_counts[y[i]] = unique_exercises_with_counts[y[i]] + 1
-    unique_exercises_with_counts_strings = []
-    for key, value in unique_exercises_with_counts.items():
-        unique_exercises_with_counts_strings.append(key + "s: " + str(int(value)))
-    return ", ".join(unique_exercises_with_counts_strings)
+def concatenate_individual_data(X_per_individual, y_per_individual):
+    X = np.concatenate(X_per_individual, axis=0)
+    y = np.concatenate(y_per_individual, axis=0)
+    return X, y
 
+def split_on_break(X, y, split):
+    i = int(split * X.shape[0]) + 1
+    X, _ = np.split(X, [i])
+    y, _ = np.split(y, [i])
+    while y[-1] != "Break":
+        y = y[:-1]
+        X = X[:-1]
+    return X, y
 
 if __name__ == "__main__":
     X_per_individual, y_per_individual = load_data("data_classes_4_squats_adjusted_individual_added.csv")
-    print(exercise_description(y_per_individual[0]))
-    #X_train, X_test, y_train, y_test = non_shuffling_split(X, y, validation_split=0.3)
-    #sgan = SGAN()
-    #sgan.train(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, epochs=20000, batch_size=100, save_interval=50, test_name="test")
+    X, y = concatenate_individual_data(X_per_individual=X_per_individual, y_per_individual=y_per_individual)
+    X_train, X_test, y_train, y_test = non_shuffling_split(X, y, validation_split=0.3)
+    sgan = SGAN()
+    sgan.train(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, epochs=20000, batch_size=100, save_interval=50)
