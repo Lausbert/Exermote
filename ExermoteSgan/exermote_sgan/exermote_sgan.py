@@ -325,20 +325,37 @@ def load_data(train_file="data_classes_4_squats_adjusted_individual_added.csv"):
                    ]].astype(float)
     y = dataset[:, 0]  # ExerciseType (Index 1 is ExerciseSubType)
 
-    individual = dataset[:, 38] # Individual
+    individuals = dataset[:, 38]
+    unique_individuals = np.unique(individuals)
 
-    return X, y, individual
+    X = [X[individuals == individual] for individual in unique_individuals]
+    y = [y[individuals == individual] for individual in unique_individuals]
+
+    return X, y
 
 
-def non_shuffling_train_test_split(X, y, validation_split):
-    i = int((1 - validation_split) * X.shape[0]) + 1
-    X_train, X_test = np.split(X, [i])
-    y_train, y_test = np.split(y, [i])
-    return X_train, X_test, y_train, y_test
+#def non_shuffling_split(X, y, validation_split):
+#    i = int((1 - validation_split) * X.shape[0]) + 1
+#    X_train, X_test = np.split(X, [i])
+#    y_train, y_test = np.split(y, [i])
+#    return X_train, X_test, y_train, y_test
+
+def exercise_description(y):
+    unique_exercises = np.unique(y)
+    counts = np.zeros(unique_exercises.shape)
+    unique_exercises_with_counts = dict(zip(unique_exercises, counts))
+    for i in range(len(y)):
+        if i == 0 or y[i] != y[i-1]:
+            unique_exercises_with_counts[y[i]] = unique_exercises_with_counts[y[i]] + 1
+    unique_exercises_with_counts_strings = []
+    for key, value in unique_exercises_with_counts.items():
+        unique_exercises_with_counts_strings.append(key + "s: " + str(int(value)))
+    return ", ".join(unique_exercises_with_counts_strings)
 
 
 if __name__ == "__main__":
-    sgan = SGAN()
-    X, y, individual = load_data("data_classes_4_squats_adjusted_individual_added.csv")
-    X_train, X_test, y_train, y_test = non_shuffling_train_test_split(X, y, validation_split=0.3)
-    sgan.train(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, epochs=20000, batch_size=100, save_interval=50, test_name="test")
+    X_per_individual, y_per_individual = load_data("data_classes_4_squats_adjusted_individual_added.csv")
+    print(exercise_description(y_per_individual[0]))
+    #X_train, X_test, y_train, y_test = non_shuffling_split(X, y, validation_split=0.3)
+    #sgan = SGAN()
+    #sgan.train(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, epochs=20000, batch_size=100, save_interval=50, test_name="test")
