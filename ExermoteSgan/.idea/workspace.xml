@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66eefce6-51c0-4091-97d9-a14761bd131f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/exermote_sgan/exermote_sgan.py" afterPath="$PROJECT_DIR$/exermote_sgan/exermote_sgan.py" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/results/20180329_17-29-46/accelerations/accelerations_0.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/results/20180329_17-29-46/accuracies/accuracies_0.png" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,21 +17,11 @@
       <file leaf-file-name="exermote_sgan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="386" column="18" lean-forward="true" selection-start-line="386" selection-start-column="18" selection-end-line="386" selection-end-column="18" />
+            <state relative-caret-position="583">
+              <caret line="400" column="83" lean-forward="false" selection-start-line="400" selection-start-column="83" selection-end-line="400" selection-end-column="83" />
               <folding>
                 <element signature="e#0#116#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="keras_model_preprocessing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ExermotePreprocessingAndTraining/keras_model_preprocessing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="34" column="27" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="27" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -447,21 +436,29 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../sgan_modified/sgan_modified/sgan_modified.py" />
-    <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="386" column="18" lean-forward="true" selection-start-line="386" selection-start-column="18" selection-end-line="386" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../ExermotePreprocessingAndTraining/keras_model_preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="34" column="27" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ExermotePreprocessingAndTraining/trainer/exermote.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1870">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="400" column="83" lean-forward="false" selection-start-line="400" selection-start-column="83" selection-end-line="400" selection-end-column="83" />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

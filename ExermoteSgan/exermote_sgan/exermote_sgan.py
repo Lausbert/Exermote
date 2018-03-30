@@ -396,4 +396,12 @@ if __name__ == "__main__":
         for split in [1.0,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1]:
             X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
             sgan = SGAN()
-            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=train_individuals, test_individual=test_individual, epochs=1)
+            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=train_individuals, test_individual=test_individual)
+
+    #training and testing on same individual while gradually reducing training data
+    for test_individual, (X, y) in enumerate(zip(X_per_individual, y_per_individual)):
+        X_train, X_test, y_train, y_test = non_shuffling_split(X, y, validation_split=0.2)
+        for split in [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]:
+            X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
+            sgan = SGAN()
+            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=[test_individual], test_individual=test_individual)
