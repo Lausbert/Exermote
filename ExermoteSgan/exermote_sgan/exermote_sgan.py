@@ -289,9 +289,13 @@ class SGAN:
             unique_exercises_with_counts_strings.append(key + "s: " + str(int(value)))
         return ", ".join(unique_exercises_with_counts_strings)
 
-    def train(self, X_train, y_train, X_test, y_test, epochs, batch_size=100, save_interval=50):
-
-        self.exercise_description = "training data: " + self.__exercise_description(y_train) + "\n" + "testing_data: " + self.__exercise_description(y_test)
+    def train(self, X_train, y_train, X_test, y_test, train_individuals, test_individual, epochs=20000, batch_size=100, save_interval=50):
+        test_description = "testing data (individual %d): " %(test_individual)
+        if len(train_individuals) == 1:
+            train_description = "training data (individual %d): " %(train_individuals[0])
+        else:
+            train_description = "training data (individuals " + ', '.join(str(train_individual) for train_individual in train_individuals) + "): "
+        self.exercise_description = train_description + self.__exercise_description(y_train) + "\n" + test_description + self.__exercise_description(y_test)
 
         X_train, X_test = self.__scale_dataset(X_train, X_test)
 
@@ -378,7 +382,18 @@ def split_on_break(X, y, split):
 
 if __name__ == "__main__":
     X_per_individual, y_per_individual = load_data("data_classes_4_squats_adjusted_individual_added.csv")
-    X, y = concatenate_individual_data(X_per_individual=X_per_individual, y_per_individual=y_per_individual)
-    X_train, X_test, y_train, y_test = non_shuffling_split(X, y, validation_split=0.3)
-    sgan = SGAN()
-    sgan.train(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, epochs=20000, batch_size=100, save_interval=50)
+    # X_train, X_test, y_train, y_test = non_shuffling_split(X, y, validation_split=0.3)
+
+    #leave one out and gradually reducing training data from other individuals
+    for test_individual, (X, y) in enumerate(zip(X_per_individual, y_per_individual)):
+        train_individuals = list(range(0, len(X_per_individual)))
+        train_individuals.remove(test_individual)
+        X_train_per_individual = np.take(X_per_individual, train_individuals)
+        y_train_per_individual = np.take(y_per_individual, train_individuals)
+        X_train, y_train = concatenate_individual_data(X_train_per_individual, y_train_per_individual)
+        X_test = X_per_individual[test_individual]
+        y_test = y_per_individual[test_individual]
+        for split in [1.0,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1]:
+            X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
+            sgan = SGAN()
+            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=train_individuals, test_individual=test_individual, epochs=1)

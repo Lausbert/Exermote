@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="66eefce6-51c0-4091-97d9-a14761bd131f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/exermote_sgan/exermote_sgan.py" afterPath="$PROJECT_DIR$/exermote_sgan/exermote_sgan.py" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/test/accelerations/accelerations_0.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/test/accelerations/accelerations_100.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/test/accelerations/accelerations_50.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/test/accuracies/accuracies_0.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/test/accuracies/accuracies_100.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/exermote_sgan/test/accuracies/accuracies_50.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/results/20180329_17-29-46/accelerations/accelerations_0.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exermote_sgan/results/20180329_17-29-46/accuracies/accuracies_0.png" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +18,8 @@
       <file leaf-file-name="exermote_sgan.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="234" column="30" lean-forward="false" selection-start-line="234" selection-start-column="30" selection-end-line="234" selection-end-column="30" />
+            <state relative-caret-position="463">
+              <caret line="386" column="18" lean-forward="true" selection-start-line="386" selection-start-column="18" selection-end-line="386" selection-end-column="18" />
               <folding>
                 <element signature="e#0#116#0" expanded="true" />
               </folding>
@@ -62,9 +58,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="36" />
-    <option name="y" value="105" />
-    <option name="width" value="1900" />
+    <option name="y" value="45" />
+    <option name="width" value="1867" />
     <option name="height" value="1035" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -199,15 +194,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="36" y="105" width="1900" height="1035" extended-state="0" />
+    <frame x="0" y="45" width="1867" height="1035" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17052631" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3665628" sideWeight="0.26052633" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3665628" sideWeight="0.7394737" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2024922" sideWeight="0.26352438" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2024922" sideWeight="0.73647565" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.49812534" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15631579" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15586503" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -228,6 +224,24 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ExermotePreprocessingAndTraining/keras_model_preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="34" column="27" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -435,8 +449,8 @@
     <entry file="file://$PROJECT_DIR$/../../sgan_modified/sgan_modified/sgan_modified.py" />
     <entry file="file://$PROJECT_DIR$/exermote_sgan/exermote_sgan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="234" column="30" lean-forward="false" selection-start-line="234" selection-start-column="30" selection-end-line="234" selection-end-column="30" />
+        <state relative-caret-position="463">
+          <caret line="386" column="18" lean-forward="true" selection-start-line="386" selection-start-column="18" selection-end-line="386" selection-end-column="18" />
           <folding>
             <element signature="e#0#116#0" expanded="true" />
           </folding>
