@@ -1,16 +1,18 @@
+from tensorflow.python.lib.io import file_io
+import argparse
 from keras.layers import Input, Dense, Dropout, LSTM, Conv1D, Reshape, Conv2D, concatenate, MaxPooling2D, Activation
 from keras.models import Sequential, Model
 from keras.optimizers import Adam
 from keras.backend import sum
-from tensorflow.python.lib.io import file_io
 from pandas import read_csv
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from keras.utils.np_utils import to_categorical
 from keras.utils.generic_utils import get_custom_objects
 import numpy as np
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import os
-import datetime
 
 
 def normalized_linear(x):
@@ -31,7 +33,8 @@ class SGAN:
         self.generator_input_length = 100
         self.dropout = 0.2
         self.encoder = LabelEncoder()
-        self.results_folder_name = "results/" + datetime.datetime.now().strftime('%Y%m%d_%H-%M-%S')
+        self.results_folder_name = ""
+        self.results_folder_name_gs = ""
         self.exercise_description = ""
 
         optimizer = Adam(0.0002, 0.5)
@@ -95,17 +98,17 @@ class SGAN:
 
     def __build_generator(self):
 
+        factor = 1
         model = Sequential()
-
-        model.add(Dense(self.timesteps * self.features * 4, activation="relu", input_dim=self.generator_input_length))
-        model.add(Reshape((self.timesteps * 2, self.features * 2)))
+        model.add(Dense(self.timesteps * self.features * factor * factor, activation="relu", input_dim=self.generator_input_length))
+        model.add(Reshape((self.timesteps, self.features * factor)))
         model.add(LSTM(self.features, return_sequences=True))
         model.add(LSTM(self.features, return_sequences=True))
-        model.add(Reshape((self.timesteps * 2, self.features, 1)))
-        model.add(Conv2D(self.nodes_per_layer * 2, kernel_size=(6, 3), padding="same", activation="relu"))
+        model.add(Reshape((self.timesteps, self.features * factor, 1)))
+        model.add(Conv2D(self.nodes_per_layer * factor, kernel_size=(6, 3), padding="same", activation="relu"))
         model.add(Conv2D(self.nodes_per_layer, kernel_size=(6, 3), padding="same", activation="relu"))
         model.add(Conv2D(1, kernel_size=3, padding="same", activation="tanh"))
-        model.add(MaxPooling2D(pool_size=(2, 1)))
+        model.add(MaxPooling2D(pool_size=(factor, 1)))
 
         random_labels = Input(shape=(self.num_classes + 1,), name="random_labels")
         noise = Input(shape=(self.generator_input_length - (self.num_classes + 1),), name="noise")
@@ -172,21 +175,16 @@ class SGAN:
             cw[self.num_classes] = 1/0.5
         return cw
 
-    def __train_discrimantor(self, X, y, batch_size, class_weights):
+    def __train_discrimantor(self, X, y, batch_size, idx, class_weights):
 
-        half_batch_size = int(batch_size / 2)
-
-        # Select a random half batch of images
-        idx = np.random.randint(0, X.shape[0], half_batch_size)
         accelerations = X[idx]
-
-        # Sample noise and generate a half batch of new accelerations
-        random_labels = to_categorical(np.random.randint(0, self.num_classes, (half_batch_size, 1)), num_classes=self.num_classes + 1)
-        noise = np.random.normal(0, 1, (half_batch_size, self.generator_input_length - (self.num_classes + 1)))
-        gen_accelerations = self.generator.predict([random_labels, noise])
-
         labels = y[idx]
-        fake_labels = to_categorical(np.full((half_batch_size, 1), self.num_classes), num_classes=self.num_classes + 1)
+
+        # Sample noise and generate a batch of new accelerations
+        random_labels = to_categorical(np.random.randint(0, self.num_classes, (batch_size, 1)), num_classes=self.num_classes + 1)
+        noise = np.random.normal(0, 1, (batch_size, self.generator_input_length - (self.num_classes + 1)))
+        gen_accelerations = self.generator.predict([random_labels, noise])
+        fake_labels = to_categorical(np.full((batch_size, 1), self.num_classes), num_classes=self.num_classes + 1)
 
         # Train the discriminator
         d_loss_real = self.discriminator.train_on_batch(accelerations, labels, class_weight=class_weights)
@@ -204,12 +202,9 @@ class SGAN:
         g_loss = self.combined.train_on_batch([random_labels, noise], random_labels, class_weight=class_weights)
         return g_loss
 
-    def __train_baseline(self, X, y, batch_size, class_weights):
+    def __train_baseline(self, X, y, batch_size, idx, class_weights):
 
-        # Select a random half batch of images
-        idx = np.random.randint(0, X.shape[0], batch_size)
         accelerations = X[idx]
-
         labels = y[idx]
 
         # Train the baseline
@@ -250,11 +245,13 @@ class SGAN:
                 axs[i, j].axvline(2.5, color='w')
                 axs[i, j].axvline(5.5, color='w')
                 axs[i, j].axvline(8.5, color='w')
-
-        accelerations_folder = self.results_folder_name + "/accelerations/"
-        if not os.path.exists(accelerations_folder):
-            os.makedirs(accelerations_folder)
-        fig.savefig(accelerations_folder + "accelerations_%d.png" % epoch, dpi=200)
+        accelerations_file_name = "accelerations_%d.png" % epoch
+        if not os.path.exists(self.results_folder_name):
+            os.makedirs(self.results_folder_name)
+        fig.savefig(self.results_folder_name + accelerations_file_name, dpi=200)
+        with file_io.FileIO(self.results_folder_name + accelerations_file_name, mode='rb') as input_f:
+            with file_io.FileIO(self.results_folder_name_gs + accelerations_file_name, mode='w+') as output_f:
+                output_f.write(input_f.read())
         plt.close()
 
     def __save_accuracy_plot(self, accuracies, epoch, epochs):
@@ -271,10 +268,13 @@ class SGAN:
         axs.yaxis.set_ticks(np.arange(0,1.001,0.1))
         handles, labels = axs.get_legend_handles_labels()
         axs.legend(handles, labels, loc=4)
-        accuracies_folder = self.results_folder_name + "/accuracies/"
-        if not os.path.exists(accuracies_folder):
-            os.makedirs(accuracies_folder)
-        plt.savefig(accuracies_folder + "accuracies_%d.png" % epoch, dpi=200)
+        accuracies_file_name = "accuracies_%d.png" % epoch
+        if not os.path.exists(self.results_folder_name):
+            os.makedirs(self.results_folder_name)
+        plt.savefig(self.results_folder_name + accuracies_file_name, dpi=200)
+        with file_io.FileIO(self.results_folder_name + accuracies_file_name, mode='rb') as input_f:
+            with file_io.FileIO(self.results_folder_name_gs + accuracies_file_name, mode='w+') as output_f:
+                output_f.write(input_f.read())
         plt.close()
 
     def __exercise_description(self, y):
@@ -289,13 +289,17 @@ class SGAN:
             unique_exercises_with_counts_strings.append(key + "s: " + str(int(value)))
         return ", ".join(unique_exercises_with_counts_strings)
 
-    def train(self, X_train, y_train, X_test, y_test, train_individuals, test_individual, epochs=20000, batch_size=100, save_interval=50):
-        test_description = "testing data (individual %d): " %(test_individual)
+    def train(self, X_train, y_train, X_test, y_test, train_individuals, test_individual, job_dir, split, epochs=100000, batch_size=100, save_interval=1000):
+
+        test_description = "testing_on_individual_%d" %(test_individual)
         if len(train_individuals) == 1:
-            train_description = "training data (individual %d): " %(train_individuals[0])
+            train_description = "training_on_individual_%d" %(train_individuals[0])
         else:
-            train_description = "training data (individuals " + ', '.join(str(train_individual) for train_individual in train_individuals) + "): "
-        self.exercise_description = train_description + self.__exercise_description(y_train) + "\n" + test_description + self.__exercise_description(y_test)
+            train_description = "training_on_individuals_" + '_'.join(str(train_individual) for train_individual in train_individuals)
+        self.exercise_description = train_description + " - " + self.__exercise_description(y_train) + "\n" + test_description + " - " + self.__exercise_description(y_test)
+
+        self.results_folder_name = '.' + '/results/' + train_description + "_" + test_description + "_split_" + str(split) + "/"
+        self.results_folder_name_gs = job_dir + "/" + train_description + "_" + test_description + "_split_" + str(split) + "/"
 
         X_train, X_test = self.__scale_dataset(X_train, X_test)
 
@@ -314,15 +318,18 @@ class SGAN:
         accuracies = np.empty((0,3), float)
 
 
-        for epoch in range(epochs):
+        for epoch in range(epochs+1):
 
-            d_loss = self.__train_discrimantor(X=X_sgan, y=hot_encoded_y_train_sgan, batch_size=batch_size, class_weights=class_weights_sgan)
+            # Select a random batch of images
+            idx = np.random.randint(0, X_sgan.shape[0], batch_size)
+
+            d_loss = self.__train_discrimantor(X=X_sgan, y=hot_encoded_y_train_sgan, batch_size=batch_size, idx=idx, class_weights=class_weights_sgan)
             g_loss = self.__train_generator(batch_size=batch_size, class_weights=class_weights_baseline)
-            b_loss = self.__train_baseline(X=X_baseline, y=hot_encoded_y_train_baseline, batch_size=batch_size, class_weights=class_weights_baseline)
-
-            self.__print_progress_on_training(epoch=epoch, d_loss=d_loss, g_loss=g_loss, b_loss=b_loss)
+            b_loss = self.__train_baseline(X=X_baseline, y=hot_encoded_y_train_baseline, batch_size=batch_size, idx=idx, class_weights=class_weights_baseline)
 
             if epoch % save_interval == 0:
+
+                self.__print_progress_on_training(epoch=epoch, d_loss=d_loss, g_loss=g_loss, b_loss=b_loss)
 
                 d_loss = self.inference_discriminator.evaluate(X_test, hot_encoded_y_test, verbose=False)
                 b_loss = self.baseline.evaluate(X_test, hot_encoded_y_test, verbose=False)
@@ -366,10 +373,12 @@ def non_shuffling_split(X, y, validation_split):
    y_train, y_test = np.split(y, [i])
    return X_train, X_test, y_train, y_test
 
+
 def concatenate_individual_data(X_per_individual, y_per_individual):
     X = np.concatenate(X_per_individual, axis=0)
     y = np.concatenate(y_per_individual, axis=0)
     return X, y
+
 
 def split_on_break(X, y, split):
     i = int(split * X.shape[0]) + 1
@@ -380,11 +389,11 @@ def split_on_break(X, y, split):
         X = X[:-1]
     return X, y
 
-if __name__ == "__main__":
-    X_per_individual, y_per_individual = load_data("data_classes_4_squats_adjusted_individual_added.csv")
-    # X_train, X_test, y_train, y_test = non_shuffling_split(X, y, validation_split=0.3)
 
-    #leave one out and gradually reducing training data from other individuals
+def run_exermotesgan(train_file='data_classes_4_squats_adjusted_individual_added.csv', job_dir='leeeeeroooooyyyyyjeeeeeenkins', **args):
+    X_per_individual, y_per_individual = load_data(train_file)
+
+    # leave one out and gradually reducing training data from other individuals
     for test_individual, (X, y) in enumerate(zip(X_per_individual, y_per_individual)):
         train_individuals = list(range(0, len(X_per_individual)))
         train_individuals.remove(test_individual)
@@ -393,15 +402,34 @@ if __name__ == "__main__":
         X_train, y_train = concatenate_individual_data(X_train_per_individual, y_train_per_individual)
         X_test = X_per_individual[test_individual]
         y_test = y_per_individual[test_individual]
-        for split in [1.0,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1]:
+        for split in [1.0, 0.1]:
             X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
             sgan = SGAN()
-            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=train_individuals, test_individual=test_individual)
+            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=train_individuals, test_individual=test_individual, job_dir=job_dir, split=split)
 
-    #training and testing on same individual while gradually reducing training data
+    # training and testing on same individual while gradually reducing training data
     for test_individual, (X, y) in enumerate(zip(X_per_individual, y_per_individual)):
         X_train, X_test, y_train, y_test = non_shuffling_split(X, y, validation_split=0.2)
-        for split in [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]:
+        for split in [1.0, 0.1]:
             X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
             sgan = SGAN()
-            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=[test_individual], test_individual=test_individual)
+            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=[test_individual], test_individual=test_individual, job_dir=job_dir, split=split)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    # Input Arguments
+    parser.add_argument(
+        '--train-file',
+        help='GCS or local paths to training data',
+        required=True
+    )
+    parser.add_argument(
+        '--job-dir',
+        help='GCS location to write checkpoints and export models',
+        required=True
+    )
+    args = parser.parse_args()
+    arguments = args.__dict__
+
+    run_exermotesgan(**arguments)
