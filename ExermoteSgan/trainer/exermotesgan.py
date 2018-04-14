@@ -1,6 +1,6 @@
 from tensorflow.python.lib.io import file_io
 import argparse
-from keras.layers import Input, Dense, Dropout, LSTM, Conv1D, Reshape, Conv2D, concatenate, MaxPooling2D, Activation
+from keras.layers import Input, Dense, Dropout, LSTM, Conv1D, Reshape, Conv2D, Cropping2D, MaxPooling2D, Activation
 from keras.models import Sequential, Model
 from keras.optimizers import Adam
 from keras.backend import sum
@@ -47,30 +47,30 @@ class SGAN:
         # Build and compile the discriminator
         self.discriminator = self.__build_discriminator()
         self.discriminator.summary()
-        self.discriminator.compile(loss=["categorical_crossentropy"], optimizer=optimizer, metrics=["accuracy"])
+        self.discriminator.compile(loss=['binary_crossentropy', 'categorical_crossentropy'], optimizer=optimizer, metrics=["accuracy"])
 
         # For the combined model we will only train the generator
         self.discriminator.trainable = False
 
         # The generator takes noise as input and generates accelerations
-        random_labels = Input(shape=(self.num_classes + 1,))
-        noise = Input(shape=(self.generator_input_length - (self.num_classes + 1),))
-        generated_accelerations = self.generator([random_labels, noise])
+        noise = Input(shape=(self.generator_input_length,))
+        generated_accelerations = self.generator(noise)
 
         # The valid takes generated images as input and determines validity
-        generated_scores = self.discriminator(generated_accelerations)
+        valid, _ = self.discriminator(generated_accelerations)
 
         # The combined model  (stacked generator and discriminator) takes
         # noise as input => generates images => determines validity
-        self.combined = Model([random_labels, noise], generated_scores)
+        self.combined = Model(noise, valid)
         self.combined.summary()
-        self.combined.compile(loss=["categorical_crossentropy"], optimizer=optimizer)
+        self.combined.compile(loss=["binary_crossentropy"], optimizer=optimizer)
 
         # Build and compile the discriminator for inference (fake class removed)
         accelerations = Input(shape=(self.timesteps, self.features))
+        _, scores = self.discriminator(accelerations)
         kernel = np.concatenate((np.identity(self.num_classes), np.zeros((1, self.num_classes))), axis=0)
         bias = np.zeros(self.num_classes)
-        inference_scores = Dense(self.num_classes, activation="normalized_linear", name="inference_scores", weights=[kernel, bias])(self.discriminator(accelerations))
+        inference_scores = Dense(self.num_classes, activation="normalized_linear", name="inference_scores", weights=[kernel, bias])(scores)
         self.inference_discriminator = Model(accelerations, inference_scores)
         self.inference_discriminator.trainable = False
         self.inference_discriminator.summary()
@@ -92,29 +92,43 @@ class SGAN:
         model.add(Dropout(self.dropout))
 
         accelerations = Input(shape=(self.timesteps, self.features), name="accelerations")
-        scores = Dense(self.num_classes + 1, activation="softmax", name="scores")(model(accelerations))
+        features = model(accelerations)
+        valid = Dense(1, activation="sigmoid")(features)
+        scores = Dense(self.num_classes + 1, activation="softmax", name="scores")(features)
 
-        return Model(accelerations, scores)
+        return Model(accelerations, [valid, scores])
 
     def __build_generator(self):
 
-        factor = 1
+        factor = 2
         model = Sequential()
-        model.add(Dense(self.timesteps * self.features * factor * factor, activation="relu", input_dim=self.generator_input_length))
-        model.add(Reshape((self.timesteps, self.features * factor)))
-        model.add(LSTM(self.features, return_sequences=True))
-        model.add(LSTM(self.features, return_sequences=True))
-        model.add(Reshape((self.timesteps, self.features * factor, 1)))
-        model.add(Conv2D(self.nodes_per_layer * factor, kernel_size=(6, 3), padding="same", activation="relu"))
-        model.add(Conv2D(self.nodes_per_layer, kernel_size=(6, 3), padding="same", activation="relu"))
+        model.add(Dense((((self.timesteps * factor) + 30) * (self.features + 4) * 3), activation="relu", input_dim=self.generator_input_length))
+        print(model.output_shape)
+        model.add(Reshape(((self.timesteps * factor) + 30, (self.features + 4) * 3)))
+        print(model.output_shape)
+        model.add(LSTM((self.features + 4) * 3, return_sequences=True))
+        print(model.output_shape)
+        model.add(LSTM((self.features + 4) * 3, return_sequences=True))
+        print(model.output_shape)
+        model.add(Reshape(((self.timesteps * factor) + 30, (self.features + 4) * 3, 1)))
+        print(model.output_shape)
+        model.add(Cropping2D(cropping=((10, 10), (0, 0))))
+        print(model.output_shape)
+        model.add(MaxPooling2D(pool_size=(1, 3)))
+        print(model.output_shape)
+        model.add(Conv2D(self.nodes_per_layer * factor, kernel_size=(6, 3), activation="relu"))
+        print(model.output_shape)
+        model.add(Conv2D(self.nodes_per_layer, kernel_size=(6, 3), activation="relu"))
+        print(model.output_shape)
         model.add(Conv2D(1, kernel_size=3, padding="same", activation="tanh"))
+        print(model.output_shape)
         model.add(MaxPooling2D(pool_size=(factor, 1)))
+        print(model.output_shape)
 
-        random_labels = Input(shape=(self.num_classes + 1,), name="random_labels")
-        noise = Input(shape=(self.generator_input_length - (self.num_classes + 1),), name="noise")
-        accelerations = Reshape((self.timesteps, self.features), name="accelerations")(model(concatenate([random_labels, noise])))
+        noise = Input(shape=(self.generator_input_length,), name="noise")
+        accelerations = Reshape((self.timesteps, self.features), name="accelerations")(model(noise))
 
-        return Model([random_labels, noise], accelerations)
+        return Model(noise, accelerations)
 
     def __build_baseline(self):
 
@@ -181,25 +195,28 @@ class SGAN:
         labels = y[idx]
 
         # Sample noise and generate a batch of new accelerations
-        random_labels = to_categorical(np.random.randint(0, self.num_classes, (batch_size, 1)), num_classes=self.num_classes + 1)
-        noise = np.random.normal(0, 1, (batch_size, self.generator_input_length - (self.num_classes + 1)))
-        gen_accelerations = self.generator.predict([random_labels, noise])
+        noise = np.random.normal(0, 1, (batch_size, self.generator_input_length))
+        gen_accelerations = self.generator.predict(noise)
         fake_labels = to_categorical(np.full((batch_size, 1), self.num_classes), num_classes=self.num_classes + 1)
 
+        valid = np.ones((batch_size, 1))
+        fake = np.zeros((batch_size, 1))
+
         # Train the discriminator
-        d_loss_real = self.discriminator.train_on_batch(accelerations, labels, class_weight=class_weights)
-        d_loss_fake = self.discriminator.train_on_batch(gen_accelerations, fake_labels, class_weight=class_weights)
+        d_loss_real = self.discriminator.train_on_batch(accelerations, [valid, labels], class_weight=class_weights)
+        d_loss_fake = self.discriminator.train_on_batch(gen_accelerations, [fake, fake_labels], class_weight=class_weights)
 
         return 0.5 * np.add(d_loss_real, d_loss_fake)
 
     def __train_generator(self, batch_size, class_weights):
 
         # Sample noise and generate a batch of new accelerations
-        noise = np.random.normal(0, 1, (batch_size, self.generator_input_length - (self.num_classes + 1)))
-        random_labels = to_categorical(np.random.randint(0, self.num_classes, (batch_size, 1)), num_classes=self.num_classes + 1)
+        noise = np.random.normal(0, 1, (batch_size, self.generator_input_length))
+
+        valid = np.ones((batch_size, 1))
 
         # Train the generator
-        g_loss = self.combined.train_on_batch([random_labels, noise], random_labels, class_weight=class_weights)
+        g_loss = self.combined.train_on_batch(noise, valid, class_weight=class_weights)
         return g_loss
 
     def __train_baseline(self, X, y, batch_size, idx, class_weights):
@@ -220,10 +237,8 @@ class SGAN:
 
     def __save_acceleration_images(self, X, y, epoch, fake_images_per_exercise=2, real_images_per_exercise=2):
 
-        labels = np.repeat(range(self.num_classes), fake_images_per_exercise).reshape(fake_images_per_exercise * self.num_classes, -1)
-        random_labels = to_categorical(labels, num_classes=self.num_classes + 1)
-        noise = np.random.normal(0, 1, (fake_images_per_exercise * self.num_classes, self.generator_input_length - (self.num_classes + 1)))
-        gen_accelerations = self.generator.predict([random_labels, noise])
+        noise = np.random.normal(0, 1, (fake_images_per_exercise * self.num_classes, self.generator_input_length))
+        gen_accelerations = self.generator.predict(noise)
 
         fig, axs = plt.subplots(fake_images_per_exercise + real_images_per_exercise, self.num_classes)
         fig.suptitle("accelerations - epoch %d" % (epoch))
@@ -232,7 +247,7 @@ class SGAN:
         for j in range(self.num_classes):
             for i in range(fake_images_per_exercise + real_images_per_exercise):
                 if i < fake_images_per_exercise:
-                    axs[i, j].set_title("fake " + self.encoder.classes_[j], size=8, y=0.94)
+                    axs[i, j].set_title("fake exercise", size=8, y=0.94)
                     axs[i, j].imshow(gen_accelerations[fake_images_per_exercise * j + i, :, :], aspect="auto",
                                      cmap="jet")
                 else:
@@ -289,7 +304,7 @@ class SGAN:
             unique_exercises_with_counts_strings.append(key + "s: " + str(int(value)))
         return ", ".join(unique_exercises_with_counts_strings)
 
-    def train(self, X_train, y_train, X_test, y_test, train_individuals, test_individual, job_dir, split, epochs=100000, batch_size=100, save_interval=1000):
+    def train(self, X_train, y_train, X_test, y_test, train_individuals, test_individual, job_dir, split, epochs=50000, batch_size=100, save_interval=1000):
 
         test_description = "testing_on_individual_%d" %(test_individual)
         if len(train_individuals) == 1:
@@ -320,7 +335,7 @@ class SGAN:
 
         for epoch in range(epochs+1):
 
-            # Select a random batch of images
+            # Select a random batch of accelerations
             idx = np.random.randint(0, X_sgan.shape[0], batch_size)
 
             d_loss = self.__train_discrimantor(X=X_sgan, y=hot_encoded_y_train_sgan, batch_size=batch_size, idx=idx, class_weights=class_weights_sgan)
@@ -402,7 +417,7 @@ def run_exermotesgan(train_file='data_classes_4_squats_adjusted_individual_added
         X_train, y_train = concatenate_individual_data(X_train_per_individual, y_train_per_individual)
         X_test = X_per_individual[test_individual]
         y_test = y_per_individual[test_individual]
-        for split in [1.0, 0.1]:
+        for split in [1.0, 0.05]:
             X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
             sgan = SGAN()
             sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=train_individuals, test_individual=test_individual, job_dir=job_dir, split=split)
