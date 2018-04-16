@@ -1,6 +1,6 @@
 from tensorflow.python.lib.io import file_io
 import argparse
-from keras.layers import Input, Dense, Dropout, LSTM, Conv1D, Reshape, Conv2D, Cropping2D, MaxPooling2D, Activation
+from keras.layers import Input, Dense, Dropout, LSTM, Conv1D, Reshape, Conv2D, Cropping2D, AveragePooling2D, Activation
 from keras.models import Sequential, Model
 from keras.optimizers import Adam
 from keras.backend import sum
@@ -102,27 +102,29 @@ class SGAN:
 
         factor = 2
         model = Sequential()
-        model.add(Dense((((self.timesteps * factor) + 30) * (self.features + 4) * 3), activation="relu", input_dim=self.generator_input_length))
+        model.add(Dense((((self.timesteps * factor) + 20) * self.features * 5), activation="relu", input_dim=self.generator_input_length))
         print(model.output_shape)
-        model.add(Reshape(((self.timesteps * factor) + 30, (self.features + 4) * 3)))
+        model.add(Reshape(((self.timesteps * factor) + 20, self.features * 5)))
         print(model.output_shape)
-        model.add(LSTM((self.features + 4) * 3, return_sequences=True))
+        model.add(LSTM(self.features * 5, return_sequences=True))
         print(model.output_shape)
-        model.add(LSTM((self.features + 4) * 3, return_sequences=True))
+        model.add(LSTM(self.features * 5, return_sequences=True))
         print(model.output_shape)
-        model.add(Reshape(((self.timesteps * factor) + 30, (self.features + 4) * 3, 1)))
+        model.add(Reshape(((self.timesteps * factor) + 20, self.features * 5, 1)))
         print(model.output_shape)
-        model.add(Cropping2D(cropping=((10, 10), (0, 0))))
+        model.add(AveragePooling2D(pool_size=(1, 5)))
         print(model.output_shape)
-        model.add(MaxPooling2D(pool_size=(1, 3)))
+        model.add(Conv2D(128, kernel_size=(9, 3), padding="same", activation="relu"))
         print(model.output_shape)
-        model.add(Conv2D(self.nodes_per_layer * factor, kernel_size=(6, 3), activation="relu"))
+        model.add(Conv2D(64, kernel_size=(9, 3), padding="same", activation="relu"))
         print(model.output_shape)
-        model.add(Conv2D(self.nodes_per_layer, kernel_size=(6, 3), activation="relu"))
+        model.add(Conv2D(32, kernel_size=(9, 3), padding="same", activation="relu"))
         print(model.output_shape)
         model.add(Conv2D(1, kernel_size=3, padding="same", activation="tanh"))
         print(model.output_shape)
-        model.add(MaxPooling2D(pool_size=(factor, 1)))
+        model.add(AveragePooling2D(pool_size=(factor, 1)))
+        print(model.output_shape)
+        model.add(Cropping2D(cropping=((5, 5), (0, 0))))
         print(model.output_shape)
 
         noise = Input(shape=(self.generator_input_length,), name="noise")
