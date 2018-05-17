@@ -1,4 +1,4 @@
-Leave me a comment on my <a href="http://lausbert.com">blog</a>!
+Check out my <a href="http://lausbert.com">blog post</a>!
 
 # Exermote
 
