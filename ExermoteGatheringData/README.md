@@ -16,8 +16,8 @@ So there are 36 data features in total. The Nearables were reshaped by using Ste
 <p align="center">
 <sub><sup>needed untensils (left), reshaped Nearables (mid), remotely starting recording procedure via firebase (right)</sup></sub>
 <br>
-<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2587.JPG" width="250">
-<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2751.JPG" width="250">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2587.jpg" width="250">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2751.jpg" width="250">
   <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteGatheringData/Pictures/IMG_2755.JPG" width="250">
 </p>
 
