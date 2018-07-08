@@ -1,4 +1,4 @@
-export BUCKET_NAME=exermotesgan
+export BUCKET_NAME=exermotesgan4
 export JOB_NAME="exermotesgan_$(date +%Y%m%d_%H%M%S)"
 export REGION=europe-west1
 
@@ -11,4 +11,4 @@ gcloud ml-engine jobs submit training $JOB_NAME \
   --region $REGION \
   --config=trainer/cloudml-gpu.yaml \
   -- \
-  --train-file gs://exermotesgan/data_classes_4_squats_adjusted_individual_added.csv
+  --train-file gs://exermotesgan4/data_classes_4_squats_adjusted_individual_added.csv

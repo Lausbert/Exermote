@@ -5,7 +5,7 @@ setup(name='trainer',
       packages=find_packages(),
       description='exermotesgan',
       install_requires=[
-          'keras',
+          'keras==2.1.3',
           'pandas',
           'matplotlib'
       ],

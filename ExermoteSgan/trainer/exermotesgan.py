@@ -13,7 +13,11 @@ import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import os
+from tensorflow import set_random_seed
 
+def set_seed(seed):
+    np.random.seed(seed)
+    set_random_seed(seed)
 
 def normalized_linear(x):
     return x/sum(x, axis=-1, keepdims=True)
@@ -44,6 +48,7 @@ class SGAN:
         self.generator.summary()
         self.generator.compile(loss=["binary_crossentropy"], optimizer=optimizer)
 
+        set_seed(1)
         # Build and compile the discriminator
         self.discriminator = self.__build_discriminator()
         self.discriminator.summary()
@@ -76,6 +81,7 @@ class SGAN:
         self.inference_discriminator.summary()
         self.inference_discriminator.compile(loss=["categorical_crossentropy"], optimizer=optimizer, metrics=["accuracy"])
 
+        set_seed(1)
         # Build and compile the baseline
         self.baseline = self.__build_baseline()
         self.baseline.summary()
@@ -114,11 +120,9 @@ class SGAN:
         print(model.output_shape)
         model.add(AveragePooling2D(pool_size=(1, 5)))
         print(model.output_shape)
-        model.add(Conv2D(128, kernel_size=(9, 3), padding="same", activation="relu"))
+        model.add(Conv2D(128, kernel_size=(1, 3), padding="same", activation="relu"))
         print(model.output_shape)
-        model.add(Conv2D(64, kernel_size=(9, 3), padding="same", activation="relu"))
-        print(model.output_shape)
-        model.add(Conv2D(32, kernel_size=(9, 3), padding="same", activation="relu"))
+        model.add(Conv2D(64, kernel_size=(1, 3), padding="same", activation="relu"))
         print(model.output_shape)
         model.add(Conv2D(1, kernel_size=3, padding="same", activation="tanh"))
         print(model.output_shape)
@@ -136,9 +140,8 @@ class SGAN:
 
         model = Sequential()
 
-        model.add(Conv1D(self.nodes_per_layer, self.filter_length, strides=2, activation="relu",
-                         input_shape=(self.timesteps, self.features)))
-        model.add(Conv1D(self.nodes_per_layer, self.filter_length, strides=1, activation="relu"))
+        model.add(Conv1D(self.nodes_per_layer, self.filter_length, strides=2, activation="relu", input_shape=(self.timesteps, self.features)))
+        model.add(Conv1D(self.nodes_per_layer, self.filter_length, strides=1, activation="relu",))
         model.add(LSTM(self.nodes_per_layer, return_sequences=True))
         model.add(LSTM(self.nodes_per_layer, return_sequences=False))
         model.add(Dropout(self.dropout))
@@ -306,7 +309,7 @@ class SGAN:
             unique_exercises_with_counts_strings.append(key + "s: " + str(int(value)))
         return ", ".join(unique_exercises_with_counts_strings)
 
-    def train(self, X_train, y_train, X_test, y_test, train_individuals, test_individual, job_dir, split, epochs=50000, batch_size=100, save_interval=1000):
+    def train(self, X_train, y_train, X_test, y_test, train_individuals, test_individual, job_dir, split, epochs=30000, batch_size=100, save_interval=1000):
 
         test_description = "testing_on_individual_%d" %(test_individual)
         if len(train_individuals) == 1:
@@ -419,19 +422,25 @@ def run_exermotesgan(train_file='data_classes_4_squats_adjusted_individual_added
         X_train, y_train = concatenate_individual_data(X_train_per_individual, y_train_per_individual)
         X_test = X_per_individual[test_individual]
         y_test = y_per_individual[test_individual]
-        for split in [1.0, 0.05]:
+        for split in [1.0]:
             X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
             sgan = SGAN()
             sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=train_individuals, test_individual=test_individual, job_dir=job_dir, split=split)
-
+        for split in [0.05]:
+            X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
+            sgan = SGAN()
+            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=train_individuals, test_individual=test_individual, job_dir=job_dir, split=split)
     # training and testing on same individual while gradually reducing training data
     for test_individual, (X, y) in enumerate(zip(X_per_individual, y_per_individual)):
         X_train, X_test, y_train, y_test = non_shuffling_split(X, y, validation_split=0.2)
-        for split in [1.0, 0.1]:
+        for split in [1.0]:
             X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
             sgan = SGAN()
             sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=[test_individual], test_individual=test_individual, job_dir=job_dir, split=split)
-
+        for split in [0.6]:
+            X_train_reduced, y_train_reduced = split_on_break(X_train, y_train, split)
+            sgan = SGAN()
+            sgan.train(X_train=X_train_reduced, y_train=y_train_reduced, X_test=X_test, y_test=y_test, train_individuals=[test_individual], test_individual=test_individual, job_dir=job_dir, split=split)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
