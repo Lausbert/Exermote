@@ -67,13 +67,14 @@ So let's put our model to work!
 
 ## Results
 
-The results could be described as mixed at best.
+The results could be described as mixed at best. Below you can see results for within-subject testing. The SGAN and our baseline model was trained on 80% of acceleration data and tested on 20% of acceleration data of individual 3.
 
 <p align="center">
-<sub><sup>needed untensils (left), reshaped Nearables (mid), remotely starting recording procedure via firebase (right)</sup></sub>
-<br>
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accelerations.png" width="350">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accuracies.png" width="350">
+</p>
+
+<p align="center">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_0.6_accelerations.png" width="350">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_0.6_accuracies.png" width="350">
-  <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accelerations.png" width="350">
-  <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accuracies.png" width="350">
 </p>
