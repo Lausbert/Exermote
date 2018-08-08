@@ -10,7 +10,7 @@ After checking a related <a href="https://arxiv.org/abs/1606.01583"> paper</a>, 
 
 ## Implementation
 
-The baseline model exactly matches the the one I
+The baseline model exactly matches the one I used <a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining"> before</a>.
 
 ```python
 def __build_baseline(self):
@@ -24,6 +24,8 @@ def __build_baseline(self):
     scores = Dense(self.num_classes, activation="softmax", name="scores")(model(accelerations))
     return Model(accelerations, scores)
 ```
+
+The discriminator is pretty similar. To enable adversariality a sigmoid output for predicting input validity is added. Additionaly a fake class is added to the softmax layer.
 
 ```python
 def __build_discriminator(self):
@@ -39,6 +41,8 @@ def __build_discriminator(self):
     scores = Dense(self.num_classes + 1, activation="softmax", name="scores")(features)
     return Model(accelerations, [valid, scores])
 ```
+
+The generator contains LSTM layers to imitate time-related structures of raw acceleration data. After that convolutions are applied to model relations between different feature channels. Before outputting generated acceleration data, the feature channels are cropped. The models capability of modeling realistic acceleration data was limited before I came up with this idea.
 
 ```python
 def __build_generator(self):
@@ -58,3 +62,9 @@ def __build_generator(self):
     accelerations = Reshape((self.timesteps, self.features), name="accelerations")(model(noise))
     return Model(noise, accelerations)
 ```
+
+So let's put pur model to work!
+
+## Results
+
+The results could be described as mixed at best.
