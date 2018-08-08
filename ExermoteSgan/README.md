@@ -63,8 +63,17 @@ def __build_generator(self):
     return Model(noise, accelerations)
 ```
 
-So let's put pur model to work!
+So let's put our model to work!
 
 ## Results
 
 The results could be described as mixed at best.
+
+<p align="center">
+<sub><sup>needed untensils (left), reshaped Nearables (mid), remotely starting recording procedure via firebase (right)</sup></sub>
+<br>
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_0.6_accelerations.png" width="350">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_0.6_accuracies.png" width="350">
+  <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accelerations.png" width="350">
+  <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accuracies.png" width="350">
+</p>
