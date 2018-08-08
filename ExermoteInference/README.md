@@ -1,4 +1,4 @@
-<a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining">< Exermote Preprocessing and Training</a> | <a href="https://github.com/Lausbert/Exermote">Exermote Overview ></a>
+<a href="https://github.com/Lausbert/Exermote/tree/master/ExermotePreprocessingAndTraining">< Exermote Preprocessing and Training</a> | <a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteSgan">Exermote Sgan ></a>
 
 # Exermote Inference
 
