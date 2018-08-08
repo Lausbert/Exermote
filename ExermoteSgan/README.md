@@ -67,7 +67,7 @@ So let's put our model to work!
 
 ## Results
 
-The results could be described as mixed at best. Below you can see results for within-subject testing. The SGAN and our baseline model was trained on 80% of acceleration data and tested on 20% of acceleration data of individual 3.
+The results could be described as mixed at best. Below you can see some results for within-subject testing. The SGAN and our baseline model was trained on 80% of acceleration data and tested on 20% of acceleration data of individual 3.
 
 <p align="center">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accelerations.png" width="350">
