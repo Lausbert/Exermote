@@ -67,14 +67,14 @@ So let's put our model to work!
 
 ## Results
 
-The results could be described as mixed at best. Below you can see some results for within-subject testing. The SGAN and our baseline model was trained on 80% of acceleration data and tested on 20% of acceleration data of individual 3.
+The results could be described as mixed at best. Below you can see some results for within-subject testing. The SGAN and our baseline model was trained on 80% of acceleration data and tested on 20% of acceleration data of individual 3. Looking at validation accuracy it takes some training epochs until discriminator catches up with the baseline. I guess this is due to the generator, which needs some training before it produces useful data. Anyway the SGAN setup does not deliver any benefits, especially if you consider increased training time and its more complex model. This is disappointing regarding the fact that the generator seems actually able to imitate training data, what could be observed in the right image below. Each of the 16 colored boxes represent 12 normalized features (x-Axis; acceleration, gravitation, orientation, rotation rate) over 2.5 seconds (y-Axis; 0.1 seconds step size). While the upper 8 boxes show generated exercise data, the lower 8 show recorded data. By comparing generated with recorded data, you can interpret some of the generated exercise data as break, burpee or squat.
 
 <p align="center">
-<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accelerations.png" width="350">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accuracies.png" width="350">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accelerations.png" width="350">
 </p>
 
 <p align="center">
-<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_0.6_accelerations.png" width="350">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_0.6_accuracies.png" width="350">
+<img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_0.6_accelerations.png" width="350">
 </p>
