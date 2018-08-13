@@ -104,4 +104,4 @@ When comparing my results with experiments touching SGANs and MNIST, there are s
 - There are temporal dependencies and I'm not sure, if my model is able to replicate them in a sufficient manner
 - many more...
 
-To be honest the theoretical background of my decicions regarding generator structure is pretty thin. I assume that an in-depth invistigation is needed to make informed improvements. Anyway ain't nobody got time for that :) I hope you enjoyed my thoughts. Feel free to reach out to me or leave me a comment on my blog.
+To be honest the theoretical background of my decicions regarding generator structure is pretty thin. I assume that an in-depth invistigation is needed to make informed improvements. Anyway ain't nobody got time for that :) I hope you enjoyed my thoughts. Feel free to reach out to me or leave me a comment on my <a href="http://lausbert.com/2018/08/13/exermote-improving-a-fitness-tracker-with-sgan/" blog></a>.
