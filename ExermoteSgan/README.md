@@ -81,14 +81,14 @@ If we reduce the amount of training data while validating one same testing data,
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_0.6_accelerations.png" width="350">
 </p>
 
-text
+When testing on data of individual 4 while training on data of individuals 0, 1, 2, 3 and 5 results are also somewhat disillusioning.
 
 <p align="center">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individuals_0_1_2_3_5_testing_on_individual_4_split_1.0_accelerations.png" width="350">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individuals_0_1_2_3_5_testing_on_individual_4_split_1.0_accuracies.png" width="350">
 </p>
 
-text
+However when drastically reducing training data, the discriminator performs a lot better. Anyway their are many counter
 
 <p align="center">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individuals_0_1_2_3_5_testing_on_individual_4_split_0.05_accelerations.png" width="350">
