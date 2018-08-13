@@ -74,7 +74,7 @@ The results could be described as mixed at best. Below you can see some results 
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_1.0_accelerations.png" width="350">
 </p>
 
-If we reduce the amount of training data while validating one same testing data, the discriminator achieves slightly better results compared to baseline. Anyway it is not said, that this difference is significant or even more import justifies increased training time and more complexity.
+If we reduce the amount of training data while validating one same testing data, the discriminator achieves slightly better results compared to baseline. Anyway it is not said, that this difference is significant or even more important justifies increased training time and more complexity.
 
 <p align="center">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individual_3_testing_on_individual_3_split_0.6_accuracies.png" width="350">
@@ -88,9 +88,20 @@ When testing on data of individual 4 while training on data of individuals 0, 1,
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individuals_0_1_2_3_5_testing_on_individual_4_split_1.0_accuracies.png" width="350">
 </p>
 
-However when drastically reducing training data, the discriminator performs a lot better. Anyway their are many counter
+However when drastically reducing training data, the discriminator performs a lot better. Anyway their are many counter examples in results folder above. So it's still an open question if the SGAN setup delivers any fundamental advantages.
 
 <p align="center">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individuals_0_1_2_3_5_testing_on_individual_4_split_0.05_accelerations.png" width="350">
 <img src="https://github.com/Lausbert/Exermote/blob/master/ExermoteSgan/results/training_on_individuals_0_1_2_3_5_testing_on_individual_4_split_0.05_accuracies.png" width="350">
 </p>
+
+## Conclusion
+
+When comparing my results with experiments touching SGANs and MNIST, there are some obvious differences:
+
+- There is no null class in MNIST dataset
+- The variance (especially in null class) of different samples might be higher
+- There are temporal dependencies and I'm not sure, if my model is able to replicate them in a sufficient manner
+- many more...
+
+To be honest the theoretical background of my decicions regarding generator structure is pretty thin. I assume that an in-depth invistigation is needed to make informed improvements. Anyway ain't nobody got time for that :) I hope you enjoyed my thought. Feel free to reach out to me or leave me a comment on my blog.
