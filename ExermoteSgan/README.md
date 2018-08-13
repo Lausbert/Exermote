@@ -97,11 +97,11 @@ However when drastically reducing training data, the discriminator performs a lo
 
 ## Conclusion
 
-When comparing my results with experiments touching SGANs and MNIST, there are some obvious differences:
+When comparing my results with experiments touching SGANs and MNIST, there are some obvious differences, which could explain these disappointing results:
 
 - There is no null class in MNIST dataset
 - The variance (especially in null class) of different samples might be higher
 - There are temporal dependencies and I'm not sure, if my model is able to replicate them in a sufficient manner
 - many more...
 
-To be honest the theoretical background of my decicions regarding generator structure is pretty thin. I assume that an in-depth invistigation is needed to make informed improvements. Anyway ain't nobody got time for that :) I hope you enjoyed my thought. Feel free to reach out to me or leave me a comment on my blog.
+To be honest the theoretical background of my decicions regarding generator structure is pretty thin. I assume that an in-depth invistigation is needed to make informed improvements. Anyway ain't nobody got time for that :) I hope you enjoyed my thoughts. Feel free to reach out to me or leave me a comment on my blog.
