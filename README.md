@@ -17,6 +17,8 @@ The project is divided into following steps:
 
 <a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteInference">Inference</a>
 
+<a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteSgan">Improving with SGAN</a>
+
 Checkout links for further documentation.
 
 ---
