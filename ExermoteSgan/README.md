@@ -2,7 +2,7 @@
 
 # Exermote SGAN
 
-While investigating how the exercise recognition in my previous experiments could be further improved, a <a href="https://blog.openai.com/generative-models/#contributions"> blog post</a> caught my eye: 
+While investigating how exercise recognition in my previous experiments could be further improved, a <a href="https://blog.openai.com/generative-models/#contributions"> blog post</a> caught my eye: 
 
 > In addition to generating pretty pictures, we introduce an approach for semi-supervised learning with GANs that involves the discriminator producing an additional output indicating the label of the input. This approach allows us to obtain state of the art results on MNIST, SVHN, and CIFAR-10 in settings with very few labeled examples. On MNIST, for example, we achieve 99.14% accuracy with only 10 labeled examples per class with a fully connected neural network — a result that’s very close to the best known results with fully supervised approaches using all 60,000 labeled examples. This is very promising because labeled examples can be quite expensive to obtain in practice.
 
