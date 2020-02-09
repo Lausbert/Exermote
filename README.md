@@ -1,5 +1,5 @@
 ************************************************************************************************ 
-NEW: Architekkt: Swift Dependecy Graph Visualizer for your iOS or macOS Codebase. Check it out on <a href="https://architekkt.io">Architekkt.io</a>
+NEW: Architekkt - Swift Dependecy Graph Visualizer for your iOS or macOS Codebase. Check it out on <a href="https://architekkt.io">Architekkt.io</a>
 ************************************************************************************************
 
 Check out my <a href="http://lausbert.com">blog post</a>.
