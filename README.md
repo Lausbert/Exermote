@@ -1,6 +1,6 @@
-Check out my <a href="http://lausbert.com">blog post</a>.
+*** NEW: Architekkt: Swift Dependecy Graph Visualizer for your iOS or macOS Codebase. Check it out on <a href="https://architekkt.io">Architekkt.io</a> ***
 
-I'm always open to new opportunities. Reach out to me on <a href="https://www.linkedin.com/in/stephan-lerner-301ba091/">LinkedIn</a>.
+Check out my <a href="http://lausbert.com">blog post</a>.
 
 # Exermote
 
