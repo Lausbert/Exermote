@@ -8,7 +8,7 @@ setup(name='trainer',
       author_email='fuyang.liu@example.com',
       license='MIT',
       install_requires=[
-          'keras==2.0.4',
+          'keras==2.13.1',
           'h5py',
           'pandas',
           'coremltools'
