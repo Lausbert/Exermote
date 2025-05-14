@@ -1,3 +1,13 @@
+---
+
+### 🚀 Give My Budgeting App a Try!
+
+Try out my budgeting app! 🙂 → [monee-app.com](https://monee-app.com)
+
+Just like all the content here on the site, it’s completely **free**—so I’d really appreciate a rating and a review!
+
+---
+
 # Exermote
 
 Exermote is a fitness app prototype, which is capable to detect Burpees, Squats and Situps and to count related repetitions. The exercise recognition is done with Convolutional LSTM Neural Networks.
