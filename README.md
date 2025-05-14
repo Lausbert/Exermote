@@ -1,9 +1,3 @@
-************************************************************************************************ 
-NEW: Architekkt - Swift Dependecy Graph Visualizer for your iOS or macOS Codebase. Check it out on <a href="https://architekkt.io">Architekkt.io</a>
-************************************************************************************************
-
-Check out my <a href="http://lausbert.com">blog post</a>.
-
 # Exermote
 
 Exermote is a fitness app prototype, which is capable to detect Burpees, Squats and Situps and to count related repetitions. The exercise recognition is done with Convolutional LSTM Neural Networks.
