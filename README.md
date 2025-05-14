@@ -18,7 +18,3 @@ The project is divided into following steps:
 <a href="https://github.com/Lausbert/Exermote/tree/master/ExermoteSgan">Improving</a>
 
 Checkout links for further documentation.
-
----
-
-<a href="https://github.com/Lausbert/Exermote/tree/Testmote">Testmote</a> was released to the AppStore as a side product of this project.
